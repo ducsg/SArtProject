@@ -6,6 +6,9 @@ target 'SnapArt' do
     pod 'InstagramKit', '~> 3.0'
     pod 'SDWebImage', '~> 3.7.2'
     pod 'InstagramKit/UICKeyChainStore'
+    pod  'Braintree'
+    pod  'Alamofire'
+
 #pod 'Facebook-iOS-SDK'
 end
 target 'SnapArtTests' do
