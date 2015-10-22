@@ -29,12 +29,23 @@ public class Api{
             "Authorization" : AUTHORIZATION,
             "token" : DataManager.sharedInstance.user.accessToken
         ]
-        if(WAITING == true){
+        if(self.WAITING == true){
             GMDCircleLoader.setOnView(parentView, withTitle:MESSAGES.COMMON.LOADING, animated: true)
         }
         if(method == .GET){
             self.alamoFireManager!.request(.GET, url, parameters: parameters, headers: headers).responseJSON { response in
                 self.closeWaiting()
+                if(response.result.value == nil){
+                    resulf(false, MESSAGES.COMMON.API_EXCEPTION, JSON(""))
+                    return
+                }
+                let json: JSON = JSON(response.result.value!)
+                if json[self.KEY_STATUS] == "success" {
+                    resulf(true, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
+                }
+                if json[self.KEY_STATUS] == "failure" {
+                    resulf(false, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
+                }
             }
         }else if(method == .POST){
             self.alamoFireManager!.request(.POST, url, parameters: parameters, headers: headers).responseJSON { response in
@@ -162,7 +173,7 @@ public class Api{
     
     public func initWaiting(parentView:UIView){
         self.parentView = parentView
-        WAITING = true
+        self.WAITING = true
     }
     
 }
