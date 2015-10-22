@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+
 public class ForgotPasswordTB: CustomTableViewController{
     
     @IBOutlet weak var tfEmail: CustomTextField!
@@ -27,7 +29,7 @@ public class ForgotPasswordTB: CustomTableViewController{
             let api:Api = Api()
             let parentView:UIView! = self.navigationController?.view
             api.initWaiting(parentView)
-            api.execute(ApiMethod.POST, url: ApiUrl.forgot_url, parameters: [APIKEY.EMAIL:email], resulf: {(dataResult: (success: Bool, message: String, data: AnyObject!)) -> Void in
+            api.execute(ApiMethod.POST, url: ApiUrl.forgot_url, parameters: [APIKEY.EMAIL:email], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
                     DataManager.sharedInstance.user.forgotEmail = self.email
                     let nv = Util().getControllerForStoryBoard("ResetPasswordTB") as! ResetPasswordTB
@@ -36,8 +38,6 @@ public class ForgotPasswordTB: CustomTableViewController{
                     Util().showAlert(dataResult.message, parrent: self)
                 }
             })
-        }else{
-            
         }
     }
     

@@ -18,9 +18,13 @@ public class Api{
     private let KEY_DATA = "results"
     private var WAITING:Bool = false
     private var parentView: UIView = UIView()
+    var alamoFireManager : Alamofire.Manager?
     
-    public func execute(method: ApiMethod, url: String, parameters: [String:AnyObject], resulf:(Bool,String, AnyObject!) -> () ){
-        let token = ""
+    public func execute(method: ApiMethod, url: String, parameters: [String:AnyObject], resulf:(Bool,String, JSON!) -> () ){
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.timeoutIntervalForRequest = 15 // seconds
+        self.alamoFireManager = Alamofire.Manager(configuration: configuration)
+        
         let headers = [
             "Authorization" : AUTHORIZATION,
             "token" : DataManager.sharedInstance.user.accessToken
@@ -29,28 +33,30 @@ public class Api{
             GMDCircleLoader.setOnView(parentView, withTitle:MESSAGES.COMMON.LOADING, animated: true)
         }
         if(method == .GET){
-            Alamofire.request(.GET, url, parameters: parameters, headers: headers).responseJSON { response in
+            self.alamoFireManager!.request(.GET, url, parameters: parameters, headers: headers).responseJSON { response in
                 self.closeWaiting()
             }
         }else if(method == .POST){
-            Alamofire.request(.POST, url, parameters: parameters, headers: headers).responseJSON { response in
+            self.alamoFireManager!.request(.POST, url, parameters: parameters, headers: headers).responseJSON { response in
                 self.closeWaiting()
-                if(self.WAITING == true){
-                    GMDCircleLoader.removeTranparent(self.parentView)
-                    self.WAITING = false
+                if(response.result.value == nil){
+                    resulf(false, MESSAGES.COMMON.API_EXCEPTION, JSON(""))
+                    return
+                }
+                let json: JSON = JSON(response.result.value!)
+                if json[self.KEY_STATUS] == "success" {
+                    resulf(true, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
+                }
+                if json[self.KEY_STATUS] == "failure" {
+                    resulf(false, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
                 }
                 
             }
         }
+        
+        
     }
     
-    public func closeWaiting(){
-        if(self.WAITING == true){
-            GMDCircleLoader.removeTranparent(self.parentView)
-            self.WAITING = false
-        }
-    }
-
     public func execute2(method: ApiMethod, url: String, parameters: [String:String], resulf:(Bool,String, AnyObject!) -> () ){
         let authorizationData: NSData = AUTHORIZATION.dataUsingEncoding(NSUTF8StringEncoding)!
         let authorizationBase64 = authorizationData.base64EncodedStringWithOptions([])
@@ -89,7 +95,7 @@ public class Api{
                 let parsedObject: AnyObject?
                 do {
                     parsedObject = try NSJSONSerialization.JSONObjectWithData(data!,
-                                        options: NSJSONReadingOptions.AllowFragments)
+                        options: NSJSONReadingOptions.AllowFragments)
                 } catch let error as NSError {
                     parseError = error
                     parsedObject = nil
@@ -146,11 +152,19 @@ public class Api{
         return url
     }
     
+    
+    public func closeWaiting(){
+        if(self.WAITING == true){
+            GMDCircleLoader.removeTranparent(self.parentView)
+            self.WAITING = false
+        }
+    }
+    
     public func initWaiting(parentView:UIView){
         self.parentView = parentView
         WAITING = true
     }
-
+    
 }
 
 public enum ApiMethod: Int{

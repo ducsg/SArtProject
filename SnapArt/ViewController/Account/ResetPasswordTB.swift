@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 public class ResetPasswordTB: CustomTableViewController {
     
@@ -32,15 +33,13 @@ public class ResetPasswordTB: CustomTableViewController {
             var api:Api = Api()
             let parentView:UIView! = self.navigationController?.view
             api.initWaiting(parentView)
-            api.execute(ApiMethod.POST, url: ApiUrl.reset_pwd_url, parameters: [APIKEY.EMAIL:DataManager.sharedInstance.user.forgotEmail, APIKEY.CODE:code, APIKEY.PWD:pwd, APIKEY.REPWD:rePwd], resulf: {(dataResult: (success: Bool, message: String, data: AnyObject!)) -> Void in
+            api.execute(ApiMethod.POST, url: ApiUrl.reset_pwd_url, parameters: [APIKEY.EMAIL:DataManager.sharedInstance.user.forgotEmail, APIKEY.CODE:code, APIKEY.PWD:pwd, APIKEY.REPWD:rePwd], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
                     self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
                 }else{
                     Util().showAlert(dataResult.message, parrent: self)
                 }
             })
-        }else{
-            
         }
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class RightMenuVC: AMSlideMenuLeftTableViewController  {
     
@@ -194,7 +195,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
     
     func logoutTap(sender:AnyObject) -> Void  {
         self.mainVC!.closeLeftMenu()
-        Api().execute(.POST, url: ApiUrl.signout_url, parameters: NSDictionary() as! [String : String], resulf: {(dataResult: (success: Bool, message: String, data: AnyObject!)) -> Void in
+        Api().execute(.POST, url: ApiUrl.signout_url, parameters: NSDictionary() as! [String : String], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) in
             if(dataResult.success){
                 self.loginFlag = false
                 self.tableView.reloadData()

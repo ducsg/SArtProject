@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 public class RegisterTB: CustomTableViewController {
     
@@ -31,37 +32,23 @@ public class RegisterTB: CustomTableViewController {
             let api:Api = Api()
             let parentView:UIView! = self.navigationController?.view
             api.initWaiting(parentView)
-            api.execute(ApiMethod.POST, url: ApiUrl.register_url, parameters: [APIKEY.EMAIL:email, APIKEY.PWD:pwd, APIKEY.REPWD:rePwd], resulf: {(dataResult: (success: Bool, message: String, data: AnyObject!)) -> Void in
+            api.execute(ApiMethod.POST, url: ApiUrl.register_url, parameters: [APIKEY.EMAIL:email, APIKEY.PWD:pwd, APIKEY.REPWD:rePwd], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
-                    if let dat = dataResult.data as? NSMutableDictionary {
-                        var tokenStr = ""
-                        var idNumb = 0
-                        
-                        if let str = dat.objectForKey(APIKEY.ACCESS_TOKEN) as? String {
-                            tokenStr = str
-                        }
-                        
-                        if let numb = dat.objectForKey(APIKEY.ACCOUNT_ID) as? Int {
-                            idNumb = numb
-                            
-                        }
-                        let account:Account = Account()
-                        account.setAcountInfo(accessTokenStr: tokenStr, accountID: idNumb)
-                        DataManager.sharedInstance.user = account
-                        self.loginSuccess()
-                        self.cancelTap(self)
-                        
-                        //store data to stay login
-                        MemoryStoreData().setValue(MemoryStoreData.user_email, value: self.email)
-                        MemoryStoreData().setValue(MemoryStoreData.user_pwd, value: self.pwd)
-                        MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: true)
-                    }
+                    let account = Account()
+                    account.setAcountInfo(accessTokenStr: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue, accountID: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
+                    DataManager.sharedInstance.user = account
+                    self.loginSuccess()
+                    
+                    //store data to stay login
+                    MemoryStoreData().setValue(MemoryStoreData.user_email, value: self.email)
+                    MemoryStoreData().setValue(MemoryStoreData.user_pwd, value: self.pwd)
+                    MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: true)
+                    
+                    self.cancelTap(self)
                 }else{
                     Util().showAlert(dataResult.message, parrent: self)
                 }
             })
-        }else{
-            
         }
     }
     

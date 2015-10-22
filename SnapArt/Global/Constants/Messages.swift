@@ -18,6 +18,7 @@ struct MESSAGES{
     
     struct COMMON{
         static let NOT_INTERNET = "Network not available."
+        static let API_EXCEPTION = "Error. Please try again."
         static let EMAIL_EMPTY = "Email can't be blank."
         static let EMAIL_INVALID = "Invalid email. Example: someone@company.com."
         static let LOADING = "Loading..."

@@ -10,6 +10,7 @@ import UIKit
 import FBAudienceNetwork
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SwiftyJSON
 
 
 @UIApplicationMain
@@ -21,26 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate   {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         if(MemoryStoreData().getBool(MemoryStoreData.user_stayed_login)){
-            Api().execute(ApiMethod.POST, url: ApiUrl.signin_url, parameters: [APIKEY.EMAIL:MemoryStoreData().getString(MemoryStoreData.user_email), APIKEY.PWD:MemoryStoreData().getString(MemoryStoreData.user_pwd)], resulf: {(dataResult: (success: Bool, message: String, data: AnyObject!)) -> Void in
+            Api().execute(ApiMethod.POST, url: ApiUrl.signin_url, parameters: [APIKEY.EMAIL:MemoryStoreData().getString(MemoryStoreData.user_email), APIKEY.PWD:MemoryStoreData().getString(MemoryStoreData.user_pwd)], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
-                    if let dat = dataResult.data as? NSMutableDictionary {
-                        var tokenStr = ""
-                        var idNumb = 0
-                        
-                        if let str = dat.objectForKey(APIKEY.ACCESS_TOKEN) as? String {
-                            tokenStr = str
-                        }
-                        
-                        if let numb = dat.objectForKey(APIKEY.ACCOUNT_ID) as? Int {
-                            idNumb = numb
-                            
-                        }
-                        
-                        let account = Account()
-                        account.setAcountInfo(accessTokenStr: tokenStr, accountID: idNumb)
-                        DataManager.sharedInstance.user = account
-                        NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
-                    }
+                    let account = Account()
+                    account.setAcountInfo(accessTokenStr: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue, accountID: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
+                    DataManager.sharedInstance.user = account
+                    NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
+                }else{
+                    Util().showAlert(dataResult.message, parrent: self)
                 }
             })
         }
