@@ -20,7 +20,7 @@ public class Api{
     private var parentView: UIView = UIView()
     var alamoFireManager : Alamofire.Manager?
     
-    public func execute(method: ApiMethod, url: String, parameters: [String:AnyObject], resulf:(Bool,String, JSON!) -> () ){
+    public func execute(method: ApiMethod, url: String, parameters: [String:AnyObject] = [String : AnyObject](), resulf:(Bool,String, JSON!) -> () ){
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.timeoutIntervalForRequest = 15 // seconds
         self.alamoFireManager = Alamofire.Manager(configuration: configuration)

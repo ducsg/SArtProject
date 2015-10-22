@@ -8,11 +8,15 @@
 
 import Foundation
 public class ApiUrl{
-    static let base_url:String = "http://demo.innoria.com/snapart/api/"
+    static let base_url:String = "http://demo.innoria.com/snapart/"
     
-    static let register_url:String = base_url + "accounts/create"
-    static let signin_url:String = base_url + "accounts/login"
-    static let forgot_url:String = base_url + "accounts/forgot_password"
-    static let reset_pwd_url:String = base_url + "accounts/reset_password"
-    static let signout_url:String = base_url + "accounts/logout"
+    //account
+    static let register_url:String = base_url + "api/accounts/create"
+    static let signin_url:String = base_url + "api/accounts/login"
+    static let forgot_url:String = base_url + "api/accounts/forgot_password"
+    static let reset_pwd_url:String = base_url + "api/accounts/reset_password"
+    static let signout_url:String = base_url + "api/accounts/logout"
+    
+    //payment
+    static let create_client_token:String = base_url + "api/payments/create_client_token"
 }
