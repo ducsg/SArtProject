@@ -21,10 +21,13 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.braintree = Braintree(clientToken: "")
-        Api().execute(.POST, url: ApiUrl.create_client_token, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+        let parentView:UIView! = self.navigationController?.view
+        let api = Api()
+        api.initWaiting(parentView)
+        api.execute(.GET, url: ApiUrl.create_client_token_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
                 self.paymentToken = dataResult.data["token"].string!
+                self.braintree = Braintree(clientToken: self.paymentToken)
             }
         })
     }
@@ -64,8 +67,8 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate{
     
     
     func postNonce(paymentMethodNonce: String) {
-        var parameters = ["payment_method_nonce": paymentMethodNonce, "amount" : "10"]
-        Alamofire.request(.POST, "http://demo.innoria.com/snapart/api/payments/pay", headers: ["Authorization":"Basic c25hcGFydEBhZG1pbi5jb206YWRtaW4xMjM0"], parameters: parameters)
+        var parameters = ["payment_method_nonce": paymentMethodNonce, "amount" : 1]
+        Alamofire.request(.POST, "http://demo.innoria.com/snapart/api/payments/pay", headers: ["Authorization":"Basic c25hcGFydEBhZG1pbi5jb206YWRtaW4xMjM0"], parameters: parameters as! [String : AnyObject])
             .response { request, response, data, error in
                 print(request)
                 print(response)

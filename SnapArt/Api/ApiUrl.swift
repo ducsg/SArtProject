@@ -18,5 +18,7 @@ public class ApiUrl{
     static let signout_url:String = base_url + "api/accounts/logout"
     
     //payment
-    static let create_client_token:String = base_url + "api/payments/create_client_token"
+    static let create_client_token_url:String = base_url + "api/payments/create_client_token"
+    static let payment_url:String = base_url + "api/payments/pay"
+
 }
