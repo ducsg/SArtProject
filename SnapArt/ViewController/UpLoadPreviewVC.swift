@@ -33,8 +33,8 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     }
     // MARK: - CHOOSE FROM PHOTO FROM FACEBOOK
     @IBAction func choosefbEvent(sender: AnyObject) {
-        let vc:CustomNavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("FacebookNC") as! CustomNavigationController
-        self.presentViewController(vc, animated: true, completion: nil)
+        let vc:FacebookLoginVC = self.storyboard?.instantiateViewControllerWithIdentifier("FacebookLoginVC") as! FacebookLoginVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     // MARK: - CHOOSE FROM PHOTO FROM INSTAGRAM

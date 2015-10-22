@@ -36,7 +36,11 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
     @IBAction func album(sender: AnyObject) {
         let vc = OLFacebookImagePickerController()
         vc.delegate = self
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.navigationController?.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func loginfbTap(sender: AnyObject) {
+    FB
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -51,10 +55,14 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         
     }
     func facebookImagePicker(imagePicker: OLFacebookImagePickerController!, didFinishPickingImages images: [AnyObject]!) {
-        
+        self.navigationController?.popViewControllerAnimated(true)
+        imagePicker.dismissViewControllerAnimated(true, completion: nil)
     }
     func facebookImagePickerDidCancelPickingImages(imagePicker: OLFacebookImagePickerController!) {
         
     }
+    
+    
+
 }
 
