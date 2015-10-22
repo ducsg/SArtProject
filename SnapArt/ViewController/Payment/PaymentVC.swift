@@ -11,7 +11,7 @@ import Braintree
 import Alamofire
 import SwiftyJSON
 
-class PaymentVC: UIViewController, BTDropInViewControllerDelegate{
+class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPaymentViewControllerDelegate{
     var braintree: Braintree?
     var paymentToken:String = ""
     let paymentTitle = "SnapArt total payment:"
@@ -37,6 +37,7 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate{
         // Dispose of any resources that can be recreated.
     }
     
+    //braintree
     @IBAction func payClick(sender: AnyObject) {
         var dropInViewController: BTDropInViewController = braintree!.dropInViewControllerWithDelegate(self)
         dropInViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: Selector("userDidCancel"))
@@ -80,6 +81,26 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate{
     
     func userDidCancel() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    //card.io
+    
+    @IBAction func scanCard(sender: AnyObject) {
+        let cardIOVC = CardIOPaymentViewController(paymentDelegate: self)
+        cardIOVC.modalPresentationStyle = .FormSheet
+        presentViewController(cardIOVC, animated: true, completion: nil)
+    }
+    
+    func userDidCancelPaymentViewController(paymentViewController: CardIOPaymentViewController!) {
+        paymentViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func userDidProvideCreditCardInfo(cardInfo: CardIOCreditCardInfo!, inPaymentViewController paymentViewController: CardIOPaymentViewController!) {
+        if let info = cardInfo {
+            let str = NSString(format: "Received card info.\n Number: %@\n expiry: %02lu/%lu\n cvv: %@.", info.redactedCardNumber, info.expiryMonth, info.expiryYear, info.cvv)
+        }
+        paymentViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
