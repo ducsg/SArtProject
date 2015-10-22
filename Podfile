@@ -8,6 +8,7 @@ target 'SnapArt' do
     pod 'InstagramKit/UICKeyChainStore'
     pod  'Braintree'
     pod  'Alamofire'
+    pod 'SwiftyJSON'
 
 #pod 'Facebook-iOS-SDK'
 end
