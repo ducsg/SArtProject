@@ -7,16 +7,93 @@
 //
 
 import Foundation
+import Alamofire
+
 public class Api{
     //account to authorize
-    private let AUTHORIZATION:String = "snapart@admin.com:admin1234"
+    private let AUTHORIZATION:String = "Basic c25hcGFydEBhZG1pbi5jb206YWRtaW4xMjM0"
     private let KEY_STATUS = "status"
     private let KEY_MESSAGE = "message"
     private let KEY_DATA = "results"
     private var WAITING:Bool = false
     private var parentView: UIView = UIView()
+    
+    public func execute(method: ApiMethod, url: String, parameters: [String:AnyObject], resulf:(Bool,String, AnyObject!) -> () ){
+        let token = ""
+        let headers = [
+            "Authorization" : AUTHORIZATION,
+            "token" : DataManager.sharedInstance.user.accessToken
+        ]
+        if(WAITING == true){
+            GMDCircleLoader.setOnView(parentView, withTitle:MESSAGES.COMMON.LOADING, animated: true)
+        }
+        if(method == .GET){
+            Alamofire.request(.GET, url, parameters: parameters, headers: headers).responseJSON { response in
+                self.closeWaiting()
+            }
+        }else if(method == .POST){
+            Alamofire.request(.POST, url, parameters: parameters, headers: headers).responseJSON { response in
+                self.closeWaiting()
+                print(response.data)
+                let parseError: NSError?
+                if(self.WAITING == true){
+                    GMDCircleLoader.removeTranparent(self.parentView)
+                    self.WAITING = false
+                }
+                if response.data != nil  {
+                    let parsedObject: AnyObject?
+                    do {
+                        parsedObject = try NSJSONSerialization.JSONObjectWithData(response.data! as! NSData,
+                            options: NSJSONReadingOptions.AllowFragments)
+                    } catch let error as NSError {
+                        parseError = error
+                        parsedObject = nil
+                    } catch {
+                        fatalError()
+                    }
+                    
+                    if let dic = parsedObject as? NSDictionary {
+                        
+                        if let code = dic.valueForKey(self.KEY_STATUS) as? String {
+                            var message = ""
+                            if (dic.valueForKey(self.KEY_MESSAGE) as? String != nil) {
+                                message = dic.valueForKey(self.KEY_MESSAGE) as! String
+                            }
+                            var dataObject:AnyObject!
+                            if  (dic.valueForKey(self.KEY_DATA) != nil){
+                                dataObject = dic.valueForKey(self.KEY_DATA)
+                            }
+                            
+                            switch code {
+                            case "success" :
+                                resulf(true, message, dataObject)
+                            case "failure" :
+                                resulf(false, message, dataObject)
+                            default:
+                                print("cannot get data", terminator: "")
+                            }
+                        }
+                    }
+                    else{
+                        resulf(false, MESSAGES.COMMON.NOT_INTERNET, nil)
+                    }
+                    
+                }
+                else {
+                    resulf(false, MESSAGES.COMMON.NOT_INTERNET,nil)
+                }
+            }
+        }
+    }
+    
+    public func closeWaiting(){
+        if(self.WAITING == true){
+            GMDCircleLoader.removeTranparent(self.parentView)
+            self.WAITING = false
+        }
+    }
 
-    public func execute(method: ApiMethod, url: String, parameters: [String:String], resulf:(Bool,String, AnyObject!) -> () ){
+    public func execute2(method: ApiMethod, url: String, parameters: [String:String], resulf:(Bool,String, AnyObject!) -> () ){
         let authorizationData: NSData = AUTHORIZATION.dataUsingEncoding(NSUTF8StringEncoding)!
         let authorizationBase64 = authorizationData.base64EncodedStringWithOptions([])
         // create the request
