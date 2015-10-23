@@ -34,9 +34,8 @@ public class RegisterTB: CustomTableViewController {
             api.initWaiting(parentView)
             api.execute(ApiMethod.POST, url: ApiUrl.register_url, parameters: [APIKEY.EMAIL:email, APIKEY.PWD:pwd, APIKEY.REPWD:rePwd], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
-                    let account = Account()
-                    account.setAcountInfo(accessTokenStr: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue, accountID: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
-                    DataManager.sharedInstance.user = account
+                    MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)
+                    MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
                     self.loginSuccess()
                     
                     //store data to stay login

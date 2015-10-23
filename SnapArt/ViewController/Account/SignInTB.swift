@@ -35,11 +35,10 @@ public class SignInVC: CustomTableViewController {
             api.initWaiting(parentView)
             api.execute(ApiMethod.POST, url: ApiUrl.signin_url, parameters: [APIKEY.EMAIL:email, APIKEY.PWD:pwd], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
-                    let account = Account()
-                    account.setAcountInfo(accessTokenStr: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue, accountID: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
-                    DataManager.sharedInstance.user = account
                     self.loginSuccess()
-                    
+                    //store access token and account id
+                    MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)
+                    MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
                     //store data to stay login
                     MemoryStoreData().setValue(MemoryStoreData.user_email, value: self.email)
                     MemoryStoreData().setValue(MemoryStoreData.user_pwd, value: self.pwd)

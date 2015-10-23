@@ -20,5 +20,6 @@ public class ApiUrl{
     //payment
     static let create_client_token_url:String = base_url + "api/payments/create_client_token"
     static let payment_url:String = base_url + "api/payments/pay"
+    static let payment_scanner_url:String = base_url + "api/payments/pay_scanner"
 
 }

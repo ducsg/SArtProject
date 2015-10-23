@@ -27,7 +27,7 @@ public class Api{
         
         let headers = [
             "Authorization" : AUTHORIZATION,
-            "token" : DataManager.sharedInstance.user.accessToken
+            "token" : MemoryStoreData().getString(APIKEY.ACCESS_TOKEN)
         ]
         if(self.WAITING == true){
             GMDCircleLoader.setOnView(parentView, withTitle:MESSAGES.COMMON.LOADING, animated: true)
@@ -40,10 +40,10 @@ public class Api{
                     return
                 }
                 let json: JSON = JSON(response.result.value!)
-                if json[self.KEY_STATUS] == "success" {
+                if json[self.KEY_STATUS] == 200 {
                     resulf(true, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
                 }
-                if json[self.KEY_STATUS] == "failure" {
+                if json[self.KEY_STATUS] == 500 {
                     resulf(false, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
                 }
             }
@@ -55,10 +55,10 @@ public class Api{
                     return
                 }
                 let json: JSON = JSON(response.result.value!)
-                if json[self.KEY_STATUS] == "success" {
+                if json[self.KEY_STATUS] == 200 {
                     resulf(true, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
                 }
-                if json[self.KEY_STATUS] == "failure" {
+                if json[self.KEY_STATUS] == 500 {
                     resulf(false, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
                 }
                 

@@ -12,15 +12,17 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFacebookImagePickerControllerDelegate , UINavigationControllerDelegate {
-    
+    @IBOutlet weak var loginBtn: FBSDKLoginButton!
+    @IBOutlet weak var albumbtn: CustomButton!
+    @IBOutlet weak var statuslb: CustomLabel!
+    @IBOutlet weak var avatarImage: UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let loginButton:FBSDKLoginButton = FBSDKLoginButton()
-        loginButton.center = self.view.center
-        loginButton.delegate = self
-        loginButton.readPermissions = ["user_photos"]
-        self.view.addSubview(loginButton)
+        self.loginBtn = FBSDKLoginButton()
+        self.loginBtn.delegate = self
+        self.loginBtn.readPermissions = ["user_photos"]
         
     }
     
@@ -39,9 +41,25 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         self.navigationController?.presentViewController(vc, animated: true, completion: nil)
     }
     
-    @IBAction func loginfbTap(sender: AnyObject) {
-    FB
-    }
+//    @IBAction func loginfbTap(sender: AnyObject) {
+//        if FBSession.activeSession().state != FBSessionStateOpen && FBSession.activeSession().state != FBSessionStateOpenTokenExtended {
+//            // Call the app delegate's sessionStateChanged:state:error method to handle session state changes
+//        }
+//        else {
+//            FBSession.activeSession().closeAndClearTokenInformation()
+//        }
+//    }
+//    
+//    
+//    func sessionStateChanged(session : FBSession, state : FBSessionState, error : NSError)
+//    {
+//        // If the session was opened successfully
+//        if  state == FBSessionStateOpen
+//        {
+//            print("Session Opened")
+//        }
+//    }
+    
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         if error == nil {
@@ -62,7 +80,5 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         
     }
     
-    
-
 }
 

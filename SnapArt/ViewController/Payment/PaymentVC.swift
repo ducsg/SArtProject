@@ -16,7 +16,8 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
     var paymentToken:String = ""
     let paymentTitle = "SnapArt total payment:"
     let paymentDescription = "Khanh Duong implement payment method for SnapArt."
-    let paymentAmount = "$1"
+    let paymentAmountText = "$1"
+    var paymentAmount = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
         //Customize the UI
         dropInViewController.summaryTitle = paymentTitle
         dropInViewController.summaryDescription = paymentDescription
-        dropInViewController.displayAmount = paymentAmount
+        dropInViewController.displayAmount = paymentAmountText
         
         var navigationController: UINavigationController = UINavigationController(rootViewController: dropInViewController)
         
@@ -68,15 +69,13 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
     
     
     func postNonce(paymentMethodNonce: String) {
-        var parameters = ["payment_method_nonce": paymentMethodNonce, "amount" : 1]
-        Alamofire.request(.POST, "http://demo.innoria.com/snapart/api/payments/pay", headers: ["Authorization":"Basic c25hcGFydEBhZG1pbi5jb206YWRtaW4xMjM0"], parameters: parameters as! [String : AnyObject])
-            .response { request, response, data, error in
-                print(request)
-                print(response)
-                print(data)
-                print(error)
-        }
-        
+        var parameters = ["payment_method_nonce": paymentMethodNonce, "amount" : paymentAmount]
+        let api = Api()
+        let parentView:UIView! = self.navigationController?.view
+        api.initWaiting(parentView)
+        api.execute(.POST, url: ApiUrl.payment_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            Util().showAlert(dataResult.message, parrent: self)
+        })
     }
     
     func userDidCancel() {
@@ -99,6 +98,21 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
     func userDidProvideCreditCardInfo(cardInfo: CardIOCreditCardInfo!, inPaymentViewController paymentViewController: CardIOPaymentViewController!) {
         if let info = cardInfo {
             let str = NSString(format: "Received card info.\n Number: %@\n expiry: %02lu/%lu\n cvv: %@.", info.redactedCardNumber, info.expiryMonth, info.expiryYear, info.cvv)
+            var parameters = [
+                "amount" : paymentAmount,
+                "creditCard": [
+                    "number" : info.cardNumber,
+                    "expirationMonth" : info.expiryMonth,
+                    "expirationYear" : info.expiryYear,
+                    "cvv" : info.cvv,
+                ]
+            ]
+            let api = Api()
+            let parentView:UIView! = self.navigationController?.view
+            api.initWaiting(parentView)
+            api.execute(.POST, url: ApiUrl.payment_scanner_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+                Util().showAlert(dataResult.message, parrent: self)
+            })
         }
         paymentViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
