@@ -11,6 +11,8 @@ import FBAudienceNetwork
 import FBSDKCoreKit
 import FBSDKLoginKit
 import SwiftyJSON
+import FBSDKShareKit
+import InstagramKit
 
 
 @UIApplicationMain
@@ -24,9 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate   {
         if(MemoryStoreData().getBool(MemoryStoreData.user_stayed_login)){
             Api().execute(ApiMethod.POST, url: ApiUrl.signin_url, parameters: [APIKEY.EMAIL:MemoryStoreData().getString(MemoryStoreData.user_email), APIKEY.PWD:MemoryStoreData().getString(MemoryStoreData.user_pwd)], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
-                    let account = Account()
-                    account.setAcountInfo(accessTokenStr: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue, accountID: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
-                    DataManager.sharedInstance.user = account
+                    MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)
+                    MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
                     NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
                 }else{
                     Util().showAlert(dataResult.message, parrent: self)

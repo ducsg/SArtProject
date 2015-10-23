@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170563E7234D1B4EBBFD90FB /* Pods_SnapArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */; };
 		671219EB1BCE4E6B00CAC506 /* ApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671219EA1BCE4E6B00CAC506 /* ApiUrl.swift */; };
 		671219ED1BCE500200CAC506 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671219EC1BCE500200CAC506 /* ApiKey.swift */; };
 		671219EF1BCE5DB900CAC506 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671219EE1BCE5DB900CAC506 /* CustomNavigationController.swift */; };
@@ -36,6 +37,7 @@
 		67566A501BCB5DE300EDE907 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67566A4B1BCB5DE300EDE907 /* Constants.swift */; };
 		67566A511BCB5DE300EDE907 /* Archer-Book-Pro.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67566A4E1BCB5DE300EDE907 /* Archer-Book-Pro.otf */; };
 		67566A521BCB5DE300EDE907 /* Gotham-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67566A4F1BCB5DE300EDE907 /* Gotham-Thin.ttf */; };
+		676C72BA1BD9207B0056DB3C /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676C72B91BD9207B0056DB3C /* PaymentVC.swift */; };
 		677878B11BC587F100249748 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677878B01BC587F100249748 /* BaseView.swift */; };
 		6779712D1BC41BBF00110C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6779712C1BC41BBF00110C8B /* AppDelegate.swift */; };
 		6779712F1BC41BBF00110C8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6779712E1BC41BBF00110C8B /* ViewController.swift */; };
@@ -73,6 +75,11 @@
 		6797C1D31BD394C600F2EB79 /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6797C1C91BD394C600F2EB79 /* ActionSheetStringPicker.m */; };
 		6797C1D41BD394C600F2EB79 /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6797C1CB1BD394C600F2EB79 /* DistancePickerView.m */; };
 		6797C1D51BD394C600F2EB79 /* SWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6797C1CD1BD394C600F2EB79 /* SWActionSheet.m */; };
+		67B8DED91BD94229001CB1A3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DED81BD94229001CB1A3 /* FacebookSDK.framework */; };
+		67B8DEFE1BD96D22001CB1A3 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DEFB1BD96D22001CB1A3 /* libCardIO.a */; settings = {ASSET_TAGS = (); }; };
+		67B8DEFF1BD96D22001CB1A3 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DEFC1BD96D22001CB1A3 /* libopencv_core.a */; settings = {ASSET_TAGS = (); }; };
+		67B8DF001BD96D22001CB1A3 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DEFD1BD96D22001CB1A3 /* libopencv_imgproc.a */; settings = {ASSET_TAGS = (); }; };
+		67B8DF021BD96D6E001CB1A3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DF011BD96D6E001CB1A3 /* MobileCoreServices.framework */; };
 		67BC1A1C1BCD697500AF1558 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BC1A1B1BCD697500AF1558 /* Util.swift */; };
 		67C1A5FD1BD22F39007BECA3 /* SelectPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C1A5FC1BD22F39007BECA3 /* SelectPhotoVC.swift */; };
 		67C1A6091BD236DB007BECA3 /* PECropRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C1A6001BD236DB007BECA3 /* PECropRectView.m */; };
@@ -81,11 +88,20 @@
 		67C1A60C1BD236DB007BECA3 /* PEResizeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C1A6061BD236DB007BECA3 /* PEResizeControl.m */; };
 		67C1A60D1BD236DB007BECA3 /* UIImage+PECrop.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C1A6081BD236DB007BECA3 /* UIImage+PECrop.m */; };
 		67C1A60F1BD241D2007BECA3 /* PEPhotoCropEditor.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67C1A60E1BD241D2007BECA3 /* PEPhotoCropEditor.bundle */; };
+		67CE02461BDA9660002007D8 /* InstagramEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE02331BDA9660002007D8 /* InstagramEngine.m */; settings = {ASSET_TAGS = (); }; };
+		67CE02471BDA9660002007D8 /* InstagramKitConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE02361BDA9660002007D8 /* InstagramKitConstants.m */; settings = {ASSET_TAGS = (); }; };
+		67CE02481BDA9660002007D8 /* InstagramComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE02391BDA9660002007D8 /* InstagramComment.m */; settings = {ASSET_TAGS = (); }; };
+		67CE02491BDA9660002007D8 /* InstagramLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE023B1BDA9660002007D8 /* InstagramLocation.m */; settings = {ASSET_TAGS = (); }; };
+		67CE024A1BDA9660002007D8 /* InstagramMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE023D1BDA9660002007D8 /* InstagramMedia.m */; settings = {ASSET_TAGS = (); }; };
+		67CE024B1BDA9660002007D8 /* InstagramModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE023F1BDA9660002007D8 /* InstagramModel.m */; settings = {ASSET_TAGS = (); }; };
+		67CE024C1BDA9660002007D8 /* InstagramPaginationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE02411BDA9660002007D8 /* InstagramPaginationInfo.m */; settings = {ASSET_TAGS = (); }; };
+		67CE024D1BDA9660002007D8 /* InstagramTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE02431BDA9660002007D8 /* InstagramTag.m */; settings = {ASSET_TAGS = (); }; };
+		67CE024E1BDA9660002007D8 /* InstagramUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE02451BDA9660002007D8 /* InstagramUser.m */; settings = {ASSET_TAGS = (); }; };
+		67CE02511BDA9841002007D8 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE02501BDA9841002007D8 /* UIImageView+AFNetworking.m */; settings = {ASSET_TAGS = (); }; };
 		67D2EF5D1BD5445400742823 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D2EF5C1BD5445400742823 /* UIKit.framework */; };
 		67D2EF5F1BD5446300742823 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D2EF5E1BD5446300742823 /* Foundation.framework */; };
 		67D2EF621BD545A700742823 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D2EF5E1BD5446300742823 /* Foundation.framework */; };
 		67D2EF641BD5499E00742823 /* FacebookLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D2EF631BD5499E00742823 /* FacebookLoginVC.swift */; };
-		F8078FC0C4F2FCFBC6A2EC02 /* Pods_SnapArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFA89F5F9B3D3646133570E /* Pods_SnapArt.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +147,7 @@
 		67566A4B1BCB5DE300EDE907 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		67566A4E1BCB5DE300EDE907 /* Archer-Book-Pro.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Archer-Book-Pro.otf"; sourceTree = "<group>"; };
 		67566A4F1BCB5DE300EDE907 /* Gotham-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Thin.ttf"; sourceTree = "<group>"; };
+		676C72B91BD9207B0056DB3C /* PaymentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
 		677878B01BC587F100249748 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseView.swift; path = View/BaseView.swift; sourceTree = "<group>"; };
 		677971271BC41BBF00110C8B /* SnapArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6779712B1BC41BBF00110C8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -196,6 +213,19 @@
 		6797C1CB1BD394C600F2EB79 /* DistancePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancePickerView.m; sourceTree = "<group>"; };
 		6797C1CC1BD394C600F2EB79 /* SWActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWActionSheet.h; sourceTree = "<group>"; };
 		6797C1CD1BD394C600F2EB79 /* SWActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWActionSheet.m; sourceTree = "<group>"; };
+		67B8DED81BD94229001CB1A3 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = SnapArt/lib/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
+		67B8DEF31BD96D22001CB1A3 /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIO.h; sourceTree = "<group>"; };
+		67B8DEF41BD96D22001CB1A3 /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
+		67B8DEF51BD96D22001CB1A3 /* CardIODetectionMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIODetectionMode.h; sourceTree = "<group>"; };
+		67B8DEF61BD96D22001CB1A3 /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewController.h; sourceTree = "<group>"; };
+		67B8DEF71BD96D22001CB1A3 /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
+		67B8DEF81BD96D22001CB1A3 /* CardIOUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOUtilities.h; sourceTree = "<group>"; };
+		67B8DEF91BD96D22001CB1A3 /* CardIOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOView.h; sourceTree = "<group>"; };
+		67B8DEFA1BD96D22001CB1A3 /* CardIOViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOViewDelegate.h; sourceTree = "<group>"; };
+		67B8DEFB1BD96D22001CB1A3 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCardIO.a; sourceTree = "<group>"; };
+		67B8DEFC1BD96D22001CB1A3 /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_core.a; sourceTree = "<group>"; };
+		67B8DEFD1BD96D22001CB1A3 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_imgproc.a; sourceTree = "<group>"; };
+		67B8DF011BD96D6E001CB1A3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		67BC1A1B1BCD697500AF1558 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		67C1A5FC1BD22F39007BECA3 /* SelectPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPhotoVC.swift; sourceTree = "<group>"; };
 		67C1A5FF1BD236DB007BECA3 /* PECropRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECropRectView.h; sourceTree = "<group>"; };
@@ -209,12 +239,33 @@
 		67C1A6071BD236DB007BECA3 /* UIImage+PECrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PECrop.h"; sourceTree = "<group>"; };
 		67C1A6081BD236DB007BECA3 /* UIImage+PECrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PECrop.m"; sourceTree = "<group>"; };
 		67C1A60E1BD241D2007BECA3 /* PEPhotoCropEditor.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PEPhotoCropEditor.bundle; sourceTree = "<group>"; };
+		67CE02321BDA9660002007D8 /* InstagramEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramEngine.h; sourceTree = "<group>"; };
+		67CE02331BDA9660002007D8 /* InstagramEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramEngine.m; sourceTree = "<group>"; };
+		67CE02341BDA9660002007D8 /* InstagramKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramKit.h; sourceTree = "<group>"; };
+		67CE02351BDA9660002007D8 /* InstagramKitConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramKitConstants.h; sourceTree = "<group>"; };
+		67CE02361BDA9660002007D8 /* InstagramKitConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramKitConstants.m; sourceTree = "<group>"; };
+		67CE02381BDA9660002007D8 /* InstagramComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramComment.h; sourceTree = "<group>"; };
+		67CE02391BDA9660002007D8 /* InstagramComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramComment.m; sourceTree = "<group>"; };
+		67CE023A1BDA9660002007D8 /* InstagramLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramLocation.h; sourceTree = "<group>"; };
+		67CE023B1BDA9660002007D8 /* InstagramLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramLocation.m; sourceTree = "<group>"; };
+		67CE023C1BDA9660002007D8 /* InstagramMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramMedia.h; sourceTree = "<group>"; };
+		67CE023D1BDA9660002007D8 /* InstagramMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramMedia.m; sourceTree = "<group>"; };
+		67CE023E1BDA9660002007D8 /* InstagramModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramModel.h; sourceTree = "<group>"; };
+		67CE023F1BDA9660002007D8 /* InstagramModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramModel.m; sourceTree = "<group>"; };
+		67CE02401BDA9660002007D8 /* InstagramPaginationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramPaginationInfo.h; sourceTree = "<group>"; };
+		67CE02411BDA9660002007D8 /* InstagramPaginationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramPaginationInfo.m; sourceTree = "<group>"; };
+		67CE02421BDA9660002007D8 /* InstagramTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramTag.h; sourceTree = "<group>"; };
+		67CE02431BDA9660002007D8 /* InstagramTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramTag.m; sourceTree = "<group>"; };
+		67CE02441BDA9660002007D8 /* InstagramUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramUser.h; sourceTree = "<group>"; };
+		67CE02451BDA9660002007D8 /* InstagramUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramUser.m; sourceTree = "<group>"; };
+		67CE024F1BDA9841002007D8 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		67CE02501BDA9841002007D8 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		67D2EF401BD540B900742823 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		67D2EF5C1BD5445400742823 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		67D2EF5E1BD5446300742823 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		67D2EF631BD5499E00742823 /* FacebookLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookLoginVC.swift; path = FacebookVC/FacebookLoginVC.swift; sourceTree = "<group>"; };
+		7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A67331CD2A027D31872D102 /* Pods-SnapArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapArt/Pods-SnapArt.release.xcconfig"; sourceTree = "<group>"; };
-		BEFA89F5F9B3D3646133570E /* Pods_SnapArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,9 +273,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67B8DF021BD96D6E001CB1A3 /* MobileCoreServices.framework in Frameworks */,
 				67D2EF5F1BD5446300742823 /* Foundation.framework in Frameworks */,
+				67B8DED91BD94229001CB1A3 /* FacebookSDK.framework in Frameworks */,
+				67B8DEFE1BD96D22001CB1A3 /* libCardIO.a in Frameworks */,
 				67D2EF5D1BD5445400742823 /* UIKit.framework in Frameworks */,
-				F8078FC0C4F2FCFBC6A2EC02 /* Pods_SnapArt.framework in Frameworks */,
+				170563E7234D1B4EBBFD90FB /* Pods_SnapArt.framework in Frameworks */,
+				67B8DEFF1BD96D22001CB1A3 /* libopencv_core.a in Frameworks */,
+				67B8DF001BD96D22001CB1A3 /* libopencv_imgproc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +315,7 @@
 		671219FC1BCEBCBD00CAC506 /* ObjectiveC */ = {
 			isa = PBXGroup;
 			children = (
+				67CE02301BDA9660002007D8 /* InstagramKit */,
 				6797C1BB1BD394C600F2EB79 /* Picker */,
 				67C1A5FE1BD236DB007BECA3 /* Crop-lib */,
 				671219FD1BCEBCBD00CAC506 /* UtilOjbC.h */,
@@ -373,6 +430,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		676C72B81BD9207B0056DB3C /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				676C72B91BD9207B0056DB3C /* PaymentVC.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 		677878AF1BC5875600249748 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,6 +533,7 @@
 		6779714D1BC41CA300110C8B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				67B8DEF21BD96D22001CB1A3 /* CardIO */,
 				67121A101BD09CC700CAC506 /* GMDCircleLoader */,
 				671219FC1BCEBCBD00CAC506 /* ObjectiveC */,
 				671FB3FC1BCBBF7600E5EAE8 /* Extensions */,
@@ -482,6 +548,7 @@
 		6779714E1BC4282D00110C8B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				676C72B81BD9207B0056DB3C /* Payment */,
 				674B71A91BCE355100B8FC2A /* Account */,
 				678890B51BCBB5240071DA50 /* MenuVC */,
 				677878BB1BC5913400249748 /* FacebookVC */,
@@ -595,6 +662,25 @@
 			path = Picker;
 			sourceTree = "<group>";
 		};
+		67B8DEF21BD96D22001CB1A3 /* CardIO */ = {
+			isa = PBXGroup;
+			children = (
+				67B8DEF31BD96D22001CB1A3 /* CardIO.h */,
+				67B8DEF41BD96D22001CB1A3 /* CardIOCreditCardInfo.h */,
+				67B8DEF51BD96D22001CB1A3 /* CardIODetectionMode.h */,
+				67B8DEF61BD96D22001CB1A3 /* CardIOPaymentViewController.h */,
+				67B8DEF71BD96D22001CB1A3 /* CardIOPaymentViewControllerDelegate.h */,
+				67B8DEF81BD96D22001CB1A3 /* CardIOUtilities.h */,
+				67B8DEF91BD96D22001CB1A3 /* CardIOView.h */,
+				67B8DEFA1BD96D22001CB1A3 /* CardIOViewDelegate.h */,
+				67B8DEFB1BD96D22001CB1A3 /* libCardIO.a */,
+				67B8DEFC1BD96D22001CB1A3 /* libopencv_core.a */,
+				67B8DEFD1BD96D22001CB1A3 /* libopencv_imgproc.a */,
+			);
+			name = CardIO;
+			path = lib/CardIO;
+			sourceTree = "<group>";
+		};
 		67C1A5FE1BD236DB007BECA3 /* Crop-lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,13 +698,59 @@
 			path = "Crop-lib";
 			sourceTree = "<group>";
 		};
+		67CE02301BDA9660002007D8 /* InstagramKit */ = {
+			isa = PBXGroup;
+			children = (
+				67CE02311BDA9660002007D8 /* Engine */,
+				67CE02341BDA9660002007D8 /* InstagramKit.h */,
+				67CE02351BDA9660002007D8 /* InstagramKitConstants.h */,
+				67CE02361BDA9660002007D8 /* InstagramKitConstants.m */,
+				67CE024F1BDA9841002007D8 /* UIImageView+AFNetworking.h */,
+				67CE02501BDA9841002007D8 /* UIImageView+AFNetworking.m */,
+				67CE02371BDA9660002007D8 /* Models */,
+			);
+			path = InstagramKit;
+			sourceTree = "<group>";
+		};
+		67CE02311BDA9660002007D8 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				67CE02321BDA9660002007D8 /* InstagramEngine.h */,
+				67CE02331BDA9660002007D8 /* InstagramEngine.m */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		67CE02371BDA9660002007D8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				67CE02381BDA9660002007D8 /* InstagramComment.h */,
+				67CE02391BDA9660002007D8 /* InstagramComment.m */,
+				67CE023A1BDA9660002007D8 /* InstagramLocation.h */,
+				67CE023B1BDA9660002007D8 /* InstagramLocation.m */,
+				67CE023C1BDA9660002007D8 /* InstagramMedia.h */,
+				67CE023D1BDA9660002007D8 /* InstagramMedia.m */,
+				67CE023E1BDA9660002007D8 /* InstagramModel.h */,
+				67CE023F1BDA9660002007D8 /* InstagramModel.m */,
+				67CE02401BDA9660002007D8 /* InstagramPaginationInfo.h */,
+				67CE02411BDA9660002007D8 /* InstagramPaginationInfo.m */,
+				67CE02421BDA9660002007D8 /* InstagramTag.h */,
+				67CE02431BDA9660002007D8 /* InstagramTag.m */,
+				67CE02441BDA9660002007D8 /* InstagramUser.h */,
+				67CE02451BDA9660002007D8 /* InstagramUser.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		6CD47826EE9E5D07676A08AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67B8DF011BD96D6E001CB1A3 /* MobileCoreServices.framework */,
+				67B8DED81BD94229001CB1A3 /* FacebookSDK.framework */,
 				67D2EF5E1BD5446300742823 /* Foundation.framework */,
 				67D2EF5C1BD5445400742823 /* UIKit.framework */,
 				67D2EF401BD540B900742823 /* CoreGraphics.framework */,
-				BEFA89F5F9B3D3646133570E /* Pods_SnapArt.framework */,
+				7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -672,11 +804,12 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Duc Ngo Hoai";
 				TargetAttributes = {
 					677971261BC41BBF00110C8B = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 8G9262ZF6V;
 					};
 					6779713B1BC41BBF00110C8B = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -783,17 +916,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				671219EF1BCE5DB900CAC506 /* CustomNavigationController.swift in Sources */,
+				67CE02491BDA9660002007D8 /* InstagramLocation.m in Sources */,
 				67566A481BCB5DCE00EDE907 /* CustomTextField.swift in Sources */,
 				67566A461BCB5DCE00EDE907 /* CustomButton.swift in Sources */,
 				674B71A81BCDFDEA00B8FC2A /* CustomTableViewController.swift in Sources */,
+				67CE024A1BDA9660002007D8 /* InstagramMedia.m in Sources */,
 				67C1A60C1BD236DB007BECA3 /* PEResizeControl.m in Sources */,
 				671219ED1BCE500200CAC506 /* ApiKey.swift in Sources */,
 				671219FF1BCEBCBD00CAC506 /* UtilOjbC.m in Sources */,
 				67566A471BCB5DCE00EDE907 /* CustomLabel.swift in Sources */,
+				67CE024C1BDA9660002007D8 /* InstagramPaginationInfo.m in Sources */,
 				67C1A60B1BD236DB007BECA3 /* PECropViewController.m in Sources */,
 				677971901BC4325100110C8B /* InstagramCollectionView.swift in Sources */,
 				6797C1D11BD394C600F2EB79 /* ActionSheetDistancePicker.m in Sources */,
 				67566A501BCB5DE300EDE907 /* Constants.swift in Sources */,
+				67CE02461BDA9660002007D8 /* InstagramEngine.m in Sources */,
+				67CE02471BDA9660002007D8 /* InstagramKitConstants.m in Sources */,
 				677971581BC4282D00110C8B /* UpLoadPreviewVC.swift in Sources */,
 				6779717D1BC429BA00110C8B /* AMSlideMenuLeftMenuSegue.m in Sources */,
 				677971541BC4282D00110C8B /* ImageContentVC.swift in Sources */,
@@ -810,6 +948,7 @@
 				6797C1CE1BD394C600F2EB79 /* AbstractActionSheetPicker.m in Sources */,
 				67121A071BCEC75200CAC506 /* DataManager.swift in Sources */,
 				677971801BC429BA00110C8B /* AMSlideMenuRightMenuSegue.m in Sources */,
+				67CE024E1BDA9660002007D8 /* InstagramUser.m in Sources */,
 				671219FB1BCEB21100CAC506 /* CustomBarButtonItem.swift in Sources */,
 				674B71AD1BCE37E000B8FC2A /* Messages.swift in Sources */,
 				6797C1D31BD394C600F2EB79 /* ActionSheetStringPicker.m in Sources */,
@@ -817,11 +956,13 @@
 				6797C1D21BD394C600F2EB79 /* ActionSheetLocalePicker.m in Sources */,
 				6797C1D51BD394C600F2EB79 /* SWActionSheet.m in Sources */,
 				6779717C1BC429BA00110C8B /* AMSlideMenuContentSegue.m in Sources */,
+				67CE02481BDA9660002007D8 /* InstagramComment.m in Sources */,
 				67121A031BCEBFA500CAC506 /* ForgotPasswordTB.swift in Sources */,
 				6779718E1BC4322700110C8B /* InstagramNC.swift in Sources */,
 				67121A051BCEBFA500CAC506 /* SignInTB.swift in Sources */,
 				67C1A60A1BD236DB007BECA3 /* PECropView.m in Sources */,
 				677971821BC429BA00110C8B /* UIViewController+AMSlideMenu.m in Sources */,
+				67CE02511BDA9841002007D8 /* UIImageView+AFNetworking.m in Sources */,
 				6779717F1BC429BA00110C8B /* AMSlideMenuMainViewController.m in Sources */,
 				677878B11BC587F100249748 /* BaseView.swift in Sources */,
 				67BC1A1C1BCD697500AF1558 /* Util.swift in Sources */,
@@ -843,6 +984,9 @@
 				677971861BC429BA00110C8B /* IKLoginViewController.m in Sources */,
 				67121A041BCEBFA500CAC506 /* ResetPasswordTB.swift in Sources */,
 				67C1A60D1BD236DB007BECA3 /* UIImage+PECrop.m in Sources */,
+				67CE024D1BDA9660002007D8 /* InstagramTag.m in Sources */,
+				67CE024B1BDA9660002007D8 /* InstagramModel.m in Sources */,
+				676C72BA1BD9207B0056DB3C /* PaymentVC.swift in Sources */,
 				6797C1CF1BD394C600F2EB79 /* ActionSheetCustomPicker.m in Sources */,
 				674B71A41BCDFBD300B8FC2A /* Api.swift in Sources */,
 				671219EB1BCE4E6B00CAC506 /* ApiUrl.swift in Sources */,
@@ -909,6 +1053,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -975,9 +1120,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xuan Nguyen (5GLYWL78PZ)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SnapArt/lib/Facebook",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = SnapArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -985,8 +1134,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/SnapArt/lib/CardIO",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.innoria.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eb29a1a9-986e-41e8-8e8d-508c42c9d3cd";
 				SWIFT_OBJC_BRIDGING_HEADER = "SnapArt/SnapArt-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -998,9 +1150,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xuan Nguyen (5GLYWL78PZ)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SnapArt/lib/Facebook",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = SnapArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -1008,8 +1164,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/SnapArt/lib/CardIO",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.innoria.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eb29a1a9-986e-41e8-8e8d-508c42c9d3cd";
 				SWIFT_OBJC_BRIDGING_HEADER = "SnapArt/SnapArt-Bridging-Header.h";
 			};
 			name = Release;
@@ -1028,6 +1187,7 @@
 				);
 				INFOPLIST_FILE = SnapArtTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.innoria.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnapArt.app/SnapArt";
 			};
@@ -1043,6 +1203,7 @@
 				);
 				INFOPLIST_FILE = SnapArtTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.innoria.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnapArt.app/SnapArt";
 			};

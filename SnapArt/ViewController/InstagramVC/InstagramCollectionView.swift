@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import InstagramKit
 
 protocol InstagramCollectionViewDelegate {
     func setImageFromInstagram(media media:InstagramMedia) -> Void

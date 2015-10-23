@@ -20,12 +20,43 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Bolts (1.3.0):
-    - Bolts/AppLinks (= 1.3.0)
-    - Bolts/Tasks (= 1.3.0)
-  - Bolts/AppLinks (1.3.0):
+  - Alamofire (3.1.0)
+  - Bolts (1.4.0):
+    - Bolts/AppLinks (= 1.4.0)
+    - Bolts/Tasks (= 1.4.0)
+  - Bolts/AppLinks (1.4.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.3.0)
+  - Bolts/Tasks (1.4.0)
+  - Braintree (3.9.6):
+    - Braintree/API (= 3.9.6)
+    - Braintree/Coinbase (= 3.9.6)
+    - Braintree/Drop-In (= 3.9.6)
+    - Braintree/Payments (= 3.9.6)
+    - Braintree/PayPal (= 3.9.6)
+    - Braintree/UI (= 3.9.6)
+    - Braintree/Venmo (= 3.9.6)
+  - Braintree/API (3.9.6)
+  - Braintree/Coinbase (3.9.6):
+    - Braintree/API
+  - Braintree/Drop-In (3.9.6):
+    - Braintree/API
+    - Braintree/Coinbase
+    - Braintree/Payments
+    - Braintree/PayPal
+    - Braintree/UI
+    - Braintree/Venmo
+  - Braintree/Payments (3.9.6):
+    - Braintree/API
+    - Braintree/Coinbase
+    - Braintree/PayPal
+    - Braintree/Venmo
+  - Braintree/PayPal (3.9.6):
+    - Braintree/API
+    - Braintree/UI
+  - Braintree/UI (3.9.6):
+    - Braintree/API
+  - Braintree/Venmo (3.9.6):
+    - Braintree/API
   - FacebookImagePicker (2.0.6):
     - FBSDKCoreKit (~> 4.6.0)
     - FBSDKLoginKit (~> 4.6.0)
@@ -52,22 +83,31 @@ PODS:
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
+  - SwiftyJSON (2.3.0)
   - UICKeyChainStore (2.0.7)
 
 DEPENDENCIES:
+  - AFNetworking
+  - Alamofire
+  - Braintree
   - FacebookImagePicker
-  - InstagramKit (~> 3.0)
+  - FBSDKLoginKit
+  - InstagramKit
   - InstagramKit/UICKeyChainStore
   - SDWebImage (~> 3.7.2)
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
-  Bolts: 805a4a87413e49d4a0c2b7d469084cbc46b09342
+  Alamofire: 415bd7f56197722978759078486689f7ef913dce
+  Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
+  Braintree: 74f0bd85743c2227147c361cc2c5c9aefe083ae8
   FacebookImagePicker: 7f3d70cb0a9b22b68dddac46864322d633385e03
   FBSDKCoreKit: 9954492d90c5fd65ae831395697a1660360d61f1
   FBSDKLoginKit: 3d07febbfa884b9878cacba54f705bb41f07d4b6
   InstagramKit: 1f937c5c4b8469fd00a31e235d5e7d3e256ffe5d
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
   UICKeyChainStore: 696cd35083f7c8fb5e201d909b7e6aea6b478575
 
 COCOAPODS: 0.39.0

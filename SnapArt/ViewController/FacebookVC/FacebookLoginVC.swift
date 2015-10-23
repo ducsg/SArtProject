@@ -10,6 +10,7 @@ import UIKit
 import FBAudienceNetwork
 import FBSDKCoreKit
 import FBSDKLoginKit
+import FacebookImagePicker
 
 class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFacebookImagePickerControllerDelegate , UINavigationControllerDelegate {
     @IBOutlet weak var loginBtn: FBSDKLoginButton!

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FacebookImagePicker
+import InstagramKit
 
 class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate ,InstagramCollectionViewDelegate {
 
@@ -45,7 +47,7 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
         }
         self.presentViewController(vc, animated: true, completion: nil)
     }
-    func setImageFromInstagram(media media: InstagramMedia) {
+    func setImageFromInstagram(media media: InstagramMedia)  {
         self.upLoadImg.setImageWithURL(media.standardResolutionImageURL)
     }
     // MARK: - CHOOSE FROM PHOTO FROM LIB
