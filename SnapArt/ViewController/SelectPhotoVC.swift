@@ -20,11 +20,10 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
     override func viewDidLoad() {
         super.viewDidLoad()
         cropView.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
-        sizeBtn.layer.borderWidth = 0.5
-        sizeBtn.layer.borderColor = UIColor.grayColor().CGColor
-        sizeBtn.backgroundColor = UIColor.whiteColor()
-//        self.setValueSizeBtn("")
-        setCropContentWithImage(imageCrop)
+        self.sizeBtn.layer.borderWidth = 0.5
+        self.sizeBtn.layer.borderColor = UIColor.grayColor().CGColor
+        self.sizeBtn.backgroundColor = UIColor.whiteColor()
+        self.setCropContentWithImage(imageCrop)
         // Do any additional setup after loading the view.
     }
     

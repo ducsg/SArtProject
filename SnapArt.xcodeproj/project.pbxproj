@@ -103,6 +103,7 @@
 		67D2EF621BD545A700742823 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D2EF5E1BD5446300742823 /* Foundation.framework */; };
 		67D2EF641BD5499E00742823 /* FacebookLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D2EF631BD5499E00742823 /* FacebookLoginVC.swift */; };
 		67E223FA1BDCC1FC001921F8 /* PreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E223F91BDCC1FC001921F8 /* PreviewVC.swift */; settings = {ASSET_TAGS = (); }; };
+		67E223FC1BDD448D001921F8 /* ShoppingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E223FB1BDD448D001921F8 /* ShoppingVC.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -266,6 +267,7 @@
 		67D2EF5E1BD5446300742823 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		67D2EF631BD5499E00742823 /* FacebookLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookLoginVC.swift; path = FacebookVC/FacebookLoginVC.swift; sourceTree = "<group>"; };
 		67E223F91BDCC1FC001921F8 /* PreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewVC.swift; sourceTree = "<group>"; };
+		67E223FB1BDD448D001921F8 /* ShoppingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingVC.swift; sourceTree = "<group>"; };
 		7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A67331CD2A027D31872D102 /* Pods-SnapArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapArt/Pods-SnapArt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -562,6 +564,7 @@
 				677971531BC4282D00110C8B /* UpLoadPreviewVC.swift */,
 				67C1A5FC1BD22F39007BECA3 /* SelectPhotoVC.swift */,
 				67E223F91BDCC1FC001921F8 /* PreviewVC.swift */,
+				67E223FB1BDD448D001921F8 /* ShoppingVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 				677971811BC429BA00110C8B /* AMSlideMenuRightTableViewController.m in Sources */,
 				677971841BC429BA00110C8B /* IKCell.m in Sources */,
 				6779717E1BC429BA00110C8B /* AMSlideMenuLeftTableViewController.m in Sources */,
+				67E223FC1BDD448D001921F8 /* ShoppingVC.swift in Sources */,
 				6797C1CE1BD394C600F2EB79 /* AbstractActionSheetPicker.m in Sources */,
 				67121A071BCEC75200CAC506 /* DataManager.swift in Sources */,
 				677971801BC429BA00110C8B /* AMSlideMenuRightMenuSegue.m in Sources */,
