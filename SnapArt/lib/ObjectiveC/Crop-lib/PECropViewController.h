@@ -32,7 +32,9 @@
 - (PECropView*)getCropView;
 - (void)resetCropRect;
 - (void)resetCropRectAnimated:(BOOL)animated;
-
+- (void)croped;
+-(NSString *)GETPELocalizedString:(NSString*)key WithComment:(NSString*)comment;
+-(void)cropedImageSizeWithRatio:(CGFloat)w and:(CGFloat)h;
 @end
 
 @protocol PECropViewControllerDelegate <NSObject>

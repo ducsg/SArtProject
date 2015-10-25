@@ -15,10 +15,16 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var rotationBtn: UIButton!
     private var cropVC:PECropViewController!
     private var rotationIndex:Int = 0
-
+    internal var imageCrop:UIImage!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cropView.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
+        sizeBtn.layer.borderWidth = 0.5
+        sizeBtn.layer.borderColor = UIColor.grayColor().CGColor
+        sizeBtn.backgroundColor = UIColor.whiteColor()
+//        self.setValueSizeBtn("")
+        setCropContentWithImage(imageCrop)
         // Do any additional setup after loading the view.
     }
     
@@ -30,13 +36,19 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "CropContent" {
             cropVC = segue.destinationViewController as! PECropViewController
-            let img = UIImage(named: "Home 1")
-            cropVC.image = img
+           
+        }
+    }
+    func setCropContentWithImage(image: UIImage!) -> Void {
+        if self.imageCrop != nil {
+            cropVC.image = self.imageCrop
             cropVC.delegate = self
-            let width:Float  = Float(img!.size.width)
-            let height:Float  = Float(img!.size.height)
+            let width:Float  = Float(self.imageCrop!.size.width)
+            let height:Float  = Float(self.imageCrop!.size.height)
             let length:Float  = fminf(width,height)
             cropVC.imageCropRect = CGRectMake(CGFloat((width - length)/2),CGFloat((height - length) / 2), CGFloat(length), CGFloat(length))
+        } else {
+            self.navigationController?.popViewControllerAnimated(true)
         }
     }
     
@@ -57,21 +69,31 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
                 rotationIndex = 0
             }
             cropVC.getCropView().setRotationAngle(rotationAngle, snap: true)
+            
         }
     }
     
     @IBAction func sizeTap(sender: AnyObject) {
-        let sizePicker = ActionSheetStringPicker(title: "Size", rows: ["3x4","4x4","16x16","24x24"], initialSelection: 0, doneBlock: {picker, value, index in
+        let cropSizes = ["3 x 2", "3 x 5", "4 x 3", "4 x 6"," 5 x 7"," 8 x 10", "16 x 9"]
+        let sizePicker = ActionSheetStringPicker(title: "Size", rows: cropSizes, initialSelection: 0, doneBlock: {picker, value, index in
+            let selectIndex = value as! Int
+            self.cropVC.cropedImageSizeWithRatio(4.0, and: 6.0)
+            self.setValueSizeBtn(cropSizes[selectIndex])
+
             return }, cancelBlock: {ActionStringCancelBlock in
                 return}, origin: sender.superview)
         sizePicker.showActionSheetPicker()
     }
     
     @IBAction func cropTap(sender: AnyObject) {
-        
+        if self.cropVC != nil {
+            cropVC.croped()
+        }
     }
     
     @IBAction func continueTap(sender: AnyObject) {
+        let vc = Util().getControllerForStoryBoard("PreviewVC") as! PreviewVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func cropViewController(controller: PECropViewController!, didFinishCroppingImage croppedImage: UIImage!) {
@@ -84,9 +106,11 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
     func cropViewControllerDidCancel(controller: PECropViewController!) {
         
     }
-    func getFBRequest() -> Void {
-
+    func setValueSizeBtn(sizeValues:String) -> Void {
+        self.sizeBtn.setTitle(sizeValues, forState: .Normal)
+        self.sizeBtn.setTitle(sizeValues, forState: .Highlighted)
     }
+    
     /*
     // MARK: - Navigation
     

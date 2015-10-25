@@ -36,7 +36,9 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 {
     return [[PECropViewController bundle] localizedStringForKey:key value:nil table:@"Localizable"];
 }
-
+-(NSString *)GETPELocalizedString:(NSString*)key WithComment:(NSString*)comment {
+    return [[PECropViewController bundle] localizedStringForKey:key value:nil table:@"Localizable"];
+}
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     
@@ -216,7 +218,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     }
 }
 
-- (void)done:(id)sender
+- (void)croped 
 {
     if ([self.delegate respondsToSelector:@selector(cropViewController:didFinishCroppingImage:transform:cropRect:)]) {
         [self.delegate cropViewController:self didFinishCroppingImage:self.cropView.croppedImage transform: self.cropView.rotation cropRect: self.cropView.zoomedCropRect];
@@ -281,12 +283,15 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     } else if (buttonIndex == 7) {
         self.cropView.cropAspectRatio = 8.0f / 10.0f;
     } else if (buttonIndex == 8) {
-        CGFloat ratio = 9.0f / 16.0f;
-        CGRect cropRect = self.cropView.cropRect;
-        CGFloat width = CGRectGetWidth(cropRect);
-        cropRect.size = CGSizeMake(width, width * ratio);
-        self.cropView.cropRect = cropRect;
     }
+}
+-(void)cropedImageSizeWithRatio:(CGFloat)w and:(CGFloat)h{
+    CGFloat ratio = w / h;
+    CGRect cropRect = self.cropView.cropRect;
+    CGFloat wid = CGRectGetWidth(cropRect);
+    cropRect.size = CGSizeMake(wid, wid * ratio);
+    self.cropView.cropRect = cropRect;
+    
 }
 
 @end

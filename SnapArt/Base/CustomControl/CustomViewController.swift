@@ -9,6 +9,7 @@
 import UIKit
 
 public class CustomViewController: UIViewController {
+    private  var parrentView:UIView!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,16 @@ public class CustomViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = SA_STYPE.BACKGROUND_BUTTON_COLOR
         let item = UIBarButtonItem(title: "", style: .Bordered, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = item
+    }
+    
+    func callLoading (parrentV:UIView!) -> Void {
+        self.parrentView = parrentV
+        GMDCircleLoader.setOnView(parrentView, withTitle:MESSAGES.COMMON.LOADING, animated: true)
+    }
+    func removeLoading (parrentV:UIView!) -> Void {
+        if self.parrentView != nil {
+            GMDCircleLoader.removeTranparent(self.parrentView)
+        }
     }
     
 }

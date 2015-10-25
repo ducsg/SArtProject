@@ -11,27 +11,82 @@ import FBAudienceNetwork
 import FBSDKCoreKit
 import FBSDKLoginKit
 import FacebookImagePicker
+import Alamofire
+import AlamofireImage
+
 
 class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFacebookImagePickerControllerDelegate , UINavigationControllerDelegate {
-    @IBOutlet weak var loginBtn: FBSDKLoginButton!
+    @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var albumbtn: CustomButton!
     @IBOutlet weak var statuslb: CustomLabel!
     @IBOutlet weak var avatarImage: UIImageView!
-
+    private var TITLE = "Login Facebook"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.loginBtn = FBSDKLoginButton()
-        self.loginBtn.delegate = self
-        self.loginBtn.readPermissions = ["user_photos"]
+        self.title = TITLE
+        let loginfbBtn = FBSDKLoginButton()
+        loginfbBtn.frame = CGRectMake(0, 0, loginBtn.frame.size.width, loginBtn.frame.size.height)
+        self.loginBtn.addSubview(loginfbBtn)
         
+        avatarImage.layer.borderWidth = 0.5
+        avatarImage.layer.borderColor = UIColor.grayColor().CGColor
+        
+        loginfbBtn.delegate = self
+        loginfbBtn.backgroundColor = UIColor.clearColor()
+        loginfbBtn.readPermissions = ["user_photos"]
+        albumbtn.clipsToBounds = true
+        albumbtn.layer.cornerRadius = 3.0
+        returnUserData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    // accessToken is your Facebook id
+    func returnUserProfileImage(accessToken: NSString)
+    {
+        let userID = accessToken as NSString
+        let facebookProfileUrl = NSURL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
+        if let data = NSData(contentsOfURL: facebookProfileUrl!) {
+            avatarImage.image = UIImage(data: data)
+        }
+        
+    }
+    func returnUserData()
+    {
+        callLoading(self.navigationController?.view)
+        
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            self.removeLoading(self.navigationController?.view)
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error: \(error)")
+            }
+            else
+            {
+                print("fetched user: \(result)")
+                if let name: String = result.valueForKey("name") as? String {
+                    self.statuslb.text = name
+                } else {
+                    print("ID es null")
+                }
+                
+                if let id: String = result.valueForKey("id") as? String {
+                    print("ID is: \(id)")
+                    self.returnUserProfileImage(id)
+                } else {
+                    print("ID es null")
+                }
+                
+                
+            }
+        })
+    }
     @IBAction func closeTap(sender: AnyObject) {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -42,28 +97,10 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         self.navigationController?.presentViewController(vc, animated: true, completion: nil)
     }
     
-//    @IBAction func loginfbTap(sender: AnyObject) {
-//        if FBSession.activeSession().state != FBSessionStateOpen && FBSession.activeSession().state != FBSessionStateOpenTokenExtended {
-//            // Call the app delegate's sessionStateChanged:state:error method to handle session state changes
-//        }
-//        else {
-//            FBSession.activeSession().closeAndClearTokenInformation()
-//        }
-//    }
-//    
-//    
-//    func sessionStateChanged(session : FBSession, state : FBSessionState, error : NSError)
-//    {
-//        // If the session was opened successfully
-//        if  state == FBSessionStateOpen
-//        {
-//            print("Session Opened")
-//        }
-//    }
-    
-    
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         if error == nil {
+        }else{
+            
         }
     }
     
@@ -74,11 +111,19 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         
     }
     func facebookImagePicker(imagePicker: OLFacebookImagePickerController!, didFinishPickingImages images: [AnyObject]!) {
-        self.navigationController?.popViewControllerAnimated(true)
-        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        if let nv = self.navigationController?.viewControllers {
+            if let index:Int! = nv.count - 2 {
+                if let vc = nv[index] as? UpLoadPreviewVC{
+                    let OLFacebookImg:OLFacebookImage! = images[0] as! OLFacebookImage
+                    vc.setImageUploadWithURL(OLFacebookImg.fullURL.URLString)
+                    self.navigationController?.popViewControllerAnimated(true)
+                    imagePicker.dismissViewControllerAnimated(true, completion: nil)
+                }
+            }
+        }
     }
+    
     func facebookImagePickerDidCancelPickingImages(imagePicker: OLFacebookImagePickerController!) {
-        
     }
     
 }

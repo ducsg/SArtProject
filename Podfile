@@ -15,6 +15,7 @@ target 'SnapArt' do
     pod  'Braintree'
     use_frameworks!
     pod  'Alamofire'
+    pod 'AlamofireImage', '~> 2.0'
     pod 'SwiftyJSON'
     #pod 'Facebook-iOS-SDK'
 end

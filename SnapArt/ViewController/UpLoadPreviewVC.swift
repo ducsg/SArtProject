@@ -9,9 +9,11 @@
 import UIKit
 import FacebookImagePicker
 import InstagramKit
+import Alamofire
+import AlamofireImage
 
 class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate ,InstagramCollectionViewDelegate {
-
+    
     @IBOutlet var upLoadImg: UIImageView!
     @IBOutlet var takePhotoBtn: UIButton!
     @IBOutlet var instagramBtn: UIButton!
@@ -23,7 +25,7 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
         upLoadImg.layer.borderColor = UIColor.grayColor().CGColor
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,7 +40,7 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
         let vc:FacebookLoginVC = self.storyboard?.instantiateViewControllerWithIdentifier("FacebookLoginVC") as! FacebookLoginVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     // MARK: - CHOOSE FROM PHOTO FROM INSTAGRAM
     @IBAction func instagramEvent(sender: AnyObject) {
         let vc:InstagramNC = self.storyboard?.instantiateViewControllerWithIdentifier("InstagramNC") as! InstagramNC
@@ -48,7 +50,7 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
         self.presentViewController(vc, animated: true, completion: nil)
     }
     func setImageFromInstagram(media media: InstagramMedia)  {
-        self.upLoadImg.setImageWithURL(media.standardResolutionImageURL)
+        self.setImageUploadWithURL(media.standardResolutionImageURL.URLString)
     }
     // MARK: - CHOOSE FROM PHOTO FROM LIB
     func getImageFormLib() -> Void {
@@ -61,25 +63,41 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
             self.presentViewController(imagePicker, animated: true, completion: nil)
         }
     }
-
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let img:UIImage! = info[UIImagePickerControllerOriginalImage] as? UIImage
         let assetURL:NSURL! = info[UIImagePickerControllerReferenceURL] as? NSURL
-        upLoadImg.image = img
         picker.dismissViewControllerAnimated(true, completion: nil)
+        self.setImageView(img)
+    }
+    // GET IMMAGE FOR LIB AND FACEBOOK
+    func setImageUploadWithURL(imgURL: String!) -> Void{
+        Alamofire.request(.GET, imgURL)
+            .responseImage { response in
+                debugPrint(response)
+                print(response.request)
+                print(response.response)
+                debugPrint(response.result)
+                if let image = response.result.value {
+                    self.setImageView(image)
+                }
+        }
     }
     
-
-
-
-
+    func setImageView(image:UIImage!) -> Void {
+        self.upLoadImg.image = image
+        let vc = Util().getControllerForStoryBoard("SelectPhotoVC") as! SelectPhotoVC
+        vc.imageCrop = image
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
