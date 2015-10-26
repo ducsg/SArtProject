@@ -13,13 +13,14 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
     
     private var loginFlag:Bool = false
     
+//    private let MENU_DID_LOGIN = ["Make Art","Notifcations","My Account","My Order",
+//        "How SnapArt Works","Like SnapArt on FB",
+//        "Like SnapArt on Instargram","Rate on the App Store",
+//        "About Us","FAQs"," Email Us ","Term of Service"]
+    
     private let MENU_DID_LOGIN = ["Make Art","Notifcations","My Account","My Order",
-        "How SnapArt Works","Like SnapArt on FB",
-        "Like SnapArt on Instargram","Rate on the App Store",
-        "About Us","FAQs","Emails","Term of Service"]
-    
-    private let MENU_WILL_LOGIN = ["Make Art","About Us","FAQs","Emails","Term of Service"]
-    
+        "About Us","FAQs"," Email Us"]
+    private let MENU_WILL_LOGIN = ["Make Art","About Us","FAQs","Email Us"]
     private let LOGIN_TITLE  = "Log In"
     private let LOGOUT_TITLE  = "Log Out"
     private let CREATE_ACCOUNT_TITLE  = "Create an Account"
@@ -46,7 +47,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.loginFlag == true  ? 15 : 9
+        return self.loginFlag == true  ? 8 : 8
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 44
@@ -56,6 +57,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
         return self.loginFlag == true ? menuAfterLogin(indexPath) : menuBeforeLogin(indexPath)
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.mainVC!.closeLeftMenu()
         if self.loginFlag == true {
             selectMenuAfterLogin(indexPath)
         }else {
@@ -72,10 +74,10 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
         let  cell = MenuCell.instanceFromNib()
         switch indexPath.row {
             
-        case 0,1,2,3,4,5,5,6,7,8,9,10,11 :
+        case 0,1,2,3,4,5,5,6 :
             cell.setTextTitle(MENU_DID_LOGIN[indexPath.row])
             
-        case 12:
+        case 7:
             cell.addButton(LOGOUT_TITLE)
             cell.addButton(LOGOUT_TITLE).addTarget(self, action:"logoutTap:", forControlEvents: UIControlEvents.TouchUpInside)
         default:
@@ -89,13 +91,13 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
     func menuBeforeLogin(indexPath: NSIndexPath) -> MenuCell  {
         let  cell = MenuCell.instanceFromNib()
         switch indexPath.row {
-        case 0,1,2,3,4:
+        case 0,1,2,3:
             cell.setTextTitle(MENU_WILL_LOGIN[indexPath.row])
-        case 5:
+        case 4:
             let btn = cell.addButton(LOGIN_TITLE)
             btn.addTarget(self, action: Selector("loginTap:"), forControlEvents: UIControlEvents.TouchUpInside)
 
-        case 6:
+        case 5:
             let btn = cell.addButton(CREATE_ACCOUNT_TITLE)
             btn.addTarget(self, action: Selector("registerTap:"), forControlEvents: UIControlEvents.TouchUpInside)
             
@@ -120,30 +122,15 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
             //My order
             print("case", terminator: ""); break
         case 4:
-            // How SnapArt Works
+            // About Us
+            presentAboutlUs()
             print("case", terminator: ""); break
         case 5:
-            SocialNetwork.Facebook.openPage()
-            // Like on facebook
-            print("case", terminator: ""); break
-        case 6:
-            // Like on Instagram
-            SocialNetwork.Instagram.openPage()
-            print("case", terminator: ""); break
-        case 7:
-            // Rate on the App Store
-            print("case", terminator: ""); break
-        case 8:
-            // About Us
-            print("case", terminator: ""); break
-        case 9:
             // FAQs
             print("case", terminator: ""); break
-        case 10:
+        case 6:
             // Emails
-            print("case", terminator: ""); break
-        case 11:
-            // Term of service
+            sendEmailUs()
             print("case", terminator: ""); break
         default:
             print("default", terminator: "")
@@ -156,10 +143,14 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
         case 0:
             print("case", terminator: ""); break
         case 1:
+            //AboutlUs
+            presentAboutlUs()
             print("case", terminator: ""); break
         case 2:
             print("case", terminator: ""); break
         case 3:
+            //Emails
+            sendEmailUs()
             print("case", terminator: ""); break
         case 4:
             print("case", terminator: ""); break
@@ -174,7 +165,6 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
             self.loginFlag = true
             self.tableView.reloadData()
         }
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
     }
 
     //MARK: REGISTER
@@ -206,7 +196,16 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
         })
     }
  
+    func sendEmailUs() -> Void {
+        let url = NSURL(string: "mailto:jon.doe@mail.com")
+        UIApplication.sharedApplication().openURL(url!)
+    }
+    func presentAboutlUs() -> Void {
+        let vc:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("AboutUsNC") as! UINavigationController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
     
+
     
     
     /*

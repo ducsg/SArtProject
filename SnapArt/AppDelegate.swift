@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate   {
                 }
             })
         }
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Override point for customization after application launch.

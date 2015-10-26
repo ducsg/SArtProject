@@ -285,6 +285,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     } else if (buttonIndex == 8) {
     }
 }
+
 -(void)cropedImageSizeWithRatio:(CGFloat)w and:(CGFloat)h{
     CGFloat ratio = w / h;
     CGRect cropRect = self.cropView.cropRect;

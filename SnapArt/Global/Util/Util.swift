@@ -46,5 +46,4 @@ public class Util: NSObject {
             return true
         }
     }
-
 }
