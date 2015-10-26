@@ -17,11 +17,30 @@ import InstagramKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate   {
-
+    
     var window: UIWindow?
-
-
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        switch(getMajorSystemVersion()) {
+        case 7:
+            UIApplication.sharedApplication().registerForRemoteNotificationTypes(
+                [UIRemoteNotificationType.Badge, UIRemoteNotificationType.Sound, UIRemoteNotificationType.Alert])
+        case 8:
+            if #available(iOS 8.0, *) {
+                let pushSettings: UIUserNotificationSettings = UIUserNotificationSettings(
+                    forTypes:
+                    [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound],
+                    categories: nil)
+                UIApplication.sharedApplication().registerUserNotificationSettings(pushSettings)
+                UIApplication.sharedApplication().registerForRemoteNotifications()
+            } else {
+                // Fallback on earlier versions
+            }
+            
+        default: return true
+        }
         
         if(MemoryStoreData().getBool(MemoryStoreData.user_stayed_login)){
             Api().execute(ApiMethod.POST, url: ApiUrl.signin_url, parameters: [APIKEY.EMAIL:MemoryStoreData().getString(MemoryStoreData.user_email), APIKEY.PWD:MemoryStoreData().getString(MemoryStoreData.user_pwd)], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
@@ -37,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate   {
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Override point for customization after application launch.
-//        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        //        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
     }
     
@@ -66,6 +85,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate   {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
-
+    //MARK: PUSH NOTIFICATION
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let trimEnds = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>"))
+        let cleanToken = trimEnds.stringByReplacingOccurrencesOfString(" ", withString: "", options: [])
+    }
+    
+    // Failed to register for Push
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        NSLog("Failed to get token; error: %@", error) //Log an error for debugging purposes, user doesn't need to know
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+    
+    }
+    func getMajorSystemVersion() -> Int {
+        return Int(String(Array(UIDevice.currentDevice().systemVersion.characters)[0]))!
+    }
+    
 }
 

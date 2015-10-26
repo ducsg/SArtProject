@@ -104,6 +104,7 @@
 		67D2EF641BD5499E00742823 /* FacebookLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D2EF631BD5499E00742823 /* FacebookLoginVC.swift */; };
 		67E223FA1BDCC1FC001921F8 /* PreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E223F91BDCC1FC001921F8 /* PreviewVC.swift */; settings = {ASSET_TAGS = (); }; };
 		67E223FC1BDD448D001921F8 /* ShoppingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E223FB1BDD448D001921F8 /* ShoppingVC.swift */; settings = {ASSET_TAGS = (); }; };
+		67EBB34D1BDE81C40080E4E8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EBB34C1BDE81C40080E4E8 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -268,6 +269,7 @@
 		67D2EF631BD5499E00742823 /* FacebookLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookLoginVC.swift; path = FacebookVC/FacebookLoginVC.swift; sourceTree = "<group>"; };
 		67E223F91BDCC1FC001921F8 /* PreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewVC.swift; sourceTree = "<group>"; };
 		67E223FB1BDD448D001921F8 /* ShoppingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingVC.swift; sourceTree = "<group>"; };
+		67EBB34C1BDE81C40080E4E8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A67331CD2A027D31872D102 /* Pods-SnapArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapArt/Pods-SnapArt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -277,6 +279,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67EBB34D1BDE81C40080E4E8 /* AVFoundation.framework in Frameworks */,
 				67B8DF021BD96D6E001CB1A3 /* MobileCoreServices.framework in Frameworks */,
 				67D2EF5F1BD5446300742823 /* Foundation.framework in Frameworks */,
 				67B8DED91BD94229001CB1A3 /* FacebookSDK.framework in Frameworks */,
@@ -751,6 +754,7 @@
 		6CD47826EE9E5D07676A08AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67EBB34C1BDE81C40080E4E8 /* AVFoundation.framework */,
 				67B8DF011BD96D6E001CB1A3 /* MobileCoreServices.framework */,
 				67B8DED81BD94229001CB1A3 /* FacebookSDK.framework */,
 				67D2EF5E1BD5446300742823 /* Foundation.framework */,
@@ -1129,7 +1133,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xuan Nguyen (5GLYWL78PZ)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1146,7 +1150,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.innoria.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb29a1a9-986e-41e8-8e8d-508c42c9d3cd";
+				PROVISIONING_PROFILE = "6c642033-4571-4fdf-86ee-46426dbefe55";
 				SWIFT_OBJC_BRIDGING_HEADER = "SnapArt/SnapArt-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1159,7 +1163,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xuan Nguyen (5GLYWL78PZ)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1176,7 +1180,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.innoria.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb29a1a9-986e-41e8-8e8d-508c42c9d3cd";
+				PROVISIONING_PROFILE = "6c642033-4571-4fdf-86ee-46426dbefe55";
 				SWIFT_OBJC_BRIDGING_HEADER = "SnapArt/SnapArt-Bridging-Header.h";
 			};
 			name = Release;
