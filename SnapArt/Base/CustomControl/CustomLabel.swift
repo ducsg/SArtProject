@@ -37,3 +37,64 @@ class CustomLabel: UILabel {
     */
 
 }
+
+class CustomLabelGotham: UILabel {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+        setStyleForLabel()
+    }
+    
+    func setStyleForLabel() -> Void {
+        self.font = SA_STYPE.FONT_GOTHAM
+        self.textColor = SA_STYPE.TEXT_LABEL_COLOR
+        self.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.numberOfLines = 0
+    }
+    /*
+    // Only override drawRect: if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func drawRect(rect: CGRect) {
+    // Drawing code
+    }
+    */
+    
+}
+
+
+class CustomLabelGothamBold: UILabel {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+        setStyleForLabel()
+    }
+    
+    func setStyleForLabel() -> Void {
+        self.font = SA_STYPE.FONT_GOTHAM_BOLD
+        self.textColor = SA_STYPE.TEXT_LABEL_COLOR
+        self.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.numberOfLines = 0
+    }
+    /*
+    // Only override drawRect: if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func drawRect(rect: CGRect) {
+    // Drawing code
+    }
+    */
+    
+}

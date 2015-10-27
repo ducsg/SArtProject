@@ -107,6 +107,8 @@
 		67EBB34D1BDE81C40080E4E8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EBB34C1BDE81C40080E4E8 /* AVFoundation.framework */; };
 		67EBB34F1BDE8F6D0080E4E8 /* MenuNaviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB34E1BDE8F6D0080E4E8 /* MenuNaviController.swift */; settings = {ASSET_TAGS = (); }; };
 		67EBB3511BDE95700080E4E8 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB3501BDE95700080E4E8 /* AboutUsVC.swift */; settings = {ASSET_TAGS = (); }; };
+		67EBB3531BDF63100080E4E8 /* ShoppingCartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB3521BDF63100080E4E8 /* ShoppingCartVC.swift */; settings = {ASSET_TAGS = (); }; };
+		67EBB3561BDF8E370080E4E8 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB3551BDF8E370080E4E8 /* NotificationVC.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,6 +276,8 @@
 		67EBB34C1BDE81C40080E4E8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		67EBB34E1BDE8F6D0080E4E8 /* MenuNaviController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNaviController.swift; sourceTree = "<group>"; };
 		67EBB3501BDE95700080E4E8 /* AboutUsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
+		67EBB3521BDF63100080E4E8 /* ShoppingCartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartVC.swift; sourceTree = "<group>"; };
+		67EBB3551BDF8E370080E4E8 /* NotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationVC.swift; path = Notification/NotificationVC.swift; sourceTree = "<group>"; };
 		7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A67331CD2A027D31872D102 /* Pods-SnapArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapArt/Pods-SnapArt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -445,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				676C72B91BD9207B0056DB3C /* PaymentVC.swift */,
+				67EBB3521BDF63100080E4E8 /* ShoppingCartVC.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -559,6 +564,7 @@
 		6779714E1BC4282D00110C8B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				67EBB3541BDF8E0C0080E4E8 /* Notification */,
 				676C72B81BD9207B0056DB3C /* Payment */,
 				674B71A91BCE355100B8FC2A /* Account */,
 				678890B51BCBB5240071DA50 /* MenuVC */,
@@ -757,6 +763,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		67EBB3541BDF8E0C0080E4E8 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				67EBB3551BDF8E370080E4E8 /* NotificationVC.swift */,
+			);
+			name = Notification;
+			sourceTree = "<group>";
+		};
 		6CD47826EE9E5D07676A08AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -952,11 +966,13 @@
 				6779717D1BC429BA00110C8B /* AMSlideMenuLeftMenuSegue.m in Sources */,
 				677971541BC4282D00110C8B /* ImageContentVC.swift in Sources */,
 				6797C1D01BD394C600F2EB79 /* ActionSheetDatePicker.m in Sources */,
+				67EBB3531BDF63100080E4E8 /* ShoppingCartVC.swift in Sources */,
 				67121A131BD09CC700CAC506 /* GMDCircleLoader.m in Sources */,
 				6779712F1BC41BBF00110C8B /* ViewController.swift in Sources */,
 				674B71A11BCDFB5C00B8FC2A /* Account.swift in Sources */,
 				67C1A6091BD236DB007BECA3 /* PECropRectView.m in Sources */,
 				677971551BC4282D00110C8B /* IntoVC.swift in Sources */,
+				67EBB3561BDF8E370080E4E8 /* NotificationVC.swift in Sources */,
 				677971831BC429BA00110C8B /* CustomView.m in Sources */,
 				677971811BC429BA00110C8B /* AMSlideMenuRightTableViewController.m in Sources */,
 				677971841BC429BA00110C8B /* IKCell.m in Sources */,
@@ -1158,7 +1174,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.innoria.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6c642033-4571-4fdf-86ee-46426dbefe55";
+				PROVISIONING_PROFILE = "4d47d22c-0a91-4673-bc70-1d4110c533e2";
 				SWIFT_OBJC_BRIDGING_HEADER = "SnapArt/SnapArt-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1188,7 +1204,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.innoria.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6c642033-4571-4fdf-86ee-46426dbefe55";
+				PROVISIONING_PROFILE = "4d47d22c-0a91-4673-bc70-1d4110c533e2";
 				SWIFT_OBJC_BRIDGING_HEADER = "SnapArt/SnapArt-Bridging-Header.h";
 			};
 			name = Release;

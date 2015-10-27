@@ -114,6 +114,8 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
             print("case \(indexPath.row)", terminator: ""); break
         case 1:
             //Notifications
+            let nv = Util().getControllerForStoryBoard("NotificationNC") as! CustomNavigationController
+            self.navigationController?.presentViewController(nv, animated: true, completion: nil)
             print("case", terminator: ""); break
         case 2:
             //My account

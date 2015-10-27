@@ -64,6 +64,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Gotham-Bold.ttf</string>
 		<string>Archer-Book-Pro.otf</string>
 		<string>Gotham-Thin.ttf</string>
 	</array>

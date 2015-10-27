@@ -44,8 +44,11 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
             cropVC.delegate = self
             let width:Float  = Float(self.imageCrop!.size.width)
             let height:Float  = Float(self.imageCrop!.size.height)
-            let length:Float  = fminf(width,height)
-            cropVC.imageCropRect = CGRectMake(CGFloat((width - length)/2),CGFloat((height - length) / 2), CGFloat(length), CGFloat(length))
+//            let length:Float  = height + width  //fminf(width,height)
+//            cropVC.imageCropRect = CGRectMake(CGFloat((width - length)/2),CGFloat((height - length) / 2), CGFloat(length), CGFloat(length))
+//            cropVC.imageCropRect = CGRectMake(CGFloat((width - length)/2),CGFloat((height - length) / 2), CGFloat(length), CGFloat(length))
+
+
         } else {
             self.navigationController?.popViewControllerAnimated(true)
         }
@@ -76,8 +79,8 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         let cropSizes = ["3 x 2", "3 x 5", "4 x 3", "4 x 6"," 5 x 7"," 8 x 10", "16 x 9"]
         let sizePicker = ActionSheetStringPicker(title: "Size", rows: cropSizes, initialSelection: 0, doneBlock: {picker, value, index in
             let selectIndex = value as! Int
-            self.cropVC.cropedImageSizeWithRatio(4.0, and: 6.0)
             self.setValueSizeBtn(cropSizes[selectIndex])
+            self.cropVC.cropedImageSizeWithRatio(1, and: 1)
 
             return }, cancelBlock: {ActionStringCancelBlock in
                 return}, origin: sender.superview)

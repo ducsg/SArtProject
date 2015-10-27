@@ -38,8 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate   {
             } else {
                 // Fallback on earlier versions
             }
-            
-        default: return true
+        default: break 
         }
         
         if(MemoryStoreData().getBool(MemoryStoreData.user_stayed_login)){
