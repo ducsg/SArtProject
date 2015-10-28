@@ -25,7 +25,7 @@ class CustomButton: UIButton {
     
     func setStyle() -> Void {
         self.backgroundColor = SA_STYPE.BACKGROUND_BUTTON_COLOR
-        self.titleLabel?.font = SA_STYPE.FONT_GOTHAM 
+        self.titleLabel?.font = SA_STYPE.FONT_GOTHAM_BOLD
         self.titleLabel?.textColor = SA_STYPE.TEXT_LABEL_COLOR
         self.setTitleColor(SA_STYPE.TEXT_BUTTON_COLOR, forState: UIControlState.Normal)
     }
