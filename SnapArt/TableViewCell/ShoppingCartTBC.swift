@@ -31,9 +31,13 @@ class ShoppingCartTBC: UITableViewCell {
     }
     
     internal func initCell(cart: Cart = Cart()){
-//        self.wvFrame.loadRequest(NSURLRequest(URL: NSURL(string: "http://www.islamic-literatures.com/wp-content/uploads/2013/06/grande-image3.png")!))
+        self.wvFrame.loadRequest(NSURLRequest(URL: NSURL(string: "http://www.islamic-literatures.com/wp-content/uploads/2013/06/grande-image3.png")!))
         self.lbItem.text = cart.item
         self.lbPrice.text = String(cart.price)
     }
     
+    static func instanceFromNib() -> ShoppingCartTBC {
+        return UINib(nibName: "ShoppingCartTBC", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! ShoppingCartTBC
+    }
+
 }

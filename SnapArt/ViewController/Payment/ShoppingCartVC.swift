@@ -23,14 +23,15 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return listCart.count
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell: ShoppingCartTBC = tableView.dequeueReusableCellWithIdentifier("ShoppingCartTBC") as! ShoppingCartTBC
+//        let cell: ShoppingCartTBC = tableView.dequeueReusableCellWithIdentifier("ShoppingCartTBC") as! ShoppingCartTBC
+        let cell:ShoppingCartTBC = ShoppingCartTBC.instanceFromNib()
         let cart: Cart = listCart[indexPath.row]
         cell.initCell(cart)
         return cell
@@ -41,6 +42,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         listCart.append(Cart(price: 6.9))
         listCart.append(Cart(price: 10.98))
     }
+    
     /*
     // MARK: - Navigation
 
