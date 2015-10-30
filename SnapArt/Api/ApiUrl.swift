@@ -21,5 +21,13 @@ public class ApiUrl{
     static let create_client_token_url:String = base_url + "api/payments/create_client_token"
     static let payment_url:String = base_url + "api/payments/pay"
     static let payment_scanner_url:String = base_url + "api/payments/pay_scanner"
+    
+    //social
+    static let like_fb_url:String = "https://www.facebook.com/getsnapart/"
+    static let follow_in_url:String = "https://instagram.com/getsnapart/"
 
+    //About Us
+    static let how_it_work_url:String = base_url + "/howitworks"
+    static let faq_url:String = base_url + "/faqs"
+    static let our_story_url:String = base_url + "/ourstories"
 }

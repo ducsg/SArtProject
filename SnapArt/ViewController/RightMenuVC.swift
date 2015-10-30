@@ -56,6 +56,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return self.loginFlag == true ? menuAfterLogin(indexPath) : menuBeforeLogin(indexPath)
     }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.mainVC!.closeLeftMenu()
         if self.loginFlag == true {
@@ -111,6 +112,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
         switch indexPath.row {
         case 0:
             //Make Art
+            
             print("case \(indexPath.row)", terminator: ""); break
         case 1:
             //Notifications
@@ -129,6 +131,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
             print("case", terminator: ""); break
         case 5:
             // FAQs
+            gotoFAQs()
             print("case", terminator: ""); break
         case 6:
             // Emails
@@ -149,6 +152,8 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
             presentAboutlUs()
             print("case", terminator: ""); break
         case 2:
+            // FAQs
+            gotoFAQs()
             print("case", terminator: ""); break
         case 3:
             //Emails
@@ -197,9 +202,16 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
             }
         })
     }
+    
+    func gotoFAQs(){
+        WebviewDetailsVC.title = "FAQs"
+        WebviewDetailsVC.url = ApiUrl.faq_url
+        let nv = Util().getControllerForStoryBoard("WebviewDetailsNC") as! CustomNavigationController
+        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+    }
  
     func sendEmailUs() -> Void {
-        let url = NSURL(string: "mailto:jon.doe@mail.com")
+        let url = NSURL(string: "hello@getsnapart.com")
         UIApplication.sharedApplication().openURL(url!)
     }
     func presentAboutlUs() -> Void {

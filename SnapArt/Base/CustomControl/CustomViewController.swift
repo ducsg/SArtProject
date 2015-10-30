@@ -43,6 +43,12 @@ public class CustomViewController: UIViewController {
         self.navigationItem.backBarButtonItem = item
     }
     
+    public func applyBackIcon(){
+        var backImg: UIImage = UIImage(named: "ic_back")!
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: backImg, style: UIBarButtonItemStyle.Plain, target: self, action: "pressBackIcon:")
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor().fromHexColor("#000000")
+    }
+    
     func callLoading (parrentV:UIView!) -> Void {
         self.parrentView = parrentV
         GMDCircleLoader.setOnView(parrentView, withTitle:MESSAGES.COMMON.LOADING, animated: true)

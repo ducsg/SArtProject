@@ -9,7 +9,8 @@
 import UIKit
 
 public class CustomTableViewController: UITableViewController {
-
+    internal var tapGest: UITapGestureRecognizer!
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -32,9 +33,16 @@ public class CustomTableViewController: UITableViewController {
         }
         
         let aSelector : Selector = "closeKeyboard:"
-        let tapGesture = UITapGestureRecognizer(target: self, action: aSelector)
-        view.addGestureRecognizer(tapGesture)
+        tapGest = UITapGestureRecognizer(target: self, action: aSelector)
+        view.addGestureRecognizer(tapGest)
     }
+    
+    public func applyBackIcon(){
+        let backImg: UIImage = UIImage(named: "ic_back")!
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: backImg, style: UIBarButtonItemStyle.Plain, target: self, action: "pressBackIcon:")
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor().fromHexColor("#000000")
+    }
+    
     func closeKeyboard(sender: AnyObject) -> Void {
         self.view.endEditing(true)
     }

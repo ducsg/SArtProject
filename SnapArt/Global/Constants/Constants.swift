@@ -27,10 +27,10 @@ enum SocialNetwork {
     case Facebook, GooglePlus, Twitter, Instagram
     func url() -> SocialNetworkUrl {
         switch self {
-        case .Facebook: return SocialNetworkUrl(scheme: "fb://profile/PageId", page: "https://www.facebook.com/innoria.longxuyen")
+        case .Facebook: return SocialNetworkUrl(scheme: "fb://profile/PageId", page: ApiUrl.like_fb_url)
         case .Twitter: return SocialNetworkUrl(scheme: "twitter:///user?screen_name=USERNAME", page: "https://twitter.com/USERNAME")
         case .GooglePlus: return SocialNetworkUrl(scheme: "gplus://plus.google.com/u/0/PageId", page: "https://plus.google.com/PageId")
-        case .Instagram: return SocialNetworkUrl(scheme: "instagram://user?username=USERNAME", page:"https://www.instagram.com/hduc.hcm")
+        case .Instagram: return SocialNetworkUrl(scheme: "instagram://user?username=USERNAME", page: ApiUrl.follow_in_url)
         }
     }
     func openPage() {
