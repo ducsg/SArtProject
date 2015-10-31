@@ -85,9 +85,9 @@
     NSArray *subviews = self.subviews;
     for (UIView *subview in subviews) {
         if ([subview isKindOfClass:[PEResizeControl class]]) {
-//            if (CGRectContainsPoint(subview.frame, point)) {
-//                return subview;
-//            }
+            if (CGRectContainsPoint(subview.frame, point)) {
+                return subview;
+            }
         }
     }
     

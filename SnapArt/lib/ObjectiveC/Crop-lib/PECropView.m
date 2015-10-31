@@ -84,19 +84,19 @@ static const CGFloat MarginLeft = 20.0f;
     [self addSubview:self.cropRectView];
     
     self.topOverlayView = [[UIView alloc] init];
-    self.topOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
+//    self.topOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.topOverlayView];
     
     self.leftOverlayView = [[UIView alloc] init];
-    self.leftOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
+//    self.leftOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.leftOverlayView];
     
     self.rightOverlayView = [[UIView alloc] init];
-    self.rightOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
+//    self.rightOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.rightOverlayView];
     
     self.bottomOverlayView = [[UIView alloc] init];
-    self.bottomOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
+//    self.bottomOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.bottomOverlayView];
     
     
@@ -121,7 +121,6 @@ static const CGFloat MarginLeft = 20.0f;
     if (CGRectContainsPoint(self.zoomingView.frame, zoomedPoint)) {
         return self.scrollView;
     }
-    
     return [super hitTest:point withEvent:event];
 }
 
@@ -324,7 +323,7 @@ static const CGFloat MarginLeft = 20.0f;
 
 - (UIImage *)croppedImage
 {
-    return [self.image rotatedImageWithtransform:self.rotation croppedToRect:self.zoomedCropRect];
+    return [self.image rotatedImageWithtransform:self.rotation croppedToRect:self.cropRectView.frame];
 }
 
 - (CGRect)zoomedCropRect
@@ -438,7 +437,7 @@ static const CGFloat MarginLeft = 20.0f;
     
     [self layoutCropRectViewWithCropRect:cropRect];
     
-    [self automaticZoomIfEdgeTouched:cropRect];
+//    [self automaticZoomIfEdgeTouched:cropRect];
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView
@@ -449,6 +448,8 @@ static const CGFloat MarginLeft = 20.0f;
 
 - (void)zoomToCropRect:(CGRect)toRect andCenter:(BOOL)center
 {
+    return;
+
     if (CGRectEqualToRect(self.scrollView.frame, toRect)) {
         return;
     }

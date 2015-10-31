@@ -33,7 +33,9 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         
     }
     // MARK: ADD TO CARD
-    @IBAction func addToCartTap(sender: AnyObject) {        
+    @IBAction func addToCartTap(sender: AnyObject) {
+        let nv = Util().getControllerForStoryBoard("ShoppingCheckoutNC") as! CustomNavigationController
+        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
     }
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         return true

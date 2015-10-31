@@ -83,7 +83,6 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.toolbar.translucent = NO;
-
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                           target:self
                                                                                           action:@selector(cancel:)];
@@ -105,7 +104,8 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     self.navigationController.toolbarHidden = self.toolbarHidden;
     
     self.cropView.image = self.image;
-    
+    self.cropView.backgroundColor = [UIColor whiteColor];
+
     self.cropView.rotationGestureRecognizer.enabled = _rotationEnabled;
 }
 
@@ -290,7 +290,9 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     CGFloat ratio = w / h;
     CGRect cropRect = self.cropView.cropRect;
     CGFloat wid = CGRectGetWidth(cropRect);
-    cropRect.size = CGSizeMake(wid, wid * ratio);
+//    cropRect.size = CGSizeMake(wid, wid * ratio);
+    cropRect.size = CGSizeMake(1, 2);
+
     self.cropView.cropRect = cropRect;
     
 }

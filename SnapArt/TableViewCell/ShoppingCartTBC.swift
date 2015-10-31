@@ -26,12 +26,12 @@ class ShoppingCartTBC: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     internal func initCell(cart: Cart = Cart()){
-        self.wvFrame.loadRequest(NSURLRequest(URL: NSURL(string: "http://www.islamic-literatures.com/wp-content/uploads/2013/06/grande-image3.png")!))
+        self.wvFrame.loadRequest(NSURLRequest(URL: NSURL(string: cart.frameUrl)!))
         self.lbItem.text = cart.item
         self.lbPrice.text = String(cart.price)
     }

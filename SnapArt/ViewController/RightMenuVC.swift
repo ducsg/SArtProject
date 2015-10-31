@@ -8,8 +8,9 @@
 
 import UIKit
 import SwiftyJSON
+import MessageUI
 
-class RightMenuVC: AMSlideMenuLeftTableViewController  {
+class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControllerDelegate  {
     
     private var loginFlag:Bool = false
     
@@ -210,10 +211,12 @@ class RightMenuVC: AMSlideMenuLeftTableViewController  {
         self.navigationController?.presentViewController(nv, animated: true, completion: nil)
     }
  
+    //send email func
     func sendEmailUs() -> Void {
-        let url = NSURL(string: "hello@getsnapart.com")
+        let url = NSURL(string: "mailto:hello@getsnapart.com")
         UIApplication.sharedApplication().openURL(url!)
     }
+    
     func presentAboutlUs() -> Void {
         let vc:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("AboutUsNC") as! UINavigationController
         self.presentViewController(vc, animated: true, completion: nil)

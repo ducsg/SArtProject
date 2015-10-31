@@ -102,7 +102,8 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         
     }
     func cropViewController(controller: PECropViewController!, didFinishCroppingImage croppedImage: UIImage!, transform: CGAffineTransform, cropRect: CGRect) {
-        
+        cropVC.image = croppedImage
+//        setCropContentWithImage(croppedImage)
     }
     
     func cropViewControllerDidCancel(controller: PECropViewController!) {

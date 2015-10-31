@@ -26,6 +26,7 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.title = TITLE
+        self.albumbtn.hidden = true
         let loginfbBtn = FBSDKLoginButton()
         loginfbBtn.frame = CGRectMake(0, 0, loginBtn.frame.size.width, loginBtn.frame.size.height)
         self.loginBtn.addSubview(loginfbBtn)
@@ -38,12 +39,15 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         loginfbBtn.readPermissions = ["user_photos"]
         albumbtn.clipsToBounds = true
         albumbtn.layer.cornerRadius = 3.0
-        returnUserData()
+        //        returnUserData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewDidAppear(animated: Bool) {
+        returnUserData()
     }
     // accessToken is your Facebook id
     func returnUserProfileImage(accessToken: NSString)
@@ -65,10 +69,12 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
             if ((error) != nil)
             {
                 // Process error
+                self.albumbtn.hidden = true
                 print("Error: \(error)")
             }
             else
             {
+                self.albumbtn.hidden = false
                 print("fetched user: \(result)")
                 if let name: String = result.valueForKey("name") as? String {
                     self.statuslb.text = name
@@ -114,8 +120,11 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         if let nv = self.navigationController?.viewControllers {
             if let index:Int! = nv.count - 2 {
                 if let vc = nv[index] as? UpLoadPreviewVC{
-                    let OLFacebookImg:OLFacebookImage! = images[0] as! OLFacebookImage
-                    vc.setImageUploadWithURL(OLFacebookImg.fullURL.URLString)
+                    if images != nil && images.count > 0 {
+                        if let OLFacebookImg:OLFacebookImage! = images[0] as? OLFacebookImage {
+                            vc.setImageUploadWithURL(OLFacebookImg!.fullURL.URLString)
+                        }
+                    }
                     self.navigationController?.popViewControllerAnimated(true)
                     imagePicker.dismissViewControllerAnimated(true, completion: nil)
                 }
