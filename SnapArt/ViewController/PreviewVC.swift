@@ -22,6 +22,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         self.webPreview.backgroundColor = UIColor.whiteColor()
         self.webPreview.delegate = self
         self.webPreview.loadRequest(NSURLRequest(URL: NSURL(string: previewURL)!))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sendTap:")
         // Do any additional setup after loading the view.
     }
     
@@ -31,6 +32,17 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     }
     @IBAction func previewOnWallTap(sender: AnyObject) {
         
+    }
+    func sendTap(sender: AnyObject) {
+        let textToShare = "Share image Snapart"
+        
+        if let imageCrop = UIImage(named: "girl_image")
+        {
+            let objectsToShare = [textToShare, imageCrop]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
     }
     // MARK: ADD TO CARD
     @IBAction func addToCartTap(sender: AnyObject) {

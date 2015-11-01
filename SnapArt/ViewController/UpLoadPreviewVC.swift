@@ -18,7 +18,7 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     @IBOutlet var takePhotoBtn: UIButton!
     @IBOutlet var instagramBtn: UIButton!
     var imagePicker: UIImagePickerController!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         upLoadImg.layer.borderWidth = 0.5

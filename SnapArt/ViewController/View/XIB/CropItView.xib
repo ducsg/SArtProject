@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CropItView" customModule="SnapArt" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Olc-7A-yUi">
+                    <rect key="frame" x="213" y="53" width="45" height="40"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="USQ-OJ-nXk"/>
+                    </constraints>
+                    <state key="normal" title="Crop">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIg-2w-tGE">
+                    <rect key="frame" x="116" y="53" width="45" height="40"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="UPy-IU-BA3"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="btn_rotation">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="QIg-2w-tGE" firstAttribute="top" secondItem="Olc-7A-yUi" secondAttribute="top" id="Cq6-qT-9xg"/>
+                <constraint firstItem="QIg-2w-tGE" firstAttribute="bottom" secondItem="Olc-7A-yUi" secondAttribute="bottom" id="Guy-RK-pMB"/>
+                <constraint firstItem="Olc-7A-yUi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="LHR-7i-rSB"/>
+                <constraint firstItem="Olc-7A-yUi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="48" id="LNk-XN-nct"/>
+                <constraint firstItem="QIg-2w-tGE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="53" id="Z0Q-lE-Bfq"/>
+                <constraint firstItem="Olc-7A-yUi" firstAttribute="leading" secondItem="QIg-2w-tGE" secondAttribute="trailing" constant="52" id="wuA-Jr-pYn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="262.5" y="-734"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_rotation" width="32" height="32"/>
+    </resources>
+</document>

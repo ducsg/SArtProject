@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import FBAudienceNetwork
-import FBSDKCoreKit
+//import FBAudienceNetwork
+//import FBSDKCoreKit
 import FBSDKLoginKit
 import FacebookImagePicker
 import Alamofire

@@ -12,6 +12,7 @@ class MenuVC: AMSlideMenuMainViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.panGesture.enabled = false
     }
     
     override func didReceiveMemoryWarning() {

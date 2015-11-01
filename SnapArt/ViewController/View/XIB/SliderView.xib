@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSj-X1-qfE" customClass="SliderView" customModule="SnapArt" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="377" height="131"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKJ-TD-8Yx" customClass="CustomButton" customModule="SnapArt" customModuleProvider="target">
+                    <rect key="frame" x="103" y="81" width="170" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" red="1" green="0.57576280040000005" blue="0.27406986929999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="170" id="Xua-aF-IYT"/>
+                        <constraint firstAttribute="height" constant="30" id="uss-uh-STG"/>
+                    </constraints>
+                    <state key="normal" title="Add to card"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many feet are you from you wall?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oi0-Q6-95Z">
+                    <rect key="frame" x="42" y="8" width="290" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="MIm-yI-nNM"/>
+                        <constraint firstAttribute="width" constant="290" id="X84-s1-cOu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAg-iM-Dpp">
+                    <rect key="frame" x="17" y="37" width="340" height="31"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="340" id="3mZ-Q7-n4n"/>
+                        <constraint firstAttribute="height" constant="31" id="tJa-O5-bWy"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="oi0-Q6-95Z" firstAttribute="leading" secondItem="xAg-iM-Dpp" secondAttribute="leading" constant="25" id="5Qd-r4-XlE"/>
+                <constraint firstItem="dKJ-TD-8Yx" firstAttribute="leading" secondItem="xAg-iM-Dpp" secondAttribute="leading" constant="86" id="apx-x6-WbX"/>
+                <constraint firstItem="dKJ-TD-8Yx" firstAttribute="top" secondItem="xAg-iM-Dpp" secondAttribute="bottom" constant="13" id="clb-W4-ceT"/>
+                <constraint firstItem="dKJ-TD-8Yx" firstAttribute="centerX" secondItem="iSj-X1-qfE" secondAttribute="centerX" id="k9S-zr-P1p"/>
+                <constraint firstItem="oi0-Q6-95Z" firstAttribute="top" secondItem="iSj-X1-qfE" secondAttribute="top" constant="8" id="r4t-JA-raX"/>
+                <constraint firstItem="xAg-iM-Dpp" firstAttribute="top" secondItem="oi0-Q6-95Z" secondAttribute="bottom" constant="8" id="s1Y-B2-yf8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addToCartBtn" destination="dKJ-TD-8Yx" id="HsM-zM-8LM"/>
+                <outlet property="sliderView" destination="xAg-iM-Dpp" id="RHe-QF-hYb"/>
+                <outlet property="textlb" destination="oi0-Q6-95Z" id="Lwe-QV-23V"/>
+            </connections>
+            <point key="canvasLocation" x="141.5" y="592.5"/>
+        </view>
+    </objects>
+</document>

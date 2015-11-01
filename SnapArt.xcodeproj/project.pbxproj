@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		170563E7234D1B4EBBFD90FB /* Pods_SnapArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */; };
+		670366341BE5A05600537587 /* ViewOnWallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670366331BE5A05600537587 /* ViewOnWallVC.swift */; settings = {ASSET_TAGS = (); }; };
+		670366361BE5B82000537587 /* SliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 670366351BE5B82000537587 /* SliderView.xib */; settings = {ASSET_TAGS = (); }; };
+		670366381BE5B8F000537587 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670366371BE5B8F000537587 /* SliderView.swift */; settings = {ASSET_TAGS = (); }; };
 		671219EB1BCE4E6B00CAC506 /* ApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671219EA1BCE4E6B00CAC506 /* ApiUrl.swift */; };
 		671219ED1BCE500200CAC506 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671219EC1BCE500200CAC506 /* ApiKey.swift */; };
 		671219EF1BCE5DB900CAC506 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671219EE1BCE5DB900CAC506 /* CustomNavigationController.swift */; };
@@ -24,6 +27,12 @@
 		67121A131BD09CC700CAC506 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 67121A121BD09CC700CAC506 /* GMDCircleLoader.m */; };
 		67121A151BD0DAF700CAC506 /* MemoryStoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67121A141BD0DAF700CAC506 /* MemoryStoreData.swift */; };
 		671FB3FE1BCBBFF800E5EAE8 /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671FB3FD1BCBBFF800E5EAE8 /* ExtensionUIColor.swift */; };
+		672E90BB1BE4B19F00EF4112 /* InputSizeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672E90BA1BE4B19F00EF4112 /* InputSizeVC.swift */; settings = {ASSET_TAGS = (); }; };
+		672E90BD1BE4B20700EF4112 /* InputSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672E90BC1BE4B20700EF4112 /* InputSizeView.swift */; settings = {ASSET_TAGS = (); }; };
+		672E90BF1BE4B21B00EF4112 /* InputSizeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 672E90BE1BE4B21B00EF4112 /* InputSizeView.xib */; settings = {ASSET_TAGS = (); }; };
+		672E90C11BE4B36300EF4112 /* CropItView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 672E90C01BE4B36300EF4112 /* CropItView.xib */; settings = {ASSET_TAGS = (); }; };
+		672E90C31BE4B40400EF4112 /* CropItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672E90C21BE4B40400EF4112 /* CropItView.swift */; settings = {ASSET_TAGS = (); }; };
+		672E90C51BE4B57800EF4112 /* CropItVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672E90C41BE4B57800EF4112 /* CropItVC.swift */; settings = {ASSET_TAGS = (); }; };
 		674B71A11BCDFB5C00B8FC2A /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674B71A01BCDFB5C00B8FC2A /* Account.swift */; };
 		674B71A41BCDFBD300B8FC2A /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674B71A31BCDFBD300B8FC2A /* Api.swift */; };
 		674B71A61BCDFC6F00B8FC2A /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674B71A51BCDFC6F00B8FC2A /* CustomViewController.swift */; };
@@ -87,11 +96,6 @@
 		67B8DF021BD96D6E001CB1A3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DF011BD96D6E001CB1A3 /* MobileCoreServices.framework */; };
 		67BC1A1C1BCD697500AF1558 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BC1A1B1BCD697500AF1558 /* Util.swift */; };
 		67C1A5FD1BD22F39007BECA3 /* SelectPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C1A5FC1BD22F39007BECA3 /* SelectPhotoVC.swift */; };
-		67C1A6091BD236DB007BECA3 /* PECropRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C1A6001BD236DB007BECA3 /* PECropRectView.m */; };
-		67C1A60A1BD236DB007BECA3 /* PECropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C1A6021BD236DB007BECA3 /* PECropView.m */; };
-		67C1A60B1BD236DB007BECA3 /* PECropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C1A6041BD236DB007BECA3 /* PECropViewController.m */; };
-		67C1A60C1BD236DB007BECA3 /* PEResizeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C1A6061BD236DB007BECA3 /* PEResizeControl.m */; };
-		67C1A60D1BD236DB007BECA3 /* UIImage+PECrop.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C1A6081BD236DB007BECA3 /* UIImage+PECrop.m */; };
 		67C1A60F1BD241D2007BECA3 /* PEPhotoCropEditor.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67C1A60E1BD241D2007BECA3 /* PEPhotoCropEditor.bundle */; };
 		67CE02461BDA9660002007D8 /* InstagramEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE02331BDA9660002007D8 /* InstagramEngine.m */; settings = {ASSET_TAGS = (); }; };
 		67CE02471BDA9660002007D8 /* InstagramKitConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE02361BDA9660002007D8 /* InstagramKitConstants.m */; settings = {ASSET_TAGS = (); }; };
@@ -113,6 +117,10 @@
 		67EBB34F1BDE8F6D0080E4E8 /* MenuNaviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB34E1BDE8F6D0080E4E8 /* MenuNaviController.swift */; settings = {ASSET_TAGS = (); }; };
 		67EBB3531BDF63100080E4E8 /* ShoppingCartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB3521BDF63100080E4E8 /* ShoppingCartVC.swift */; settings = {ASSET_TAGS = (); }; };
 		67EBB3561BDF8E370080E4E8 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB3551BDF8E370080E4E8 /* NotificationVC.swift */; settings = {ASSET_TAGS = (); }; };
+		67F01EDC1BE47F8100CC5253 /* NLCropViewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F01ED91BE47F8100CC5253 /* NLCropViewLayer.m */; settings = {ASSET_TAGS = (); }; };
+		67F01EDD1BE47F8100CC5253 /* NLImageCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F01EDB1BE47F8100CC5253 /* NLImageCropperView.m */; settings = {ASSET_TAGS = (); }; };
+		67F01EDF1BE4836800CC5253 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F01EDE1BE4836800CC5253 /* AudioToolbox.framework */; };
+		67F01EE11BE493B500CC5253 /* ExtensionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +135,9 @@
 
 /* Begin PBXFileReference section */
 		26DA9935D5DA0924EA93E201 /* Pods-SnapArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapArt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapArt/Pods-SnapArt.debug.xcconfig"; sourceTree = "<group>"; };
+		670366331BE5A05600537587 /* ViewOnWallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewOnWallVC.swift; sourceTree = "<group>"; };
+		670366351BE5B82000537587 /* SliderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderView.xib; sourceTree = "<group>"; };
+		670366371BE5B8F000537587 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderView.swift; path = View/SliderView.swift; sourceTree = "<group>"; };
 		671219EA1BCE4E6B00CAC506 /* ApiUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrl.swift; sourceTree = "<group>"; };
 		671219EC1BCE500200CAC506 /* ApiKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		671219EE1BCE5DB900CAC506 /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
@@ -145,6 +156,12 @@
 		67121A121BD09CC700CAC506 /* GMDCircleLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMDCircleLoader.m; sourceTree = "<group>"; };
 		67121A141BD0DAF700CAC506 /* MemoryStoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryStoreData.swift; sourceTree = "<group>"; };
 		671FB3FD1BCBBFF800E5EAE8 /* ExtensionUIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionUIColor.swift; path = lib/Extensions/ExtensionUIColor.swift; sourceTree = "<group>"; };
+		672E90BA1BE4B19F00EF4112 /* InputSizeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputSizeVC.swift; sourceTree = "<group>"; };
+		672E90BC1BE4B20700EF4112 /* InputSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputSizeView.swift; sourceTree = "<group>"; };
+		672E90BE1BE4B21B00EF4112 /* InputSizeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputSizeView.xib; sourceTree = "<group>"; };
+		672E90C01BE4B36300EF4112 /* CropItView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CropItView.xib; sourceTree = "<group>"; };
+		672E90C21BE4B40400EF4112 /* CropItView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CropItView.swift; path = View/CropItView.swift; sourceTree = "<group>"; };
+		672E90C41BE4B57800EF4112 /* CropItVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropItVC.swift; sourceTree = "<group>"; };
 		674B71A01BCDFB5C00B8FC2A /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		674B71A31BCDFBD300B8FC2A /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		674B71A51BCDFC6F00B8FC2A /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
@@ -244,16 +261,6 @@
 		67B8DF011BD96D6E001CB1A3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		67BC1A1B1BCD697500AF1558 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		67C1A5FC1BD22F39007BECA3 /* SelectPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPhotoVC.swift; sourceTree = "<group>"; };
-		67C1A5FF1BD236DB007BECA3 /* PECropRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECropRectView.h; sourceTree = "<group>"; };
-		67C1A6001BD236DB007BECA3 /* PECropRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECropRectView.m; sourceTree = "<group>"; };
-		67C1A6011BD236DB007BECA3 /* PECropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECropView.h; sourceTree = "<group>"; };
-		67C1A6021BD236DB007BECA3 /* PECropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECropView.m; sourceTree = "<group>"; };
-		67C1A6031BD236DB007BECA3 /* PECropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECropViewController.h; sourceTree = "<group>"; };
-		67C1A6041BD236DB007BECA3 /* PECropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECropViewController.m; sourceTree = "<group>"; };
-		67C1A6051BD236DB007BECA3 /* PEResizeControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEResizeControl.h; sourceTree = "<group>"; };
-		67C1A6061BD236DB007BECA3 /* PEResizeControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEResizeControl.m; sourceTree = "<group>"; };
-		67C1A6071BD236DB007BECA3 /* UIImage+PECrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PECrop.h"; sourceTree = "<group>"; };
-		67C1A6081BD236DB007BECA3 /* UIImage+PECrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PECrop.m"; sourceTree = "<group>"; };
 		67C1A60E1BD241D2007BECA3 /* PEPhotoCropEditor.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PEPhotoCropEditor.bundle; sourceTree = "<group>"; };
 		67CE02321BDA9660002007D8 /* InstagramEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramEngine.h; sourceTree = "<group>"; };
 		67CE02331BDA9660002007D8 /* InstagramEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramEngine.m; sourceTree = "<group>"; };
@@ -286,6 +293,12 @@
 		67EBB34E1BDE8F6D0080E4E8 /* MenuNaviController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNaviController.swift; sourceTree = "<group>"; };
 		67EBB3521BDF63100080E4E8 /* ShoppingCartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartVC.swift; sourceTree = "<group>"; };
 		67EBB3551BDF8E370080E4E8 /* NotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationVC.swift; path = Notification/NotificationVC.swift; sourceTree = "<group>"; };
+		67F01ED81BE47F8100CC5253 /* NLCropViewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLCropViewLayer.h; sourceTree = "<group>"; };
+		67F01ED91BE47F8100CC5253 /* NLCropViewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLCropViewLayer.m; sourceTree = "<group>"; };
+		67F01EDA1BE47F8100CC5253 /* NLImageCropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLImageCropperView.h; sourceTree = "<group>"; };
+		67F01EDB1BE47F8100CC5253 /* NLImageCropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLImageCropperView.m; sourceTree = "<group>"; };
+		67F01EDE1BE4836800CC5253 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionUIImage.swift; path = lib/Extensions/ExtensionUIImage.swift; sourceTree = "<group>"; };
 		7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A67331CD2A027D31872D102 /* Pods-SnapArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapArt/Pods-SnapArt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -295,6 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67F01EDF1BE4836800CC5253 /* AudioToolbox.framework in Frameworks */,
 				67EBB34D1BDE81C40080E4E8 /* AVFoundation.framework in Frameworks */,
 				67B8DF021BD96D6E001CB1A3 /* MobileCoreServices.framework in Frameworks */,
 				67D2EF5F1BD5446300742823 /* Foundation.framework in Frameworks */,
@@ -363,8 +377,20 @@
 			children = (
 				671FB3FD1BCBBFF800E5EAE8 /* ExtensionUIColor.swift */,
 				674B71AE1BCE3B9100B8FC2A /* ExtensionString.swift */,
+				67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		672E90B71BE4B0E400EF4112 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				672E90BE1BE4B21B00EF4112 /* InputSizeView.xib */,
+				672E90C01BE4B36300EF4112 /* CropItView.xib */,
+				670366351BE5B82000537587 /* SliderView.xib */,
+			);
+			name = XIB;
+			path = View/XIB;
 			sourceTree = "<group>";
 		};
 		674B719F1BCDFB5C00B8FC2A /* Models */ = {
@@ -466,7 +492,11 @@
 		677878AF1BC5875600249748 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				672E90BC1BE4B20700EF4112 /* InputSizeView.swift */,
+				672E90B71BE4B0E400EF4112 /* XIB */,
 				677878B01BC587F100249748 /* BaseView.swift */,
+				672E90C21BE4B40400EF4112 /* CropItView.swift */,
+				670366371BE5B8F000537587 /* SliderView.swift */,
 			);
 			name = View;
 			path = ViewController;
@@ -590,6 +620,9 @@
 				67E223F91BDCC1FC001921F8 /* PreviewVC.swift */,
 				67E223FB1BDD448D001921F8 /* ShoppingVC.swift */,
 				67EBB34E1BDE8F6D0080E4E8 /* MenuNaviController.swift */,
+				672E90BA1BE4B19F00EF4112 /* InputSizeVC.swift */,
+				672E90C41BE4B57800EF4112 /* CropItVC.swift */,
+				670366331BE5A05600537587 /* ViewOnWallVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -733,16 +766,10 @@
 		67C1A5FE1BD236DB007BECA3 /* Crop-lib */ = {
 			isa = PBXGroup;
 			children = (
-				67C1A5FF1BD236DB007BECA3 /* PECropRectView.h */,
-				67C1A6001BD236DB007BECA3 /* PECropRectView.m */,
-				67C1A6011BD236DB007BECA3 /* PECropView.h */,
-				67C1A6021BD236DB007BECA3 /* PECropView.m */,
-				67C1A6031BD236DB007BECA3 /* PECropViewController.h */,
-				67C1A6041BD236DB007BECA3 /* PECropViewController.m */,
-				67C1A6051BD236DB007BECA3 /* PEResizeControl.h */,
-				67C1A6061BD236DB007BECA3 /* PEResizeControl.m */,
-				67C1A6071BD236DB007BECA3 /* UIImage+PECrop.h */,
-				67C1A6081BD236DB007BECA3 /* UIImage+PECrop.m */,
+				67F01ED81BE47F8100CC5253 /* NLCropViewLayer.h */,
+				67F01ED91BE47F8100CC5253 /* NLCropViewLayer.m */,
+				67F01EDA1BE47F8100CC5253 /* NLImageCropperView.h */,
+				67F01EDB1BE47F8100CC5253 /* NLImageCropperView.m */,
 			);
 			path = "Crop-lib";
 			sourceTree = "<group>";
@@ -802,6 +829,7 @@
 		6CD47826EE9E5D07676A08AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67F01EDE1BE4836800CC5253 /* AudioToolbox.framework */,
 				67EBB34C1BDE81C40080E4E8 /* AVFoundation.framework */,
 				67B8DF011BD96D6E001CB1A3 /* MobileCoreServices.framework */,
 				67B8DED81BD94229001CB1A3 /* FacebookSDK.framework */,
@@ -900,8 +928,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				671219F91BCE8EBF00CAC506 /* Main.storyboard in Resources */,
+				672E90BF1BE4B21B00EF4112 /* InputSizeView.xib in Resources */,
 				677971371BC41BBF00110C8B /* LaunchScreen.xib in Resources */,
+				672E90C11BE4B36300EF4112 /* CropItView.xib in Resources */,
 				678890B91BCBB5240071DA50 /* MenuCell.xib in Resources */,
+				670366361BE5B82000537587 /* SliderView.xib in Resources */,
 				67AD99F91BE0BF8300852FA9 /* ShoppingCartTBC.xib in Resources */,
 				67121A091BD0945500CAC506 /* Archer-Bold-Pro.otf in Resources */,
 				67C1A60F1BD241D2007BECA3 /* PEPhotoCropEditor.bundle in Resources */,
@@ -980,13 +1011,13 @@
 				67566A461BCB5DCE00EDE907 /* CustomButton.swift in Sources */,
 				674B71A81BCDFDEA00B8FC2A /* CustomTableViewController.swift in Sources */,
 				67CE024A1BDA9660002007D8 /* InstagramMedia.m in Sources */,
-				67C1A60C1BD236DB007BECA3 /* PEResizeControl.m in Sources */,
 				671219ED1BCE500200CAC506 /* ApiKey.swift in Sources */,
 				671219FF1BCEBCBD00CAC506 /* UtilOjbC.m in Sources */,
 				67566A471BCB5DCE00EDE907 /* CustomLabel.swift in Sources */,
 				67CE024C1BDA9660002007D8 /* InstagramPaginationInfo.m in Sources */,
-				67C1A60B1BD236DB007BECA3 /* PECropViewController.m in Sources */,
+				67F01EDC1BE47F8100CC5253 /* NLCropViewLayer.m in Sources */,
 				677971901BC4325100110C8B /* InstagramCollectionView.swift in Sources */,
+				672E90BD1BE4B20700EF4112 /* InputSizeView.swift in Sources */,
 				6797C1D11BD394C600F2EB79 /* ActionSheetDistancePicker.m in Sources */,
 				67566A501BCB5DE300EDE907 /* Constants.swift in Sources */,
 				67CE02461BDA9660002007D8 /* InstagramEngine.m in Sources */,
@@ -1000,12 +1031,13 @@
 				67121A131BD09CC700CAC506 /* GMDCircleLoader.m in Sources */,
 				6779712F1BC41BBF00110C8B /* ViewController.swift in Sources */,
 				674B71A11BCDFB5C00B8FC2A /* Account.swift in Sources */,
-				67C1A6091BD236DB007BECA3 /* PECropRectView.m in Sources */,
 				677971551BC4282D00110C8B /* IntoVC.swift in Sources */,
 				67EBB3561BDF8E370080E4E8 /* NotificationVC.swift in Sources */,
 				677971831BC429BA00110C8B /* CustomView.m in Sources */,
 				677971811BC429BA00110C8B /* AMSlideMenuRightTableViewController.m in Sources */,
+				670366341BE5A05600537587 /* ViewOnWallVC.swift in Sources */,
 				67AD99FB1BE0C9A000852FA9 /* Cart.swift in Sources */,
+				672E90C31BE4B40400EF4112 /* CropItView.swift in Sources */,
 				677971841BC429BA00110C8B /* IKCell.m in Sources */,
 				6779717E1BC429BA00110C8B /* AMSlideMenuLeftTableViewController.m in Sources */,
 				67AD9A001BE1C65900852FA9 /* AboutUsTB.swift in Sources */,
@@ -1021,12 +1053,13 @@
 				67AD99FE1BE1C57000852FA9 /* WebviewDetailsVC.swift in Sources */,
 				6797C1D21BD394C600F2EB79 /* ActionSheetLocalePicker.m in Sources */,
 				6797C1D51BD394C600F2EB79 /* SWActionSheet.m in Sources */,
+				67F01EE11BE493B500CC5253 /* ExtensionUIImage.swift in Sources */,
 				6779717C1BC429BA00110C8B /* AMSlideMenuContentSegue.m in Sources */,
 				67CE02481BDA9660002007D8 /* InstagramComment.m in Sources */,
+				672E90BB1BE4B19F00EF4112 /* InputSizeVC.swift in Sources */,
 				67121A031BCEBFA500CAC506 /* ForgotPasswordTB.swift in Sources */,
 				6779718E1BC4322700110C8B /* InstagramNC.swift in Sources */,
 				67121A051BCEBFA500CAC506 /* SignInTB.swift in Sources */,
-				67C1A60A1BD236DB007BECA3 /* PECropView.m in Sources */,
 				677971821BC429BA00110C8B /* UIViewController+AMSlideMenu.m in Sources */,
 				67CE02511BDA9841002007D8 /* UIImageView+AFNetworking.m in Sources */,
 				6779717F1BC429BA00110C8B /* AMSlideMenuMainViewController.m in Sources */,
@@ -1039,9 +1072,12 @@
 				677971571BC4282D00110C8B /* RightMenuVC.swift in Sources */,
 				674B71A61BCDFC6F00B8FC2A /* CustomViewController.swift in Sources */,
 				671219F31BCE80B100CAC506 /* CustomLabelButton.swift in Sources */,
+				670366381BE5B8F000537587 /* SliderView.swift in Sources */,
 				677971851BC429BA00110C8B /* IKCollectionViewController.m in Sources */,
 				677971871BC429BA00110C8B /* IKMediaViewController.m in Sources */,
+				67F01EDD1BE47F8100CC5253 /* NLImageCropperView.m in Sources */,
 				677971971BC438E900110C8B /* InstagramLoginVC.swift in Sources */,
+				672E90C51BE4B57800EF4112 /* CropItVC.swift in Sources */,
 				674B71AB1BCE35BB00B8FC2A /* RegisterTB.swift in Sources */,
 				678890B81BCBB5240071DA50 /* MenuCell.swift in Sources */,
 				67D2EF641BD5499E00742823 /* FacebookLoginVC.swift in Sources */,
@@ -1049,7 +1085,6 @@
 				677971931BC435EE00110C8B /* BaseNC.swift in Sources */,
 				677971861BC429BA00110C8B /* IKLoginViewController.m in Sources */,
 				67121A041BCEBFA500CAC506 /* ResetPasswordTB.swift in Sources */,
-				67C1A60D1BD236DB007BECA3 /* UIImage+PECrop.m in Sources */,
 				67CE024D1BDA9660002007D8 /* InstagramTag.m in Sources */,
 				67CE024B1BDA9660002007D8 /* InstagramModel.m in Sources */,
 				67E223FA1BDCC1FC001921F8 /* PreviewVC.swift in Sources */,

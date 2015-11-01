@@ -74,19 +74,14 @@ PODS:
     - FBSDKCoreKit/arc
   - FBSDKLoginKit (4.6.0):
     - FBSDKCoreKit
-  - InstagramKit (3.6.9):
-    - AFNetworking (~> 2.0)
-    - InstagramKit/Exclude-UICKeyChainStore (= 3.6.9)
-  - InstagramKit/Exclude-UICKeyChainStore (3.6.9):
-    - AFNetworking (~> 2.0)
   - InstagramKit/UICKeyChainStore (3.6.9):
     - AFNetworking (~> 2.0)
     - UICKeyChainStore (~> 2.0)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
-  - SwiftyJSON (2.3.0)
-  - UICKeyChainStore (2.0.7)
+  - SwiftyJSON (2.3.1)
+  - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -95,7 +90,6 @@ DEPENDENCIES:
   - Braintree
   - FacebookImagePicker
   - FBSDKLoginKit
-  - InstagramKit
   - InstagramKit/UICKeyChainStore
   - SDWebImage (~> 3.7.2)
   - SwiftyJSON
@@ -111,7 +105,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 3d07febbfa884b9878cacba54f705bb41f07d4b6
   InstagramKit: 1f937c5c4b8469fd00a31e235d5e7d3e256ffe5d
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
-  SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
-  UICKeyChainStore: 696cd35083f7c8fb5e201d909b7e6aea6b478575
+  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
 COCOAPODS: 0.39.0
