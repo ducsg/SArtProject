@@ -59,4 +59,22 @@ public class Util: NSObject {
         UIGraphicsEndImageContext() // !!!
         return scaledImage
     }
+    
+    //get width device
+    func getScreenWidth() -> Float{
+        let bounds = UIScreen.mainScreen().bounds
+        let width = bounds.size.width
+        return Float(width)
+    }
+    
+    //get height device
+    func getScreenHeight() -> Float{
+        let bounds = UIScreen.mainScreen().bounds
+        let height = bounds.size.height
+        return Float(height)
+    }
+    
+    func getViewWidth(view:UIView) -> Float{
+        return Float(view.frame.size.width)
+    }
 }

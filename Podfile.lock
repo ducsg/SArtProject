@@ -20,7 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Alamofire (3.1.0)
+  - Alamofire (3.1.1)
   - AlamofireImage (2.1.0):
     - Alamofire (~> 3.1)
   - Bolts (1.4.0):
@@ -96,7 +96,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
-  Alamofire: 415bd7f56197722978759078486689f7ef913dce
+  Alamofire: 9b0a7188b961a03914a99304488bd226b0e46c0e
   AlamofireImage: 97e00995920d85b5cb23ee4c3b7f92605f5dc74b
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
   Braintree: 74f0bd85743c2227147c361cc2c5c9aefe083ae8

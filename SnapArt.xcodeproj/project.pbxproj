@@ -121,6 +121,8 @@
 		67F01EDD1BE47F8100CC5253 /* NLImageCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F01EDB1BE47F8100CC5253 /* NLImageCropperView.m */; settings = {ASSET_TAGS = (); }; };
 		67F01EDF1BE4836800CC5253 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F01EDE1BE4836800CC5253 /* AudioToolbox.framework */; };
 		67F01EE11BE493B500CC5253 /* ExtensionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */; settings = {ASSET_TAGS = (); }; };
+		AFE2A8521BE61A48000E9AB2 /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2A84F1BE61A48000E9AB2 /* MGSwipeButton.m */; settings = {ASSET_TAGS = (); }; };
+		AFE2A8531BE61A48000E9AB2 /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2A8511BE61A48000E9AB2 /* MGSwipeTableCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,6 +303,10 @@
 		67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionUIImage.swift; path = lib/Extensions/ExtensionUIImage.swift; sourceTree = "<group>"; };
 		7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A67331CD2A027D31872D102 /* Pods-SnapArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapArt/Pods-SnapArt.release.xcconfig"; sourceTree = "<group>"; };
+		AFE2A84E1BE61A48000E9AB2 /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSwipeButton.h; path = lib/MGSwipeTableCell/MGSwipeButton.h; sourceTree = "<group>"; };
+		AFE2A84F1BE61A48000E9AB2 /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSwipeButton.m; path = lib/MGSwipeTableCell/MGSwipeButton.m; sourceTree = "<group>"; };
+		AFE2A8501BE61A48000E9AB2 /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSwipeTableCell.h; path = lib/MGSwipeTableCell/MGSwipeTableCell.h; sourceTree = "<group>"; };
+		AFE2A8511BE61A48000E9AB2 /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSwipeTableCell.m; path = lib/MGSwipeTableCell/MGSwipeTableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -589,6 +595,7 @@
 		6779714D1BC41CA300110C8B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				AFE2A84D1BE61A3C000E9AB2 /* MGSwipeTableCell */,
 				67B8DEF21BD96D22001CB1A3 /* CardIO */,
 				67121A101BD09CC700CAC506 /* GMDCircleLoader */,
 				671219FC1BCEBCBD00CAC506 /* ObjectiveC */,
@@ -841,6 +848,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AFE2A84D1BE61A3C000E9AB2 /* MGSwipeTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				AFE2A84E1BE61A48000E9AB2 /* MGSwipeButton.h */,
+				AFE2A84F1BE61A48000E9AB2 /* MGSwipeButton.m */,
+				AFE2A8501BE61A48000E9AB2 /* MGSwipeTableCell.h */,
+				AFE2A8511BE61A48000E9AB2 /* MGSwipeTableCell.m */,
+			);
+			name = MGSwipeTableCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1017,6 +1035,7 @@
 				67CE024C1BDA9660002007D8 /* InstagramPaginationInfo.m in Sources */,
 				67F01EDC1BE47F8100CC5253 /* NLCropViewLayer.m in Sources */,
 				677971901BC4325100110C8B /* InstagramCollectionView.swift in Sources */,
+				AFE2A8521BE61A48000E9AB2 /* MGSwipeButton.m in Sources */,
 				672E90BD1BE4B20700EF4112 /* InputSizeView.swift in Sources */,
 				6797C1D11BD394C600F2EB79 /* ActionSheetDistancePicker.m in Sources */,
 				67566A501BCB5DE300EDE907 /* Constants.swift in Sources */,
@@ -1077,6 +1096,7 @@
 				677971871BC429BA00110C8B /* IKMediaViewController.m in Sources */,
 				67F01EDD1BE47F8100CC5253 /* NLImageCropperView.m in Sources */,
 				677971971BC438E900110C8B /* InstagramLoginVC.swift in Sources */,
+				AFE2A8531BE61A48000E9AB2 /* MGSwipeTableCell.m in Sources */,
 				672E90C51BE4B57800EF4112 /* CropItVC.swift in Sources */,
 				674B71AB1BCE35BB00B8FC2A /* RegisterTB.swift in Sources */,
 				678890B81BCBB5240071DA50 /* MenuCell.swift in Sources */,

@@ -17,3 +17,4 @@
 //#import <OLFacebookImagePickerController.h>
 //#import <FacebookSDK/FacebookSDK.h>
 #import "CardIO.h"
+#import "MGSwipeTableCell.h"

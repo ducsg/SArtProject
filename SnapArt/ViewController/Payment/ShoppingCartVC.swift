@@ -10,6 +10,16 @@ import UIKit
 import SwiftyJSON
 
 class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDelegate {
+    //label title
+    @IBOutlet weak var lbQuanlity: CustomLabelGotham!
+    
+    @IBOutlet weak var lbPreview: CustomLabelGotham!
+    
+    @IBOutlet weak var lbItem: CustomLabelGotham!
+    
+    @IBOutlet weak var lbPrice: CustomLabelGotham!
+    
+    
     
     @IBOutlet weak var tbOrder: UITableView!
     var listCart: [Cart] = [Cart]()
@@ -18,6 +28,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         getListCart()
         // Do any additional setup after loading the view.
         self.applyBackIcon()
+        self.automaticallyAdjustsScrollViewInsets = false
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        setFrameForTitleTable()
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
@@ -39,11 +54,27 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         let cell:ShoppingCartTBC = ShoppingCartTBC.instanceFromNib()
         let cart: Cart = listCart[indexPath.row]
         cell.initCell(cart)
-        let  buton = UIButton()
-        buton.tag = indexPath.row
-        buton.addTarget(self, action: "Event:", forControlEvents: UIControlEvents.TouchUpInside)
-        
+        cell.btnPlus.tag = indexPath.row
+        cell.btnSubtract.tag = indexPath.row
+        cell.btnPlus.addTarget(self, action: "pressBtnPlus:", forControlEvents: UIControlEvents.TouchUpInside)
+        cell.btnSubtract.addTarget(self, action: "pressBtnSubtract:", forControlEvents: UIControlEvents.TouchUpInside)
         return cell
+    }
+    
+    func pressBtnPlus(sender: UIButton){
+        let btnPlus = sender as! UIButton
+        let index = Int(btnPlus.tag)
+        listCart[index].quanlity = listCart[index].quanlity + 1
+        self.tbOrder.reloadData()
+        print(listCart[index].quanlity)
+    }
+    
+    func pressBtnSubtract(sender: UIButton){
+        let btnSubtract = sender as! UIButton
+        let index = Int(btnSubtract.tag)
+        listCart[index].quanlity = (listCart[index].quanlity - 1) < 1 ? 1 : listCart[index].quanlity - 1
+        self.tbOrder.reloadData()
+        print(listCart[index].quanlity)
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -73,6 +104,26 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         })
     }
     
+    
+    func setFrameForTitleTable(){
+        let screenWidth = Util().getScreenWidth()
+        //set position for quanlity label
+        var rectQuanlity = lbQuanlity.frame
+        rectQuanlity.origin.x = 15
+        lbQuanlity.frame = rectQuanlity
+        //set position for preview label
+        var rectPreview = lbPreview.frame
+        rectPreview.origin.x = CGFloat(screenWidth/10 * 2)
+        lbPreview.frame = rectPreview
+        //set item label
+        var rectItem = lbItem.frame
+        rectItem.origin.x = CGFloat(screenWidth/10 * 6)
+        lbItem.frame = rectItem
+        //set position for price
+        var rectPrice = lbPrice.frame
+        rectPrice.origin.x = CGFloat(screenWidth/10 * 8)
+        lbPrice.frame = rectPrice
+    }
     
     /*
     // MARK: - Navigation

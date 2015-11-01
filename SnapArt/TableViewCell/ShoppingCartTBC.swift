@@ -19,6 +19,10 @@ class ShoppingCartTBC: UITableViewCell {
     
     @IBOutlet weak var lbPrice: CustomLabelGotham!
     
+    @IBOutlet weak var btnPlus: UIButton!
+    
+    @IBOutlet weak var btnSubtract: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,13 +35,36 @@ class ShoppingCartTBC: UITableViewCell {
     }
     
     internal func initCell(cart: Cart = Cart()){
+        self.tfQuanlity.text = "\(cart.quanlity)"
+        self.tfQuanlity.textAlignment = .Center
         self.wvFrame.loadRequest(NSURLRequest(URL: NSURL(string: cart.frameUrl)!))
         self.lbItem.text = cart.item
-        self.lbPrice.text = String(cart.price)
+        self.lbPrice.text = "$\(cart.price)"
+        setFrameLayoutForCell()
     }
     
     static func instanceFromNib() -> ShoppingCartTBC {
         return UINib(nibName: "ShoppingCartTBC", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! ShoppingCartTBC
+    }
+    
+    func setFrameLayoutForCell(){
+        let screenWidth = Util().getScreenWidth()
+        //set position for quanlity label
+        var rectQuanlity = tfQuanlity.frame
+        rectQuanlity.origin.x = 20
+        tfQuanlity.frame = rectQuanlity
+        //set position for preview label
+        var rectPreview = wvFrame.frame
+        rectPreview.origin.x = CGFloat(screenWidth/10 * 2)
+        wvFrame.frame = rectPreview
+        //set item label
+        var rectItem = lbItem.frame
+        rectItem.origin.x = CGFloat(screenWidth/10 * 6)
+        lbItem.frame = rectItem
+        //set position for price
+        var rectPrice = lbPrice.frame
+        rectPrice.origin.x = CGFloat(screenWidth/10 * 8)
+        lbPrice.frame = rectPrice
     }
 
 }

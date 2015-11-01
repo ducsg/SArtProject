@@ -7,12 +7,12 @@
 //
 
 public class Cart{
-    var quanlity: Int = 0
+    var quanlity: Int = 1
     var frameUrl: String = ""
     var item: String = "Canvas"
     var price: Float = 0
     
-    init(quanlity: Int = 0, frameUrl: String = "", item:String = "Canvas", price: Float = 0){
+    init(quanlity: Int = 1, frameUrl: String = "", item:String = "Canvas", price: Float = 0){
         self.quanlity = quanlity
         self.frameUrl = frameUrl
         self.item = item
