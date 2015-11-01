@@ -19,9 +19,14 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var lbPrice: CustomLabelGotham!
     
-    
-    
     @IBOutlet weak var tbOrder: UITableView!
+    
+    @IBOutlet weak var lbSubTotal: CustomLabelGotham!
+    
+    @IBOutlet weak var lbTotalCost: CustomLabelGothamBold!
+    
+    private let shoppingCost:Float = 0.99
+    
     var listCart: [Cart] = [Cart]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +34,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         // Do any additional setup after loading the view.
         self.applyBackIcon()
         self.automaticallyAdjustsScrollViewInsets = false
+        self.tbOrder.allowsSelection = false
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -58,6 +64,21 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         cell.btnSubtract.tag = indexPath.row
         cell.btnPlus.addTarget(self, action: "pressBtnPlus:", forControlEvents: UIControlEvents.TouchUpInside)
         cell.btnSubtract.addTarget(self, action: "pressBtnSubtract:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        //configure right buttons
+        var btnDelete = MGSwipeButton(title: "", icon: UIImage (named:"ic_delete"), backgroundColor: UIColor.redColor(), callback: {
+            (sender: MGSwipeTableCell!) -> Bool in
+            let indexRow:Int = self.tbOrder.indexPathForCell(sender)!.row
+            self.listCart.removeAtIndex(indexRow)
+            self.tbOrder.reloadData()
+            self.resetCost()
+            return true
+        })
+        btnDelete.tag = indexPath.row
+        print(btnDelete.tag)
+        cell.rightButtons = [btnDelete]
+        cell.rightSwipeSettings.transition = MGSwipeTransition.Static
+        
         return cell
     }
     
@@ -66,7 +87,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         let index = Int(btnPlus.tag)
         listCart[index].quanlity = listCart[index].quanlity + 1
         self.tbOrder.reloadData()
-        print(listCart[index].quanlity)
+        self.resetCost()
     }
     
     func pressBtnSubtract(sender: UIButton){
@@ -74,36 +95,48 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         let index = Int(btnSubtract.tag)
         listCart[index].quanlity = (listCart[index].quanlity - 1) < 1 ? 1 : listCart[index].quanlity - 1
         self.tbOrder.reloadData()
-        print(listCart[index].quanlity)
+        self.resetCost()
     }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-//            arrYears.removeObjectAtIndex(indexPath.row)
-//            tableView.reloadData()
-        }
-    }
+
     func Event(sender:AnyObject!) -> Void  {
         let button = sender as! UIButton
-        
     }
 
     private func getListCart(){
         let api = Api()
         let parentView:UIView! = self.navigationController?.view
         api.initWaiting(parentView)
-        api.execute(.POST, url: "", parameters: [APIKEY.ACCOUNT_ID: MemoryStoreData().getInt(APIKEY.ACCOUNT_ID)], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
-            self.listCart.append(Cart(frameUrl: "http://192.168.1.158:8080/trycode/css3/bbb.html", item: "Canvas 1", price: 6.9))
-            self.listCart.append(Cart(frameUrl: "http://192.168.1.158:8080/trycode/css3/bbb.html", item: "Canvas 2", price: 6.9))
-            self.listCart.append(Cart(frameUrl: "http://192.168.1.158:8080/trycode/css3/bbb.html", item: "Canvas 3", price: 10.98))
-            self.tbOrder.reloadData()
+        api.execute(.GET, url: ApiUrl.my_orders_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            if(dataResult.success){
+                print(dataResult.data)
+                
+                for i in 0...dataResult.data.count-1 {
+                    let cart = Cart(frameUrl: dataResult.data[i]["link_picture"].stringValue, item: dataResult.data[i]["material"].stringValue, price: dataResult.data[i]["cost"].numberValue.floatValue)
+                    self.listCart.append(cart)
+                    self.tbOrder.reloadData()
+                    self.resetCost()
+                }
+                
+            }else{
+                Util().showAlert(dataResult.message, parrent: self)
+            }
+            
         })
     }
     
+    func resetCost(){
+        let subTotal = self.getSubTotal()
+        self.lbSubTotal.text = "$\(subTotal)"
+        self.lbTotalCost.text = "$\(subTotal + self.shoppingCost)"
+    }
+    
+    func getSubTotal() -> Float{
+        var subTotal:Float = 0
+        for i in 0...listCart.count-1 {
+            subTotal = subTotal + listCart[i].price * Float(listCart[i].quanlity)
+        }
+        return subTotal
+    }
     
     func setFrameForTitleTable(){
         let screenWidth = Util().getScreenWidth()

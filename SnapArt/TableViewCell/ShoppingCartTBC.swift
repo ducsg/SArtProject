@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingCartTBC: UITableViewCell {
+class ShoppingCartTBC: MGSwipeTableCell {
 
     
     @IBOutlet weak var tfQuanlity: UITextField!

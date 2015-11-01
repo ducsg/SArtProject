@@ -18,3 +18,4 @@
 //#import <FacebookSDK/FacebookSDK.h>
 #import "CardIO.h"
 #import "MGSwipeTableCell.h"
+#import "MGSwipeButton.h"

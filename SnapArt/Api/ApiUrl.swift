@@ -30,4 +30,7 @@ public class ApiUrl{
     static let how_it_work_url:String = base_url + "/howitworks"
     static let faq_url:String = base_url + "/faqs"
     static let our_story_url:String = base_url + "/ourstories"
+    
+    //shopping cart
+    static let my_orders_url:String = base_url + "/api/orders/get_my_orders"
 }
