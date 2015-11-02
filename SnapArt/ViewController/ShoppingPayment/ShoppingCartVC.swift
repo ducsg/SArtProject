@@ -112,15 +112,14 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         api.initWaiting(parentView)
         api.execute(.GET, url: ApiUrl.my_orders_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
-                print(dataResult.data)
-                
-                for i in 0...dataResult.data.count-1 {
+                if(dataResult.data.count > 0){
+                    for i in 0...dataResult.data.count-1 {
                     let cart = Cart(frameUrl: dataResult.data[i]["link_picture"].stringValue, item: dataResult.data[i]["material"].stringValue, price: dataResult.data[i]["cost"].numberValue.floatValue)
                     self.listCart.append(cart)
                     self.tbOrder.reloadData()
-                    self.resetCost()
+                    }
                 }
-                
+                self.resetCost()
             }else{
                 Util().showAlert(dataResult.message, parrent: self)
             }
@@ -137,8 +136,10 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     func getSubTotal() -> Float{
         var subTotal:Float = 0
-        for i in 0...listCart.count-1 {
+        if(listCart.count > 0){
+            for i in 0...listCart.count-1 {
             subTotal = subTotal + listCart[i].price * Float(listCart[i].quanlity)
+            }
         }
         return subTotal
     }

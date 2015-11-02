@@ -16,6 +16,7 @@ class PromoCodeVC: ViewController {
     @IBOutlet weak var lbError: UILabel!
     
     let errorText = "Promo Code Not Valid"
+    var countryCode = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class PromoCodeVC: ViewController {
         let tapDismiss = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tapDismiss)
         lbError.textColor = SA_STYPE.BORDER_TEXTFIELD_COLOR
+        countryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
     }
 
     func dismissKeyboard(){
@@ -47,7 +49,7 @@ class PromoCodeVC: ViewController {
         let api = Api()
                 let parentView:UIView! = self.navigationController?.view
                 api.initWaiting(parentView)
-        api.execute(.GET, url: ApiUrl.get_message_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+        api.execute(.POST, url: ApiUrl.get_message_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
                 ShoppingCartVC.discount = (dataResult.data.numberValue.floatValue)
             }else{

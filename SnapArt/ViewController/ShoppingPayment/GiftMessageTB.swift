@@ -40,7 +40,7 @@ class GiftMessageTB: CustomTableViewController, UITextViewDelegate {
         //        api.initWaiting(parentView)
         api.execute(.GET, url: ApiUrl.get_message_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
-                self.messageId = (dataResult.data["id"].number?.integerValue)!
+                self.messageId = (dataResult.data["id"].numberValue.integerValue)
                 self.message = dataResult.data["content"].stringValue
                 if(self.message.characters.count != 0){
                     self.tvMessage.text = dataResult.data["content"].stringValue
