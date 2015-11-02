@@ -34,4 +34,8 @@ struct MESSAGES{
         static let NEW_PASSWORD_EMPTY = "Confirm New Password can't be blank."
         static let COMPARE_FORGOT_PASSWORD = "Confirm New Password and Password don’t match"
     }
+    
+    struct SHOPPING {
+        static let SHOPPING_QUESTION = "For an extra $0.99, your art is wrapped in high - quality gift wrap before being securely packaged for delivery."
+    }
 }

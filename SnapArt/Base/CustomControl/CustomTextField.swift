@@ -27,7 +27,7 @@ class CustomTextField: UITextField {
         self.font = SA_STYPE.FONT_GOTHAM
         self.backgroundColor = SA_STYPE.BACKGROUND_TF_COLOR
         self.layer.borderColor = SA_STYPE.BORDER_TEXTFIELD_COLOR.CGColor
-        self.layer.borderWidth = 0.5
+        self.layer.borderWidth = 1;
     }
 
     @IBInspectable var padding_left: CGFloat {

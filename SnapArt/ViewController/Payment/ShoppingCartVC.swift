@@ -158,6 +158,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         lbPrice.frame = rectPrice
     }
     
+    @IBAction func pressBtnShoppingQuestion(sender: AnyObject) {
+        Util().showAlert(MESSAGES.SHOPPING.SHOPPING_QUESTION, parrent: self)
+    }
+    
+    
     /*
     // MARK: - Navigation
 
