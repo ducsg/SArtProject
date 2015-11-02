@@ -40,12 +40,13 @@ public class Api{
                     return
                 }
                 let json: JSON = JSON(response.result.value!)
-                if json[self.KEY_STATUS] == 200 {
-                    resulf(true, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
+                if json[self.KEY_STATUS].numberValue == 200 {
+                    resulf(true, json[self.KEY_MESSAGE].stringValue, json[self.KEY_DATA])
                 }
-                if json[self.KEY_STATUS] == 500 {
-                    resulf(false, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
+                if json[self.KEY_STATUS].numberValue == 500 {
+                    resulf(false, json[self.KEY_MESSAGE].stringValue, json[self.KEY_DATA])
                 }
+                print(json[self.KEY_DATA])
             }
         }else if(method == .POST){
             self.alamoFireManager!.request(.POST, url, parameters: parameters, headers: headers).responseJSON { response in
@@ -55,13 +56,13 @@ public class Api{
                     return
                 }
                 let json: JSON = JSON(response.result.value!)
-                if json[self.KEY_STATUS] == 200 {
-                    resulf(true, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
+                if json[self.KEY_STATUS].numberValue == 200 {
+                    resulf(true, json[self.KEY_MESSAGE].stringValue, json[self.KEY_DATA])
                 }
-                if json[self.KEY_STATUS] == 500 {
-                    resulf(false, json[self.KEY_MESSAGE].string!, json[self.KEY_DATA])
+                if json[self.KEY_STATUS].numberValue == 500 {
+                    resulf(false, json[self.KEY_MESSAGE].stringValue, json[self.KEY_DATA])
                 }
-                
+                print(json[self.KEY_DATA])
             }
         }
         

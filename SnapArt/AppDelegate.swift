@@ -12,7 +12,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import SwiftyJSON
 import FBSDKShareKit
-import InstagramKit
+//import InstagramKit
 
 
 @UIApplicationMain

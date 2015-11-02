@@ -33,4 +33,7 @@ public class ApiUrl{
     
     //shopping cart
     static let my_orders_url:String = base_url + "/api/orders/get_my_orders"
+    static let get_message_url:String = base_url + "/api/messages/get_message"
+    static let save_message_url:String = base_url + "/api/messages/update_messages"
+
 }

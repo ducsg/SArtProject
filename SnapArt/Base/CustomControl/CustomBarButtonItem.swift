@@ -11,6 +11,6 @@ import UIKit
 class CustomBarButtonItem: UIBarButtonItem {
     override func awakeFromNib() {
         self.tintColor = SA_STYPE.TEXT_LABEL_COLOR
-        self.setTitleTextAttributes([ NSFontAttributeName: SA_STYPE.FONT_GOTHAM], forState: UIControlState.Normal)
+//        self.setTitleTextAttributes([ NSFontAttributeName: SA_STYPE.FONT_GOTHAM], forState: UIControlState.Normal)
     }
 }
