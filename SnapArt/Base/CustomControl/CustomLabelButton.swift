@@ -21,3 +21,17 @@ public class CustomLabelButton: UIButton {
     }
     
 }
+
+public class CustomLabelButtonGotham: UIButton {
+    
+    override public func awakeFromNib() {
+        setStyle()
+    }
+    
+    func setStyle() -> Void {
+        self.backgroundColor = SA_STYPE.BACKGROUND_LABEL_COLOR
+        self.titleLabel?.font = SA_STYPE.FONT_GOTHAM
+        self.setTitleColor(SA_STYPE.TEXT_LABEL_COLOR, forState: UIControlState.Normal)
+    }
+    
+}

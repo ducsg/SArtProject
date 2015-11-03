@@ -113,12 +113,11 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         switch indexPath.row {
         case 0:
             //Make Art
-            
+            gotoMakeArt()
             print("case \(indexPath.row)", terminator: ""); break
         case 1:
             //Notifications
-            let nv = Util().getControllerForStoryBoard("NotificationNC") as! CustomNavigationController
-            self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+            gotoNotifications()
             print("case", terminator: ""); break
         case 2:
             //My account
@@ -147,6 +146,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     func selectMenuBeforeLogin(indexPath: NSIndexPath) -> Void  {
         switch indexPath.row {
         case 0:
+            gotoMakeArt()
             print("case", terminator: ""); break
         case 1:
             //AboutlUs
@@ -208,6 +208,16 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         WebviewDetailsVC.title = "FAQs"
         WebviewDetailsVC.url = ApiUrl.faq_url
         let nv = Util().getControllerForStoryBoard("WebviewDetailsNC") as! CustomNavigationController
+        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+    }
+    
+    func gotoMakeArt(){
+        let nv = Util().getControllerForStoryBoard("UploadViewVC") as! CustomNavigationController
+        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+    }
+    
+    func gotoNotifications(){
+        let nv = Util().getControllerForStoryBoard("NotificationNC") as! CustomNavigationController
         self.navigationController?.presentViewController(nv, animated: true, completion: nil)
     }
  

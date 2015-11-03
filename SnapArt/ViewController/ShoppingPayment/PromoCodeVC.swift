@@ -46,14 +46,23 @@ class PromoCodeVC: ViewController {
     }
     
     func applyPromoCode(){
+        let param = ["code" : tfCode.text!, "country_code" : countryCode]
         let api = Api()
                 let parentView:UIView! = self.navigationController?.view
                 api.initWaiting(parentView)
-        api.execute(.POST, url: ApiUrl.get_message_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+        api.execute(.GET, url: ApiUrl.get_discount_promo_code, parameters: param, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            print(param)
             if(dataResult.success){
-                ShoppingCartVC.discount = (dataResult.data.numberValue.floatValue)
+                ShoppingCartVC.discount = dataResult.data["sale_off"].numberValue.floatValue
+                print(ShoppingCartVC.discount)
+                if(ShoppingCartVC.discount == 0){
+                    self.lbError.text = self.errorText
+                }else{
+                    NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.RESET_COST, object: nil)
+                    self.pressbtnCancel("")
+                }
             }else{
-                self.lbError.text = self.errorText
+                self.pressbtnCancel("")
             }
         })
     }

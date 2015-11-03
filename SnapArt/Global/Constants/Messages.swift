@@ -14,7 +14,7 @@ struct MESSAGES{
     struct NOTIFY {
         static let LOGIN_SUCCESS = "LoginSuccess"
         static let REMOVE_LAUNCH_SCREEN = "LaunchScreen"
-
+        static let RESET_COST = "ResetCost"
     }
     
     struct COMMON{

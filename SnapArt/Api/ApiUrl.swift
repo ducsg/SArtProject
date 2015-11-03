@@ -35,5 +35,6 @@ public class ApiUrl{
     static let my_orders_url:String = base_url + "/api/orders/get_my_orders"
     static let get_message_url:String = base_url + "/api/messages/get_message"
     static let save_message_url:String = base_url + "/api/messages/update_messages"
+    static let get_discount_promo_code:String = base_url + "/api/promotions/get_discount_promotion"
 
 }

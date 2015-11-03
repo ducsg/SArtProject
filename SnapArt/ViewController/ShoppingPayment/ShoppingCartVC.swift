@@ -39,6 +39,8 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         self.applyBackIcon()
         self.automaticallyAdjustsScrollViewInsets = false
         self.tbOrder.allowsSelection = false
+        ShoppingCartVC.discount = 0
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetCost:", name:MESSAGES.NOTIFY.RESET_COST, object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -79,6 +81,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
             return true
         })
         btnDelete.tag = indexPath.row
+        btnDelete.setPadding(30)
         print(btnDelete.tag)
         cell.rightButtons = [btnDelete]
         cell.rightSwipeSettings.transition = MGSwipeTransition.Static
@@ -127,12 +130,14 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         })
     }
     
-    func resetCost(){
+    func resetCost(sender:AnyObject = "") -> Void{
         let subTotal = self.getSubTotal()
         self.lbSubTotal.text = "$\(subTotal)"
-        ShoppingCartVC.totalCost = subTotal + self.shoppingCost - ShoppingCartVC.discount
+        ShoppingCartVC.totalCost = subTotal + self.shoppingCost - Float(subTotal*ShoppingCartVC.discount/100)
         self.lbTotalCost.text = "$\(ShoppingCartVC.totalCost)"
+        setFrameForTitleTable()
     }
+
     
     func getSubTotal() -> Float{
         var subTotal:Float = 0
@@ -166,6 +171,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func pressBtnShoppingQuestion(sender: AnyObject) {
         Util().showAlert(MESSAGES.SHOPPING.SHOPPING_QUESTION, parrent: self)
+    }
+    
+    @IBAction func pressBtnAddAnotherFrame(sender: AnyObject) {
+        let nv = Util().getControllerForStoryBoard("UploadViewVC") as! CustomNavigationController
+        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
     }
     
     
