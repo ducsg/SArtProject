@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WebviewDetailsVC: CustomViewController {
+class WebviewDetailsVC: CustomViewController, UIWebViewDelegate {
     public static var title:String = "Webview Details"
     public static var url:String = "http://snapart.strikingly.com/"
 
@@ -21,6 +21,8 @@ class WebviewDetailsVC: CustomViewController {
         self.wvDetail.loadRequest(NSURLRequest(URL: NSURL(string: WebviewDetailsVC.url)!))
         // Do any additional setup after loading the view.
         self.applyBackIcon()
+        
+        self.wvDetail.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,5 +32,17 @@ class WebviewDetailsVC: CustomViewController {
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func webViewDidStartLoad(webView: UIWebView){
+        
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView){
+        
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?){
+        
     }
 }

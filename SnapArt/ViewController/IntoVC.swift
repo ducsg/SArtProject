@@ -34,8 +34,10 @@ class IntoVC: CustomViewController,UIPageViewControllerDataSource {
     }
     
     @IBAction func mailFrameTap(sender: AnyObject) {
-        let vc:UpLoadPreviewVC = self.storyboard?.instantiateViewControllerWithIdentifier("UploadViewVC") as! UpLoadPreviewVC
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc:UpLoadPreviewVC = self.storyboard?.instantiateViewControllerWithIdentifier("UploadViewVC") as! UpLoadPreviewVC
+//        self.navigationController?.pushViewController(vc, animated: true)
+        let nv = Util().getControllerForStoryBoard("UploadViewVC") as! CustomNavigationController
+        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

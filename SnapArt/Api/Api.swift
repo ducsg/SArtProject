@@ -46,13 +46,12 @@ public class Api{
                 if json[self.KEY_STATUS].numberValue == 500 {
                     resulf(false, json[self.KEY_MESSAGE].stringValue, json[self.KEY_DATA])
                 }
-                print(json[self.KEY_DATA])
             }
         }else if(method == .POST){
             self.alamoFireManager!.request(.POST, url, parameters: parameters, headers: headers).responseJSON { response in
                 self.closeWaiting()
                 if(response.result.value == nil){
-                    resulf(false, MESSAGES.COMMON.API_EXCEPTION, JSON(""))
+                    resulf(false, MESSAGES.COMMON.NOT_INTERNET, JSON(""))
                     return
                 }
                 let json: JSON = JSON(response.result.value!)
@@ -62,7 +61,6 @@ public class Api{
                 if json[self.KEY_STATUS].numberValue == 500 {
                     resulf(false, json[self.KEY_MESSAGE].stringValue, json[self.KEY_DATA])
                 }
-                print(json[self.KEY_DATA])
             }
         }
         
