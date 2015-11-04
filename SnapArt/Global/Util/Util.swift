@@ -77,4 +77,8 @@ public class Util: NSObject {
     func getViewWidth(view:UIView) -> Float{
         return Float(view.frame.size.width)
     }
+    
+    func getCountryCode() -> String{
+        return NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
+    }
 }

@@ -24,7 +24,6 @@ class PromoCodeVC: ViewController {
         let tapDismiss = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tapDismiss)
         lbError.textColor = SA_STYPE.BORDER_TEXTFIELD_COLOR
-        countryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
     }
 
     func dismissKeyboard(){
@@ -46,7 +45,7 @@ class PromoCodeVC: ViewController {
     }
     
     func applyPromoCode(){
-        let param = ["code" : tfCode.text!, "country_code" : countryCode]
+        let param = ["code" : tfCode.text!, "country_code" : Util().getCountryCode()]
         let api = Api()
                 let parentView:UIView! = self.navigationController?.view
                 api.initWaiting(parentView)

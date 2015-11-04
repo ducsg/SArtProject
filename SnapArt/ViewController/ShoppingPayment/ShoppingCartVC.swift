@@ -25,7 +25,10 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var lbTotalCost: CustomLabelGothamBold!
     
-    private let shoppingCost:Float = 0.99
+    @IBOutlet weak var lbDiscount: CustomLabelGotham!
+    
+    
+    private var shoppingCost:Float = 0.99
     
     static var discount:Float = 0
     
@@ -44,6 +47,10 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewDidAppear(animated: Bool) {
+        if(Util().getCountryCode() == "US"){
+            shoppingCost = 0
+            lbDiscount.text = "FREE"
+        }
         setFrameForTitleTable()
     }
     
