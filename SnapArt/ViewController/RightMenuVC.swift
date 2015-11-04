@@ -198,6 +198,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
                 self.loginFlag = false
                 self.tableView.reloadData()
                 MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: false)
+                MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
             }else{
                 Util().showAlert(dataResult.message, parrent: self)
             }

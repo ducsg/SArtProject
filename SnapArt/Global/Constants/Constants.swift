@@ -24,13 +24,15 @@ struct SocialNetworkUrl {
 }
 
 enum SocialNetwork {
-    case Facebook, GooglePlus, Twitter, Instagram
+    case Facebook, GooglePlus, Twitter, Instagram, Pinterest
     func url() -> SocialNetworkUrl {
         switch self {
-        case .Facebook: return SocialNetworkUrl(scheme: "fb://profile/PageId", page: ApiUrl.like_fb_url)
-        case .Twitter: return SocialNetworkUrl(scheme: "twitter:///user?screen_name=USERNAME", page: "https://twitter.com/USERNAME")
+        case .Facebook: return SocialNetworkUrl(scheme: "fb://profile/getsnapart", page: ApiUrl.like_fb_url)
+        case .Twitter: return SocialNetworkUrl(scheme: "twitter:///user?screen_name=getsnapart", page: "https://twitter.com/USERNAME")
         case .GooglePlus: return SocialNetworkUrl(scheme: "gplus://plus.google.com/u/0/PageId", page: "https://plus.google.com/PageId")
-        case .Instagram: return SocialNetworkUrl(scheme: "instagram://user?username=USERNAME", page: ApiUrl.follow_in_url)
+        case .Instagram: return SocialNetworkUrl(scheme: "instagram://user?username=getsnapart", page: ApiUrl.follow_in_url)
+        case .Pinterest: return SocialNetworkUrl(scheme: "pinit12://pinterest.com/getsnapart", page: ApiUrl.follow_pin_url)
+
         }
     }
     func openPage() {

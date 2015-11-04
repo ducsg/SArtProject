@@ -47,10 +47,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewDidAppear(animated: Bool) {
-        if(Util().getCountryCode() == "US"){
-            shoppingCost = 0
-            lbDiscount.text = "FREE"
-        }
+        super.viewWillAppear(true)
+//        if(Util().getCountryCode() == "US"){
+//            shoppingCost = 0
+//            lbDiscount.text = "FREE"
+//        }
         setFrameForTitleTable()
     }
     
@@ -144,7 +145,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         self.lbTotalCost.text = "$\(ShoppingCartVC.totalCost)"
         setFrameForTitleTable()
     }
-
+    
     
     func getSubTotal() -> Float{
         var subTotal:Float = 0
@@ -182,6 +183,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func pressBtnAddAnotherFrame(sender: AnyObject) {
         let nv = Util().getControllerForStoryBoard("UploadViewVC") as! CustomNavigationController
+        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+    }
+    
+    @IBAction func pressBtnCheckOut(sender: AnyObject) {
+        let nv = Util().getControllerForStoryBoard("PaymentVC") as! CustomNavigationController
         self.navigationController?.presentViewController(nv, animated: true, completion: nil)
     }
     

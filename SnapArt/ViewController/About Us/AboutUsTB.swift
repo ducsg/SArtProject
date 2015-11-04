@@ -11,7 +11,7 @@ import UIKit
 class AboutUsTB: CustomTableViewController{
 
     @IBOutlet weak var btnCancel: CustomBarButtonItem!
-    private var aboutList = ["Our Story","How It Works","Like Us","Follow us","Rate Us"]
+    private var aboutList = ["Our Story","How It Works","Like Us","Follow us","Follow Pinterest","Rate Us"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelection = true
@@ -84,7 +84,10 @@ class AboutUsTB: CustomTableViewController{
         case 3: //Follow us
             SocialNetwork.Instagram.openPage()
             break
-        case 4: //Rate us
+        case 4: //Follow Pinterest us
+            SocialNetwork.Pinterest.openPage()
+            break
+        case 5: //Rate us
             
             break
         default: break

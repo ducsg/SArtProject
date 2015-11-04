@@ -51,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate   {
                     Util().showAlert(dataResult.message, parrent: self)
                 }
             })
+        }else{
+            MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
         }
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

@@ -20,6 +20,7 @@ public class SignInVC: CustomTableViewController {
     @IBOutlet weak var btnForgotPwd: CustomButton!
     private var email:String = ""
     private var pwd:String = ""
+    public static var loginForCheckout = false
     
     override public func viewDidLoad() {
         self.btnForgotPwd.addUnderLine()
@@ -35,7 +36,6 @@ public class SignInVC: CustomTableViewController {
             api.initWaiting(parentView)
             api.execute(ApiMethod.POST, url: ApiUrl.signin_url, parameters: [APIKEY.EMAIL:email, APIKEY.PWD:pwd], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
-                    self.loginSuccess()
                     //store access token and account id
                     MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)
                     MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
@@ -43,7 +43,7 @@ public class SignInVC: CustomTableViewController {
                     MemoryStoreData().setValue(MemoryStoreData.user_email, value: self.email)
                     MemoryStoreData().setValue(MemoryStoreData.user_pwd, value: self.pwd)
                     MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: true)
-
+                    self.loginSuccess()
                     self.cancelTap(self)
                 }else{
                    Util().showAlert(dataResult.message, parrent: self)
@@ -55,6 +55,10 @@ public class SignInVC: CustomTableViewController {
     func loginSuccess() -> Void{
         MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: true)
         NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
+        if(SignInVC.loginForCheckout){
+            NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.CHECKOUT_LOGIN, object: nil)
+            SignInVC.loginForCheckout = false
+        }
     }
     
     @IBAction func cancelTap(sender: AnyObject) {

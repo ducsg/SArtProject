@@ -25,6 +25,7 @@ public class ApiUrl{
     //social
     static let like_fb_url:String = "https://www.facebook.com/getsnapart/"
     static let follow_in_url:String = "https://instagram.com/getsnapart/"
+    static let follow_pin_url:String = "https://www.pinterest.com/getsnapart/"
 
     //About Us
     static let how_it_work_url:String = base_url + "/howitworks"

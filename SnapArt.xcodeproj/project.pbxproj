@@ -89,6 +89,7 @@
 		67AD99FE1BE1C57000852FA9 /* WebviewDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD99FD1BE1C57000852FA9 /* WebviewDetailsVC.swift */; settings = {ASSET_TAGS = (); }; };
 		67AD9A001BE1C65900852FA9 /* AboutUsTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD99FF1BE1C65900852FA9 /* AboutUsTB.swift */; settings = {ASSET_TAGS = (); }; };
 		67B174131BE8566900058154 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B174121BE8566900058154 /* PaymentVC.swift */; settings = {ASSET_TAGS = (); }; };
+		67B174171BE9EC9700058154 /* BuyItTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B174161BE9EC9700058154 /* BuyItTB.swift */; settings = {ASSET_TAGS = (); }; };
 		67B8DED91BD94229001CB1A3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DED81BD94229001CB1A3 /* FacebookSDK.framework */; };
 		67B8DEFE1BD96D22001CB1A3 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DEFB1BD96D22001CB1A3 /* libCardIO.a */; settings = {ASSET_TAGS = (); }; };
 		67B8DEFF1BD96D22001CB1A3 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DEFC1BD96D22001CB1A3 /* libopencv_core.a */; settings = {ASSET_TAGS = (); }; };
@@ -261,6 +262,7 @@
 		67AD99FD1BE1C57000852FA9 /* WebviewDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebviewDetailsVC.swift; path = "About Us/WebviewDetailsVC.swift"; sourceTree = "<group>"; };
 		67AD99FF1BE1C65900852FA9 /* AboutUsTB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutUsTB.swift; path = "About Us/AboutUsTB.swift"; sourceTree = "<group>"; };
 		67B174121BE8566900058154 /* PaymentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
+		67B174161BE9EC9700058154 /* BuyItTB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyItTB.swift; sourceTree = "<group>"; };
 		67B8DED81BD94229001CB1A3 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = SnapArt/lib/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
 		67B8DEF31BD96D22001CB1A3 /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIO.h; sourceTree = "<group>"; };
 		67B8DEF41BD96D22001CB1A3 /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 				67C17C721BE74FFE00908C4C /* GiftMessageTB.swift */,
 				67C17C741BE74FFE00908C4C /* ShoppingCartVC.swift */,
 				67C17C781BE7502F00908C4C /* PromoCodeVC.swift */,
+				67B174161BE9EC9700058154 /* BuyItTB.swift */,
 			);
 			name = ShoppingPayment;
 			path = Payment;
@@ -1090,6 +1093,7 @@
 				672E90BD1BE4B20700EF4112 /* InputSizeView.swift in Sources */,
 				6797C1D11BD394C600F2EB79 /* ActionSheetDistancePicker.m in Sources */,
 				67566A501BCB5DE300EDE907 /* Constants.swift in Sources */,
+				67B174171BE9EC9700058154 /* BuyItTB.swift in Sources */,
 				67CE02461BDA9660002007D8 /* InstagramEngine.m in Sources */,
 				67CE02471BDA9660002007D8 /* InstagramKitConstants.m in Sources */,
 				677971581BC4282D00110C8B /* UpLoadPreviewVC.swift in Sources */,

@@ -35,6 +35,7 @@ public class Api{
         if(method == .GET){
             self.alamoFireManager!.request(.GET, url, parameters: parameters, headers: headers).responseJSON { response in
                 self.closeWaiting()
+                print("api data GET: \(response)")
                 if(response.result.value == nil){
                     resulf(false, MESSAGES.COMMON.API_EXCEPTION, JSON(""))
                     return
@@ -50,6 +51,7 @@ public class Api{
         }else if(method == .POST){
             self.alamoFireManager!.request(.POST, url, parameters: parameters, headers: headers).responseJSON { response in
                 self.closeWaiting()
+                print("api data POST: \(response)")
                 if(response.result.value == nil){
                     resulf(false, MESSAGES.COMMON.NOT_INTERNET, JSON(""))
                     return

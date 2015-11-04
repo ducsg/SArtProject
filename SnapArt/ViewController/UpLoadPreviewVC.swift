@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import FacebookImagePicker
-import InstagramKit
+//import FacebookImagePicker
+//import InstagramKit
 import Alamofire
 import AlamofireImage
 
@@ -24,6 +24,11 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
         upLoadImg.layer.borderWidth = 0.5
         upLoadImg.layer.borderColor = UIColor.grayColor().CGColor
         // Do any additional setup after loading the view.
+        applyBackIcon()
+    }
+    
+    func pressBackIcon(sender: UIBarButtonItem!) -> Void{
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,9 +57,11 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
         }
         self.presentViewController(vc, animated: true, completion: nil)
     }
+    
     func setImageFromInstagram(media media: InstagramMedia)  {
         self.setImageUploadWithURL(media.standardResolutionImageURL.URLString)
     }
+    
     // MARK: - CHOOSE FROM PHOTO FROM LIB
     func getImageFormLib() -> Void {
         imagePicker = UIImagePickerController()
@@ -88,7 +95,6 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     }
     
     func setImageView(image:UIImage!) -> Void {
-        self.upLoadImg.image = image
         let vc = Util().getControllerForStoryBoard("SelectPhotoVC") as! SelectPhotoVC
         vc.imageCrop = image
         self.navigationController?.pushViewController(vc, animated: true)
