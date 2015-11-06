@@ -18,6 +18,7 @@ target 'SnapArt' do
     pod 'AlamofireImage', '~> 2.0'
     pod 'SwiftyJSON'
     #pod 'Facebook-iOS-SDK'
+    pod 'LMGeocoder'
 end
 target 'SnapArtTests' do
     

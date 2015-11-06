@@ -81,4 +81,18 @@ public class Util: NSObject {
     func getCountryCode() -> String{
         return NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
     }
+    
+    //check require field
+    func checkRequireField(listFieldRequire: [CustomTextField]) -> Bool{
+        var valid = true
+        for i in 0...listFieldRequire.count-1{
+            if(listFieldRequire[i].text?.characters.count == 0){
+                listFieldRequire[i].applyErrorStyle()
+                valid = false
+            }else{
+                listFieldRequire[i].setStyleForLabel()
+            }
+        }
+        return valid
+    }
 }

@@ -13,15 +13,32 @@ import FBSDKLoginKit
 import SwiftyJSON
 import FBSDKShareKit
 //import InstagramKit
+import LMGeocoder
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate   {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
     var window: UIWindow?
-    
+    let locationManager = CLLocationManager()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+//        var a1 = Address()
+//        a1.firstName = "firstname"
+//        let address1 = a1.toJsonString()
+//        let address2 = Address().toJsonString()
+//        var rs = [String: AnyObject]()
+//        rs["abc"] = address1
+//        rs["def"] = address2
+//        print(rs)
+        
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        self.locationManager.distanceFilter = 100
+        if self.locationManager.respondsToSelector("requestAlwaysAuthorization") {
+            self.locationManager.requestAlwaysAuthorization()
+        }
+        self.locationManager.startUpdatingLocation()
         
         switch(getMajorSystemVersion()) {
         case 7:
@@ -47,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate   {
                     MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)
                     MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
                     NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
+                    Api().uploadFile()
                 }else{
                     Util().showAlert(dataResult.message, parrent: self)
                 }
@@ -60,6 +78,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate   {
         // Override point for customization after application launch.
         //        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        let locationArray = locations as NSArray
+        let locationObj = locationArray.lastObject as! CLLocation
+        var coordinate: CLLocationCoordinate2D = locationObj.coordinate
+//        LMGeocoder.sharedInstance().reverseGeocodeCoordinate(coordinate, service: kLMGeocoderGoogleService, completionHandler: {(results: [AnyObject], error: NSErrorPointer) in
+//        if results.count && !error {
+//            var address: LMAddress = results.firstObject()
+//        }
+//            
+//        })
+        print(coordinate)
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        NSLog("Updating location failed")
     }
     
     func applicationWillResignActive(application: UIApplication) {

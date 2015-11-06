@@ -12,7 +12,10 @@ import SwiftyJSON
 
 public class Api{
     //account to authorize
-    private let AUTHORIZATION:String = "Basic c25hcGFydEBhZG1pbi5jb206YWRtaW4xMjM0"
+    let headers = [
+        "Authorization" : "Basic c25hcGFydEBhZG1pbi5jb206YWRtaW4xMjM0",
+        "token" : MemoryStoreData().getString(APIKEY.ACCESS_TOKEN)
+    ]
     private let KEY_STATUS = "status"
     private let KEY_MESSAGE = "message"
     private let KEY_DATA = "results"
@@ -20,15 +23,15 @@ public class Api{
     private var parentView: UIView = UIView()
     var alamoFireManager : Alamofire.Manager?
     
+    init(){
+        
+    }
+    
     public func execute(method: ApiMethod, url: String, parameters: [String:AnyObject] = [String : AnyObject](), resulf:(Bool,String, JSON!) -> () ){
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.timeoutIntervalForRequest = 15 // seconds
         self.alamoFireManager = Alamofire.Manager(configuration: configuration)
         
-        let headers = [
-            "Authorization" : AUTHORIZATION,
-            "token" : MemoryStoreData().getString(APIKEY.ACCESS_TOKEN)
-        ]
         if(self.WAITING == true){
             GMDCircleLoader.setOnView(parentView, withTitle:MESSAGES.COMMON.LOADING, animated: true)
         }
@@ -69,7 +72,20 @@ public class Api{
         
     }
     
-       public func getParam(parameters: [String:String]) -> String {
+    func uploadFile(){
+        let image = UIImage(named: "testUpload.jpg")
+        let imageData = UIImagePNGRepresentation(image!)
+        SRWebClient.POST(ApiUrl.crop_image_url)//
+            .headers(headers)
+            .data(imageData!, fieldName:"avatar", data:["rotate":"1"])
+            .send({(response:AnyObject!, status:Int) -> Void in
+                print(response)
+                },failure:{(error:NSError!) -> Void in
+                    print(error)
+            })
+    }
+    
+    public func getParam(parameters: [String:String]) -> String {
         var url = ""
         if(parameters.count > 0){
             var i = 1

@@ -10,9 +10,22 @@ import UIKit
 
 class BuyItTB: CustomTableViewController {
 
+    @IBOutlet weak var tfFirstName: CustomTextField!
+    @IBOutlet weak var tfLastName: CustomTextField!
+    @IBOutlet weak var tfAddress1: CustomTextField!
+    @IBOutlet weak var tfAddress2: CustomTextField!
+    @IBOutlet weak var tfCity: CustomTextField!
+    @IBOutlet weak var tfState: CustomTextField!
+    @IBOutlet weak var tfPostalCode: CustomTextField!
+    @IBOutlet weak var tfCountry: CustomTextField!
+    @IBOutlet weak var cbUseBillingAddress: CustomLabelButtonGotham!
+    
+    var listFieldRequire = [CustomTextField]()
+    var useBillingAddress:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        listFieldRequire = [tfFirstName, tfLastName, tfAddress1, tfAddress2, tfCity, tfState, tfPostalCode, tfCountry]
         // Do any additional setup after loading the view.
     }
     
@@ -30,6 +43,22 @@ class BuyItTB: CustomTableViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
 
+    
+    @IBAction func pressBtnUseBilling(sender: AnyObject) {
+        useBillingAddress = !useBillingAddress
+        if(useBillingAddress){
+            cbUseBillingAddress.setImage(UIImage(named: "ic_checked.png"), forState: .Normal)
+        }else{
+            cbUseBillingAddress.setImage(UIImage(named: "ic_unchecked.png"), forState: .Normal)
+        }
+    }
+    @IBAction func pressBtnContinue(sender: AnyObject) {
+        if(Util().checkRequireField(listFieldRequire)){
+            
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

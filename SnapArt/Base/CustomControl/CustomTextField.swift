@@ -29,6 +29,11 @@ class CustomTextField: UITextField {
         self.layer.borderColor = SA_STYPE.BORDER_TEXTFIELD_COLOR.CGColor
         self.layer.borderWidth = 1;
     }
+    
+    func applyErrorStyle(){
+        self.layer.borderColor = UIColor.redColor().CGColor
+        self.layer.borderWidth = 1;
+    }
 
     @IBInspectable var padding_left: CGFloat {
         get {

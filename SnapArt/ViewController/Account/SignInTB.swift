@@ -43,8 +43,8 @@ public class SignInVC: CustomTableViewController {
                     MemoryStoreData().setValue(MemoryStoreData.user_email, value: self.email)
                     MemoryStoreData().setValue(MemoryStoreData.user_pwd, value: self.pwd)
                     MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: true)
-                    self.loginSuccess()
                     self.cancelTap(self)
+                    self.loginSuccess()
                 }else{
                    Util().showAlert(dataResult.message, parrent: self)
                 }
