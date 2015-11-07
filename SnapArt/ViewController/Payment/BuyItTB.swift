@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BuyItTB: CustomTableViewController {
+class BuyItTB: CustomTableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tfFirstName: CustomTextField!
     @IBOutlet weak var tfLastName: CustomTextField!
@@ -26,8 +26,9 @@ class BuyItTB: CustomTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        listFieldRequire = [tfFirstName, tfLastName, tfAddress1, tfAddress2, tfCity, tfState, tfPostalCode, tfCountry]
+        listFieldRequire = [tfFirstName, tfLastName, tfAddress1, tfCity, tfState, tfPostalCode, tfCountry]
         // Do any additional setup after loading the view.
+        tfCountry.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -78,6 +79,22 @@ class BuyItTB: CustomTableViewController {
         ShoppingCartVC.paymentDetail.billing_address = billingAddressData
         if(useBillingAddress){
             ShoppingCartVC.paymentDetail.shipping_address = billingAddressData
+        }
+    }
+    
+    func showpicker() -> Void {
+
+        let picker = ActionSheetStringPicker(title: "hello", rows: ["1","2"], initialSelection: 0, doneBlock: {picker, value, index in
+            return }, cancelBlock: {ActionStringCancelBlock in
+                
+                return}, origin: tfCountry.superview)
+        picker.showActionSheetPicker()
+    }
+
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == self.tfCountry {
+            self.tableView.endEditing(true)
+            showpicker();
         }
     }
     /*

@@ -17,4 +17,6 @@ class PaymentDetail:Serializable{
     var billing_address:Address = Address()
     var shipping_address:Address = Address()
     var list_order:[Order] = [Order]()
+    var payment_method_nonce:String = ""
+    var creditCard:[String:String] = [String:String]()
 }

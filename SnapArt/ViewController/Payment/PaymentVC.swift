@@ -15,8 +15,8 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
     var braintree: Braintree?
     var paymentToken:String = ""
     let paymentTitle = "SnapArt total payment:"
-    let paymentDescription = "Khanh Duong implement payment method for SnapArt."
-    let paymentAmountText = "$1"
+    let paymentDescription = "SnapArt payment description."
+    let paymentAmountText = "$\(ShoppingCartVC.paymentDetail.payment_amount)"
     var paymentAmount = ShoppingCartVC.paymentDetail.payment_amount
     
     override func viewDidLoad() {
@@ -74,12 +74,14 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
             "amount" : paymentAmount,
             "payment_detail" : "\(ShoppingCartVC.paymentDetail.toJsonString())"
         ]
-        let api = Api()
-        let parentView:UIView! = self.navigationController?.view
-        api.initWaiting(parentView)
-        api.execute(.POST, url: ApiUrl.payment_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
-            Util().showAlert(dataResult.message, parrent: self)
-        })
+        ShoppingCartVC.paymentDetail.payment_method_nonce = paymentMethodNonce
+        gotoPlaceOrder()
+//        let api = Api()
+//        let parentView:UIView! = self.navigationController?.view
+//        api.initWaiting(parentView)
+//        api.execute(.POST, url: ApiUrl.payment_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+//            Util().showAlert(dataResult.message, parrent: self)
+//        })
     }
     
     func userDidCancel() {
@@ -102,24 +104,37 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
     func userDidProvideCreditCardInfo(cardInfo: CardIOCreditCardInfo!, inPaymentViewController paymentViewController: CardIOPaymentViewController!) {
         if let info = cardInfo {
             let str = NSString(format: "Received card info.\n Number: %@\n expiry: %02lu/%lu\n cvv: %@.", info.redactedCardNumber, info.expiryMonth, info.expiryYear, info.cvv)
-            var parameters = [
-                "amount" : paymentAmount,
-                "creditCard": [
-                    "number" : info.cardNumber,
-                    "expirationMonth" : info.expiryMonth,
-                    "expirationYear" : info.expiryYear,
-                    "cvv" : info.cvv,
-                ],
-                "payment_detail" : "\(ShoppingCartVC.paymentDetail.toJsonString())"
-            ]
-            let api = Api()
-            let parentView:UIView! = self.navigationController?.view
-            api.initWaiting(parentView)
-            api.execute(.POST, url: ApiUrl.payment_scanner_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
-                Util().showAlert(dataResult.message, parrent: self)
-            })
+//            var parameters = [
+//                "amount" : paymentAmount,
+//                "creditCard": [
+//                    "number" : info.cardNumber,
+//                    "expirationMonth" : info.expiryMonth,
+//                    "expirationYear" : info.expiryYear,
+//                    "cvv" : info.cvv,
+//                ],
+//                "payment_detail" : "\(ShoppingCartVC.paymentDetail.toJsonString())"
+//            ]
+            ShoppingCartVC.paymentDetail.creditCard = [
+                "number" : "\(info.cardNumber)",
+                "number4last" : "\(info.redactedCardNumber)",
+                "expirationMonth" : "\(info.expiryMonth)",
+                "expirationYear" : "\(info.expiryYear)",
+                "cvv" : "\(info.cvv)",
+                ]
+            gotoPlaceOrder()
+//            let api = Api()
+//            let parentView:UIView! = self.navigationController?.view
+//            api.initWaiting(parentView)
+//            api.execute(.POST, url: ApiUrl.payment_scanner_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+//                Util().showAlert(dataResult.message, parrent: self)
+//            })
         }
         paymentViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func gotoPlaceOrder(){
+        let nv = Util().getControllerForStoryBoard("PlaceOrderVC") as! PlaceOrderVC
+        self.navigationController?.pushViewController(nv, animated: true)
     }
     
 }

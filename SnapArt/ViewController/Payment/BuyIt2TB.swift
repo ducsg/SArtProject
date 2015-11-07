@@ -25,7 +25,7 @@ class BuyIt2TB: CustomTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        listFieldRequire = [tfFirstName, tfLastName, tfAddress1, tfAddress2, tfCity, tfState, tfPostalCode, tfCountry]
+        listFieldRequire = [tfFirstName, tfLastName, tfAddress1, tfCity, tfState, tfPostalCode, tfCountry]
         // Do any additional setup after loading the view.
     }
     

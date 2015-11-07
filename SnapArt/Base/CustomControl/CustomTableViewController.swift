@@ -26,11 +26,11 @@ public class CustomTableViewController: UITableViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: SA_STYPE.FONT_GOTHAM,  NSForegroundColorAttributeName: SA_STYPE.TEXT_LABEL_COLOR]
         
         let numbCell:Int = self.tableView.numberOfRowsInSection(0) as Int
-//        for (var index = 0; index < numbCell ; index++ ) {
-//            let cell:UITableViewCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0))!
-//            cell.contentView.backgroundColor = UIColor.clearColor()
-//            cell.backgroundColor = UIColor.clearColor()
-//        }
+        for (var index = 0; index < numbCell - 1 ; index++ ) {
+            let cell:UITableViewCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0))!
+            cell.contentView.backgroundColor = UIColor.clearColor()
+            cell.backgroundColor = UIColor.clearColor()
+        }
         
         let aSelector : Selector = "closeKeyboard:"
         tapGest = UITapGestureRecognizer(target: self, action: aSelector)

@@ -52,6 +52,7 @@
 		675AC95B1BECE8E800211959 /* BuyIt2TB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC95A1BECE8E800211959 /* BuyIt2TB.swift */; settings = {ASSET_TAGS = (); }; };
 		675AC95D1BECF65D00211959 /* PaymentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC95C1BECF65D00211959 /* PaymentDetail.swift */; settings = {ASSET_TAGS = (); }; };
 		675AC96A1BECF8AB00211959 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC9691BECF8AB00211959 /* Order.swift */; settings = {ASSET_TAGS = (); }; };
+		675AC96C1BEDEDAF00211959 /* PlaceOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC96B1BEDEDAF00211959 /* PlaceOrderVC.swift */; settings = {ASSET_TAGS = (); }; };
 		677878B11BC587F100249748 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677878B01BC587F100249748 /* BaseView.swift */; };
 		6779712D1BC41BBF00110C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6779712C1BC41BBF00110C8B /* AppDelegate.swift */; };
 		6779712F1BC41BBF00110C8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6779712E1BC41BBF00110C8B /* ViewController.swift */; };
@@ -208,6 +209,7 @@
 		675AC95A1BECE8E800211959 /* BuyIt2TB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyIt2TB.swift; sourceTree = "<group>"; };
 		675AC95C1BECF65D00211959 /* PaymentDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentDetail.swift; sourceTree = "<group>"; };
 		675AC9691BECF8AB00211959 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		675AC96B1BEDEDAF00211959 /* PlaceOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceOrderVC.swift; sourceTree = "<group>"; };
 		677878B01BC587F100249748 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseView.swift; path = View/BaseView.swift; sourceTree = "<group>"; };
 		677971271BC41BBF00110C8B /* SnapArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6779712B1BC41BBF00110C8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 				67C17C781BE7502F00908C4C /* PromoCodeVC.swift */,
 				67B174161BE9EC9700058154 /* BuyItTB.swift */,
 				675AC95A1BECE8E800211959 /* BuyIt2TB.swift */,
+				675AC96B1BEDEDAF00211959 /* PlaceOrderVC.swift */,
 			);
 			name = ShoppingPayment;
 			path = Payment;
@@ -1197,6 +1200,7 @@
 				6779717F1BC429BA00110C8B /* AMSlideMenuMainViewController.m in Sources */,
 				677878B11BC587F100249748 /* BaseView.swift in Sources */,
 				67BC1A1C1BCD697500AF1558 /* Util.swift in Sources */,
+				675AC96C1BEDEDAF00211959 /* PlaceOrderVC.swift in Sources */,
 				67C1A5FD1BD22F39007BECA3 /* SelectPhotoVC.swift in Sources */,
 				671FB3FE1BCBBFF800E5EAE8 /* ExtensionUIColor.swift in Sources */,
 				67121A151BD0DAF700CAC506 /* MemoryStoreData.swift in Sources */,
