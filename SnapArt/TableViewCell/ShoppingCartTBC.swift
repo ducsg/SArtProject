@@ -34,8 +34,8 @@ class ShoppingCartTBC: MGSwipeTableCell {
         // Configure the view for the selected state
     }
     
-    internal func initCell(cart: Cart = Cart()){
-        self.tfQuanlity.text = "\(cart.quanlity)"
+    internal func initCell(cart: Order = Order()){
+        self.tfQuanlity.text = "\(cart.quantity)"
         self.tfQuanlity.textAlignment = .Center
         self.wvFrame.loadRequest(NSURLRequest(URL: NSURL(string: cart.frameUrl)!))
         self.lbItem.text = cart.item

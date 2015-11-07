@@ -17,7 +17,7 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
     let paymentTitle = "SnapArt total payment:"
     let paymentDescription = "Khanh Duong implement payment method for SnapArt."
     let paymentAmountText = "$1"
-    var paymentAmount = 1
+    var paymentAmount = ShoppingCartVC.paymentDetail.payment_amount
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,11 +69,15 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
     
     
     func postNonce(paymentMethodNonce: String) {
-        var parameters = ["payment_method_nonce": paymentMethodNonce, "amount" : paymentAmount]
+        var parameters = [
+            "payment_method_nonce": paymentMethodNonce,
+            "amount" : paymentAmount,
+            "payment_detail" : "\(ShoppingCartVC.paymentDetail.toJsonString())"
+        ]
         let api = Api()
         let parentView:UIView! = self.navigationController?.view
         api.initWaiting(parentView)
-        api.execute(.POST, url: ApiUrl.payment_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+        api.execute(.POST, url: ApiUrl.payment_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             Util().showAlert(dataResult.message, parrent: self)
         })
     }
@@ -105,7 +109,8 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
                     "expirationMonth" : info.expiryMonth,
                     "expirationYear" : info.expiryYear,
                     "cvv" : info.cvv,
-                ]
+                ],
+                "payment_detail" : "\(ShoppingCartVC.paymentDetail.toJsonString())"
             ]
             let api = Api()
             let parentView:UIView! = self.navigationController?.view

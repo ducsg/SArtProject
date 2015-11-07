@@ -52,6 +52,7 @@ class PromoCodeVC: ViewController {
         api.execute(.GET, url: ApiUrl.get_discount_promo_code, parameters: param, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             print(param)
             if(dataResult.success){
+                ShoppingCartVC.paymentDetail.promo_code = self.tfCode.text!
                 ShoppingCartVC.discount = dataResult.data["sale_off"].numberValue.floatValue
                 print(ShoppingCartVC.discount)
                 if(ShoppingCartVC.discount == 0){

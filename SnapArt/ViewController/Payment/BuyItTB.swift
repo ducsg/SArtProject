@@ -20,6 +20,7 @@ class BuyItTB: CustomTableViewController {
     @IBOutlet weak var tfCountry: CustomTextField!
     @IBOutlet weak var cbUseBillingAddress: CustomLabelButtonGotham!
     
+    var billingAddressData = Address()
     var listFieldRequire = [CustomTextField]()
     var useBillingAddress:Bool = false
     
@@ -54,11 +55,31 @@ class BuyItTB: CustomTableViewController {
     }
     @IBAction func pressBtnContinue(sender: AnyObject) {
         if(Util().checkRequireField(listFieldRequire)){
-            
+            getFillingData()
+            if(useBillingAddress){
+                let nv = Util().getControllerForStoryBoard("BuyIt2TB") as! BuyIt2TB
+            self.navigationController?.pushViewController(nv, animated: true)
+            }else{
+                let nv = Util().getControllerForStoryBoard("PaymentVC") as! PaymentVC
+                self.navigationController?.pushViewController(nv, animated: true)
+            }
         }
     }
     
-    
+    func getFillingData(){
+        billingAddressData.firstName = self.tfFirstName.text!
+        billingAddressData.lastName = self.tfLastName.text!
+        billingAddressData.address1 = self.tfAddress1.text!
+        billingAddressData.address2 = self.tfAddress2.text!
+        billingAddressData.city = self.tfCity.text!
+        billingAddressData.country = self.tfCountry.text!
+        billingAddressData.postalCose = self.tfPostalCode.text!
+
+        ShoppingCartVC.paymentDetail.billing_address = billingAddressData
+        if(useBillingAddress){
+            ShoppingCartVC.paymentDetail.shipping_address = billingAddressData
+        }
+    }
     /*
     // MARK: - Navigation
 

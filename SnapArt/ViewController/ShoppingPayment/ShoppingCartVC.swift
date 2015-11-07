@@ -10,6 +10,8 @@ import UIKit
 import SwiftyJSON
 
 class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDelegate {
+    //all data for payment
+    static var paymentDetail = PaymentDetail()
     //label title
     @IBOutlet weak var lbQuanlity: CustomLabelGotham!
     
@@ -28,13 +30,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var lbDiscount: CustomLabelGotham!
     
     
-    private var shoppingCost:Float = 0.99
-    
     static var discount:Float = 0
     
     static var totalCost:Float = 0
     
-    var listCart: [Cart] = [Cart]()
+    var listCart: [Order] = [Order]()
     override func viewDidLoad() {
         super.viewDidLoad()
         getListCart()
@@ -44,13 +44,13 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         self.tbOrder.allowsSelection = false
         ShoppingCartVC.discount = 0
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetCost:", name:MESSAGES.NOTIFY.RESET_COST, object: nil)
+ 
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(true)
 //        if(Util().getCountryCode() == "US"){
-//            shoppingCost = 0
-//            lbDiscount.text = "FREE"
+            lbDiscount.text = "FREE"
 //        }
         setFrameForTitleTable()
     }
@@ -72,7 +72,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell:ShoppingCartTBC = ShoppingCartTBC.instanceFromNib()
-        let cart: Cart = listCart[indexPath.row]
+        let cart: Order = listCart[indexPath.row]
         cell.initCell(cart)
         cell.btnPlus.tag = indexPath.row
         cell.btnSubtract.tag = indexPath.row
@@ -100,7 +100,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     func pressBtnPlus(sender: UIButton){
         let btnPlus = sender as! UIButton
         let index = Int(btnPlus.tag)
-        listCart[index].quanlity = listCart[index].quanlity + 1
+        listCart[index].quantity = listCart[index].quantity + 1
         self.tbOrder.reloadData()
         self.resetCost()
     }
@@ -108,7 +108,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     func pressBtnSubtract(sender: UIButton){
         let btnSubtract = sender as! UIButton
         let index = Int(btnSubtract.tag)
-        listCart[index].quanlity = (listCart[index].quanlity - 1) < 1 ? 1 : listCart[index].quanlity - 1
+        listCart[index].quantity = (listCart[index].quantity - 1) < 1 ? 1 : listCart[index].quantity - 1
         self.tbOrder.reloadData()
         self.resetCost()
     }
@@ -125,7 +125,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
             if(dataResult.success){
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
-                    let cart = Cart(frameUrl: dataResult.data[i]["link_picture"].stringValue, item: dataResult.data[i]["material"].stringValue, price: dataResult.data[i]["cost"].numberValue.floatValue)
+                        let cart = Order(id: dataResult.data[i]["id"].numberValue.integerValue, quantity: dataResult.data[i]["quantity"].numberValue.integerValue,frameUrl: dataResult.data[i]["link_picture"].stringValue, item: dataResult.data[i]["material"].stringValue, price: dataResult.data[i]["cost"].numberValue.floatValue)
                     self.listCart.append(cart)
                     self.tbOrder.reloadData()
                     }
@@ -140,10 +140,14 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     func resetCost(sender:AnyObject = "") -> Void{
         let subTotal = self.getSubTotal()
+        let discount = Float(subTotal*ShoppingCartVC.discount/100)
         self.lbSubTotal.text = "$\(subTotal)"
-        ShoppingCartVC.totalCost = subTotal + self.shoppingCost - Float(subTotal*ShoppingCartVC.discount/100)
+        ShoppingCartVC.totalCost = subTotal + ShoppingCartVC.paymentDetail.shopping_cost - discount
         self.lbTotalCost.text = "$\(ShoppingCartVC.totalCost)"
-        setFrameForTitleTable()
+        //set data for payment
+        ShoppingCartVC.paymentDetail.subtotal = subTotal
+        ShoppingCartVC.paymentDetail.payment_amount = ShoppingCartVC.totalCost
+        ShoppingCartVC.paymentDetail.discount = discount
     }
     
     
@@ -151,7 +155,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         var subTotal:Float = 0
         if(listCart.count > 0){
             for i in 0...listCart.count-1 {
-            subTotal = subTotal + listCart[i].price * Float(listCart[i].quanlity)
+            subTotal = subTotal + listCart[i].price * Float(listCart[i].quantity)
             }
         }
         return subTotal
@@ -187,10 +191,14 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func pressBtnCheckOut(sender: AnyObject) {
-        let nv = Util().getControllerForStoryBoard("PaymentVC") as! CustomNavigationController
-        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+        saveDataForPayment()
+        let nv = Util().getControllerForStoryBoard("BuyItTB") as! BuyItTB
+        self.navigationController?.pushViewController(nv, animated: true)
     }
     
+    func saveDataForPayment(){
+        ShoppingCartVC.paymentDetail.list_order = listCart
+    }
     
     /*
     // MARK: - Navigation

@@ -49,6 +49,9 @@
 		675AC9551BECA46D00211959 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC9541BECA46D00211959 /* Address.swift */; settings = {ASSET_TAGS = (); }; };
 		675AC9571BECA8D000211959 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC9561BECA8D000211959 /* Json.swift */; settings = {ASSET_TAGS = (); }; };
 		675AC9591BECAD9600211959 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC9581BECAD9600211959 /* Serializable.swift */; settings = {ASSET_TAGS = (); }; };
+		675AC95B1BECE8E800211959 /* BuyIt2TB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC95A1BECE8E800211959 /* BuyIt2TB.swift */; settings = {ASSET_TAGS = (); }; };
+		675AC95D1BECF65D00211959 /* PaymentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC95C1BECF65D00211959 /* PaymentDetail.swift */; settings = {ASSET_TAGS = (); }; };
+		675AC96A1BECF8AB00211959 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC9691BECF8AB00211959 /* Order.swift */; settings = {ASSET_TAGS = (); }; };
 		677878B11BC587F100249748 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677878B01BC587F100249748 /* BaseView.swift */; };
 		6779712D1BC41BBF00110C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6779712C1BC41BBF00110C8B /* AppDelegate.swift */; };
 		6779712F1BC41BBF00110C8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6779712E1BC41BBF00110C8B /* ViewController.swift */; };
@@ -90,7 +93,6 @@
 		67AA4D511BEB673500DE83F6 /* SRWebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA4D501BEB673500DE83F6 /* SRWebClient.swift */; settings = {ASSET_TAGS = (); }; };
 		67AD99F81BE0BF8300852FA9 /* ShoppingCartTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD99F61BE0BF8300852FA9 /* ShoppingCartTBC.swift */; settings = {ASSET_TAGS = (); }; };
 		67AD99F91BE0BF8300852FA9 /* ShoppingCartTBC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67AD99F71BE0BF8300852FA9 /* ShoppingCartTBC.xib */; settings = {ASSET_TAGS = (); }; };
-		67AD99FB1BE0C9A000852FA9 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD99FA1BE0C9A000852FA9 /* Cart.swift */; settings = {ASSET_TAGS = (); }; };
 		67AD99FE1BE1C57000852FA9 /* WebviewDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD99FD1BE1C57000852FA9 /* WebviewDetailsVC.swift */; settings = {ASSET_TAGS = (); }; };
 		67AD9A001BE1C65900852FA9 /* AboutUsTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD99FF1BE1C65900852FA9 /* AboutUsTB.swift */; settings = {ASSET_TAGS = (); }; };
 		67B174131BE8566900058154 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B174121BE8566900058154 /* PaymentVC.swift */; settings = {ASSET_TAGS = (); }; };
@@ -203,6 +205,9 @@
 		675AC9541BECA46D00211959 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		675AC9561BECA8D000211959 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
 		675AC9581BECAD9600211959 /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
+		675AC95A1BECE8E800211959 /* BuyIt2TB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyIt2TB.swift; sourceTree = "<group>"; };
+		675AC95C1BECF65D00211959 /* PaymentDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentDetail.swift; sourceTree = "<group>"; };
+		675AC9691BECF8AB00211959 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		677878B01BC587F100249748 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseView.swift; path = View/BaseView.swift; sourceTree = "<group>"; };
 		677971271BC41BBF00110C8B /* SnapArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6779712B1BC41BBF00110C8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -272,7 +277,6 @@
 		67AA4D501BEB673500DE83F6 /* SRWebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SRWebClient.swift; path = lib/SRWebClient.swift; sourceTree = "<group>"; };
 		67AD99F61BE0BF8300852FA9 /* ShoppingCartTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShoppingCartTBC.swift; path = TableViewCell/ShoppingCartTBC.swift; sourceTree = "<group>"; };
 		67AD99F71BE0BF8300852FA9 /* ShoppingCartTBC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShoppingCartTBC.xib; path = TableViewCell/ShoppingCartTBC.xib; sourceTree = "<group>"; };
-		67AD99FA1BE0C9A000852FA9 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		67AD99FD1BE1C57000852FA9 /* WebviewDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebviewDetailsVC.swift; path = "About Us/WebviewDetailsVC.swift"; sourceTree = "<group>"; };
 		67AD99FF1BE1C65900852FA9 /* AboutUsTB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutUsTB.swift; path = "About Us/AboutUsTB.swift"; sourceTree = "<group>"; };
 		67B174121BE8566900058154 /* PaymentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
@@ -464,9 +468,10 @@
 		674B719F1BCDFB5C00B8FC2A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				675AC9691BECF8AB00211959 /* Order.swift */,
 				674B71A01BCDFB5C00B8FC2A /* Account.swift */,
-				67AD99FA1BE0C9A000852FA9 /* Cart.swift */,
 				675AC9541BECA46D00211959 /* Address.swift */,
+				675AC95C1BECF65D00211959 /* PaymentDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -557,6 +562,7 @@
 				67C17C741BE74FFE00908C4C /* ShoppingCartVC.swift */,
 				67C17C781BE7502F00908C4C /* PromoCodeVC.swift */,
 				67B174161BE9EC9700058154 /* BuyItTB.swift */,
+				675AC95A1BECE8E800211959 /* BuyIt2TB.swift */,
 			);
 			name = ShoppingPayment;
 			path = Payment;
@@ -1153,11 +1159,11 @@
 				674B71A11BCDFB5C00B8FC2A /* Account.swift in Sources */,
 				675AC9571BECA8D000211959 /* Json.swift in Sources */,
 				677971551BC4282D00110C8B /* IntoVC.swift in Sources */,
+				675AC95D1BECF65D00211959 /* PaymentDetail.swift in Sources */,
 				67EBB3561BDF8E370080E4E8 /* NotificationVC.swift in Sources */,
 				677971831BC429BA00110C8B /* CustomView.m in Sources */,
 				677971811BC429BA00110C8B /* AMSlideMenuRightTableViewController.m in Sources */,
 				670366341BE5A05600537587 /* ViewOnWallVC.swift in Sources */,
-				67AD99FB1BE0C9A000852FA9 /* Cart.swift in Sources */,
 				672E90C31BE4B40400EF4112 /* CropItView.swift in Sources */,
 				677971841BC429BA00110C8B /* IKCell.m in Sources */,
 				6779717E1BC429BA00110C8B /* AMSlideMenuLeftTableViewController.m in Sources */,
@@ -1166,6 +1172,7 @@
 				6797C1CE1BD394C600F2EB79 /* AbstractActionSheetPicker.m in Sources */,
 				67121A071BCEC75200CAC506 /* DataManager.swift in Sources */,
 				677971801BC429BA00110C8B /* AMSlideMenuRightMenuSegue.m in Sources */,
+				675AC95B1BECE8E800211959 /* BuyIt2TB.swift in Sources */,
 				67CE024E1BDA9660002007D8 /* InstagramUser.m in Sources */,
 				671219FB1BCEB21100CAC506 /* CustomBarButtonItem.swift in Sources */,
 				674B71AD1BCE37E000B8FC2A /* Messages.swift in Sources */,
@@ -1212,6 +1219,7 @@
 				677971861BC429BA00110C8B /* IKLoginViewController.m in Sources */,
 				67121A041BCEBFA500CAC506 /* ResetPasswordTB.swift in Sources */,
 				67CE024D1BDA9660002007D8 /* InstagramTag.m in Sources */,
+				675AC96A1BECF8AB00211959 /* Order.swift in Sources */,
 				67CE024B1BDA9660002007D8 /* InstagramModel.m in Sources */,
 				67C17C751BE74FFE00908C4C /* GiftMessageTB.swift in Sources */,
 				67E223FA1BDCC1FC001921F8 /* PreviewVC.swift in Sources */,

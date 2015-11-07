@@ -95,4 +95,16 @@ public class Util: NSObject {
         }
         return valid
     }
+    
+    //get country list
+    func getCountryList() -> [String]{
+        var countries: [String] = []
+        
+        for code in NSLocale.ISOCountryCodes() as [String] {
+            let id = NSLocale.localeIdentifierFromComponents([NSLocaleCountryCode: code])
+            let name = NSLocale(localeIdentifier: "en_UK").displayNameForKey(NSLocaleIdentifier, value: id) ?? "Country not found for code: \(code)"
+            countries.append(name)
+        }
+        return countries
+    }
 }
