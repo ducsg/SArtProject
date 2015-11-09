@@ -38,7 +38,7 @@ class ShoppingCartTBC: MGSwipeTableCell {
         self.tfQuanlity.text = "\(cart.quantity)"
         self.tfQuanlity.textAlignment = .Center
         self.wvFrame.loadRequest(NSURLRequest(URL: NSURL(string: cart.frameUrl)!))
-        self.lbItem.text = cart.item
+        self.lbItem.text = cart.size
         self.lbPrice.text = "$\(cart.price)"
         setFrameLayoutForCell()
     }
@@ -49,6 +49,7 @@ class ShoppingCartTBC: MGSwipeTableCell {
     
     func setFrameLayoutForCell(){
         let screenWidth = Util().getScreenWidth()
+        print("screenWidthCell: \(screenWidth)")
         //set position for quanlity label
         var rectQuanlity = tfQuanlity.frame
         rectQuanlity.origin.x = 20
@@ -59,11 +60,11 @@ class ShoppingCartTBC: MGSwipeTableCell {
         wvFrame.frame = rectPreview
         //set item label
         var rectItem = lbItem.frame
-        rectItem.origin.x = CGFloat(screenWidth/10 * 6)
+        rectItem.origin.x = CGFloat(screenWidth/10 * 5)
         lbItem.frame = rectItem
         //set position for price
         var rectPrice = lbPrice.frame
-        rectPrice.origin.x = CGFloat(screenWidth/10 * 8)
+        rectPrice.origin.x = CGFloat(screenWidth/10 * 8 + 10)
         lbPrice.frame = rectPrice
     }
 

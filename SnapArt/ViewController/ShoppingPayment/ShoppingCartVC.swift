@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDelegate {
     //all data for payment
-    static var paymentDetail = PaymentDetail()
+    public static var paymentDetail = PaymentDetail()
     //label title
     @IBOutlet weak var lbQuanlity: CustomLabelGotham!
     
@@ -125,7 +125,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
             if(dataResult.success){
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
-                        let cart = Order(id: dataResult.data[i]["id"].numberValue.integerValue, quantity: dataResult.data[i]["quantity"].numberValue.integerValue,frameUrl: dataResult.data[i]["link_picture"].stringValue, item: dataResult.data[i]["material"].stringValue, price: dataResult.data[i]["cost"].numberValue.floatValue)
+                        let cart = Order(id: dataResult.data[i]["id"].numberValue.integerValue, quantity: dataResult.data[i]["quantity"].numberValue.integerValue,frameUrl: dataResult.data[i]["link_picture"].stringValue, item: dataResult.data[i]["material"].stringValue, price: dataResult.data[i]["cost"].numberValue.floatValue, size: dataResult.data[i]["size"].stringValue)
                     self.listCart.append(cart)
                     self.tbOrder.reloadData()
                     }
@@ -163,6 +163,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     func setFrameForTitleTable(){
         let screenWidth = Util().getScreenWidth()
+        print("screenWidth: \(screenWidth)")
         //set position for quanlity label
         var rectQuanlity = lbQuanlity.frame
         rectQuanlity.origin.x = 15
@@ -173,11 +174,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         lbPreview.frame = rectPreview
         //set item label
         var rectItem = lbItem.frame
-        rectItem.origin.x = CGFloat(screenWidth/10 * 6)
+        rectItem.origin.x = CGFloat(screenWidth/10 * 5)
         lbItem.frame = rectItem
         //set position for price
         var rectPrice = lbPrice.frame
-        rectPrice.origin.x = CGFloat(screenWidth/10 * 8)
+        rectPrice.origin.x = CGFloat(screenWidth/10 * 8 + 10)
         lbPrice.frame = rectPrice
     }
     

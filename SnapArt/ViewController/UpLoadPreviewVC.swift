@@ -8,7 +8,7 @@
 
 import UIKit
 //import FacebookImagePicker
-//import InstagramKit
+import InstagramKit
 import Alamofire
 import AlamofireImage
 

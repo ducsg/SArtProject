@@ -34,7 +34,9 @@ public class SignInVC: CustomTableViewController {
             let api:Api = Api()
             let parentView:UIView! = self.navigationController?.view
             api.initWaiting(parentView)
-            api.execute(ApiMethod.POST, url: ApiUrl.signin_url, parameters: [APIKEY.EMAIL:email, APIKEY.PWD:pwd], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            let parameters = [APIKEY.EMAIL:email, APIKEY.PWD:pwd, APIKEY.IOS_REG_ID:MemoryStoreData().getString(MemoryStoreData.user_reg_id)]
+            print(parameters)
+            api.execute(ApiMethod.POST, url: ApiUrl.signin_url, parameters: parameters, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
                     //store access token and account id
                     MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)

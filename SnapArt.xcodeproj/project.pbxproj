@@ -98,10 +98,6 @@
 		67AD9A001BE1C65900852FA9 /* AboutUsTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD99FF1BE1C65900852FA9 /* AboutUsTB.swift */; settings = {ASSET_TAGS = (); }; };
 		67B174131BE8566900058154 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B174121BE8566900058154 /* PaymentVC.swift */; settings = {ASSET_TAGS = (); }; };
 		67B174171BE9EC9700058154 /* BuyItTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B174161BE9EC9700058154 /* BuyItTB.swift */; settings = {ASSET_TAGS = (); }; };
-		67B174201BEA562900058154 /* easyjs-inject.js in Resources */ = {isa = PBXBuildFile; fileRef = 67B174191BEA562900058154 /* easyjs-inject.js */; settings = {ASSET_TAGS = (); }; };
-		67B174211BEA562900058154 /* EasyJSDataFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B1741B1BEA562900058154 /* EasyJSDataFunction.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		67B174221BEA562900058154 /* EasyJSWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B1741D1BEA562900058154 /* EasyJSWebView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		67B174231BEA562900058154 /* EasyJSWebViewProxyDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B1741F1BEA562900058154 /* EasyJSWebViewProxyDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		67B8DED91BD94229001CB1A3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DED81BD94229001CB1A3 /* FacebookSDK.framework */; };
 		67B8DEFE1BD96D22001CB1A3 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DEFB1BD96D22001CB1A3 /* libCardIO.a */; settings = {ASSET_TAGS = (); }; };
 		67B8DEFF1BD96D22001CB1A3 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B8DEFC1BD96D22001CB1A3 /* libopencv_core.a */; settings = {ASSET_TAGS = (); }; };
@@ -147,6 +143,8 @@
 		67F01EDD1BE47F8100CC5253 /* NLImageCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F01EDB1BE47F8100CC5253 /* NLImageCropperView.m */; settings = {ASSET_TAGS = (); }; };
 		67F01EDF1BE4836800CC5253 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F01EDE1BE4836800CC5253 /* AudioToolbox.framework */; };
 		67F01EE11BE493B500CC5253 /* ExtensionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */; settings = {ASSET_TAGS = (); }; };
+		AF91AE4C1BEE419F00DF3BAF /* PlaceOrderTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91AE4A1BEE419F00DF3BAF /* PlaceOrderTBC.swift */; settings = {ASSET_TAGS = (); }; };
+		AF91AE4D1BEE419F00DF3BAF /* PlaceOrderTBC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF91AE4B1BEE419F00DF3BAF /* PlaceOrderTBC.xib */; settings = {ASSET_TAGS = (); }; };
 		AFE2A8521BE61A48000E9AB2 /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2A84F1BE61A48000E9AB2 /* MGSwipeButton.m */; settings = {ASSET_TAGS = (); }; };
 		AFE2A8531BE61A48000E9AB2 /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2A8511BE61A48000E9AB2 /* MGSwipeTableCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -283,13 +281,6 @@
 		67AD99FF1BE1C65900852FA9 /* AboutUsTB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutUsTB.swift; path = "About Us/AboutUsTB.swift"; sourceTree = "<group>"; };
 		67B174121BE8566900058154 /* PaymentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
 		67B174161BE9EC9700058154 /* BuyItTB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyItTB.swift; sourceTree = "<group>"; };
-		67B174191BEA562900058154 /* easyjs-inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "easyjs-inject.js"; sourceTree = "<group>"; };
-		67B1741A1BEA562900058154 /* EasyJSDataFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyJSDataFunction.h; sourceTree = "<group>"; };
-		67B1741B1BEA562900058154 /* EasyJSDataFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyJSDataFunction.m; sourceTree = "<group>"; };
-		67B1741C1BEA562900058154 /* EasyJSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyJSWebView.h; sourceTree = "<group>"; };
-		67B1741D1BEA562900058154 /* EasyJSWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyJSWebView.m; sourceTree = "<group>"; };
-		67B1741E1BEA562900058154 /* EasyJSWebViewProxyDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyJSWebViewProxyDelegate.h; sourceTree = "<group>"; };
-		67B1741F1BEA562900058154 /* EasyJSWebViewProxyDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyJSWebViewProxyDelegate.m; sourceTree = "<group>"; };
 		67B8DED81BD94229001CB1A3 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = SnapArt/lib/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
 		67B8DEF31BD96D22001CB1A3 /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIO.h; sourceTree = "<group>"; };
 		67B8DEF41BD96D22001CB1A3 /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
@@ -358,6 +349,8 @@
 		67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionUIImage.swift; path = lib/Extensions/ExtensionUIImage.swift; sourceTree = "<group>"; };
 		7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A67331CD2A027D31872D102 /* Pods-SnapArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapArt/Pods-SnapArt.release.xcconfig"; sourceTree = "<group>"; };
+		AF91AE4A1BEE419F00DF3BAF /* PlaceOrderTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceOrderTBC.swift; sourceTree = "<group>"; };
+		AF91AE4B1BEE419F00DF3BAF /* PlaceOrderTBC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceOrderTBC.xib; sourceTree = "<group>"; };
 		AFE2A84E1BE61A48000E9AB2 /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSwipeButton.h; path = lib/MGSwipeTableCell/MGSwipeButton.h; sourceTree = "<group>"; };
 		AFE2A84F1BE61A48000E9AB2 /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSwipeButton.m; path = lib/MGSwipeTableCell/MGSwipeButton.m; sourceTree = "<group>"; };
 		AFE2A8501BE61A48000E9AB2 /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSwipeTableCell.h; path = lib/MGSwipeTableCell/MGSwipeTableCell.h; sourceTree = "<group>"; };
@@ -425,7 +418,6 @@
 		671219FC1BCEBCBD00CAC506 /* ObjectiveC */ = {
 			isa = PBXGroup;
 			children = (
-				67B174181BEA562900058154 /* EasyJSWebView */,
 				67CE02301BDA9660002007D8 /* InstagramKit */,
 				6797C1BB1BD394C600F2EB79 /* Picker */,
 				67C1A5FE1BD236DB007BECA3 /* Crop-lib */,
@@ -817,6 +809,8 @@
 			children = (
 				67AD99F61BE0BF8300852FA9 /* ShoppingCartTBC.swift */,
 				67AD99F71BE0BF8300852FA9 /* ShoppingCartTBC.xib */,
+				AF91AE4A1BEE419F00DF3BAF /* PlaceOrderTBC.swift */,
+				AF91AE4B1BEE419F00DF3BAF /* PlaceOrderTBC.xib */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -828,20 +822,6 @@
 				67AD99FD1BE1C57000852FA9 /* WebviewDetailsVC.swift */,
 			);
 			name = "About Us";
-			sourceTree = "<group>";
-		};
-		67B174181BEA562900058154 /* EasyJSWebView */ = {
-			isa = PBXGroup;
-			children = (
-				67B174191BEA562900058154 /* easyjs-inject.js */,
-				67B1741A1BEA562900058154 /* EasyJSDataFunction.h */,
-				67B1741B1BEA562900058154 /* EasyJSDataFunction.m */,
-				67B1741C1BEA562900058154 /* EasyJSWebView.h */,
-				67B1741D1BEA562900058154 /* EasyJSWebView.m */,
-				67B1741E1BEA562900058154 /* EasyJSWebViewProxyDelegate.h */,
-				67B1741F1BEA562900058154 /* EasyJSWebViewProxyDelegate.m */,
-			);
-			path = EasyJSWebView;
 			sourceTree = "<group>";
 		};
 		67B8DEF21BD96D22001CB1A3 /* CardIO */ = {
@@ -1054,13 +1034,13 @@
 				672E90BF1BE4B21B00EF4112 /* InputSizeView.xib in Resources */,
 				677971371BC41BBF00110C8B /* LaunchScreen.xib in Resources */,
 				672E90C11BE4B36300EF4112 /* CropItView.xib in Resources */,
+				AF91AE4D1BEE419F00DF3BAF /* PlaceOrderTBC.xib in Resources */,
 				678890B91BCBB5240071DA50 /* MenuCell.xib in Resources */,
 				670366361BE5B82000537587 /* SliderView.xib in Resources */,
 				67AD99F91BE0BF8300852FA9 /* ShoppingCartTBC.xib in Resources */,
 				67121A091BD0945500CAC506 /* Archer-Bold-Pro.otf in Resources */,
 				67C1A60F1BD241D2007BECA3 /* PEPhotoCropEditor.bundle in Resources */,
 				677971341BC41BBF00110C8B /* Images.xcassets in Resources */,
-				67B174201BEA562900058154 /* easyjs-inject.js in Resources */,
 				67566A521BCB5DE300EDE907 /* Gotham-Thin.ttf in Resources */,
 				67121A0B1BD09ADD00CAC506 /* Gotham-Bold.ttf in Resources */,
 				67566A511BCB5DE300EDE907 /* Archer-Book-Pro.otf in Resources */,
@@ -1157,7 +1137,6 @@
 				67AD99F81BE0BF8300852FA9 /* ShoppingCartTBC.swift in Sources */,
 				6797C1D01BD394C600F2EB79 /* ActionSheetDatePicker.m in Sources */,
 				67121A131BD09CC700CAC506 /* GMDCircleLoader.m in Sources */,
-				67B174231BEA562900058154 /* EasyJSWebViewProxyDelegate.m in Sources */,
 				6779712F1BC41BBF00110C8B /* ViewController.swift in Sources */,
 				674B71A11BCDFB5C00B8FC2A /* Account.swift in Sources */,
 				675AC9571BECA8D000211959 /* Json.swift in Sources */,
@@ -1185,10 +1164,8 @@
 				67C17C771BE74FFE00908C4C /* ShoppingCartVC.swift in Sources */,
 				6797C1D21BD394C600F2EB79 /* ActionSheetLocalePicker.m in Sources */,
 				675AC9591BECAD9600211959 /* Serializable.swift in Sources */,
-				67B174221BEA562900058154 /* EasyJSWebView.m in Sources */,
 				6797C1D51BD394C600F2EB79 /* SWActionSheet.m in Sources */,
 				67F01EE11BE493B500CC5253 /* ExtensionUIImage.swift in Sources */,
-				67B174211BEA562900058154 /* EasyJSDataFunction.m in Sources */,
 				6779717C1BC429BA00110C8B /* AMSlideMenuContentSegue.m in Sources */,
 				67CE02481BDA9660002007D8 /* InstagramComment.m in Sources */,
 				672E90BB1BE4B19F00EF4112 /* InputSizeVC.swift in Sources */,
@@ -1206,6 +1183,7 @@
 				67121A151BD0DAF700CAC506 /* MemoryStoreData.swift in Sources */,
 				6779712D1BC41BBF00110C8B /* AppDelegate.swift in Sources */,
 				677971571BC4282D00110C8B /* RightMenuVC.swift in Sources */,
+				AF91AE4C1BEE419F00DF3BAF /* PlaceOrderTBC.swift in Sources */,
 				674B71A61BCDFC6F00B8FC2A /* CustomViewController.swift in Sources */,
 				671219F31BCE80B100CAC506 /* CustomLabelButton.swift in Sources */,
 				670366381BE5B8F000537587 /* SliderView.swift in Sources */,

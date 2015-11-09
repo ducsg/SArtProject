@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuNaviController: UINavigationController {
+class MenuNaviController: CustomNavigationController {
     private var launchView:UIView!
     
     override func viewDidLoad() {

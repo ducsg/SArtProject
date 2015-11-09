@@ -9,14 +9,15 @@
 import Foundation
 
 class PaymentDetail:Serializable{
-    var subtotal:Float = 0
-    var promo_code:String = ""
-    var discount:Float = 0
-    var shopping_cost:Float = 0
-    var payment_amount:Float = 0
-    var billing_address:Address = Address()
-    var shipping_address:Address = Address()
-    var list_order:[Order] = [Order]()
-    var payment_method_nonce:String = ""
-    var creditCard:[String:String] = [String:String]()
+    public var subtotal:Float = 0
+    public var promo_code:String = ""
+    public var discount:Float = 0
+    public var shopping_cost:Float = 0
+    public var payment_amount:Float = 0
+    public var billing_address:Address = Address()
+    public var shipping_address:Address = Address()
+    public var list_order:[Order] = [Order]()
+    public var payment_method_nonce:String = ""
+    public var creditCard:[String:String] = [String:String]()
+    public var payment_method: Int = 0
 }

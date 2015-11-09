@@ -19,5 +19,3 @@
 #import "CardIO.h"
 #import "MGSwipeTableCell.h"
 #import "MGSwipeButton.h"
-#import "EasyJSWebView.h"
-//#import "ActionSheetPicker.h"

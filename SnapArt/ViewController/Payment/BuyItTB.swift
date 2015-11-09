@@ -57,7 +57,7 @@ class BuyItTB: CustomTableViewController, UITextFieldDelegate {
     @IBAction func pressBtnContinue(sender: AnyObject) {
         if(Util().checkRequireField(listFieldRequire)){
             getFillingData()
-            if(useBillingAddress){
+            if(!useBillingAddress){
                 let nv = Util().getControllerForStoryBoard("BuyIt2TB") as! BuyIt2TB
             self.navigationController?.pushViewController(nv, animated: true)
             }else{
@@ -84,19 +84,20 @@ class BuyItTB: CustomTableViewController, UITextFieldDelegate {
     
     func showpicker() -> Void {
 
-        let picker = ActionSheetStringPicker(title: "hello", rows: ["1","2"], initialSelection: 0, doneBlock: {picker, value, index in
+        let picker = ActionSheetStringPicker(title: "", rows: Util().getCountryList(), initialSelection: 0, doneBlock: {picker, value, index in
             return }, cancelBlock: {ActionStringCancelBlock in
                 
                 return}, origin: tfCountry.superview)
         picker.showActionSheetPicker()
     }
 
-    func textFieldDidBeginEditing(textField: UITextField) {
-        if textField == self.tfCountry {
-            self.tableView.endEditing(true)
-            showpicker();
-        }
-    }
+//    func textFieldDidBeginEditing(textField: UITextField) {
+//        if textField == self.tfCountry {
+//            self.tableView.endEditing(true)
+//            showpicker();
+//        }
+//    }
+
     /*
     // MARK: - Navigation
 

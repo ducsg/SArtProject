@@ -74,6 +74,7 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
             "amount" : paymentAmount,
             "payment_detail" : "\(ShoppingCartVC.paymentDetail.toJsonString())"
         ]
+        ShoppingCartVC.paymentDetail.payment_method = 0
         ShoppingCartVC.paymentDetail.payment_method_nonce = paymentMethodNonce
         gotoPlaceOrder()
 //        let api = Api()
@@ -104,16 +105,7 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
     func userDidProvideCreditCardInfo(cardInfo: CardIOCreditCardInfo!, inPaymentViewController paymentViewController: CardIOPaymentViewController!) {
         if let info = cardInfo {
             let str = NSString(format: "Received card info.\n Number: %@\n expiry: %02lu/%lu\n cvv: %@.", info.redactedCardNumber, info.expiryMonth, info.expiryYear, info.cvv)
-//            var parameters = [
-//                "amount" : paymentAmount,
-//                "creditCard": [
-//                    "number" : info.cardNumber,
-//                    "expirationMonth" : info.expiryMonth,
-//                    "expirationYear" : info.expiryYear,
-//                    "cvv" : info.cvv,
-//                ],
-//                "payment_detail" : "\(ShoppingCartVC.paymentDetail.toJsonString())"
-//            ]
+            ShoppingCartVC.paymentDetail.payment_method = 1
             ShoppingCartVC.paymentDetail.creditCard = [
                 "number" : "\(info.cardNumber)",
                 "number4last" : "\(info.redactedCardNumber)",
@@ -122,12 +114,6 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
                 "cvv" : "\(info.cvv)",
                 ]
             gotoPlaceOrder()
-//            let api = Api()
-//            let parentView:UIView! = self.navigationController?.view
-//            api.initWaiting(parentView)
-//            api.execute(.POST, url: ApiUrl.payment_scanner_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
-//                Util().showAlert(dataResult.message, parrent: self)
-//            })
         }
         paymentViewController?.dismissViewControllerAnimated(true, completion: nil)
     }

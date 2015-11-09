@@ -14,6 +14,7 @@ public class MemoryStoreData{
     public static let user_email:String = "user_email"
     public static let user_pwd:String = "user_password"
     public static let user_stayed_login:String = "stayed_login"
+    public static let user_reg_id:String = "ios_reg_id"
     
     init(){
     }

@@ -97,7 +97,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
                 let cameraPreview = UIView(frame: CGRectMake(0.0, 0.0, view.bounds.size.width, view.bounds.size.height))
                 cameraPreview.layer.addSublayer(previewLayer)
                 controller.view.addSubview(cameraPreview)
-                controller.addViewPreview()
+//                controller.addViewPreview()
             }
             
         }

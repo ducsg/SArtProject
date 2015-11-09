@@ -16,5 +16,6 @@ struct APIKEY {
     static let NEWPWD:String = "new_password"
     static let ACCESS_TOKEN:String = "token"
     static let ACCOUNT_ID:String = "account_id"
+    static let IOS_REG_ID:String = "ios_reg_id"
 
 }

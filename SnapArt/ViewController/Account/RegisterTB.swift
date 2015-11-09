@@ -32,7 +32,7 @@ public class RegisterTB: CustomTableViewController {
             let api:Api = Api()
             let parentView:UIView! = self.navigationController?.view
             api.initWaiting(parentView)
-            api.execute(ApiMethod.POST, url: ApiUrl.register_url, parameters: [APIKEY.EMAIL:email, APIKEY.PWD:pwd, APIKEY.REPWD:rePwd], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            api.execute(ApiMethod.POST, url: ApiUrl.register_url, parameters: [APIKEY.EMAIL:email, APIKEY.PWD:pwd, APIKEY.REPWD:rePwd, APIKEY.IOS_REG_ID:MemoryStoreData().getString(MemoryStoreData.user_reg_id)], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
                     MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)
                     MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: dataResult.data[APIKEY.ACCOUNT_ID].intValue)

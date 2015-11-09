@@ -50,21 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         default: break 
         }
         
-        if(MemoryStoreData().getBool(MemoryStoreData.user_stayed_login)){
-            Api().execute(ApiMethod.POST, url: ApiUrl.signin_url, parameters: [APIKEY.EMAIL:MemoryStoreData().getString(MemoryStoreData.user_email), APIKEY.PWD:MemoryStoreData().getString(MemoryStoreData.user_pwd)], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
-                if(dataResult.success){
-                    MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)
-                    MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
-                    NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
-//                    Api().uploadFile()
-                }else{
-                    Util().showAlert(dataResult.message, parrent: self)
-                }
-            })
-        }else{
-            MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
-        }
-        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Override point for customization after application launch.
@@ -118,6 +103,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let trimEnds = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>"))
         let cleanToken = trimEnds.stringByReplacingOccurrencesOfString(" ", withString: "", options: [])
+        MemoryStoreData().setValue(MemoryStoreData.user_reg_id, value: cleanToken)
+        print("register_token:\(MemoryStoreData().getString(MemoryStoreData.user_reg_id))")
+        
+        if(MemoryStoreData().getBool(MemoryStoreData.user_stayed_login)){
+            Api().execute(ApiMethod.POST, url: ApiUrl.signin_url, parameters: [APIKEY.EMAIL:MemoryStoreData().getString(MemoryStoreData.user_email), APIKEY.PWD:MemoryStoreData().getString(MemoryStoreData.user_pwd), APIKEY.IOS_REG_ID:MemoryStoreData().getString(MemoryStoreData.user_reg_id)], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+                if(dataResult.success){
+                    MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)
+                    MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
+                    NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
+                    //                    Api().uploadFile()
+                }else{
+                    Util().showAlert(dataResult.message, parrent: self)
+                }
+            })
+        }else{
+            MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
+        }
     }
     
     // Failed to register for Push
