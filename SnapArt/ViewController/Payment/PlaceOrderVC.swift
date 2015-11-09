@@ -87,12 +87,13 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     }
     
     @IBAction func pressBtnPurchase(sender: AnyObject) {
+        let payment_detail:String = ShoppingCartVC.paymentDetail.toJsonString()!
         if(ShoppingCartVC.paymentDetail.payment_method == 0){
             ShoppingCartVC.paymentDetail.creditCard = [String:String]()
             var parameters = [
                 "payment_method_nonce": ShoppingCartVC.paymentDetail.payment_method_nonce,
                 "amount" : ShoppingCartVC.paymentDetail.payment_amount,
-                "payment_detail" : "\(ShoppingCartVC.paymentDetail.toJsonString())"
+                "payment_detail" : payment_detail
             ]
             let api = Api()
             let parentView:UIView! = self.navigationController?.view
@@ -108,10 +109,10 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
         }else{
             let creditCard = ShoppingCartVC.paymentDetail.creditCard
             ShoppingCartVC.paymentDetail.creditCard["number"] = ""
-            var parameters = [
+            let parameters = [
                 "amount" : ShoppingCartVC.paymentDetail.payment_amount,
                 "creditCard": creditCard,
-                "payment_detail" : "\(ShoppingCartVC.paymentDetail.toJsonString())"
+                "payment_detail" : payment_detail
             ]
             let api = Api()
             let parentView:UIView! = self.navigationController?.view

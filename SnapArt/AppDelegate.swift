@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     let locationManager = CLLocationManager()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        MemoryStoreData().setValue(MemoryStoreData.user_reg_id, value: "19d0a7587e55d8cc386ee17406714ff91cf40e42934250e399b0c2fecb30a486") //hard code reg id
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         self.locationManager.distanceFilter = 100

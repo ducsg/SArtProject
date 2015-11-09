@@ -140,13 +140,16 @@
 		67E223FC1BDD448D001921F8 /* ShoppingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E223FB1BDD448D001921F8 /* ShoppingVC.swift */; settings = {ASSET_TAGS = (); }; };
 		67EBB34D1BDE81C40080E4E8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EBB34C1BDE81C40080E4E8 /* AVFoundation.framework */; };
 		67EBB34F1BDE8F6D0080E4E8 /* MenuNaviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB34E1BDE8F6D0080E4E8 /* MenuNaviController.swift */; settings = {ASSET_TAGS = (); }; };
-		67EBB3561BDF8E370080E4E8 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB3551BDF8E370080E4E8 /* NotificationVC.swift */; settings = {ASSET_TAGS = (); }; };
+		67EBB3561BDF8E370080E4E8 /* NotificationTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB3551BDF8E370080E4E8 /* NotificationTB.swift */; settings = {ASSET_TAGS = (); }; };
 		67F01EDC1BE47F8100CC5253 /* NLCropViewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F01ED91BE47F8100CC5253 /* NLCropViewLayer.m */; settings = {ASSET_TAGS = (); }; };
 		67F01EDD1BE47F8100CC5253 /* NLImageCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F01EDB1BE47F8100CC5253 /* NLImageCropperView.m */; settings = {ASSET_TAGS = (); }; };
 		67F01EDF1BE4836800CC5253 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F01EDE1BE4836800CC5253 /* AudioToolbox.framework */; };
 		67F01EE11BE493B500CC5253 /* ExtensionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */; settings = {ASSET_TAGS = (); }; };
-		AF91AE4C1BEE419F00DF3BAF /* PlaceOrderTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91AE4A1BEE419F00DF3BAF /* PlaceOrderTBC.swift */; settings = {ASSET_TAGS = (); }; };
-		AF91AE4D1BEE419F00DF3BAF /* PlaceOrderTBC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF91AE4B1BEE419F00DF3BAF /* PlaceOrderTBC.xib */; settings = {ASSET_TAGS = (); }; };
+		AFBF90C61BF0AF1000004FA6 /* NotificationTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF90C21BF0AF1000004FA6 /* NotificationTBC.swift */; settings = {ASSET_TAGS = (); }; };
+		AFBF90C71BF0AF1000004FA6 /* NotificationTBC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBF90C31BF0AF1000004FA6 /* NotificationTBC.xib */; settings = {ASSET_TAGS = (); }; };
+		AFBF90C81BF0AF1000004FA6 /* PlaceOrderTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF90C41BF0AF1000004FA6 /* PlaceOrderTBC.swift */; settings = {ASSET_TAGS = (); }; };
+		AFBF90C91BF0AF1000004FA6 /* PlaceOrderTBC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBF90C51BF0AF1000004FA6 /* PlaceOrderTBC.xib */; settings = {ASSET_TAGS = (); }; };
+		AFBF90CB1BF0B04E00004FA6 /* MyOrderTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF90CA1BF0B04E00004FA6 /* MyOrderTB.swift */; settings = {ASSET_TAGS = (); }; };
 		AFE2A8521BE61A48000E9AB2 /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2A84F1BE61A48000E9AB2 /* MGSwipeButton.m */; settings = {ASSET_TAGS = (); }; };
 		AFE2A8531BE61A48000E9AB2 /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2A8511BE61A48000E9AB2 /* MGSwipeTableCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -344,7 +347,7 @@
 		67E223FB1BDD448D001921F8 /* ShoppingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingVC.swift; sourceTree = "<group>"; };
 		67EBB34C1BDE81C40080E4E8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		67EBB34E1BDE8F6D0080E4E8 /* MenuNaviController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNaviController.swift; sourceTree = "<group>"; };
-		67EBB3551BDF8E370080E4E8 /* NotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationVC.swift; path = Notification/NotificationVC.swift; sourceTree = "<group>"; };
+		67EBB3551BDF8E370080E4E8 /* NotificationTB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTB.swift; path = Notification/NotificationTB.swift; sourceTree = "<group>"; };
 		67F01ED81BE47F8100CC5253 /* NLCropViewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLCropViewLayer.h; sourceTree = "<group>"; };
 		67F01ED91BE47F8100CC5253 /* NLCropViewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLCropViewLayer.m; sourceTree = "<group>"; };
 		67F01EDA1BE47F8100CC5253 /* NLImageCropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLImageCropperView.h; sourceTree = "<group>"; };
@@ -353,8 +356,11 @@
 		67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionUIImage.swift; path = lib/Extensions/ExtensionUIImage.swift; sourceTree = "<group>"; };
 		7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A67331CD2A027D31872D102 /* Pods-SnapArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapArt/Pods-SnapArt.release.xcconfig"; sourceTree = "<group>"; };
-		AF91AE4A1BEE419F00DF3BAF /* PlaceOrderTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceOrderTBC.swift; sourceTree = "<group>"; };
-		AF91AE4B1BEE419F00DF3BAF /* PlaceOrderTBC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceOrderTBC.xib; sourceTree = "<group>"; };
+		AFBF90C21BF0AF1000004FA6 /* NotificationTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTBC.swift; path = TableViewCell/NotificationTBC.swift; sourceTree = "<group>"; };
+		AFBF90C31BF0AF1000004FA6 /* NotificationTBC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationTBC.xib; path = TableViewCell/NotificationTBC.xib; sourceTree = "<group>"; };
+		AFBF90C41BF0AF1000004FA6 /* PlaceOrderTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceOrderTBC.swift; path = TableViewCell/PlaceOrderTBC.swift; sourceTree = "<group>"; };
+		AFBF90C51BF0AF1000004FA6 /* PlaceOrderTBC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceOrderTBC.xib; path = TableViewCell/PlaceOrderTBC.xib; sourceTree = "<group>"; };
+		AFBF90CA1BF0B04E00004FA6 /* MyOrderTB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrderTB.swift; sourceTree = "<group>"; };
 		AFE2A84E1BE61A48000E9AB2 /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSwipeButton.h; path = lib/MGSwipeTableCell/MGSwipeButton.h; sourceTree = "<group>"; };
 		AFE2A84F1BE61A48000E9AB2 /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSwipeButton.m; path = lib/MGSwipeTableCell/MGSwipeButton.m; sourceTree = "<group>"; };
 		AFE2A8501BE61A48000E9AB2 /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSwipeTableCell.h; path = lib/MGSwipeTableCell/MGSwipeTableCell.h; sourceTree = "<group>"; };
@@ -492,6 +498,7 @@
 				67121A011BCEBFA500CAC506 /* ResetPasswordTB.swift */,
 				67121A021BCEBFA500CAC506 /* SignInTB.swift */,
 				674B71AA1BCE35BB00B8FC2A /* RegisterTB.swift */,
+				AFBF90CA1BF0B04E00004FA6 /* MyOrderTB.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -813,10 +820,12 @@
 		67AD99F51BE0BF1C00852FA9 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				AFBF90C21BF0AF1000004FA6 /* NotificationTBC.swift */,
+				AFBF90C31BF0AF1000004FA6 /* NotificationTBC.xib */,
+				AFBF90C41BF0AF1000004FA6 /* PlaceOrderTBC.swift */,
+				AFBF90C51BF0AF1000004FA6 /* PlaceOrderTBC.xib */,
 				67AD99F61BE0BF8300852FA9 /* ShoppingCartTBC.swift */,
 				67AD99F71BE0BF8300852FA9 /* ShoppingCartTBC.xib */,
-				AF91AE4A1BEE419F00DF3BAF /* PlaceOrderTBC.swift */,
-				AF91AE4B1BEE419F00DF3BAF /* PlaceOrderTBC.xib */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -907,7 +916,7 @@
 		67EBB3541BDF8E0C0080E4E8 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				67EBB3551BDF8E370080E4E8 /* NotificationVC.swift */,
+				67EBB3551BDF8E370080E4E8 /* NotificationTB.swift */,
 			);
 			name = Notification;
 			sourceTree = "<group>";
@@ -1037,17 +1046,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				671219F91BCE8EBF00CAC506 /* Main.storyboard in Resources */,
+				AFBF90C71BF0AF1000004FA6 /* NotificationTBC.xib in Resources */,
 				675AC98B1BEF2FA600211959 /* CustomPickerView.xib in Resources */,
 				672E90BF1BE4B21B00EF4112 /* InputSizeView.xib in Resources */,
 				677971371BC41BBF00110C8B /* LaunchScreen.xib in Resources */,
 				672E90C11BE4B36300EF4112 /* CropItView.xib in Resources */,
-				AF91AE4D1BEE419F00DF3BAF /* PlaceOrderTBC.xib in Resources */,
 				678890B91BCBB5240071DA50 /* MenuCell.xib in Resources */,
 				670366361BE5B82000537587 /* SliderView.xib in Resources */,
 				67AD99F91BE0BF8300852FA9 /* ShoppingCartTBC.xib in Resources */,
 				67121A091BD0945500CAC506 /* Archer-Bold-Pro.otf in Resources */,
 				67C1A60F1BD241D2007BECA3 /* PEPhotoCropEditor.bundle in Resources */,
 				677971341BC41BBF00110C8B /* Images.xcassets in Resources */,
+				AFBF90C91BF0AF1000004FA6 /* PlaceOrderTBC.xib in Resources */,
 				67566A521BCB5DE300EDE907 /* Gotham-Thin.ttf in Resources */,
 				67121A0B1BD09ADD00CAC506 /* Gotham-Bold.ttf in Resources */,
 				67566A511BCB5DE300EDE907 /* Archer-Book-Pro.otf in Resources */,
@@ -1116,6 +1126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFBF90C81BF0AF1000004FA6 /* PlaceOrderTBC.swift in Sources */,
 				671219EF1BCE5DB900CAC506 /* CustomNavigationController.swift in Sources */,
 				67CE02491BDA9660002007D8 /* InstagramLocation.m in Sources */,
 				67566A481BCB5DCE00EDE907 /* CustomTextField.swift in Sources */,
@@ -1149,7 +1160,7 @@
 				675AC9571BECA8D000211959 /* Json.swift in Sources */,
 				677971551BC4282D00110C8B /* IntoVC.swift in Sources */,
 				675AC95D1BECF65D00211959 /* PaymentDetail.swift in Sources */,
-				67EBB3561BDF8E370080E4E8 /* NotificationVC.swift in Sources */,
+				67EBB3561BDF8E370080E4E8 /* NotificationTB.swift in Sources */,
 				677971831BC429BA00110C8B /* CustomView.m in Sources */,
 				677971811BC429BA00110C8B /* AMSlideMenuRightTableViewController.m in Sources */,
 				670366341BE5A05600537587 /* ViewOnWallVC.swift in Sources */,
@@ -1177,6 +1188,7 @@
 				67CE02481BDA9660002007D8 /* InstagramComment.m in Sources */,
 				672E90BB1BE4B19F00EF4112 /* InputSizeVC.swift in Sources */,
 				67121A031BCEBFA500CAC506 /* ForgotPasswordTB.swift in Sources */,
+				AFBF90C61BF0AF1000004FA6 /* NotificationTBC.swift in Sources */,
 				6779718E1BC4322700110C8B /* InstagramNC.swift in Sources */,
 				67121A051BCEBFA500CAC506 /* SignInTB.swift in Sources */,
 				675AC9891BEF2F4F00211959 /* CustomPickerView.swift in Sources */,
@@ -1188,10 +1200,10 @@
 				675AC96C1BEDEDAF00211959 /* PlaceOrderVC.swift in Sources */,
 				67C1A5FD1BD22F39007BECA3 /* SelectPhotoVC.swift in Sources */,
 				671FB3FE1BCBBFF800E5EAE8 /* ExtensionUIColor.swift in Sources */,
+				AFBF90CB1BF0B04E00004FA6 /* MyOrderTB.swift in Sources */,
 				67121A151BD0DAF700CAC506 /* MemoryStoreData.swift in Sources */,
 				6779712D1BC41BBF00110C8B /* AppDelegate.swift in Sources */,
 				677971571BC4282D00110C8B /* RightMenuVC.swift in Sources */,
-				AF91AE4C1BEE419F00DF3BAF /* PlaceOrderTBC.swift in Sources */,
 				674B71A61BCDFC6F00B8FC2A /* CustomViewController.swift in Sources */,
 				671219F31BCE80B100CAC506 /* CustomLabelButton.swift in Sources */,
 				670366381BE5B8F000537587 /* SliderView.swift in Sources */,
