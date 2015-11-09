@@ -53,6 +53,8 @@
 		675AC95D1BECF65D00211959 /* PaymentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC95C1BECF65D00211959 /* PaymentDetail.swift */; settings = {ASSET_TAGS = (); }; };
 		675AC96A1BECF8AB00211959 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC9691BECF8AB00211959 /* Order.swift */; settings = {ASSET_TAGS = (); }; };
 		675AC96C1BEDEDAF00211959 /* PlaceOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC96B1BEDEDAF00211959 /* PlaceOrderVC.swift */; settings = {ASSET_TAGS = (); }; };
+		675AC9891BEF2F4F00211959 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675AC9881BEF2F4F00211959 /* CustomPickerView.swift */; settings = {ASSET_TAGS = (); }; };
+		675AC98B1BEF2FA600211959 /* CustomPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 675AC98A1BEF2FA600211959 /* CustomPickerView.xib */; settings = {ASSET_TAGS = (); }; };
 		677878B11BC587F100249748 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677878B01BC587F100249748 /* BaseView.swift */; };
 		6779712D1BC41BBF00110C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6779712C1BC41BBF00110C8B /* AppDelegate.swift */; };
 		6779712F1BC41BBF00110C8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6779712E1BC41BBF00110C8B /* ViewController.swift */; };
@@ -208,6 +210,8 @@
 		675AC95C1BECF65D00211959 /* PaymentDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentDetail.swift; sourceTree = "<group>"; };
 		675AC9691BECF8AB00211959 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		675AC96B1BEDEDAF00211959 /* PlaceOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceOrderVC.swift; sourceTree = "<group>"; };
+		675AC9881BEF2F4F00211959 /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
+		675AC98A1BEF2FA600211959 /* CustomPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickerView.xib; sourceTree = "<group>"; };
 		677878B01BC587F100249748 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseView.swift; path = View/BaseView.swift; sourceTree = "<group>"; };
 		677971271BC41BBF00110C8B /* SnapArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6779712B1BC41BBF00110C8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -454,6 +458,7 @@
 				672E90BE1BE4B21B00EF4112 /* InputSizeView.xib */,
 				672E90C01BE4B36300EF4112 /* CropItView.xib */,
 				670366351BE5B82000537587 /* SliderView.xib */,
+				675AC98A1BEF2FA600211959 /* CustomPickerView.xib */,
 			);
 			name = XIB;
 			path = View/XIB;
@@ -502,6 +507,7 @@
 				671219EE1BCE5DB900CAC506 /* CustomNavigationController.swift */,
 				671219F21BCE80B100CAC506 /* CustomLabelButton.swift */,
 				671219FA1BCEB21100CAC506 /* CustomBarButtonItem.swift */,
+				675AC9881BEF2F4F00211959 /* CustomPickerView.swift */,
 			);
 			name = CustomControl;
 			path = Base/CustomControl;
@@ -1031,6 +1037,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				671219F91BCE8EBF00CAC506 /* Main.storyboard in Resources */,
+				675AC98B1BEF2FA600211959 /* CustomPickerView.xib in Resources */,
 				672E90BF1BE4B21B00EF4112 /* InputSizeView.xib in Resources */,
 				677971371BC41BBF00110C8B /* LaunchScreen.xib in Resources */,
 				672E90C11BE4B36300EF4112 /* CropItView.xib in Resources */,
@@ -1172,6 +1179,7 @@
 				67121A031BCEBFA500CAC506 /* ForgotPasswordTB.swift in Sources */,
 				6779718E1BC4322700110C8B /* InstagramNC.swift in Sources */,
 				67121A051BCEBFA500CAC506 /* SignInTB.swift in Sources */,
+				675AC9891BEF2F4F00211959 /* CustomPickerView.swift in Sources */,
 				677971821BC429BA00110C8B /* UIViewController+AMSlideMenu.m in Sources */,
 				67CE02511BDA9841002007D8 /* UIImageView+AFNetworking.m in Sources */,
 				6779717F1BC429BA00110C8B /* AMSlideMenuMainViewController.m in Sources */,
