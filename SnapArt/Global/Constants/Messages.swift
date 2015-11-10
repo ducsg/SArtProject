@@ -28,6 +28,7 @@ struct MESSAGES{
     
      struct REGISTER{
         static let PASS_INVALID = "Password is too short (minimum is 6 characters)."
+        static let OLD_PASS_EMPTY = "Old Password can't be blank."
         static let RE_PASS_EMPTY = "Re - Enter Password can't be blank."
         static let PASS_EMPTY = "Password can’t be blank."
         static let VERIFICATION_EMPTY = "Verification code should not be blank."

@@ -10,6 +10,10 @@ import UIKit
 
 class NotificationTBC: UITableViewCell {
 
+    @IBOutlet weak var lbTitle: CustomLabelGotham!
+    
+    @IBOutlet weak var lbDatetime: CustomLabelGotham!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +23,10 @@ class NotificationTBC: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    static func instanceFromNib() -> NotificationTBC {
+        return UINib(nibName: "NotificationTBC", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! NotificationTBC
     }
     
 }

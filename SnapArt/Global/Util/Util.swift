@@ -34,9 +34,8 @@ public class Util: NSObject {
     }
     
     func showAlert(message:String,parrent:AnyObject!) -> Void {
-        let alert:UIAlertView = UIAlertView(title: MESSAGES.SA_ALERT_TIL, message: message, delegate: parrent, cancelButtonTitle: "Ok")
+        let alert:UIAlertView = UIAlertView(title: MESSAGES.SA_ALERT_TIL, message: message, delegate: parrent, cancelButtonTitle: "OK")
         alert.show()
-        
     }
     
     func IsValidPassword(password:String) -> Bool{

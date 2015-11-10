@@ -44,7 +44,7 @@ public class Api{
                     return
                 }
                 let json: JSON = JSON(response.result.value!)
-                if json[self.KEY_STATUS].numberValue == 200 {
+                if json[self.KEY_STATUS].numberValue == 200 || json[self.KEY_STATUS].stringValue == "success" {
                     resulf(true, json[self.KEY_MESSAGE].stringValue, json[self.KEY_DATA])
                 }
                 if json[self.KEY_STATUS].numberValue == 500 {
@@ -60,7 +60,7 @@ public class Api{
                     return
                 }
                 let json: JSON = JSON(response.result.value!)
-                if json[self.KEY_STATUS].numberValue == 200 {
+                if json[self.KEY_STATUS].numberValue == 200 || json[self.KEY_STATUS].stringValue == "success" {
                     resulf(true, json[self.KEY_MESSAGE].stringValue, json[self.KEY_DATA])
                 }
                 if json[self.KEY_STATUS].numberValue == 500 {

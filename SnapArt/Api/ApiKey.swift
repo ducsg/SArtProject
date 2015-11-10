@@ -10,6 +10,8 @@ import Foundation
 struct APIKEY {
     //Account
     static let EMAIL:String = "email"
+    static let OLD_PWD:String = "old_password"
+    static let NEW_PWD:String = "new_password"
     static let PWD:String = "password"
     static let REPWD:String = "confirm_password"
     static let CODE:String = "code"

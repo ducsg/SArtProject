@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         self.locationManager.startUpdatingLocation()
         
+        //reset token
+        MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
         switch(getMajorSystemVersion()) {
         case 7:
             UIApplication.sharedApplication().registerForRemoteNotificationTypes(

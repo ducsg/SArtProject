@@ -15,6 +15,7 @@ public class ApiUrl{
     static let signin_url:String = base_url + "api/accounts/login"
     static let forgot_url:String = base_url + "api/accounts/forgot_password"
     static let reset_pwd_url:String = base_url + "api/accounts/reset_password"
+    static let change_pwd_url:String = base_url + "api/accounts/change_password"
     static let signout_url:String = base_url + "api/accounts/logout"
     
     //payment
@@ -40,6 +41,9 @@ public class ApiUrl{
     
     // Crop Image
     static let crop_image_url:String = base_url + "api/cropers/upload"
+    
+    //notification
+    static let get_notification_url:String = base_url + "api/notifications/get_my_notifications"
 
 
 }

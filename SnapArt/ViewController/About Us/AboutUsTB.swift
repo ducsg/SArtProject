@@ -61,6 +61,7 @@ class AboutUsTB: CustomTableViewController{
         cell.textLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
         cell.textLabel!.numberOfLines = 0
         cell.textLabel!.text = aboutList[indexPath.row]
+        cell.backgroundColor = UIColor.clearColor()
         return cell
     }
     

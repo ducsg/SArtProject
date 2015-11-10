@@ -120,7 +120,8 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
             gotoNotifications()
             print("case", terminator: ""); break
         case 2:
-            //My account
+            //My account MyAccount
+            gotoMyAccount()
             print("case", terminator: ""); break
         case 3:
             //My order
@@ -219,6 +220,11 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     
     func gotoNotifications(){
         let nv = Util().getControllerForStoryBoard("NotificationNC") as! CustomNavigationController
+        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+    }
+    
+    func gotoMyAccount(){
+        let nv = Util().getControllerForStoryBoard("MyAccount") as! CustomNavigationController
         self.navigationController?.presentViewController(nv, animated: true, completion: nil)
     }
  
