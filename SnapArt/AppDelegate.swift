@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             } else {
                 // Fallback on earlier versions
             }
-        default: break 
+        default: break
         }
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -63,12 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let locationArray = locations as NSArray
         let locationObj = locationArray.lastObject as! CLLocation
         var coordinate: CLLocationCoordinate2D = locationObj.coordinate
-//        LMGeocoder.sharedInstance().reverseGeocodeCoordinate(coordinate, service: kLMGeocoderGoogleService, completionHandler: {(results: [AnyObject], error: NSErrorPointer) in
-//        if results.count && !error {
-//            var address: LMAddress = results.firstObject()
-//        }
-//            
-//        })
+        //        LMGeocoder.sharedInstance().reverseGeocodeCoordinate(coordinate, service: kLMGeocoderGoogleService, completionHandler: {(results: [AnyObject], error: NSErrorPointer) in
+        //        if results.count && !error {
+        //            var address: LMAddress = results.firstObject()
+        //        }
+        //
+        //        })
         print(coordinate)
     }
     
@@ -114,7 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)
                     MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
                     NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
-                    //                    Api().uploadFile()
                 }else{
                     Util().showAlert(dataResult.message, parrent: self)
                 }
@@ -130,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-    
+        
     }
     func getMajorSystemVersion() -> Int {
         return Int(String(Array(UIDevice.currentDevice().systemVersion.characters)[0]))!

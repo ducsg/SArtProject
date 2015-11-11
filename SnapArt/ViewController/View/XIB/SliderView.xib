@@ -7,57 +7,73 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSj-X1-qfE" customClass="SliderView" customModule="SnapArt" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="377" height="131"/>
+        <view contentMode="scaleToFill" id="4wd-cP-AJK" customClass="SliderView" customModule="SnapArt" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKJ-TD-8Yx" customClass="CustomButton" customModule="SnapArt" customModuleProvider="target">
-                    <rect key="frame" x="103" y="81" width="170" height="30"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohP-4Y-N5Y" customClass="BaseView" customModule="SnapArt" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="542" width="375" height="125"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdt-QU-XsG" customClass="CustomButton" customModule="SnapArt" customModuleProvider="target">
+                            <rect key="frame" x="103" y="75" width="170" height="30"/>
+                            <animations/>
+                            <color key="backgroundColor" red="1" green="0.57576280040000005" blue="0.27406986929999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="ecu-d4-z96"/>
+                                <constraint firstAttribute="width" constant="170" id="z59-Ue-UCj"/>
+                            </constraints>
+                            <state key="normal" title="Add to card"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many feet are you from you wall?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1j-71-fG9">
+                            <rect key="frame" x="42" y="8" width="290" height="21"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="Uj2-DL-ekx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aG1-lV-q7Z">
+                            <rect key="frame" x="17" y="35" width="340" height="31"/>
+                            <animations/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="31" id="xqH-Di-uyl"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <animations/>
-                    <color key="backgroundColor" red="1" green="0.57576280040000005" blue="0.27406986929999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="170" id="Xua-aF-IYT"/>
-                        <constraint firstAttribute="height" constant="30" id="uss-uh-STG"/>
-                    </constraints>
-                    <state key="normal" title="Add to card"/>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many feet are you from you wall?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oi0-Q6-95Z">
-                    <rect key="frame" x="42" y="8" width="290" height="21"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="MIm-yI-nNM"/>
-                        <constraint firstAttribute="width" constant="290" id="X84-s1-cOu"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAg-iM-Dpp">
-                    <rect key="frame" x="17" y="37" width="340" height="31"/>
-                    <animations/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="340" id="3mZ-Q7-n4n"/>
-                        <constraint firstAttribute="height" constant="31" id="tJa-O5-bWy"/>
+                        <constraint firstAttribute="width" constant="375" id="5Yd-g0-i2h"/>
+                        <constraint firstItem="aG1-lV-q7Z" firstAttribute="top" secondItem="h1j-71-fG9" secondAttribute="bottom" constant="6" id="B6K-1r-gPb"/>
+                        <constraint firstAttribute="trailing" secondItem="h1j-71-fG9" secondAttribute="trailing" constant="43" id="Cqb-Jm-PVx"/>
+                        <constraint firstItem="aG1-lV-q7Z" firstAttribute="leading" secondItem="ohP-4Y-N5Y" secondAttribute="leading" constant="17" id="LEz-ZN-ADF"/>
+                        <constraint firstItem="h1j-71-fG9" firstAttribute="centerX" secondItem="ohP-4Y-N5Y" secondAttribute="centerX" id="O0O-wH-0nr"/>
+                        <constraint firstItem="sdt-QU-XsG" firstAttribute="centerX" secondItem="ohP-4Y-N5Y" secondAttribute="centerX" id="RxU-Ou-PI8"/>
+                        <constraint firstItem="h1j-71-fG9" firstAttribute="leading" secondItem="ohP-4Y-N5Y" secondAttribute="leading" constant="42" id="VIe-YH-T6y"/>
+                        <constraint firstAttribute="trailing" secondItem="aG1-lV-q7Z" secondAttribute="trailing" constant="18" id="We2-7i-vuu"/>
+                        <constraint firstItem="aG1-lV-q7Z" firstAttribute="centerX" secondItem="ohP-4Y-N5Y" secondAttribute="centerX" id="b13-ta-Ct8"/>
+                        <constraint firstAttribute="height" constant="125" id="k96-hp-wqJ"/>
+                        <constraint firstItem="aG1-lV-q7Z" firstAttribute="top" secondItem="ohP-4Y-N5Y" secondAttribute="top" constant="35" id="obg-2C-8io"/>
+                        <constraint firstItem="sdt-QU-XsG" firstAttribute="top" secondItem="aG1-lV-q7Z" secondAttribute="bottom" constant="9" id="scd-8B-cGZ"/>
                     </constraints>
                 </view>
             </subviews>
             <animations/>
-            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="oi0-Q6-95Z" firstAttribute="leading" secondItem="xAg-iM-Dpp" secondAttribute="leading" constant="25" id="5Qd-r4-XlE"/>
-                <constraint firstItem="dKJ-TD-8Yx" firstAttribute="leading" secondItem="xAg-iM-Dpp" secondAttribute="leading" constant="86" id="apx-x6-WbX"/>
-                <constraint firstItem="dKJ-TD-8Yx" firstAttribute="top" secondItem="xAg-iM-Dpp" secondAttribute="bottom" constant="13" id="clb-W4-ceT"/>
-                <constraint firstItem="dKJ-TD-8Yx" firstAttribute="centerX" secondItem="iSj-X1-qfE" secondAttribute="centerX" id="k9S-zr-P1p"/>
-                <constraint firstItem="oi0-Q6-95Z" firstAttribute="top" secondItem="iSj-X1-qfE" secondAttribute="top" constant="8" id="r4t-JA-raX"/>
-                <constraint firstItem="xAg-iM-Dpp" firstAttribute="top" secondItem="oi0-Q6-95Z" secondAttribute="bottom" constant="8" id="s1Y-B2-yf8"/>
+                <constraint firstAttribute="trailing" secondItem="ohP-4Y-N5Y" secondAttribute="trailing" id="RPe-JM-PtV"/>
+                <constraint firstAttribute="bottom" secondItem="ohP-4Y-N5Y" secondAttribute="bottom" id="eWl-Ah-TGN"/>
+                <constraint firstItem="ohP-4Y-N5Y" firstAttribute="leading" secondItem="4wd-cP-AJK" secondAttribute="leading" id="t6b-n0-Ysa"/>
             </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <connections>
-                <outlet property="addToCartBtn" destination="dKJ-TD-8Yx" id="HsM-zM-8LM"/>
-                <outlet property="sliderView" destination="xAg-iM-Dpp" id="RHe-QF-hYb"/>
-                <outlet property="textlb" destination="oi0-Q6-95Z" id="Lwe-QV-23V"/>
+                <outlet property="addToCartBtn" destination="sdt-QU-XsG" id="ToX-O2-vKr"/>
+                <outlet property="sliderView" destination="aG1-lV-q7Z" id="Szk-Az-AwO"/>
+                <outlet property="textlb" destination="h1j-71-fG9" id="BWn-Jd-aD3"/>
             </connections>
-            <point key="canvasLocation" x="141.5" y="592.5"/>
+            <point key="canvasLocation" x="140.5" y="157.5"/>
         </view>
     </objects>
 </document>

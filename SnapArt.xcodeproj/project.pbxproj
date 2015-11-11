@@ -141,8 +141,6 @@
 		67EBB34D1BDE81C40080E4E8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EBB34C1BDE81C40080E4E8 /* AVFoundation.framework */; };
 		67EBB34F1BDE8F6D0080E4E8 /* MenuNaviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB34E1BDE8F6D0080E4E8 /* MenuNaviController.swift */; settings = {ASSET_TAGS = (); }; };
 		67EBB3561BDF8E370080E4E8 /* NotificationTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB3551BDF8E370080E4E8 /* NotificationTB.swift */; settings = {ASSET_TAGS = (); }; };
-		67F01EDC1BE47F8100CC5253 /* NLCropViewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F01ED91BE47F8100CC5253 /* NLCropViewLayer.m */; settings = {ASSET_TAGS = (); }; };
-		67F01EDD1BE47F8100CC5253 /* NLImageCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F01EDB1BE47F8100CC5253 /* NLImageCropperView.m */; settings = {ASSET_TAGS = (); }; };
 		67F01EDF1BE4836800CC5253 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F01EDE1BE4836800CC5253 /* AudioToolbox.framework */; };
 		67F01EE11BE493B500CC5253 /* ExtensionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */; settings = {ASSET_TAGS = (); }; };
 		AFBF90C61BF0AF1000004FA6 /* NotificationTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF90C21BF0AF1000004FA6 /* NotificationTBC.swift */; settings = {ASSET_TAGS = (); }; };
@@ -351,10 +349,6 @@
 		67EBB34C1BDE81C40080E4E8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		67EBB34E1BDE8F6D0080E4E8 /* MenuNaviController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNaviController.swift; sourceTree = "<group>"; };
 		67EBB3551BDF8E370080E4E8 /* NotificationTB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTB.swift; path = Notification/NotificationTB.swift; sourceTree = "<group>"; };
-		67F01ED81BE47F8100CC5253 /* NLCropViewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLCropViewLayer.h; sourceTree = "<group>"; };
-		67F01ED91BE47F8100CC5253 /* NLCropViewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLCropViewLayer.m; sourceTree = "<group>"; };
-		67F01EDA1BE47F8100CC5253 /* NLImageCropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLImageCropperView.h; sourceTree = "<group>"; };
-		67F01EDB1BE47F8100CC5253 /* NLImageCropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLImageCropperView.m; sourceTree = "<group>"; };
 		67F01EDE1BE4836800CC5253 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionUIImage.swift; path = lib/Extensions/ExtensionUIImage.swift; sourceTree = "<group>"; };
 		7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -436,7 +430,6 @@
 			children = (
 				67CE02301BDA9660002007D8 /* InstagramKit */,
 				6797C1BB1BD394C600F2EB79 /* Picker */,
-				67C1A5FE1BD236DB007BECA3 /* Crop-lib */,
 				671219FD1BCEBCBD00CAC506 /* UtilOjbC.h */,
 				671219FE1BCEBCBD00CAC506 /* UtilOjbC.m */,
 			);
@@ -867,17 +860,6 @@
 			path = lib/CardIO;
 			sourceTree = "<group>";
 		};
-		67C1A5FE1BD236DB007BECA3 /* Crop-lib */ = {
-			isa = PBXGroup;
-			children = (
-				67F01ED81BE47F8100CC5253 /* NLCropViewLayer.h */,
-				67F01ED91BE47F8100CC5253 /* NLCropViewLayer.m */,
-				67F01EDA1BE47F8100CC5253 /* NLImageCropperView.h */,
-				67F01EDB1BE47F8100CC5253 /* NLImageCropperView.m */,
-			);
-			path = "Crop-lib";
-			sourceTree = "<group>";
-		};
 		67CE02301BDA9660002007D8 /* InstagramKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1148,7 +1130,6 @@
 				AFBF90CD1BF0FDD500004FA6 /* Notification.swift in Sources */,
 				675AC9551BECA46D00211959 /* Address.swift in Sources */,
 				67CE024C1BDA9660002007D8 /* InstagramPaginationInfo.m in Sources */,
-				67F01EDC1BE47F8100CC5253 /* NLCropViewLayer.m in Sources */,
 				677971901BC4325100110C8B /* InstagramCollectionView.swift in Sources */,
 				67AA4D511BEB673500DE83F6 /* SRWebClient.swift in Sources */,
 				AFE2A8521BE61A48000E9AB2 /* MGSwipeButton.m in Sources */,
@@ -1221,7 +1202,6 @@
 				670366381BE5B8F000537587 /* SliderView.swift in Sources */,
 				677971851BC429BA00110C8B /* IKCollectionViewController.m in Sources */,
 				677971871BC429BA00110C8B /* IKMediaViewController.m in Sources */,
-				67F01EDD1BE47F8100CC5253 /* NLImageCropperView.m in Sources */,
 				677971971BC438E900110C8B /* InstagramLoginVC.swift in Sources */,
 				AFE2A8531BE61A48000E9AB2 /* MGSwipeTableCell.m in Sources */,
 				672E90C51BE4B57800EF4112 /* CropItVC.swift in Sources */,

@@ -38,9 +38,9 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     
     // MARK: - TAKE PHOTO
     @IBAction func takePhotoEvent(sender: AnyObject) {
-//        getImageFormLib()
-        let image = UIImage(named: "girl_image")
-        self.setImageView(Util().imageResize(image!, sizeChange: CGSize(width: 450,height: 800)))
+        getImageFormLib()
+//        let image = UIImage(named: "girl_image")
+//        self.setImageView(Util().imageResize(image!, sizeChange: CGSize(width: 450,height: 800)))
 
     }
     // MARK: - CHOOSE FROM PHOTO FROM FACEBOOK

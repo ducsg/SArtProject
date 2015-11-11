@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomPickerView" customModule="SnapArt" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="260"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Keq-IS-3A8">
+                    <rect key="frame" x="0.0" y="44" width="325" height="216"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="216" id="sgJ-b3-cV9"/>
+                    </constraints>
+                </pickerView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4A-Lh-LRA">
+                    <rect key="frame" x="258" y="0.0" width="67" height="38"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="67" id="oMm-tD-jZh"/>
+                        <constraint firstAttribute="height" constant="38" id="rOY-wq-aKe"/>
+                    </constraints>
+                    <state key="normal" title="Close"/>
+                    <connections>
+                        <action selector="hiddenTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="WsT-36-BAE"/>
+                    </connections>
+                </button>
+            </subviews>
+            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Keq-IS-3A8" secondAttribute="bottom" id="84I-jy-zTL"/>
+                <constraint firstItem="C4A-Lh-LRA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PkT-YQ-R0f"/>
+                <constraint firstItem="Keq-IS-3A8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cKx-si-nbc"/>
+                <constraint firstAttribute="trailing" secondItem="Keq-IS-3A8" secondAttribute="trailing" id="jcJ-x4-hBi"/>
+                <constraint firstAttribute="trailing" secondItem="C4A-Lh-LRA" secondAttribute="trailing" id="mnu-4i-Lqv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="hiddenBtn" destination="C4A-Lh-LRA" id="AUo-0B-hVM"/>
+                <outlet property="pickerView" destination="Keq-IS-3A8" id="hjH-Yy-1a0"/>
+            </connections>
+            <point key="canvasLocation" x="241.5" y="-81"/>
         </view>
     </objects>
 </document>
