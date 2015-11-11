@@ -34,8 +34,9 @@ class BuyItTB: CustomTableViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         applyBackIcon()
+        tfPostalCode.keyboardType = UIKeyboardType.NumberPad
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,6 +74,7 @@ class BuyItTB: CustomTableViewController, UITextFieldDelegate {
         billingAddressData.address1 = self.tfAddress1.text!
         billingAddressData.address2 = self.tfAddress2.text!
         billingAddressData.city = self.tfCity.text!
+        billingAddressData.state = self.tfState.text!
         billingAddressData.country = self.tfCountry.text!
         billingAddressData.postalCose = self.tfPostalCode.text!
 
@@ -83,21 +85,23 @@ class BuyItTB: CustomTableViewController, UITextFieldDelegate {
     }
     
     func showpicker() -> Void {
-
-        let picker = ActionSheetStringPicker(title: "", rows: Util().getCountryList(), initialSelection: 0, doneBlock: {picker, value, index in
-            return }, cancelBlock: {ActionStringCancelBlock in
+        self.tfPostalCode.resignFirstResponder()
+        let countryList:[String] = Util().getCountryList()
+        let picker = ActionSheetStringPicker(title: "", rows: countryList, initialSelection: 0, doneBlock: {picker, value, index in
+            self.tfCountry.text = String(index)
+            return
+            }, cancelBlock: {ActionStringCancelBlock in
                 
-                return}, origin: tfCountry.superview)
+                return
+            }, origin: tfCountry.superview)
         picker.showActionSheetPicker()
     }
-
-//    func textFieldDidBeginEditing(textField: UITextField) {
-//        if textField == self.tfCountry {
-//            self.tableView.endEditing(true)
-//            showpicker();
-//        }
-//    }
-
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == self.tfCountry {
+            showpicker();
+        }
+    }
     /*
     // MARK: - Navigation
 

@@ -86,6 +86,15 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
         return cell
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if(indexPath.row > 1){
+           return 100;
+        }else{
+            return 130
+        }
+    }
+    
     @IBAction func pressBtnPurchase(sender: AnyObject) {
         let payment_detail:String = ShoppingCartVC.paymentDetail.toJsonString()!
         if(ShoppingCartVC.paymentDetail.payment_method == 0){

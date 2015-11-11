@@ -93,8 +93,12 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         print(btnDelete.tag)
         cell.rightButtons = [btnDelete]
         cell.rightSwipeSettings.transition = MGSwipeTransition.Static
-        
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 100;
     }
     
     func pressBtnPlus(sender: UIButton){

@@ -3,47 +3,57 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="134" id="KGk-i7-Jjw" customClass="PlaceOrderTBC" customModule="SnapArt" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="109" id="KGk-i7-Jjw" customClass="PlaceOrderTBC" customModule="SnapArt" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SHIPPING ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ob9-fc-Edd" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SHIPPING ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ob9-fc-Edd" customClass="CustomLabelGothamBold" customModule="SnapArt" customModuleProvider="target">
                         <rect key="frame" x="8" y="3" width="304" height="21"/>
                         <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="G9T-KE-2vC"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Firstname Lastname" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZP-aZ-E4t" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Firstname Lastname" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZP-aZ-E4t" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
                         <rect key="frame" x="8" y="28" width="304" height="21"/>
                         <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="qrs-jb-jpe"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vr-SW-9fG" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Address 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vr-SW-9fG" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
                         <rect key="frame" x="8" y="47" width="304" height="21"/>
                         <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="yYS-h5-RKc"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address 2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7RW-Pc-8nR" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Address 2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7RW-Pc-8nR" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
                         <rect key="frame" x="8" y="65" width="304" height="21"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City, State, Postal Code" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zm-RI-DPo" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
-                        <rect key="frame" x="8" y="83" width="304" height="42"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="City, State, Postal Code" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zm-RI-DPo" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                        <rect key="frame" x="8" y="83" width="304" height="22"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -51,6 +61,25 @@
                     </label>
                 </subviews>
                 <animations/>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="3zm-RI-DPo" secondAttribute="bottom" constant="20" id="6hx-6i-mht"/>
+                    <constraint firstItem="ob9-fc-Edd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-5" id="6k9-Fz-eUR"/>
+                    <constraint firstItem="fZP-aZ-E4t" firstAttribute="leading" secondItem="ob9-fc-Edd" secondAttribute="leading" id="6qw-LJ-kTJ"/>
+                    <constraint firstItem="7RW-Pc-8nR" firstAttribute="leading" secondItem="9Vr-SW-9fG" secondAttribute="leading" id="6ys-3f-PPW"/>
+                    <constraint firstItem="fZP-aZ-E4t" firstAttribute="leading" secondItem="9Vr-SW-9fG" secondAttribute="leading" id="E6V-me-RUi"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7RW-Pc-8nR" secondAttribute="bottom" constant="39" id="Nv3-MY-U4I"/>
+                    <constraint firstItem="3zm-RI-DPo" firstAttribute="trailing" secondItem="7RW-Pc-8nR" secondAttribute="trailing" id="QgN-iE-2ga"/>
+                    <constraint firstItem="3zm-RI-DPo" firstAttribute="top" secondItem="9Vr-SW-9fG" secondAttribute="bottom" constant="15" id="SEB-P4-yZa"/>
+                    <constraint firstItem="7RW-Pc-8nR" firstAttribute="top" secondItem="fZP-aZ-E4t" secondAttribute="bottom" constant="16" id="UFq-rV-3nn"/>
+                    <constraint firstItem="fZP-aZ-E4t" firstAttribute="top" secondItem="ob9-fc-Edd" secondAttribute="bottom" constant="4" id="UmR-7F-Hus"/>
+                    <constraint firstItem="9Vr-SW-9fG" firstAttribute="top" secondItem="ob9-fc-Edd" secondAttribute="bottom" constant="23" id="X5C-BC-5sr"/>
+                    <constraint firstItem="7RW-Pc-8nR" firstAttribute="leading" secondItem="3zm-RI-DPo" secondAttribute="leading" id="bkt-od-t12"/>
+                    <constraint firstItem="9Vr-SW-9fG" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="gOd-lL-c4B"/>
+                    <constraint firstItem="fZP-aZ-E4t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="hyZ-kV-AWA"/>
+                    <constraint firstItem="7RW-Pc-8nR" firstAttribute="trailing" secondItem="9Vr-SW-9fG" secondAttribute="trailing" id="i9O-He-Mwp"/>
+                    <constraint firstItem="fZP-aZ-E4t" firstAttribute="trailing" secondItem="9Vr-SW-9fG" secondAttribute="trailing" id="rgj-Mi-8gP"/>
+                    <constraint firstItem="ob9-fc-Edd" firstAttribute="trailing" secondItem="fZP-aZ-E4t" secondAttribute="trailing" id="vP4-08-I28"/>
+                </constraints>
             </tableViewCellContentView>
             <animations/>
             <connections>
@@ -60,7 +89,7 @@
                 <outlet property="lbCityState" destination="3zm-RI-DPo" id="9lL-h1-x0H"/>
                 <outlet property="lbFullname" destination="fZP-aZ-E4t" id="pJz-LU-iuU"/>
             </connections>
-            <point key="canvasLocation" x="139" y="210"/>
+            <point key="canvasLocation" x="139" y="197.5"/>
         </tableViewCell>
     </objects>
 </document>

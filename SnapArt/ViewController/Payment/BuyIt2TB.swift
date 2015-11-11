@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BuyIt2TB: CustomTableViewController {
+class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tfFirstName: CustomTextField!
     @IBOutlet weak var tfLastName: CustomTextField!
@@ -27,11 +27,13 @@ class BuyIt2TB: CustomTableViewController {
         super.viewDidLoad()
         listFieldRequire = [tfFirstName, tfLastName, tfAddress1, tfCity, tfState, tfPostalCode, tfCountry]
         // Do any additional setup after loading the view.
+        tfCountry.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         applyBackIcon()
+        tfPostalCode.keyboardType = UIKeyboardType.NumberPad
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,6 +59,7 @@ class BuyIt2TB: CustomTableViewController {
         shippingAddressData.address1 = self.tfAddress1.text!
         shippingAddressData.address2 = self.tfAddress2.text!
         shippingAddressData.city = self.tfCity.text!
+        shippingAddressData.state = self.tfState.text!
         shippingAddressData.country = self.tfCountry.text!
         shippingAddressData.postalCose = self.tfPostalCode.text!
         
@@ -64,6 +67,24 @@ class BuyIt2TB: CustomTableViewController {
         print(ShoppingCartVC.paymentDetail.toJsonString())
     }
     
+    func showpicker() -> Void {
+        self.view.endEditing(true)
+        let countryList:[String] = Util().getCountryList()
+        let picker = ActionSheetStringPicker(title: "", rows: countryList, initialSelection: 0, doneBlock: {picker, value, index in
+            self.tfCountry.text = String(index)
+            return
+            }, cancelBlock: {ActionStringCancelBlock in
+                
+                return
+            }, origin: tfCountry.superview)
+        picker.showActionSheetPicker()
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == self.tfCountry {
+            showpicker();
+        }
+    }
     /*
     // MARK: - Navigation
 
