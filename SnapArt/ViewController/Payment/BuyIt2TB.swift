@@ -22,6 +22,7 @@ class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
     var listFieldRequire = [CustomTextField]()
     var useBillingAddress:Bool = false
     var shippingAddressData = Address()
+    var postCodeTemp:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,10 +69,12 @@ class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
     }
     
     func showpicker() -> Void {
-        self.view.endEditing(true)
+        self.tfPostalCode.resignFirstResponder()
         let countryList:[String] = Util().getCountryList()
-        let picker = ActionSheetStringPicker(title: "", rows: countryList, initialSelection: 0, doneBlock: {picker, value, index in
+        let picker = ActionSheetStringPicker(title: "", rows: countryList, initialSelection: self.postCodeTemp, doneBlock: {picker, value, index in
             self.tfCountry.text = String(index)
+            self.postCodeTemp = countryList.indexOf(String(index))!
+            
             return
             }, cancelBlock: {ActionStringCancelBlock in
                 
@@ -79,11 +82,13 @@ class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
             }, origin: tfCountry.superview)
         picker.showActionSheetPicker()
     }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if textField == self.tfCountry {
+            self.tableView.endEditing(true)
             showpicker();
+            return false
         }
+        return true
     }
     /*
     // MARK: - Navigation

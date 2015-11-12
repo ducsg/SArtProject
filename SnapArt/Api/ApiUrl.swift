@@ -38,6 +38,7 @@ public class ApiUrl{
     static let get_message_url:String = base_url + "/api/messages/get_message"
     static let save_message_url:String = base_url + "/api/messages/update_messages"
     static let get_discount_promo_code:String = base_url + "/api/promotions/get_discount_promotion"
+    static let get_promotion:String = base_url + "/api/promotions/get_promotion"
     
     // Crop Image
     static let crop_image_url:String = base_url + "api/cropers/upload"

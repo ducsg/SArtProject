@@ -9,7 +9,7 @@
 import UIKit
 
 class BuyItTB: CustomTableViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var tfFirstName: CustomTextField!
     @IBOutlet weak var tfLastName: CustomTextField!
     @IBOutlet weak var tfAddress1: CustomTextField!
@@ -23,7 +23,8 @@ class BuyItTB: CustomTableViewController, UITextFieldDelegate {
     var billingAddressData = Address()
     var listFieldRequire = [CustomTextField]()
     var useBillingAddress:Bool = false
-    
+    var postCodeTemp:Int = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         listFieldRequire = [tfFirstName, tfLastName, tfAddress1, tfCity, tfState, tfPostalCode, tfCountry]
@@ -45,7 +46,7 @@ class BuyItTB: CustomTableViewController, UITextFieldDelegate {
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
         self.navigationController?.popViewControllerAnimated(true)
     }
-
+    
     
     @IBAction func pressBtnUseBilling(sender: AnyObject) {
         useBillingAddress = !useBillingAddress
@@ -60,7 +61,7 @@ class BuyItTB: CustomTableViewController, UITextFieldDelegate {
             getFillingData()
             if(!useBillingAddress){
                 let nv = Util().getControllerForStoryBoard("BuyIt2TB") as! BuyIt2TB
-            self.navigationController?.pushViewController(nv, animated: true)
+                self.navigationController?.pushViewController(nv, animated: true)
             }else{
                 let nv = Util().getControllerForStoryBoard("PaymentVC") as! PaymentVC
                 self.navigationController?.pushViewController(nv, animated: true)
@@ -77,7 +78,7 @@ class BuyItTB: CustomTableViewController, UITextFieldDelegate {
         billingAddressData.state = self.tfState.text!
         billingAddressData.country = self.tfCountry.text!
         billingAddressData.postalCose = self.tfPostalCode.text!
-
+        
         ShoppingCartVC.paymentDetail.billing_address = billingAddressData
         if(useBillingAddress){
             ShoppingCartVC.paymentDetail.shipping_address = billingAddressData
@@ -87,8 +88,10 @@ class BuyItTB: CustomTableViewController, UITextFieldDelegate {
     func showpicker() -> Void {
         self.tfPostalCode.resignFirstResponder()
         let countryList:[String] = Util().getCountryList()
-        let picker = ActionSheetStringPicker(title: "", rows: countryList, initialSelection: 0, doneBlock: {picker, value, index in
+        let picker = ActionSheetStringPicker(title: "", rows: countryList, initialSelection: self.postCodeTemp, doneBlock: {picker, value, index in
             self.tfCountry.text = String(index)
+            self.postCodeTemp = countryList.indexOf(String(index))!
+
             return
             }, cancelBlock: {ActionStringCancelBlock in
                 
@@ -96,20 +99,22 @@ class BuyItTB: CustomTableViewController, UITextFieldDelegate {
             }, origin: tfCountry.superview)
         picker.showActionSheetPicker()
     }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if textField == self.tfCountry {
+            self.tableView.endEditing(true)
             showpicker();
+            return false
         }
+        return true
     }
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

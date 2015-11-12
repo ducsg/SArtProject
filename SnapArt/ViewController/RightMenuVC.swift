@@ -19,8 +19,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
 //        "Like SnapArt on Instargram","Rate on the App Store",
 //        "About Us","FAQs"," Email Us ","Term of Service"]
     
-    private let MENU_DID_LOGIN = ["Make Art","Notifcations","My Account","My Order",
-        "About Us","FAQs"," Email Us"]
+    private let MENU_DID_LOGIN = ["Make Art","Notifcations","My Account","My Order", "Promotion", "About Us","FAQs"," Email Us"]
     private let MENU_WILL_LOGIN = ["Make Art","About Us","FAQs","Email Us"]
     private let LOGIN_TITLE  = "Log In"
     private let LOGOUT_TITLE  = "Log Out"
@@ -127,14 +126,18 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
             //My order
             print("case", terminator: ""); break
         case 4:
+            //Promotion
+            gotoPromotion()
+            print("case", terminator: ""); break
+        case 5:
             // About Us
             presentAboutlUs()
             print("case", terminator: ""); break
-        case 5:
+        case 6:
             // FAQs
             gotoFAQs()
             print("case", terminator: ""); break
-        case 6:
+        case 7:
             // Emails
             sendEmailUs()
             print("case", terminator: ""); break
@@ -220,6 +223,11 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     
     func gotoNotifications(){
         let nv = Util().getControllerForStoryBoard("NotificationNC") as! CustomNavigationController
+        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+    }
+    
+    func gotoPromotion(){
+        let nv = Util().getControllerForStoryBoard("PromotionInfoNC") as! CustomNavigationController
         self.navigationController?.presentViewController(nv, animated: true, completion: nil)
     }
     

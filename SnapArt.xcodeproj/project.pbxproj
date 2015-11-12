@@ -153,6 +153,7 @@
 		AFBF90CD1BF0FDD500004FA6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF90CC1BF0FDD500004FA6 /* Notification.swift */; settings = {ASSET_TAGS = (); }; };
 		AFE2A8521BE61A48000E9AB2 /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2A84F1BE61A48000E9AB2 /* MGSwipeButton.m */; settings = {ASSET_TAGS = (); }; };
 		AFE2A8531BE61A48000E9AB2 /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2A8511BE61A48000E9AB2 /* MGSwipeTableCell.m */; settings = {ASSET_TAGS = (); }; };
+		AFF201781BF39AF6000DA160 /* PromotionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF201771BF39AF6000DA160 /* PromotionInfoVC.swift */; settings = {ASSET_TAGS = (); }; };
 		AFFC79911BF1B10100F7509A /* MyAccountTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC79901BF1B10100F7509A /* MyAccountTB.swift */; settings = {ASSET_TAGS = (); }; };
 		AFFC79931BF1BB2E00F7509A /* ChangePasswordTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC79921BF1BB2E00F7509A /* ChangePasswordTB.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -369,6 +370,7 @@
 		AFE2A84F1BE61A48000E9AB2 /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSwipeButton.m; path = lib/MGSwipeTableCell/MGSwipeButton.m; sourceTree = "<group>"; };
 		AFE2A8501BE61A48000E9AB2 /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSwipeTableCell.h; path = lib/MGSwipeTableCell/MGSwipeTableCell.h; sourceTree = "<group>"; };
 		AFE2A8511BE61A48000E9AB2 /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSwipeTableCell.m; path = lib/MGSwipeTableCell/MGSwipeTableCell.m; sourceTree = "<group>"; };
+		AFF201771BF39AF6000DA160 /* PromotionInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionInfoVC.swift; sourceTree = "<group>"; };
 		AFFC79901BF1B10100F7509A /* MyAccountTB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountTB.swift; sourceTree = "<group>"; };
 		AFFC79921BF1BB2E00F7509A /* ChangePasswordTB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordTB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -508,6 +510,7 @@
 				AFBF90CA1BF0B04E00004FA6 /* MyOrderTB.swift */,
 				AFFC79901BF1B10100F7509A /* MyAccountTB.swift */,
 				AFFC79921BF1BB2E00F7509A /* ChangePasswordTB.swift */,
+				AFF201771BF39AF6000DA160 /* PromotionInfoVC.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -1227,6 +1230,7 @@
 				672E90C51BE4B57800EF4112 /* CropItVC.swift in Sources */,
 				674B71AB1BCE35BB00B8FC2A /* RegisterTB.swift in Sources */,
 				678890B81BCBB5240071DA50 /* MenuCell.swift in Sources */,
+				AFF201781BF39AF6000DA160 /* PromotionInfoVC.swift in Sources */,
 				67D2EF641BD5499E00742823 /* FacebookLoginVC.swift in Sources */,
 				6797C1D41BD394C600F2EB79 /* DistancePickerView.m in Sources */,
 				677971931BC435EE00110C8B /* BaseNC.swift in Sources */,

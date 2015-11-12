@@ -11,7 +11,7 @@ import Braintree
 import Alamofire
 import SwiftyJSON
 
-class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPaymentViewControllerDelegate{
+class PaymentVC: CustomViewController, BTDropInViewControllerDelegate, CardIOPaymentViewControllerDelegate{
     var braintree: Braintree?
     var paymentToken:String = ""
     let paymentTitle = "SnapArt total payment:"
@@ -31,6 +31,12 @@ class PaymentVC: UIViewController, BTDropInViewControllerDelegate, CardIOPayment
                 self.braintree = Braintree(clientToken: self.paymentToken)
             }
         })
+        
+        applyBackIcon()
+    }
+    
+    func pressBackIcon(sender: UIBarButtonItem!) -> Void{
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func didReceiveMemoryWarning() {
