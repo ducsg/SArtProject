@@ -20,4 +20,8 @@ struct APIKEY {
     static let ACCOUNT_ID:String = "account_id"
     static let IOS_REG_ID:String = "ios_reg_id"
 
+    //CROP IMAGE
+    static let WIDTH:String = "width"
+    static let HEIGHT:String = "height"
+
 }

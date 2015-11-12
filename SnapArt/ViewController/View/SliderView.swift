@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SliderView: BaseView {
+class SliderView: UIView {
     @IBOutlet weak var textlb: UILabel!
     @IBOutlet weak var addToCartBtn: CustomButton!
     @IBOutlet weak var sliderView: UIView!
@@ -23,5 +23,7 @@ class SliderView: BaseView {
     static func instanceFromNib() -> SliderView {
         return UINib(nibName: "SliderView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! SliderView
     }
-
+    override func awakeFromNib() {
+        self.backgroundColor = UIColor.clearColor()
+    }
 }

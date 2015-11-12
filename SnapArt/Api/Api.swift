@@ -54,6 +54,7 @@ public class Api{
         }else if(method == .POST){
             self.alamoFireManager!.request(.POST, url, parameters: parameters, headers: headers).responseJSON { response in
                 self.closeWaiting()
+
                 print("api data POST: \(response)")
                 if(response.result.value == nil){
                     resulf(false, MESSAGES.COMMON.NOT_INTERNET, JSON(""))
@@ -72,14 +73,20 @@ public class Api{
         
     }
     
-    func uploadFile(){
-        let image = UIImage(named: "testUpload.jpg")
+    func uploadFile(image:UIImage!, resulf:(Bool,String!, String!) -> ()){
         let imageData = UIImagePNGRepresentation(image!)
         SRWebClient.POST(ApiUrl.crop_image_url)//
             .headers(headers)
             .data(imageData!, fieldName:"avatar", data:["rotate":"1"])
             .send({(response:AnyObject!, status:Int) -> Void in
-                print(response)
+                let json = Json(string: (response as? String)!)
+                if json["status"].asInt == 200 {
+                    resulf(true, json[self.KEY_MESSAGE].asString, json[self.KEY_DATA].asString)
+                }
+                if json[self.KEY_STATUS].asInt == 500 {
+                    resulf(false, json[self.KEY_MESSAGE].asString, json[self.KEY_DATA].asString)
+                }
+
                 },failure:{(error:NSError!) -> Void in
                     print(error)
             })

@@ -30,7 +30,7 @@ class CustomPickerView: UIView, UIPickerViewDelegate , UIPickerViewDataSource {
         self.hiddenBtn.backgroundColor = UIColor.clearColor()
         self.hiddenBtn.titleLabel?.font = SA_STYPE.FONT_GOTHAM_BOLD
         self.hiddenBtn.titleLabel?.textColor = SA_STYPE.TEXT_LABEL_COLOR
-        self.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
+        self.backgroundColor = UIColor.whiteColor()
         self.hiddenBtn.setTitleColor(SA_STYPE.TEXT_LABEL_COLOR, forState: UIControlState.Normal)
         
     }
@@ -40,7 +40,6 @@ class CustomPickerView: UIView, UIPickerViewDelegate , UIPickerViewDataSource {
         pickerView.delegate = self;
         pickerView.reloadAllComponents()
         pickerView.selectedRowInComponent(0)
-        
     }
     
     static func instanceFromNib() -> CustomPickerView {

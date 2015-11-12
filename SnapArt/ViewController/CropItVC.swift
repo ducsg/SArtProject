@@ -7,29 +7,36 @@
 //
 
 import UIKit
-
-class CropItVC: CustomViewController {
+import SwiftyJSON
+class CropItVC: CustomViewController ,UIWebViewDelegate {
 
     @IBOutlet weak var cropBtn: UIButton!
     @IBOutlet weak var rotationBtn: UIButton!
     @IBOutlet weak var containerView: UIView!
-    private var cropV:NLImageCropperView!
+    @IBOutlet weak var cropWebView: UIWebView!
     internal var imageCrop:UIImage!
     private var TITTLE = "Crop It"
+    private var ROTATE_FUNCTION = "rotateImage()"
+    private var CROP_FUNCTION = "cropImage()"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = TITTLE
-        containerView.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
-        cropV = NLImageCropperView(frame: containerView.bounds)
-        self.containerView.addSubview(cropV)
+        let api:Api = Api()
         self.containerView.backgroundColor = UIColor.clearColor()
-        cropV.setCropRegionRect(CGRectMake(1, 1, 600, 600))
-        imageCrop = UIImage(named: "girl_image")
-        cropV.setImage(imageCrop)
+        self.cropWebView.scrollView.scrollEnabled = false
+        self.cropWebView.delegate = self
+        self.callLoading(self.navigationController?.view)
+
+       api.uploadFile(imageCrop, resulf:{(dataResult: (success: Bool, message: String!, data: String!))->() in
+            let url = NSURL (string: dataResult.data)
+            let requestObj = NSURLRequest(URL: url!)
+            self.cropWebView.loadRequest(requestObj)
+
+        })
         
-        // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -37,17 +44,24 @@ class CropItVC: CustomViewController {
     }
     
     @IBAction func rotationTap(sender: AnyObject) {
-        if cropV != nil {
-            imageCrop = imageCrop?.imageRotatedByDegrees(90, flip: false)
-            cropV.setCropRegionRect(CGRectMake(1, 1, 350, 350))
-            cropV.setImage(imageCrop)
-        }
+        self.cropWebView.stringByEvaluatingJavaScriptFromString(ROTATE_FUNCTION)
     }
 
     @IBAction func cropTap(sender: AnyObject) {
+        
+        let url = self.cropWebView.stringByEvaluatingJavaScriptFromString(CROP_FUNCTION)
         let vc = Util().getControllerForStoryBoard("PreviewVC") as! PreviewVC
+        vc.previewURL = url!
         self.navigationController?.pushViewController(vc, animated: true)
 
+    }
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+        self.removeLoading(self.navigationController?.view)
+    }
+    func webViewDidStartLoad(webView: UIWebView) {
+    }
+    func webViewDidFinishLoad(webView: UIWebView) {
+        self.removeLoading(self.navigationController?.view)
     }
     /*
     // MARK: - Navigation
