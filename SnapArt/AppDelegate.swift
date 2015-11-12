@@ -14,25 +14,18 @@ import SwiftyJSON
 import FBSDKShareKit
 //import InstagramKit
 import LMGeocoder
+import Alamofire
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
     
     var window: UIWindow?
-    let locationManager = CLLocationManager()
+    var locationManager = LocationManager.sharedInstance
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         MemoryStoreData().setValue(MemoryStoreData.user_reg_id, value: "19d0a7587e55d8cc386ee17406714ff91cf40e42934250e399b0c2fecb30a486") //hard code reg id
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        self.locationManager.distanceFilter = 100
-        if self.locationManager.respondsToSelector("requestAlwaysAuthorization") {
-            self.locationManager.requestAlwaysAuthorization()
-        }
-        self.locationManager.startUpdatingLocation()
-        
-        //reset token
+                //reset token
         MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
         switch(getMajorSystemVersion()) {
         case 7:
@@ -52,6 +45,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         default: break
         }
         
+        //update location
+        locationManager.autoUpdate = true
+        locationManager.showVerboseMessage = true
+        locationManager.startUpdatingLocationWithCompletionHandler { (latitude, longitude, status, verboseMessage, error) -> () in
+            if(error == nil){
+                if(MemoryStoreData().getDouble(MemoryStoreData.user_lat) != latitude || MemoryStoreData().getDouble(MemoryStoreData.user_long) != longitude){
+                    MemoryStoreData().setValue(MemoryStoreData.user_lat, value: latitude)
+                    MemoryStoreData().setValue(MemoryStoreData.user_long, value: longitude)
+                    Alamofire.request(.GET, "http://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)")
+                        .responseJSON { response in
+                            if let data:JSON = JSON(response.result.value!) {
+                                if(data["status"].stringValue == "OK"){
+                                    let countryCode = data["results"][data["results"].count-1]["address_components"][0]["short_name"].stringValue
+                                    if(countryCode != ""){
+                                        MemoryStoreData().setValue(MemoryStoreData.user_country_code, value: countryCode)
+                                    }
+                                }
+                            }
+                    }
+                }
+            }
+        }
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Override point for customization after application launch.
@@ -59,22 +75,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        let locationArray = locations as NSArray
-        let locationObj = locationArray.lastObject as! CLLocation
-        var coordinate: CLLocationCoordinate2D = locationObj.coordinate
-        //        LMGeocoder.sharedInstance().reverseGeocodeCoordinate(coordinate, service: kLMGeocoderGoogleService, completionHandler: {(results: [AnyObject], error: NSErrorPointer) in
-        //        if results.count && !error {
-        //            var address: LMAddress = results.firstObject()
-        //        }
-        //
-        //        })
-        print(coordinate)
+    func updateLocation(){
+        
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        NSLog("Updating location failed")
+    //locationManager protocol
+    func locationFound(latitude:Double, longitude:Double) {
+        
+//        self.plotOnMapWithCoordinates(latitude: latitude, longitude: longitude)
     }
+
+    
+    //
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

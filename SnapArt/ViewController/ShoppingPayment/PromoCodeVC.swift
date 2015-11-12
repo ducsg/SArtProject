@@ -45,7 +45,7 @@ class PromoCodeVC: ViewController {
     }
     
     func applyPromoCode(){
-        let param = ["code" : tfCode.text!, "country_code" : Util().getCountryCode()]
+        let param = ["code" : tfCode.text!, "country_code" : MemoryStoreData().getString(MemoryStoreData.user_country_code)]
         let api = Api()
                 let parentView:UIView! = self.navigationController?.view
                 api.initWaiting(parentView)
@@ -54,7 +54,6 @@ class PromoCodeVC: ViewController {
             if(dataResult.success){
                 ShoppingCartVC.paymentDetail.promo_code = self.tfCode.text!
                 ShoppingCartVC.discount = dataResult.data["sale_off"].numberValue.floatValue
-                print(ShoppingCartVC.discount)
                 if(ShoppingCartVC.discount == 0){
                     self.lbError.text = self.errorText
                 }else{

@@ -26,6 +26,8 @@
 		67121A0B1BD09ADD00CAC506 /* Gotham-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67121A0A1BD09ADD00CAC506 /* Gotham-Bold.ttf */; };
 		67121A131BD09CC700CAC506 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 67121A121BD09CC700CAC506 /* GMDCircleLoader.m */; };
 		67121A151BD0DAF700CAC506 /* MemoryStoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67121A141BD0DAF700CAC506 /* MemoryStoreData.swift */; };
+		671E3D5C1BF4474C005BF25C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E3D5B1BF4474C005BF25C /* LocationManager.swift */; settings = {ASSET_TAGS = (); }; };
+		671E3D5E1BF4AF7A005BF25C /* ExtensionFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E3D5D1BF4AF7A005BF25C /* ExtensionFloat.swift */; settings = {ASSET_TAGS = (); }; };
 		671FB3FE1BCBBFF800E5EAE8 /* ExtensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671FB3FD1BCBBFF800E5EAE8 /* ExtensionUIColor.swift */; };
 		672E90BB1BE4B19F00EF4112 /* InputSizeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672E90BA1BE4B19F00EF4112 /* InputSizeVC.swift */; settings = {ASSET_TAGS = (); }; };
 		672E90BD1BE4B20700EF4112 /* InputSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672E90BC1BE4B20700EF4112 /* InputSizeView.swift */; settings = {ASSET_TAGS = (); }; };
@@ -188,6 +190,8 @@
 		67121A111BD09CC700CAC506 /* GMDCircleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMDCircleLoader.h; sourceTree = "<group>"; };
 		67121A121BD09CC700CAC506 /* GMDCircleLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMDCircleLoader.m; sourceTree = "<group>"; };
 		67121A141BD0DAF700CAC506 /* MemoryStoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryStoreData.swift; sourceTree = "<group>"; };
+		671E3D5B1BF4474C005BF25C /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = lib/LocationManager.swift; sourceTree = "<group>"; };
+		671E3D5D1BF4AF7A005BF25C /* ExtensionFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionFloat.swift; sourceTree = "<group>"; };
 		671FB3FD1BCBBFF800E5EAE8 /* ExtensionUIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionUIColor.swift; path = lib/Extensions/ExtensionUIColor.swift; sourceTree = "<group>"; };
 		672E90BA1BE4B19F00EF4112 /* InputSizeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputSizeVC.swift; sourceTree = "<group>"; };
 		672E90BC1BE4B20700EF4112 /* InputSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputSizeView.swift; sourceTree = "<group>"; };
@@ -455,6 +459,7 @@
 				671FB3FD1BCBBFF800E5EAE8 /* ExtensionUIColor.swift */,
 				674B71AE1BCE3B9100B8FC2A /* ExtensionString.swift */,
 				67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */,
+				671E3D5D1BF4AF7A005BF25C /* ExtensionFloat.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 		6779714D1BC41CA300110C8B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				671E3D5B1BF4474C005BF25C /* LocationManager.swift */,
 				67AA4D501BEB673500DE83F6 /* SRWebClient.swift */,
 				AFE2A84D1BE61A3C000E9AB2 /* MGSwipeTableCell */,
 				67B8DEF21BD96D22001CB1A3 /* CardIO */,
@@ -1200,6 +1206,7 @@
 				6779712D1BC41BBF00110C8B /* AppDelegate.swift in Sources */,
 				677971571BC4282D00110C8B /* RightMenuVC.swift in Sources */,
 				AFFC79931BF1BB2E00F7509A /* ChangePasswordTB.swift in Sources */,
+				671E3D5C1BF4474C005BF25C /* LocationManager.swift in Sources */,
 				674B71A61BCDFC6F00B8FC2A /* CustomViewController.swift in Sources */,
 				671219F31BCE80B100CAC506 /* CustomLabelButton.swift in Sources */,
 				670366381BE5B8F000537587 /* SliderView.swift in Sources */,
@@ -1215,6 +1222,7 @@
 				6797C1D41BD394C600F2EB79 /* DistancePickerView.m in Sources */,
 				677971931BC435EE00110C8B /* BaseNC.swift in Sources */,
 				677971861BC429BA00110C8B /* IKLoginViewController.m in Sources */,
+				671E3D5E1BF4AF7A005BF25C /* ExtensionFloat.swift in Sources */,
 				67121A041BCEBFA500CAC506 /* ResetPasswordTB.swift in Sources */,
 				67CE024D1BDA9660002007D8 /* InstagramTag.m in Sources */,
 				675AC96A1BECF8AB00211959 /* Order.swift in Sources */,

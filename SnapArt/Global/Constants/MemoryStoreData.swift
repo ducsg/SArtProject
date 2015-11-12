@@ -15,6 +15,9 @@ public class MemoryStoreData{
     public static let user_pwd:String = "user_password"
     public static let user_stayed_login:String = "stayed_login"
     public static let user_reg_id:String = "ios_reg_id"
+    public static let user_lat:String = "user_lat"
+    public static let user_long:String = "user_long"
+    public static let user_country_code:String = "user_country_code"
     
     init(){
     }
@@ -40,6 +43,24 @@ public class MemoryStoreData{
         }
     }
     
+    
+    
+    public func getFloat(key:String) -> Float{
+        if preferences.objectForKey(key) == nil {
+            return 0
+        } else {
+            return preferences.floatForKey(key)
+        }
+    }
+    
+    public func getDouble(key:String) -> Double{
+        if preferences.objectForKey(key) == nil {
+            return 0
+        } else {
+            return preferences.doubleForKey(key)
+        }
+    }
+    
     public func getBool(key:String) -> Bool{
         if preferences.objectForKey(key) == nil {
             return false
@@ -47,4 +68,5 @@ public class MemoryStoreData{
             return preferences.boolForKey(key)
         }
     }
+    
 }

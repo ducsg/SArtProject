@@ -29,6 +29,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var lbDiscount: CustomLabelGotham!
     
+    @IBOutlet weak var lbShipping: CustomLabelGotham!
     
     static var discount:Float = 0
     
@@ -50,7 +51,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(true)
 //        if(Util().getCountryCode() == "US"){
-            lbDiscount.text = "FREE"
+            lbShipping.text = "FREE"
 //        }
         setFrameForTitleTable()
     }
@@ -144,7 +145,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     func resetCost(sender:AnyObject = "") -> Void{
         let subTotal = self.getSubTotal()
-        let discount = Float(subTotal*ShoppingCartVC.discount/100)
+        let discount:Float = Float(subTotal*ShoppingCartVC.discount/100).roundToPlaces(2)
         self.lbSubTotal.text = "$\(subTotal)"
         ShoppingCartVC.totalCost = subTotal + ShoppingCartVC.paymentDetail.shopping_cost - discount
         self.lbTotalCost.text = "$\(ShoppingCartVC.totalCost)"
@@ -152,6 +153,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         ShoppingCartVC.paymentDetail.subtotal = subTotal
         ShoppingCartVC.paymentDetail.payment_amount = ShoppingCartVC.totalCost
         ShoppingCartVC.paymentDetail.discount = discount
+        lbDiscount.text = "$\(discount)"
     }
     
     
