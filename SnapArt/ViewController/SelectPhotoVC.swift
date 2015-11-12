@@ -32,7 +32,6 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         
         self.imageView.image = imageCrop
         self.imageView.contentMode = .ScaleAspectFill
-        self.imageView.clipsToBounds = false
 
         let api:Api = Api()
         let parentView:UIView! = self.navigationController?.view

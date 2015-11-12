@@ -26,14 +26,14 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
         self.containerView.backgroundColor = UIColor.clearColor()
         self.cropWebView.scrollView.scrollEnabled = false
         self.cropWebView.delegate = self
-        self.callLoading(self.navigationController?.view)
-
-       api.uploadFile(imageCrop, resulf:{(dataResult: (success: Bool, message: String!, data: String!))->() in
-            let url = NSURL (string: dataResult.data)
-            let requestObj = NSURLRequest(URL: url!)
-            self.cropWebView.loadRequest(requestObj)
-
-        })
+//        self.callLoading(self.navigationController?.view)
+//
+//       api.uploadFile(imageCrop, resulf:{(dataResult: (success: Bool, message: String!, data: String!))->() in
+//            let url = NSURL (string: dataResult.data)
+//            let requestObj = NSURLRequest(URL: url!)
+//            self.cropWebView.loadRequest(requestObj)
+//
+//        })
         
     }
     

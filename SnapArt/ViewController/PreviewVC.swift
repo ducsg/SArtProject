@@ -22,7 +22,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         self.webPreview.scrollView.scrollEnabled = false
         self.webPreview.backgroundColor = UIColor.whiteColor()
         self.webPreview.delegate = self
-        self.webPreview.loadRequest(NSURLRequest(URL: NSURL(string: previewURL)!))
+//        self.webPreview.loadRequest(NSURLRequest(URL: NSURL(string: previewURL)!))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sendTap:")
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutLogin:", name:MESSAGES.NOTIFY.CHECKOUT_LOGIN, object: nil)
@@ -97,7 +97,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
                 let cameraPreview = UIView(frame: CGRectMake(0.0, 0.0, view.bounds.size.width, view.bounds.size.height))
                 cameraPreview.layer.addSublayer(previewLayer)
                 controller.view.addSubview(cameraPreview)
-//                controller.addViewPreview()
+                controller.addViewPreview()
             }
             
         }

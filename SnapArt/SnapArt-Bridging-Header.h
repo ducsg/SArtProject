@@ -19,3 +19,5 @@
 #import "CardIO.h"
 #import "MGSwipeTableCell.h"
 #import "MGSwipeButton.h"
+#import "TDRatingView.h"
+#import "TDArrow.h"
