@@ -24,6 +24,10 @@ public class SignInVC: CustomTableViewController {
     
     override public func viewDidLoad() {
         self.btnForgotPwd.addUnderLine()
+        // test
+        tfEmail.text = "khanhduong@innoria.com"
+        tfPwd.text = "123456"
+
     }
     
     

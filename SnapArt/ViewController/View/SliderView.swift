@@ -8,10 +8,11 @@
 
 import UIKit
 
-class SliderView: UIView {
+class SliderView: UIView  {
     @IBOutlet weak var textlb: UILabel!
     @IBOutlet weak var addToCartBtn: CustomButton!
     @IBOutlet weak var sliderView: UIView!
+    @IBOutlet weak var imagePreview: UIImageView!
 
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -25,5 +26,6 @@ class SliderView: UIView {
     }
     override func awakeFromNib() {
         self.backgroundColor = UIColor.clearColor()
+//        self.sliderView.backgroundColor = UIColor.clearColor()
     }
 }
