@@ -94,7 +94,7 @@ public class Util: NSObject {
         }
         return valid
     }
-    
+         
     //get country list
     func getCountryList() -> [String]{
         var countries: [String] = []
