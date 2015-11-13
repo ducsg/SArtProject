@@ -147,7 +147,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         let subTotal = self.getSubTotal()
         let discount:Float = Float(subTotal*ShoppingCartVC.discount/100).roundToPlaces(2)
         self.lbSubTotal.text = "$\(subTotal)"
-        ShoppingCartVC.totalCost = subTotal + ShoppingCartVC.paymentDetail.shopping_cost - discount
+        ShoppingCartVC.totalCost = (subTotal + ShoppingCartVC.paymentDetail.shopping_cost - discount).roundToPlaces(2)
         self.lbTotalCost.text = "$\(ShoppingCartVC.totalCost)"
         //set data for payment
         ShoppingCartVC.paymentDetail.subtotal = subTotal
@@ -164,7 +164,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
             subTotal = subTotal + listCart[i].price * Float(listCart[i].quantity)
             }
         }
-        return subTotal
+        return subTotal.roundToPlaces(2)
     }
     
     func setFrameForTitleTable(){
@@ -198,9 +198,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func pressBtnCheckOut(sender: AnyObject) {
-        saveDataForPayment()
-        let nv = Util().getControllerForStoryBoard("BuyItTB") as! BuyItTB
-        self.navigationController?.pushViewController(nv, animated: true)
+        if(self.listCart.count > 0){
+            saveDataForPayment()
+            let nv = Util().getControllerForStoryBoard("BuyItTB") as! BuyItTB
+            self.navigationController?.pushViewController(nv, animated: true)
+        }
     }
     
     func saveDataForPayment(){
