@@ -2,12 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>com.venmo.touch.v1</string>
-        <string>com.paypal.ppclient.touch.v1</string>
-        <string>com.paypal.ppclient.touch.v2</string>
-    </array>
+<!--    <key>LSApplicationQueriesSchemes</key>-->
+<!--    <array>-->
+<!--        <string>com.venmo.touch.v1</string>-->
+<!--        <string>com.paypal.ppclient.touch.v1</string>-->
+<!--        <string>com.paypal.ppclient.touch.v2</string>-->
+<!--    </array>-->
     <!--  Set TransportSecurity -->
     <key>NSAppTransportSecurity</key>
     <dict>
@@ -16,9 +16,9 @@
         <true/>
     </dict>
     <!-- require location to check promo code -->
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Requirelocation</string>
-    
+<!--    <key>NSLocationWhenInUseUsageDescription</key>-->
+<!--    <string>Requirelocation</string>-->
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

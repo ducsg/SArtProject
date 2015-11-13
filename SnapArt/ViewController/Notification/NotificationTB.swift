@@ -66,7 +66,7 @@ class NotificationTB: CustomTableViewController {
             if(dataResult.success){
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
-                        let notification = Notification(id: dataResult.data[i]["id"].numberValue.integerValue, read_at: dataResult.data[i]["read_at"].stringValue, created_at: dataResult.data[i]["created_at"].stringValue, transaction_id: dataResult.data[i]["transaction_id"].numberValue.integerValue, type_of_notification: dataResult.data[i]["type_of_notification"].numberValue.integerValue, action: dataResult.data[i]["action"].numberValue.integerValue, title: dataResult.data[i]["title"].stringValue)
+                        let notification = Notification(id: dataResult.data[i]["id"].numberValue.integerValue, read_at: dataResult.data[i]["read_at"].stringValue, created_at: Util().formatDatetime(dataResult.data[i]["created_at"].stringValue, outputFormat: "MM/dd/yy HH:mm a"), transaction_id: dataResult.data[i]["transaction_id"].numberValue.integerValue, type_of_notification: dataResult.data[i]["type_of_notification"].numberValue.integerValue, action: dataResult.data[i]["action"].numberValue.integerValue, title: dataResult.data[i]["title"].stringValue)
                         self.listNotification.append(notification)
                         self.tbNotification.reloadData()
                     }

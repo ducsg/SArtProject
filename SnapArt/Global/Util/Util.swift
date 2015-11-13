@@ -106,4 +106,18 @@ public class Util: NSObject {
         }
         return countries
     }
+    
+    //format datetime
+    func formatDatetime(strDate:String = "", inputFormat:String = "yyyy-MM-dd HH:mm:ss", outputFormat:String = "")-> String{
+        Util().showAlert(strDate, parrent: self)
+        let strTime: String? = strDate //"29/10/2015 20:00:00 +0000"
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = inputFormat //"dd/mm/yyyy HH:mm:ss Z"
+        let getDate:NSDate = formatter.dateFromString(strTime!)!
+        
+        
+        let formatterOut = NSDateFormatter()
+        formatterOut.dateFormat = outputFormat //"MM/dd/yy HH:mm a"
+        return formatterOut.stringFromDate(getDate)
+    }
 }
