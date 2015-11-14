@@ -34,6 +34,10 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         tableView.registerClass(MenuCell.self, forCellReuseIdentifier: "MenuCell")
         self.automaticallyAdjustsScrollViewInsets = false
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginReceivedNotification:", name:MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
+        
+        if(MemoryStoreData().getString(APIKEY.ACCESS_TOKEN) != ""){
+            self.loginFlag = true
+        }
 
     }
     

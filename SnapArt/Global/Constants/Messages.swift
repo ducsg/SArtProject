@@ -16,6 +16,9 @@ struct MESSAGES{
         static let REMOVE_LAUNCH_SCREEN = "LaunchScreen"
         static let RESET_COST = "ResetCost"
         static let CHECKOUT_LOGIN = "CheckoutLogin"
+        static let COMEBACKHOME = "ComeBackHomeVC"
+
+        
     }
     
     struct COMMON{

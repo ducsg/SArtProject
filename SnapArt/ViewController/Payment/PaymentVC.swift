@@ -11,7 +11,7 @@ import Braintree
 import Alamofire
 import SwiftyJSON
 
-class PaymentVC: CustomViewController, BTDropInViewControllerDelegate, CardIOPaymentViewControllerDelegate{
+class PaymentVC: CustomViewController, BTDropInViewControllerDelegate, CardIOPaymentViewControllerDelegate, UIAlertViewDelegate {
     var braintree: Braintree?
     var paymentToken:String = ""
     let paymentTitle = "SnapArt total payment:"
@@ -29,13 +29,20 @@ class PaymentVC: CustomViewController, BTDropInViewControllerDelegate, CardIOPay
             if(dataResult.success){
                 self.paymentToken = dataResult.data["token"].string!
                 self.braintree = Braintree(clientToken: self.paymentToken)
+            }else{
+                var alert = Util().showAlert(dataResult.message, parrent: self)
+                alert.tag = 0
+                alert.delegate = self
             }
         })
-        
         applyBackIcon()
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -46,17 +53,19 @@ class PaymentVC: CustomViewController, BTDropInViewControllerDelegate, CardIOPay
     
     //braintree
     @IBAction func payClick(sender: AnyObject) {
-        var dropInViewController: BTDropInViewController = braintree!.dropInViewControllerWithDelegate(self)
-        dropInViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: Selector("userDidCancel"))
-        
-        //Customize the UI
-        dropInViewController.summaryTitle = paymentTitle
-        dropInViewController.summaryDescription = paymentDescription
-        dropInViewController.displayAmount = paymentAmountText
-        
-        var navigationController: UINavigationController = UINavigationController(rootViewController: dropInViewController)
-        
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        if(self.paymentToken != ""){
+            var dropInViewController: BTDropInViewController = braintree!.dropInViewControllerWithDelegate(self)
+            dropInViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: Selector("userDidCancel"))
+            
+            //Customize the UI
+            dropInViewController.summaryTitle = paymentTitle
+            dropInViewController.summaryDescription = paymentDescription
+            dropInViewController.displayAmount = paymentAmountText
+            
+            var navigationController: UINavigationController = UINavigationController(rootViewController: dropInViewController)
+            
+            self.presentViewController(navigationController, animated: true, completion: nil)
+        }
     }
     
     func dropInViewController(viewController: BTDropInViewController!, didSucceedWithPaymentMethod paymentMethod: BTPaymentMethod!) {
@@ -83,12 +92,12 @@ class PaymentVC: CustomViewController, BTDropInViewControllerDelegate, CardIOPay
         ShoppingCartVC.paymentDetail.payment_method = 0
         ShoppingCartVC.paymentDetail.payment_method_nonce = paymentMethodNonce
         gotoPlaceOrder()
-//        let api = Api()
-//        let parentView:UIView! = self.navigationController?.view
-//        api.initWaiting(parentView)
-//        api.execute(.POST, url: ApiUrl.payment_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
-//            Util().showAlert(dataResult.message, parrent: self)
-//        })
+        //        let api = Api()
+        //        let parentView:UIView! = self.navigationController?.view
+        //        api.initWaiting(parentView)
+        //        api.execute(.POST, url: ApiUrl.payment_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+        //            Util().showAlert(dataResult.message, parrent: self)
+        //        })
     }
     
     func userDidCancel() {
@@ -118,7 +127,7 @@ class PaymentVC: CustomViewController, BTDropInViewControllerDelegate, CardIOPay
                 "expirationMonth" : "\(info.expiryMonth)",
                 "expirationYear" : "\(info.expiryYear)",
                 "cvv" : "\(info.cvv)",
-                ]
+            ]
             gotoPlaceOrder()
         }
         paymentViewController?.dismissViewControllerAnimated(true, completion: nil)

@@ -10,22 +10,24 @@ import UIKit
 
 class MenuNaviController: CustomNavigationController {
     private var launchView:UIView!
+    public static var waiting = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let imageV =  UIImageView(image: UIImage(named: "first_screen"))
-        launchView = UIView(frame: self.view.frame)
-        launchView.backgroundColor = UIColor.clearColor()
-        launchView.addSubview(imageV)
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        indicator.center = view.center
-        launchView.addSubview(indicator)
-        indicator.startAnimating()
-        self.view.addSubview(launchView)
-
+        if(MenuNaviController.waiting){
+            let imageV =  UIImageView(image: UIImage(named: "first_screen"))
+            launchView = UIView(frame: self.view.frame)
+            launchView.backgroundColor = UIColor.clearColor()
+            launchView.addSubview(imageV)
+            let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+            indicator.center = view.center
+            launchView.addSubview(indicator)
+            indicator.startAnimating()
+            self.view.addSubview(launchView)
+        }
         let timer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: "receivedNotification:", userInfo: nil, repeats: false)
         // Do any additional setup after loading the view.
+        MenuNaviController.waiting = false
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDelegate {
+class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDelegate ,UIAlertViewDelegate {
     
     @IBOutlet weak var tbOrder: UITableView!
     
@@ -19,6 +19,7 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     
     @IBOutlet weak var lbDiscount: CustomLabelGotham!
     
+    @IBOutlet weak var lbShipping: CustomLabelGotham!
     
     static var discount:Float = 0
     
@@ -38,9 +39,10 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(true)
         //        if(Util().getCountryCode() == "US"){
-        lbDiscount.text = "FREE"
-        lbSubTotal.text = "\(ShoppingCartVC.paymentDetail.subtotal)"
-        lbTotalCost.text = "\(ShoppingCartVC.paymentDetail.payment_amount)"
+        lbSubTotal.text = "$\(ShoppingCartVC.paymentDetail.subtotal)"
+        lbDiscount.text = "$\(ShoppingCartVC.paymentDetail.discount)"
+        lbShipping.text = "FREE"
+        lbTotalCost.text = "$\(ShoppingCartVC.paymentDetail.payment_amount)"
         //        }
     }
     
@@ -55,7 +57,7 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return ShoppingCartVC.paymentDetail.list_order.count + 2
+        return ShoppingCartVC.paymentDetail.list_order.count + 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -78,8 +80,13 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
             cell.lbCityState.text = "\(ShoppingCartVC.paymentDetail.shipping_address.country), \(ShoppingCartVC.paymentDetail.shipping_address.city), \(ShoppingCartVC.paymentDetail.shipping_address.state), \(ShoppingCartVC.paymentDetail.shipping_address.postalCose)"
             return cell
         }
+        if(indexPath.row == 2){
+            let cell:PlaceOrderTitleTBC = PlaceOrderTitleTBC.instanceFromNib()
+            cell.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
+            return cell
+        }
         let cell:ShoppingCartTBC = ShoppingCartTBC.instanceFromNib()
-        let cart: Order = ShoppingCartVC.paymentDetail.list_order[indexPath.row-2]
+        let cart: Order = ShoppingCartVC.paymentDetail.list_order[indexPath.row-3]
         cell.initCell(cart)
         cell.btnPlus.hidden = true
         cell.btnSubtract.hidden = true
@@ -88,8 +95,10 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        if(indexPath.row > 1){
-           return 100;
+        if(indexPath.row <= 1){
+           return 130;
+        }else if(indexPath.row == 2){
+            return 44
         }else{
             return 130
         }
@@ -109,10 +118,13 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
             api.initWaiting(parentView)
             api.execute(.POST, url: ApiUrl.payment_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
-//                    self.gotoHome()
-                    Util().showAlert(dataResult.message, parrent: self)
+                    var alert = Util().showAlert(dataResult.message, parrent: self)
+                    alert.tag = 0
+                    alert.delegate = self
                 }else{
-                    Util().showAlert(dataResult.message, parrent: self)
+                    var alert = Util().showAlert(dataResult.message, parrent: self)
+                    alert.tag = 1
+                    alert.delegate = self
                 }
             })
         }else{
@@ -128,20 +140,35 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
             api.initWaiting(parentView)
             api.execute(.POST, url: ApiUrl.payment_scanner_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
-//                    self.gotoHome()
-                    Util().showAlert(dataResult.message, parrent: self)
+                    var alert = Util().showAlert(dataResult.message, parrent: self)
+                    alert.tag = 0
+                    alert.delegate = self
                 }else{
-                    Util().showAlert(dataResult.message, parrent: self)
+                    var alert = Util().showAlert(dataResult.message, parrent: self)
+                    alert.tag = 1
+                    alert.delegate = self
                 }
             })
         }
     }
     
     func gotoHome(){
-                let nv = Util().getControllerForStoryBoard("MenuNaviController") as! CustomNavigationController
-                self.navigationController?.pushViewController(nv, animated: true)
+        NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.COMEBACKHOME, object: nil)
     }
     
+    func gotoPaymentMethod(){
+        let nv = Util().getControllerForStoryBoard("PaymentVC") as! PaymentVC
+        self.navigationController?.pushViewController(nv, animated: true)
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if(alertView.tag == 0){
+            gotoHome()
+        }
+        if(alertView.tag == 1){
+            gotoPaymentMethod()
+        }
+    }
     
     /*
     // MARK: - Navigation

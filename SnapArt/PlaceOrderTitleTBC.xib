@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Gotham-Thin.ttf">
@@ -15,45 +16,76 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PlaceOrderTitleTBCTableViewCell" customModule="SnapArt" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="30" id="KGk-i7-Jjw" customClass="PlaceOrderTitleTBC" customModule="SnapArt" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Qunty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpH-QU-nC1">
-                        <rect key="frame" x="13" y="11" width="54" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qunty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpH-QU-nC1" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                        <rect key="frame" x="13" y="4" width="54" height="21"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="54" id="wTd-hB-qmJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuY-iE-fHn" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                        <rect key="frame" x="79" y="4" width="60" height="21"/>
                         <animations/>
                         <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Preview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuY-iE-fHn">
-                        <rect key="frame" x="79" y="11" width="60" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6B-6d-2Mj" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                        <rect key="frame" x="165" y="4" width="46" height="21"/>
                         <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="46" id="W0W-ML-jNT"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6B-6d-2Mj">
-                        <rect key="frame" x="165" y="11" width="46" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7Q-26-KsA" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                        <rect key="frame" x="241" y="4" width="46" height="21"/>
                         <animations/>
-                        <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7Q-26-KsA">
-                        <rect key="frame" x="241" y="11" width="46" height="21"/>
-                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="46" id="Vap-Zu-j9e"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <animations/>
+                <constraints>
+                    <constraint firstItem="NuY-iE-fHn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0Pw-yG-ILu"/>
+                    <constraint firstItem="L6B-6d-2Mj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3cC-aC-qL7"/>
+                    <constraint firstItem="v7Q-26-KsA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EgW-bp-XUh"/>
+                    <constraint firstItem="fpH-QU-nC1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-4" id="HiV-6Q-guI"/>
+                    <constraint firstItem="fpH-QU-nC1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="abS-Xj-Neo"/>
+                    <constraint firstItem="fpH-QU-nC1" firstAttribute="baseline" secondItem="NuY-iE-fHn" secondAttribute="baseline" id="ari-kd-AFX"/>
+                    <constraint firstItem="fpH-QU-nC1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="btd-pY-Ocq"/>
+                    <constraint firstItem="v7Q-26-KsA" firstAttribute="leading" secondItem="L6B-6d-2Mj" secondAttribute="trailing" constant="30" id="dxK-Oq-uQG"/>
+                    <constraint firstItem="L6B-6d-2Mj" firstAttribute="leading" secondItem="NuY-iE-fHn" secondAttribute="trailing" constant="26" id="ehN-pJ-gY0"/>
+                    <constraint firstItem="v7Q-26-KsA" firstAttribute="baseline" secondItem="L6B-6d-2Mj" secondAttribute="baseline" id="eyt-fj-RuE"/>
+                    <constraint firstItem="NuY-iE-fHn" firstAttribute="baseline" secondItem="L6B-6d-2Mj" secondAttribute="baseline" id="fn3-U7-J0g"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="v7Q-26-KsA" secondAttribute="trailing" constant="25" id="hzX-Lv-Ssq"/>
+                    <constraint firstItem="NuY-iE-fHn" firstAttribute="leading" secondItem="fpH-QU-nC1" secondAttribute="trailing" constant="12" id="pyx-TE-20v"/>
+                </constraints>
             </tableViewCellContentView>
             <animations/>
+            <connections>
+                <outlet property="lbItem" destination="L6B-6d-2Mj" id="8db-hU-Pdf"/>
+                <outlet property="lbPreview" destination="NuY-iE-fHn" id="XNJ-6W-HKb"/>
+                <outlet property="lbPrice" destination="v7Q-26-KsA" id="IFo-Li-nXV"/>
+                <outlet property="lbQuanlity" destination="fpH-QU-nC1" id="azU-nU-V8S"/>
+            </connections>
+            <point key="canvasLocation" x="141" y="251"/>
         </tableViewCell>
     </objects>
 </document>

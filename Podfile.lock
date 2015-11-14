@@ -1,23 +1,23 @@
 PODS:
-  - AFNetworking (2.6.2):
-    - AFNetworking/NSURLConnection (= 2.6.2)
-    - AFNetworking/NSURLSession (= 2.6.2)
-    - AFNetworking/Reachability (= 2.6.2)
-    - AFNetworking/Security (= 2.6.2)
-    - AFNetworking/Serialization (= 2.6.2)
-    - AFNetworking/UIKit (= 2.6.2)
-  - AFNetworking/NSURLConnection (2.6.2):
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.6.2):
+  - AFNetworking/NSURLSession (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.6.2)
-  - AFNetworking/Security (2.6.2)
-  - AFNetworking/Serialization (2.6.2)
-  - AFNetworking/UIKit (2.6.2):
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Alamofire (3.1.2)
@@ -77,7 +77,6 @@ PODS:
   - InstagramKit/UICKeyChainStore (3.6.9):
     - AFNetworking (~> 2.0)
     - UICKeyChainStore (~> 2.0)
-  - LMGeocoder (1.0.3)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
@@ -85,19 +84,18 @@ PODS:
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
-  - AFNetworking
-  - Alamofire
+  - AFNetworking (~> 2.6.3)
+  - Alamofire (~> 3.1.2)
   - AlamofireImage (~> 2.0)
-  - Braintree
-  - FacebookImagePicker
-  - FBSDKLoginKit
+  - Braintree (~> 3.9.6)
+  - FacebookImagePicker (~> 2.0.6)
+  - FBSDKLoginKit (~> 4.6.0)
   - InstagramKit/UICKeyChainStore
-  - LMGeocoder
   - SDWebImage (~> 3.7.2)
-  - SwiftyJSON
+  - SwiftyJSON (~> 2.3.1)
 
 SPEC CHECKSUMS:
-  AFNetworking: 7f317038a9710cabfa43ec56396b307b45df72ab
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
   AlamofireImage: 97e00995920d85b5cb23ee4c3b7f92605f5dc74b
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
@@ -106,7 +104,6 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 9954492d90c5fd65ae831395697a1660360d61f1
   FBSDKLoginKit: 3d07febbfa884b9878cacba54f705bb41f07d4b6
   InstagramKit: 1f937c5c4b8469fd00a31e235d5e7d3e256ffe5d
-  LMGeocoder: 100572f9e572a26d3506ee0604d6629bea391767
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432

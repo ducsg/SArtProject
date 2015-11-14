@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
     var locationManager = LocationManager.sharedInstance
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        MemoryStoreData().setValue(MemoryStoreData.user_reg_id, value: "19d0a7587e55d8cc386ee17406714ff91cf40e42934250e399b0c2fecb30a486") //hard code reg id
-                //reset token
+                MemoryStoreData().setValue(MemoryStoreData.user_reg_id, value: "19d0a7587e55d8cc386ee17406714ff91cf40e42934250e399b0c2fecb30a486") //hard code reg id
+        //reset token
         MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
         switch(getMajorSystemVersion()) {
         case 7:
@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
             }
         default: break
         }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "comeBackHomeVC", name:MESSAGES.NOTIFY.COMEBACKHOME, object: nil)
         
         //update location
         locationManager.autoUpdate = true
@@ -82,9 +83,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
     //locationManager protocol
     func locationFound(latitude:Double, longitude:Double) {
         
-//        self.plotOnMapWithCoordinates(latitude: latitude, longitude: longitude)
+        //        self.plotOnMapWithCoordinates(latitude: latitude, longitude: longitude)
     }
-
+    
     
     //
     
@@ -145,6 +146,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
     }
     func getMajorSystemVersion() -> Int {
         return Int(String(Array(UIDevice.currentDevice().systemVersion.characters)[0]))!
+    }
+    
+    func comeBackHomeVC() -> Void  {
+        MenuNaviController.waiting = false
+        window?.rootViewController = Util().getControllerForStoryBoard("MenuNaviController") as! CustomNavigationController
     }
     
 }

@@ -48,7 +48,7 @@
                         <state key="normal" title="            " backgroundImage="ic_plus_frame"/>
                     </button>
                     <view contentMode="scaleToFill" id="12a-OI-MCb">
-                        <rect key="frame" x="-8" y="98" width="382" height="1"/>
+                        <rect key="frame" x="-8" y="97" width="569" height="1"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -73,7 +73,7 @@
                 <outlet property="tfQuanlity" destination="ehS-tz-iTI" id="mGi-5R-b4Z"/>
                 <outlet property="wvFrame" destination="f32-6d-1an" id="Znm-Mj-Xto"/>
             </connections>
-            <point key="canvasLocation" x="166" y="224.5"/>
+            <point key="canvasLocation" x="166" y="223"/>
         </tableViewCell>
     </objects>
     <resources>
