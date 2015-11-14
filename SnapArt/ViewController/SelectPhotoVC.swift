@@ -33,19 +33,20 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         self.imageView.image = imageCrop
         self.imageView.contentMode = .ScaleAspectFill
 
-        let api:Api = Api()
-        let parentView:UIView! = self.navigationController?.view
-        api.initWaiting(parentView)
+//        let api:Api = Api()
+//        let parentView:UIView! = self.navigationController?.view
+//        api.initWaiting(parentView)
         
-        let parameters = [APIKEY.WIDTH:1000,APIKEY.WIDTH:1000,APIKEY.IOS_REG_ID:MemoryStoreData().getString(MemoryStoreData.user_reg_id)]
-        print(parameters)
-        api.execute(ApiMethod.POST, url: ApiUrl.size_frames_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
-            if(dataResult.success){
-                //store access token and account id
-            }else{
-                Util().showAlert(dataResult.message, parrent: self)
-            }
-        })
+//        let parameters = [APIKEY.WIDTH:1000,APIKEY.WIDTH:1000,APIKEY.IOS_REG_ID:MemoryStoreData().getString(MemoryStoreData.user_reg_id)]
+//        print(parameters)
+//        api.execute(ApiMethod.POST, url: ApiUrl.size_frames_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+//            
+//            if(dataResult.success){
+//                //store access token and account id
+//            }else{
+//                Util().showAlert(dataResult.message, parrent: self)
+//            }
+//        })
 
        
     }
@@ -54,7 +55,6 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     @IBAction func sizeTap(sender: AnyObject) {
         let customView = CustomPickerView.instanceFromNib()

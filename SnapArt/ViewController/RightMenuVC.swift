@@ -14,10 +14,10 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     
     private var loginFlag:Bool = false
     
-//    private let MENU_DID_LOGIN = ["Make Art","Notifcations","My Account","My Order",
-//        "How SnapArt Works","Like SnapArt on FB",
-//        "Like SnapArt on Instargram","Rate on the App Store",
-//        "About Us","FAQs"," Email Us ","Term of Service"]
+    //    private let MENU_DID_LOGIN = ["Make Art","Notifcations","My Account","My Order",
+    //        "How SnapArt Works","Like SnapArt on FB",
+    //        "Like SnapArt on Instargram","Rate on the App Store",
+    //        "About Us","FAQs"," Email Us ","Term of Service"]
     
     private let MENU_DID_LOGIN = ["Make Art","Notifcations","My Account","My Order", "Promotion", "About Us","FAQs"," Email Us"]
     private let MENU_WILL_LOGIN = ["Make Art","About Us","FAQs","Email Us"]
@@ -34,7 +34,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         tableView.registerClass(MenuCell.self, forCellReuseIdentifier: "MenuCell")
         self.automaticallyAdjustsScrollViewInsets = false
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginReceivedNotification:", name:MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,7 +97,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         case 4:
             let btn = cell.addButton(LOGIN_TITLE)
             btn.addTarget(self, action: Selector("loginTap:"), forControlEvents: UIControlEvents.TouchUpInside)
-
+            
         case 5:
             let btn = cell.addButton(CREATE_ACCOUNT_TITLE)
             btn.addTarget(self, action: Selector("registerTap:"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -124,6 +124,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
             print("case", terminator: ""); break
         case 3:
             //My order
+            gotoMyOrder()
             print("case", terminator: ""); break
         case 4:
             //Promotion
@@ -171,14 +172,14 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         }
         
     }
-   
+    
     func loginReceivedNotification(sender:AnyObject) -> Void  {
         if MemoryStoreData().getBool(MemoryStoreData.user_stayed_login)  {
             self.loginFlag = true
             self.tableView.reloadData()
         }
     }
-
+    
     //MARK: REGISTER
     func registerTap(sender:AnyObject) -> Void  {
         let nv = Util().getControllerForStoryBoard("RegisterNC") as! CustomNavigationController
@@ -186,7 +187,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         self.navigationController?.presentViewController(nv, animated: true, completion: nil)
     }
     //MARK: LOGIN TAP
-
+    
     func loginTap(sender:AnyObject) -> Void  {
         let nv = Util().getControllerForStoryBoard("LoginNC") as! CustomNavigationController
         self.mainVC!.closeLeftMenu()
@@ -235,7 +236,10 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         let nv = Util().getControllerForStoryBoard("MyAccount") as! CustomNavigationController
         self.navigationController?.presentViewController(nv, animated: true, completion: nil)
     }
- 
+    func gotoMyOrder() {
+        let nv = Util().getControllerForStoryBoard("MyOrderNC") as! CustomNavigationController
+        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+    }
     //send email func
     func sendEmailUs() -> Void {
         let url = NSURL(string: "mailto:hello@getsnapart.com")
@@ -247,7 +251,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         self.presentViewController(vc, animated: true, completion: nil)
     }
     
-
+    
     
     
     /*

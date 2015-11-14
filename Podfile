@@ -8,12 +8,12 @@ target 'SnapArt' do
         end
     end
     pod  'FBSDKLoginKit'
-#    pod 'InstagramKit'
-    pod 'AFNetworking'
+#pod 'InstagramKit'
+#pod 'AFNetworking'
     pod 'SDWebImage', '~> 3.7.2'
     pod 'InstagramKit/UICKeyChainStore'
-    pod  'Braintree'
     use_frameworks!
+    pod  'Braintree'
     pod  'Alamofire'
     pod 'AlamofireImage', '~> 2.0'
     pod 'SwiftyJSON'
