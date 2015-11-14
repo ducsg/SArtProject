@@ -9,7 +9,7 @@ target 'SnapArt' do
     end
     pod  'FBSDKLoginKit', '~> 4.6.0'
 #    pod 'InstagramKit'
-    pod 'AFNetworking', '~> 2.6.3'
+#    pod 'AFNetworking', '~> 2.6.3'
     pod 'SDWebImage', '~> 3.7.2'
     pod 'InstagramKit/UICKeyChainStore'
     pod  'Braintree', '~> 3.9.6'

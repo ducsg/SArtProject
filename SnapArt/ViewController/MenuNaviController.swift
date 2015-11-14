@@ -16,6 +16,7 @@ class MenuNaviController: CustomNavigationController {
         super.viewDidLoad()
         if(MenuNaviController.waiting){
             let imageV =  UIImageView(image: UIImage(named: "first_screen"))
+            imageV.frame = self.view.bounds
             launchView = UIView(frame: self.view.frame)
             launchView.backgroundColor = UIColor.clearColor()
             launchView.addSubview(imageV)
