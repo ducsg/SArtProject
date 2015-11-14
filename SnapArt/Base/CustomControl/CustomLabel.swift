@@ -42,6 +42,7 @@ class CustomLabelGotham: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setStyleForLabel()
     }
     
     required init?(coder aDecoder: NSCoder) {

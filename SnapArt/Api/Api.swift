@@ -89,6 +89,7 @@ public class Api{
 
                 },failure:{(error:NSError!) -> Void in
                     print(error)
+                    resulf(false, MESSAGES.COMMON.NOT_INTERNET, nil)
             })
     }
     

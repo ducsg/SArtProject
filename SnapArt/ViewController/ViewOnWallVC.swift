@@ -21,12 +21,14 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = TITLE
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sendTap:")
         
     }
     func addViewPreview() -> Void {
         self.customSliderview = SliderView.instanceFromNib()
         self.customSliderview.frame = self.view.bounds
         self.view.addSubview(customSliderview)
+
     }
     override func viewDidAppear(animated: Bool) {
         if self.customSliderview != nil {
@@ -38,11 +40,9 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
             rangeSlider.sliderHeight = 25
             rangeSlider.difference = 1
             rangeSlider.delegate = self
-            let numb = Float(rangeSlider.widthOfEachNo/2)
             rangeSlider.drawRatingControlWithX(0, y:0)
             rangeSlider.center = self.customSliderview.sliderView.center
             self.customSliderview.sliderView.addSubview(rangeSlider)
-            //            self.customSliderview.imagePreview.image = UIImage(named: "cute-girl")
             self.customSliderview.imagePreview.image = UIImage(named: "girl-nice-hair")
             self.customSliderview.imagePreview.contentMode = .ScaleAspectFit
             var rect = self.customSliderview.imagePreview.bounds
@@ -52,15 +52,9 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
             
             self.customSliderview.imagePreview.frame = rect
             self.customSliderview.imagePreview.center = CGPointMake(customSliderview.bounds.size.width / 2, customSliderview.bounds.size.height / 2 - rect.size.height/4)
-            
             self.customSliderview.layer.shadowOffset = CGSize(width: 4, height: 4)
             self.customSliderview.layer.shadowOpacity = 1.0
             self.customSliderview.layer.shadowRadius = 3
-
-            //            self.customSliderview.imagePreview.center = self.customSliderview.center
-            
-            
-            
         }
     }
     
@@ -88,6 +82,17 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
         self.customSliderview.imagePreview.frame = rect
         self.customSliderview.imagePreview.center = CGPointMake(customSliderview.bounds.size.width / 2, customSliderview.bounds.size.height / 2 - rect.size.height/4)
         
+    }
+    
+    func sendTap(sender: AnyObject) {
+        let textToShare = "Share image Snapart"
+        
+        if let imageCrop = UIImage(named: "girl_image")
+        {
+            let objectsToShare = [textToShare, imageCrop]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
     }
 }
 

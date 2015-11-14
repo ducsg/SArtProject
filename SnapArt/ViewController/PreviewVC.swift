@@ -21,8 +21,9 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         self.title = TITTLE
         self.webPreview.scrollView.scrollEnabled = false
         self.webPreview.backgroundColor = UIColor.whiteColor()
+        self.callLoading(self.navigationController?.view)
         self.webPreview.delegate = self
-//        self.webPreview.loadRequest(NSURLRequest(URL: NSURL(string: previewURL)!))
+        self.webPreview.loadRequest(NSURLRequest(URL: NSURL(string: previewURL)!))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sendTap:")
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutLogin:", name:MESSAGES.NOTIFY.CHECKOUT_LOGIN, object: nil)
@@ -45,7 +46,6 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         {
             let objectsToShare = [textToShare, imageCrop]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            
             self.presentViewController(activityVC, animated: true, completion: nil)
         }
     }
@@ -70,14 +70,16 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(webView: UIWebView) -> Void {
-        
+        self.removeLoading(self.navigationController?.view)
     }
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) ->Void {
-        
+        self.removeLoading(self.navigationController?.view)
     }
     
     func createCaptureVideoPreviewLayer(controller: ViewOnWallVC) {
+        self.callLoading(self.navigationController?.view)
         let devices = AVCaptureDevice.devices().filter{ $0.hasMediaType(AVMediaTypeVideo) && $0.position == AVCaptureDevicePosition.Back }
+        self.removeLoading(self.navigationController?.view)
         let captureSession = AVCaptureSession()
         let stillImageOutput = AVCaptureStillImageOutput()
 

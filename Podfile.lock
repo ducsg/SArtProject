@@ -29,36 +29,19 @@ PODS:
   - Bolts/AppLinks (1.4.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.4.0)
-  - Braintree (3.9.6):
-    - Braintree/API (= 3.9.6)
-    - Braintree/Coinbase (= 3.9.6)
-    - Braintree/Drop-In (= 3.9.6)
-    - Braintree/Payments (= 3.9.6)
-    - Braintree/PayPal (= 3.9.6)
-    - Braintree/UI (= 3.9.6)
-    - Braintree/Venmo (= 3.9.6)
-  - Braintree/API (3.9.6)
-  - Braintree/Coinbase (3.9.6):
-    - Braintree/API
-  - Braintree/Drop-In (3.9.6):
-    - Braintree/API
-    - Braintree/Coinbase
-    - Braintree/Payments
-    - Braintree/PayPal
-    - Braintree/UI
-    - Braintree/Venmo
-  - Braintree/Payments (3.9.6):
-    - Braintree/API
-    - Braintree/Coinbase
-    - Braintree/PayPal
-    - Braintree/Venmo
-  - Braintree/PayPal (3.9.6):
-    - Braintree/API
-    - Braintree/UI
-  - Braintree/UI (3.9.6):
-    - Braintree/API
-  - Braintree/Venmo (3.9.6):
-    - Braintree/API
+  - Braintree (4.0.0):
+    - Braintree/Card (= 4.0.0)
+    - Braintree/Core (= 4.0.0)
+    - Braintree/PayPal (= 4.0.0)
+    - Braintree/UI (= 4.0.0)
+  - Braintree/Card (4.0.0):
+    - Braintree/Core
+  - Braintree/Core (4.0.0)
+  - Braintree/PayPal (4.0.0):
+    - Braintree/Core
+  - Braintree/UI (4.0.0):
+    - Braintree/Card
+    - Braintree/Core
   - FacebookImagePicker (2.0.6):
     - FBSDKCoreKit (~> 4.6.0)
     - FBSDKLoginKit (~> 4.6.0)
@@ -99,7 +82,7 @@ SPEC CHECKSUMS:
   Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
   AlamofireImage: 97e00995920d85b5cb23ee4c3b7f92605f5dc74b
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
-  Braintree: 74f0bd85743c2227147c361cc2c5c9aefe083ae8
+  Braintree: 660cca560c01a7464626ee1e18c971d6491a3889
   FacebookImagePicker: 7f3d70cb0a9b22b68dddac46864322d633385e03
   FBSDKCoreKit: 9954492d90c5fd65ae831395697a1660360d61f1
   FBSDKLoginKit: 3d07febbfa884b9878cacba54f705bb41f07d4b6
