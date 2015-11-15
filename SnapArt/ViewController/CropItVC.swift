@@ -16,7 +16,7 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
     @IBOutlet weak var cropWebView: UIWebView!
     internal var imageCrop:UIImage!
     internal var ratio:Float = 0
-
+    
     private var TITTLE = "Crop It"
     private var ROTATE_FUNCTION = "rotateImage()"
     private var CROP_FUNCTION = "cropImage()"
@@ -28,19 +28,17 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
         self.containerView.backgroundColor = UIColor.clearColor()
         self.cropWebView.scrollView.scrollEnabled = false
         self.cropWebView.delegate = self
-        applyBackIcon()
+        self.applyBackIcon()
         self.callLoading(self.navigationController?.view)
         api.uploadFile(imageCrop,ratio:self.ratio, resulf:{(dataResult: (success: Bool, message: String!, data: String!))->() in
             if dataResult.success == true {
                 let url = NSURL (string: dataResult.data)
                 let requestObj = NSURLRequest(URL: url!)
-                print(url)
                 self.cropWebView.loadRequest(requestObj)
             } else {
                 Util().showAlert(dataResult.message, parrent: self)
                 self.removeLoading(self.navigationController?.view)
             }
-            
         })
         
     }
@@ -56,21 +54,22 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
     }
     
     @IBAction func cropTap(sender: AnyObject) {
-        
         let json = self.cropWebView.stringByEvaluatingJavaScriptFromString(CROP_FUNCTION)
-        let dic:[String:AnyObject]! = Util().convertStringToDictionary(json!)
-       
-        let vc = Util().getControllerForStoryBoard("PreviewVC") as! PreviewVC
-
-        if let url = dic["url_detail"]  as? String {
-            vc.previewURL = url
+        if  let dic = Util().convertStringToDictionary(json!) {
+            
+            let vc = Util().getControllerForStoryBoard("PreviewVC") as! PreviewVC
+            
+            if let url = dic["url_detail"]  as? String {
+                vc.previewURL = url
+            }
+            
+            if let id = dic["id"]  as? Int {
+                vc.image_id = id
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            Util().showAlert(MESSAGES.COMMON.NOT_INTERNET, parrent: self)
         }
-        
-        if let id = dic["id"]  as? Int {
-            vc.image_id = id
-        }
-        self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         self.removeLoading(self.navigationController?.view)

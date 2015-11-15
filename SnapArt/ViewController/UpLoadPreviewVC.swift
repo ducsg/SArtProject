@@ -30,7 +30,7 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

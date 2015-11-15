@@ -74,7 +74,7 @@ public class Api{
     }
     
     func uploadFile(image:UIImage!,ratio:Float, resulf:(Bool,String!, String!) -> ()){
-        let imageData = UIImagePNGRepresentation(image!)
+        let imageData = UIImageJPEGRepresentation(image, 1.0)
         SRWebClient.POST(ApiUrl.crop_image_url)//
             .headers(headers)
             .data(imageData!, fieldName:"avatar", data:["rotate":"\(ratio)"])

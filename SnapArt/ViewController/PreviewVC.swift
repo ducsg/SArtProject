@@ -8,6 +8,9 @@
 
 import UIKit
 import AVFoundation
+import AlamofireImage
+import Alamofire
+import SwiftyJSON
 
 class PreviewVC: CustomViewController , UIWebViewDelegate {
     @IBOutlet weak var selectBtnView: UIView!
@@ -15,9 +18,10 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     internal var previewURL = ""
     internal var imagePreview:UIImage!
     internal var image_id:Int = 0
-
+    
     private var TITTLE = "Preview"
     private var ADD_TO_CARD = "Add to card"
+    internal var URL_IMAGE = "http://demo.innoria.com/snapart/api/cropers/get_image_cropped?id="
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +30,19 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         self.webPreview.backgroundColor = UIColor.whiteColor()
         self.callLoading(self.navigationController?.view)
         self.webPreview.delegate = self
+        
+        let api = Api()
+        let parameters = ["id":663]
+        api.execute(.GET, url: ApiUrl.get_image_url, parameters: parameters, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            if(dataResult.success){
+                if(dataResult.data != nil){
+                    self.getImageFromLink(dataResult.data.stringValue)
+                }
+            }else{
+                Util().showAlert(dataResult.message, parrent: self)
+            }
+        })
+        
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.webPreview.loadRequest(NSURLRequest(URL: NSURL(string: self.previewURL)!))
@@ -34,12 +51,25 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutLogin:", name:MESSAGES.NOTIFY.CHECKOUT_LOGIN, object: nil)
         applyBackIcon()
+        
 
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func getImageFromLink(url:String) -> Void {
+        Alamofire.request(.GET, url)
+            .responseImage { response in
+                debugPrint(response)
+                print(response.request)
+                print(response.response)
+                debugPrint(response.result)
+                if let image = response.result.value {
+                    self.imagePreview = image
+                }
+        }
     }
     
     @IBAction func previewOnWallTap(sender: AnyObject) {
@@ -55,8 +85,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     func sendTap(sender: AnyObject) {
         // Test
         let textToShare = "Share image Snapart"
-        self.imagePreview = UIImage(named: "girl_image")
-
+        
         if imagePreview != nil {
             let objectsToShare = [textToShare, imagePreview]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
@@ -97,10 +126,10 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         self.removeLoading(self.navigationController?.view)
         let captureSession = AVCaptureSession()
         let stillImageOutput = AVCaptureStillImageOutput()
-
+        
         if let captureDevice = devices.first as? AVCaptureDevice  {
             captureSession.addInput(try! AVCaptureDeviceInput(device: captureDevice))
-//            captureSession.sessionPreset = AVCaptureSessionPresetPhoto
+            //            captureSession.sessionPreset = AVCaptureSessionPresetPhoto
             captureSession.sessionPreset = AVCaptureSessionPresetMedium
             captureSession.startRunning()
             stillImageOutput.outputSettings = [AVVideoCodecKey:AVVideoCodecJPEG]
@@ -116,19 +145,21 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
                 cameraPreview.layer.addSublayer(previewLayer)
                 controller.view.addSubview(cameraPreview)
                 controller.section = captureSession
-                controller.addViewPreview()
+                if self.imagePreview != nil {
+                    controller.addViewPreview(self.imagePreview)
+                }
             }
             
         }
     }
-
+    
     func checkoutLogin(sender:AnyObject){
         self.addToCartTap(self)
     }
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
         self.navigationController?.popViewControllerAnimated(true)
     }
-
+    
     /*
     // MARK: - Navigation
     

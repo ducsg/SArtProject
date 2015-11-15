@@ -32,6 +32,8 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         tableView.registerNib(UINib(nibName: "MenuCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "MenuCell")
         // For registering classes
         tableView.registerClass(MenuCell.self, forCellReuseIdentifier: "MenuCell")
+        self.tableView.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
+        self.tableView.separatorColor = UIColor.clearColor()
         self.automaticallyAdjustsScrollViewInsets = false
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginReceivedNotification:", name:MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
         
@@ -56,8 +58,17 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 44
     }
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headView = UIView()
+        headView.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
+        return headView
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         return self.loginFlag == true ? menuAfterLogin(indexPath) : menuBeforeLogin(indexPath)
     }
     

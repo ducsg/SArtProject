@@ -8,8 +8,6 @@
 
 import UIKit
 import AVFoundation
-import AlamofireImage
-import Alamofire
 
 
 class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
@@ -25,18 +23,6 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = TITLE
-        Alamofire.request(.GET, "https://httpbin.org/image/png")
-            .responseImage { response in
-                debugPrint(response)
-                
-                print(response.request)
-                print(response.response)
-                debugPrint(response.result)
-                
-                if let image = response.result.value {
-                    self.customSliderview.imagePreview.image = image
-                }
-        }
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sendTap:")
     }
     
@@ -52,14 +38,17 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
         print("deinit") // never gets called
     }
     
-    func addViewPreview() -> Void {
+    func addViewPreview(image: UIImage) -> Void {
+        self.imagePreview = image
         self.customSliderview = SliderView.instanceFromNib()
+        self.customSliderview.imagePreview.image = image
         self.customSliderview.frame = self.view.bounds
         self.view.addSubview(customSliderview)
     }
     
     override func viewDidAppear(animated: Bool) {
         if self.customSliderview != nil {
+            self.customSliderview.addImagePreview(self.imagePreview)
             let rangeSlider = TDRatingView()
             rangeSlider.maximumRating = 6
             rangeSlider.minimumRating = 2
