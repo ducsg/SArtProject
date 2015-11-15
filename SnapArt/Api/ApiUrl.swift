@@ -53,6 +53,8 @@ public class ApiUrl{
     //get location information
     static let get_location_infor_url:String = "http://maps.googleapis.com/maps/api/geocode/json"
     
+    //transactions
+    static let get_transaction_url:String = base_url + "api/transactions/get_transactions"
     
     static let get_transaction_detail_url:String = base_url + "api/transactions/get_transaction_detail"
 
