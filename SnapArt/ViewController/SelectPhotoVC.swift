@@ -17,13 +17,13 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var sizeBtn: UIButton!
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var suggestLb: CustomLabelGotham!
     internal var imageCrop:UIImage!
     private var customPickerView:CustomPickerView!
     private var hiddenPicker = true
     private var ratioValue:Float = 1
     private var framSizeValue = ""
     private var frameSizes = [FrameSize]()
-    
     private var TITTLE = "Input Size"
     
     override func viewDidLoad() {
@@ -37,14 +37,12 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         self.customPickerView.hidden = hiddenPicker
         self.customPickerView.hiddenPicker = hiddenPicker
         self.view.addSubview(customPickerView)
-        
+        self.suggestLb.hidden = true
         self.sizeBtn.layer.borderWidth = 0.5
         self.sizeBtn.layer.borderColor = UIColor.grayColor().CGColor
         self.sizeBtn.setBackgroundImage(UIImage(named: "ic_select_frame"), forState: UIControlState.Normal)
-        self.sizeBtn.setBackgroundImage(UIImage(named: "ic_select_frame"), forState: UIControlState.Highlighted)
-        
+        self.sizeBtn.setBackgroundImage(UIImage(named: "ic_select_frame"), forState: UIControlState.Highlighted)        
         self.imageView.backgroundColor = UIColor.clearColor()
-        
         self.imageView.image = imageCrop
         self.imageView.contentMode = .ScaleAspectFill
         applyBackIcon()
@@ -68,7 +66,7 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         self.customPickerView.pickerView.reloadAllComponents()
     }
     func selectedAt(index: Int) {
-        self.setValueSizeBtn(frameSizes[index].frame_size)
+        self.setValueSizeBtn(frameSizes[index])
     }
     
     @IBAction func cropTap(sender: AnyObject) {
@@ -86,10 +84,10 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func setValueSizeBtn(sizeValues:String) -> Void {
-        self.sizeBtn.setTitle(sizeValues, forState: .Normal)
-        self.sizeBtn.setTitle(sizeValues, forState: .Highlighted)
-        self.framSizeValue = sizeValues
+    func setValueSizeBtn(sizeValues:FrameSize) -> Void {
+        self.sizeBtn.setTitle(sizeValues.frame_size, forState: .Normal)
+        self.sizeBtn.setTitle(sizeValues.frame_size, forState: .Highlighted)
+        self.framSizeValue = sizeValues.frame_size
     }
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
         self.navigationController?.popViewControllerAnimated(true)
@@ -105,10 +103,16 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
 
         api.execute(.POST, url: ApiUrl.size_frames_url, parameters: parameters, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
+                self.frameSizes = [FrameSize]()
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
-                        self.frameSizes.append(FrameSize(size: dataResult.data[i]["frame_size"].stringValue , ratio: dataResult.data[i]["ratio"].floatValue))
+                        self.frameSizes.append(FrameSize(size: dataResult.data[i]["frame_size"].stringValue , ratio: dataResult.data[i]["ratio"].floatValue,size_id:dataResult.data[i]["id"].intValue))
                     }
+                    self.suggestLb.hidden = false
+                    if self.frameSizes.last != nil {
+                        self.suggestLb.text = "With your photo resolution, we recommended you print art at \(self.frameSizes.last!.frame_size) or lower for best quality "
+                    }
+
                     self.customPickerView.setData(self.frameSizes)
                 }
             }else{

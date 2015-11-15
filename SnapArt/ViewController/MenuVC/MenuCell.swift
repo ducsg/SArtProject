@@ -15,6 +15,9 @@ class MenuCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         titleLb.hidden = true
+        self.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
+        self.contentView.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
+
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -48,7 +51,7 @@ class MenuCell: UITableViewCell {
         button.setTitle(titleText, forState: UIControlState.Normal)
         button.setTitleColor(SA_STYPE.TEXT_BUTTON_COLOR, forState: UIControlState.Normal)
         button.setTitleColor(SA_STYPE.TEXT_BUTTON_COLOR, forState: UIControlState.Highlighted)
-        button.titleLabel?.font = SA_STYPE.FONT_ARCHER
+        button.titleLabel?.font = SA_STYPE.FONT_GOTHAM
         self.addSubview(button)
         return button
     }

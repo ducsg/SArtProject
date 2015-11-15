@@ -26,6 +26,13 @@ class SliderView: UIView  {
     }
     override func awakeFromNib() {
         self.backgroundColor = UIColor.clearColor()
-//        self.sliderView.backgroundColor = UIColor.clearColor()
+        imagePreview.hidden = true
     }
+    
+    func addImagePreview(image:UIImage) -> Void {
+        imagePreview.hidden = false
+        self.imagePreview.image = image
+    }
+    
 }
+

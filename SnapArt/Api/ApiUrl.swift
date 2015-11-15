@@ -57,5 +57,10 @@ public class ApiUrl{
     static let get_transaction_url:String = base_url + "api/transactions/get_transactions"
     
     static let get_transaction_detail_url:String = base_url + "api/transactions/get_transaction_detail"
+    
+    //get image url
+    static let get_image_url:String = base_url + "api/cropers/get_image_cropped"
+
+    
 
 }

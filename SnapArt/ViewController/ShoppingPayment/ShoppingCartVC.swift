@@ -13,13 +13,6 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     //all data for payment
     public static var paymentDetail = PaymentDetail()
     //label title
-    @IBOutlet weak var lbQuanlity: CustomLabelGotham!
-    
-    @IBOutlet weak var lbPreview: CustomLabelGotham!
-    
-    @IBOutlet weak var lbItem: CustomLabelGotham!
-    
-    @IBOutlet weak var lbPrice: CustomLabelGotham!
     
     @IBOutlet weak var tbOrder: UITableView!
     
@@ -31,10 +24,13 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var lbShipping: CustomLabelGotham!
     
+    @IBOutlet weak var headerView: HeaderView!
+    
     static var discount:Float = 0
     
     static var totalCost:Float = 0
-    
+    let TITLES = ["Preview","Date","Code","Status"]
+
     var listCart: [Order] = [Order]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +46,10 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(true)
+        headerView.addTitles(TITLES)
 //        if(Util().getCountryCode() == "US"){
             lbShipping.text = "FREE"
 //        }
-        setFrameForTitleTable()
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
@@ -85,7 +81,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
             (sender: MGSwipeTableCell!) -> Bool in
             let indexRow:Int = self.tbOrder.indexPathForCell(sender)!.row
             self.listCart.removeAtIndex(indexRow)
-            self.tbOrder.reloadData()
+            tableView.deleteRowsAtIndexPaths([self.tbOrder.indexPathForCell(sender)!], withRowAnimation: UITableViewRowAnimation.Left)
             self.resetCost()
             return true
         })
@@ -166,27 +162,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         }
         return subTotal.roundToPlaces(2)
     }
-    
-    func setFrameForTitleTable(){
-        let screenWidth = Util().getScreenWidth()
-        print("screenWidth: \(screenWidth)")
-        //set position for quanlity label
-        var rectQuanlity = lbQuanlity.frame
-        rectQuanlity.origin.x = 15
-        lbQuanlity.frame = rectQuanlity
-        //set position for preview label
-        var rectPreview = lbPreview.frame
-        rectPreview.origin.x = CGFloat(screenWidth/10 * 2)
-        lbPreview.frame = rectPreview
-        //set item label
-        var rectItem = lbItem.frame
-        rectItem.origin.x = CGFloat(screenWidth/10 * 5)
-        lbItem.frame = rectItem
-        //set position for price
-        var rectPrice = lbPrice.frame
-        rectPrice.origin.x = CGFloat(screenWidth/10 * 8 + 10)
-        lbPrice.frame = rectPrice
-    }
+ 
     
     @IBAction func pressBtnShoppingQuestion(sender: AnyObject) {
         Util().showAlert(MESSAGES.SHOPPING.SHOPPING_QUESTION, parrent: self)

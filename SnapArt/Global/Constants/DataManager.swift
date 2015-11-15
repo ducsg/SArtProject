@@ -19,3 +19,11 @@ class DataManager {
     var user : Account = Account()
 }
 
+class OrderSubmit {
+    var accessToken: String = ""
+    var accountId: Int = 0
+    var frame_size_id: Int = 0
+    var image_id: Int = 0
+}
+
+
