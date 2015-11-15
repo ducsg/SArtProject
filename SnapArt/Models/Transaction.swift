@@ -9,14 +9,15 @@
 import UIKit
 
 class Transaction: Serializable {
-    var image: UIImage!
-    var created_at: NSDate!
+    var img_url: String!
+    var created_at: String!
     var order_id_full: String!
     var status: String!
     var id: Int!
 
-    init(image:UIImage!, date: NSDate = NSDate(), code: String = "", status:String = "Placed"){
-        self.image = image
+    init(id:Int = 0 , imgUrl:String = "", date: String = "", code: String = "", status:String = "Placed"){
+        self.id = id
+        self.img_url = imgUrl
         self.created_at = date
         self.order_id_full = code
         self.status = status

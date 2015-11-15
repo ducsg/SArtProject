@@ -9,7 +9,7 @@
 import UIKit
 
 class MenuCell: UITableViewCell {
-    @IBOutlet weak var titleLb: UILabel!
+    @IBOutlet weak var titleLb: CustomLabelGotham!
     private var  button:CustomButton!
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -87,6 +87,9 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
                     self.returnUserProfileImage(id)
                 } else {
                     print("ID es null")
+                    self.albumbtn.hidden = true
+                    self.statuslb.text = "Login with facebook"
+                    self.avatarImage.image = UIImage(named: "no_avatar")
                 }
                 
                 
@@ -108,14 +111,19 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         }else{
             
         }
+        returnUserData()
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        
+        returnUserData()
+        self.albumbtn.hidden = true
+        self.statuslb.text = "Login with facebook"
+        self.avatarImage.image = UIImage(named: "no_avatar")
     }
     func facebookImagePicker(imagePicker: OLFacebookImagePickerController!, didFailWithError error: NSError!) {
-        
+
     }
+    
     func facebookImagePicker(imagePicker: OLFacebookImagePickerController!, didFinishPickingImages images: [AnyObject]!) {
         if let nv = self.navigationController?.viewControllers {
             if let index:Int! = nv.count - 2 {
