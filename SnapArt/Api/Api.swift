@@ -79,6 +79,7 @@ public class Api{
             .headers(headers)
             .data(imageData!, fieldName:"avatar", data:["rotate":"1"])
             .send({(response:AnyObject!, status:Int) -> Void in
+                print(response)
                 let json = Json(string: (response as? String)!)
                 if json["status"].asInt == 200 {
                     resulf(true, json[self.KEY_MESSAGE].asString, json[self.KEY_DATA].asString)

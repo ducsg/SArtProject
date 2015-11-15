@@ -59,6 +59,7 @@
             </tableViewCellContentView>
             <animations/>
             <connections>
+                <outlet property="btnEdit" destination="Bub-rN-O2t" id="SwY-A4-llF"/>
                 <outlet property="lbAddress1" destination="9Vr-SW-9fG" id="rFd-NT-P2q"/>
                 <outlet property="lbAddress2" destination="7RW-Pc-8nR" id="Zpu-1G-qgI"/>
                 <outlet property="lbAdressTitle" destination="ob9-fc-Edd" id="g79-Mv-M1Z"/>
