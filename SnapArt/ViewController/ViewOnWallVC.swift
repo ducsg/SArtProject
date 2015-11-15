@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 import AlamofireImage
+import Alamofire
+
 
 class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     let captureSession = AVCaptureSession()
@@ -23,7 +25,18 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = TITLE
-
+        Alamofire.request(.GET, "https://httpbin.org/image/png")
+            .responseImage { response in
+                debugPrint(response)
+                
+                print(response.request)
+                print(response.response)
+                debugPrint(response.result)
+                
+                if let image = response.result.value {
+                    self.customSliderview.imagePreview.image = image
+                }
+        }
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sendTap:")
     }
     
@@ -58,7 +71,6 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
             rangeSlider.drawRatingControlWithX(0, y:0)
             rangeSlider.center = self.customSliderview.sliderView.center
             self.customSliderview.sliderView.addSubview(rangeSlider)
-            self.customSliderview.imagePreview.image = UIImage(named: "girl-nice-hair")
             self.customSliderview.imagePreview.contentMode = .ScaleAspectFit
             var rect = self.customSliderview.imagePreview.bounds
             self.ratio = rect.size.width/rect.size.height

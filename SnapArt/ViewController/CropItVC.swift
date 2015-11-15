@@ -81,7 +81,7 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
         self.removeLoading(self.navigationController?.view)
     }
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     /*
     // MARK: - Navigation

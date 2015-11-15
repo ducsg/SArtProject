@@ -92,7 +92,7 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         self.framSizeValue = sizeValues
     }
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     private func getFrameSizes(){
