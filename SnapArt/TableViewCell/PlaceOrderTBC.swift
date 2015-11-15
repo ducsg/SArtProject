@@ -15,6 +15,8 @@ class PlaceOrderTBC: UITableViewCell {
     @IBOutlet weak var lbAddress2: CustomLabelGotham!
     @IBOutlet weak var lbCityState: CustomLabelGotham!
     
+    @IBOutlet weak var btnEdit: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

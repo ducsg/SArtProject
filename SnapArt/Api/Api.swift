@@ -79,7 +79,7 @@ public class Api{
             .headers(headers)
             .data(imageData!, fieldName:"avatar", data:["rotate":"\(ratio)"])
             .send({(response:AnyObject!, status:Int) -> Void in
-
+                print(response)
                 let json = Json(string: (response as? String)!)
                 print("\(response as? String)")
 

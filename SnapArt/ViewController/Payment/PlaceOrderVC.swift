@@ -21,6 +21,8 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     
     @IBOutlet weak var lbShipping: CustomLabelGotham!
     
+    
+    
     static var discount:Float = 0
     
     static var totalCost:Float = 0
@@ -44,6 +46,8 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
         lbShipping.text = "FREE"
         lbTotalCost.text = "$\(ShoppingCartVC.paymentDetail.payment_amount)"
         //        }
+        
+        self.tbOrder.reloadData()
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
@@ -69,6 +73,7 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
             cell.lbAddress1.text = "\(ShoppingCartVC.paymentDetail.billing_address.address1)"
             cell.lbAddress2.text = "\(ShoppingCartVC.paymentDetail.billing_address.address2)"
             cell.lbCityState.text = "\(ShoppingCartVC.paymentDetail.billing_address.country), \(ShoppingCartVC.paymentDetail.billing_address.city), \(ShoppingCartVC.paymentDetail.billing_address.state), \(ShoppingCartVC.paymentDetail.billing_address.postalCose)"
+            cell.btnEdit.addTarget(self, action: "pressBtnEditBilling:", forControlEvents: UIControlEvents.TouchUpInside)
             return cell
         }
         if(indexPath.row == 1){
@@ -78,6 +83,7 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
             cell.lbAddress1.text = "\(ShoppingCartVC.paymentDetail.shipping_address.address1)"
             cell.lbAddress2.text = "\(ShoppingCartVC.paymentDetail.shipping_address.address2)"
             cell.lbCityState.text = "\(ShoppingCartVC.paymentDetail.shipping_address.country), \(ShoppingCartVC.paymentDetail.shipping_address.city), \(ShoppingCartVC.paymentDetail.shipping_address.state), \(ShoppingCartVC.paymentDetail.shipping_address.postalCose)"
+            cell.btnEdit.addTarget(self, action: "pressBtnEditShipping:", forControlEvents: UIControlEvents.TouchUpInside)
             return cell
         }
         if(indexPath.row == 2){
@@ -91,6 +97,18 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
         cell.btnPlus.hidden = true
         cell.btnSubtract.hidden = true
         return cell
+    }
+    
+    func pressBtnEditBilling(sender: AnyObject){
+        BuyIt2TB.buy2 = 1
+        let nv = Util().getControllerForStoryBoard("BuyIt2TB") as! BuyIt2TB
+        self.navigationController?.pushViewController(nv, animated: true)
+    }
+    
+    func pressBtnEditShipping(sender: AnyObject){
+        BuyIt2TB.buy2 = 2
+        let nv = Util().getControllerForStoryBoard("BuyIt2TB") as! BuyIt2TB
+        self.navigationController?.pushViewController(nv, animated: true)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat

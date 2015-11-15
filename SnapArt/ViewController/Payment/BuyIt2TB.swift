@@ -19,10 +19,21 @@ class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
     @IBOutlet weak var tfPostalCode: CustomTextField!
     @IBOutlet weak var tfCountry: CustomTextField!
     
+    @IBOutlet weak var lbTitle: CustomLabelGothamBold!
+    
+    @IBOutlet weak var lbDes: CustomLabel!
+    
     var listFieldRequire = [CustomTextField]()
     var useBillingAddress:Bool = false
     var shippingAddressData = Address()
+    var billingAddressData = Address()
     var postCodeTemp:Int = 0
+    
+    public static var buy2 = 0
+    public var billingTitle = "BILLING ADDRESS"
+    public var billingDes = "The address associated with your payent me thod."
+    public var shippingTitle = "SHIPPING ADDRESS"
+    public var shippingDes = "The address you'd like us to sent your finished framed piece."
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +46,33 @@ class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
         super.viewWillAppear(true)
         applyBackIcon()
         tfPostalCode.keyboardType = UIKeyboardType.NumberPad
+        
+        if(BuyIt2TB.buy2 == 1){
+            lbTitle.text = billingTitle
+            lbDes.text = billingDes
+            //set data
+            self.tfFirstName.text! = ShoppingCartVC.paymentDetail.billing_address.firstName
+            self.tfLastName.text! = ShoppingCartVC.paymentDetail.billing_address.lastName
+            self.tfAddress1.text! = ShoppingCartVC.paymentDetail.billing_address.address1
+            self.tfAddress2.text! = ShoppingCartVC.paymentDetail.billing_address.address2
+            self.tfCity.text! = ShoppingCartVC.paymentDetail.billing_address.city
+            self.tfState.text! = ShoppingCartVC.paymentDetail.billing_address.state
+            self.tfCountry.text! = ShoppingCartVC.paymentDetail.billing_address.country
+            self.tfPostalCode.text! = ShoppingCartVC.paymentDetail.billing_address.postalCose
+        }
+        if(BuyIt2TB.buy2 == 2){
+            lbTitle.text = shippingTitle
+            lbDes.text = shippingDes
+            //set data
+            self.tfFirstName.text! = ShoppingCartVC.paymentDetail.shipping_address.firstName
+            self.tfLastName.text! = ShoppingCartVC.paymentDetail.shipping_address.lastName
+            self.tfAddress1.text! = ShoppingCartVC.paymentDetail.shipping_address.address1
+            self.tfAddress2.text! = ShoppingCartVC.paymentDetail.shipping_address.address2
+            self.tfCity.text! = ShoppingCartVC.paymentDetail.shipping_address.city
+            self.tfState.text! = ShoppingCartVC.paymentDetail.shipping_address.state
+            self.tfCountry.text! = ShoppingCartVC.paymentDetail.shipping_address.country
+            self.tfPostalCode.text! = ShoppingCartVC.paymentDetail.shipping_address.postalCose
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,14 +85,24 @@ class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
     }
 
     @IBAction func pressBtnContinue(sender: AnyObject) {
-        if(Util().checkRequireField(listFieldRequire)){
-            getFillingData()
-            let nv = Util().getControllerForStoryBoard("PaymentVC") as! PaymentVC
-            self.navigationController?.pushViewController(nv, animated: true)
+        if(BuyIt2TB.buy2 == 0){
+            if(Util().checkRequireField(listFieldRequire)){
+                self.getShippingData()
+                let nv = Util().getControllerForStoryBoard("PaymentVC") as! PaymentVC
+                self.navigationController?.pushViewController(nv, animated: true)
+                return
+            }
         }
+        if(BuyIt2TB.buy2 == 1){
+            self.getBillingData()
+        }
+        if(BuyIt2TB.buy2 == 2){
+            self.getShippingData()
+        }
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
-    func getFillingData(){
+    func getShippingData(){
         shippingAddressData.firstName = self.tfFirstName.text!
         shippingAddressData.lastName = self.tfLastName.text!
         shippingAddressData.address1 = self.tfAddress1.text!
@@ -66,6 +114,21 @@ class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
         
         ShoppingCartVC.paymentDetail.shipping_address = shippingAddressData
         print(ShoppingCartVC.paymentDetail.toJsonString())
+    }
+    func getBillingData(){
+        billingAddressData.firstName = self.tfFirstName.text!
+        billingAddressData.lastName = self.tfLastName.text!
+        billingAddressData.address1 = self.tfAddress1.text!
+        billingAddressData.address2 = self.tfAddress2.text!
+        billingAddressData.city = self.tfCity.text!
+        billingAddressData.state = self.tfState.text!
+        billingAddressData.country = self.tfCountry.text!
+        billingAddressData.postalCose = self.tfPostalCode.text!
+        
+        ShoppingCartVC.paymentDetail.billing_address = billingAddressData
+        if(useBillingAddress){
+            ShoppingCartVC.paymentDetail.shipping_address = billingAddressData
+        }
     }
     
     func showpicker() -> Void {
