@@ -27,6 +27,9 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     
     static var totalCost:Float = 0
     
+    public static var isOrderReview = false
+    public static var transaction = Transaction()
+    
     var listCart: [Order] = [Order]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +54,7 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,41 +64,86 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return ShoppingCartVC.paymentDetail.list_order.count + 3
+        if(PlaceOrderVC.isOrderReview){
+            return ShoppingCartVC.paymentDetail.list_order.count + 4
+        }else{
+            return ShoppingCartVC.paymentDetail.list_order.count + 3
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        if(indexPath.row == 0){
-            let cell:PlaceOrderTBC = PlaceOrderTBC.instanceFromNib()
-            cell.lbAdressTitle.text = "BILLING ADRRESS"
-            cell.lbFullname.text = "\(ShoppingCartVC.paymentDetail.billing_address.firstName) \(ShoppingCartVC.paymentDetail.billing_address.lastName)"
-            cell.lbAddress1.text = "\(ShoppingCartVC.paymentDetail.billing_address.address1)"
-            cell.lbAddress2.text = "\(ShoppingCartVC.paymentDetail.billing_address.address2)"
-            cell.lbCityState.text = "\(ShoppingCartVC.paymentDetail.billing_address.country), \(ShoppingCartVC.paymentDetail.billing_address.city), \(ShoppingCartVC.paymentDetail.billing_address.state), \(ShoppingCartVC.paymentDetail.billing_address.postalCose)"
-            cell.btnEdit.addTarget(self, action: "pressBtnEditBilling:", forControlEvents: UIControlEvents.TouchUpInside)
-            return cell
-        }
-        if(indexPath.row == 1){
-            let cell:PlaceOrderTBC = PlaceOrderTBC.instanceFromNib()
-            cell.lbAdressTitle.text = "SHIPPING ADRRESS"
-            cell.lbFullname.text = "\(ShoppingCartVC.paymentDetail.shipping_address.firstName) \(ShoppingCartVC.paymentDetail.shipping_address.lastName)"
-            cell.lbAddress1.text = "\(ShoppingCartVC.paymentDetail.shipping_address.address1)"
-            cell.lbAddress2.text = "\(ShoppingCartVC.paymentDetail.shipping_address.address2)"
-            cell.lbCityState.text = "\(ShoppingCartVC.paymentDetail.shipping_address.country), \(ShoppingCartVC.paymentDetail.shipping_address.city), \(ShoppingCartVC.paymentDetail.shipping_address.state), \(ShoppingCartVC.paymentDetail.shipping_address.postalCose)"
-            cell.btnEdit.addTarget(self, action: "pressBtnEditShipping:", forControlEvents: UIControlEvents.TouchUpInside)
-            return cell
-        }
-        if(indexPath.row == 2){
-            let cell:PlaceOrderTitleTBC = PlaceOrderTitleTBC.instanceFromNib()
-            cell.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
-            return cell
+        if(PlaceOrderVC.isOrderReview){
+            if(indexPath.row == 0){
+                return getTransactionCell()
+            }
+            if(indexPath.row == 1){
+                return getBillingCell()
+            }
+            if(indexPath.row == 2){
+                return getShippingCell()
+            }
+            if(indexPath.row == 3){
+                return getTitleCell()
+            }
+        }else{
+            if(indexPath.row == 0){
+                return getBillingCell()
+            }
+            if(indexPath.row == 1){
+                return getShippingCell()
+            }
+            if(indexPath.row == 2){
+                return getTitleCell()
+            }
         }
         let cell:ShoppingCartTBC = ShoppingCartTBC.instanceFromNib()
-        let cart: Order = ShoppingCartVC.paymentDetail.list_order[indexPath.row-3]
+        var cart = Order()
+        if(PlaceOrderVC.isOrderReview){
+            cart = ShoppingCartVC.paymentDetail.list_order[indexPath.row-4]
+        }else{
+            cart = ShoppingCartVC.paymentDetail.list_order[indexPath.row-3]
+        }
         cell.initCell(cart)
         cell.btnPlus.hidden = true
         cell.btnSubtract.hidden = true
+        return cell
+    }
+    
+    func getTransactionCell() -> PlaceOrderTransactionTBC{
+        let cell:PlaceOrderTransactionTBC = PlaceOrderTransactionTBC.instanceFromNib()
+        cell.lbTransactionId.text = "Order ID: \(PlaceOrderVC.transaction.order_id_full)"
+        cell.lbPlacedDate.text = "Placed date: \(PlaceOrderVC.transaction.created_at)"
+        cell.lbShippedDate.text = PlaceOrderVC.transaction.shipped_at == "" ? "" : "Shipped date: \(PlaceOrderVC.transaction.shipped_at)"
+        cell.btnStatus.setTitleText(PlaceOrderVC.transaction.status)
+        return cell
+    }
+    
+    func getBillingCell() -> PlaceOrderTBC{
+        let cell:PlaceOrderTBC = PlaceOrderTBC.instanceFromNib()
+        cell.lbAdressTitle.text = "BILLING ADRRESS"
+        cell.lbFullname.text = "\(ShoppingCartVC.paymentDetail.billing_address.firstName) \(ShoppingCartVC.paymentDetail.billing_address.lastName)"
+        cell.lbAddress1.text = "\(ShoppingCartVC.paymentDetail.billing_address.address1)"
+        cell.lbAddress2.text = "\(ShoppingCartVC.paymentDetail.billing_address.address2)"
+        cell.lbCityState.text = "\(ShoppingCartVC.paymentDetail.billing_address.country), \(ShoppingCartVC.paymentDetail.billing_address.city), \(ShoppingCartVC.paymentDetail.billing_address.state), \(ShoppingCartVC.paymentDetail.billing_address.postalCose)"
+        cell.btnEdit.addTarget(self, action: "pressBtnEditBilling:", forControlEvents: UIControlEvents.TouchUpInside)
+        return cell
+    }
+    
+    func getShippingCell() -> PlaceOrderTBC{
+        let cell:PlaceOrderTBC = PlaceOrderTBC.instanceFromNib()
+        cell.lbAdressTitle.text = "SHIPPING ADRRESS"
+        cell.lbFullname.text = "\(ShoppingCartVC.paymentDetail.shipping_address.firstName) \(ShoppingCartVC.paymentDetail.shipping_address.lastName)"
+        cell.lbAddress1.text = "\(ShoppingCartVC.paymentDetail.shipping_address.address1)"
+        cell.lbAddress2.text = "\(ShoppingCartVC.paymentDetail.shipping_address.address2)"
+        cell.lbCityState.text = "\(ShoppingCartVC.paymentDetail.shipping_address.country), \(ShoppingCartVC.paymentDetail.shipping_address.city), \(ShoppingCartVC.paymentDetail.shipping_address.state), \(ShoppingCartVC.paymentDetail.shipping_address.postalCose)"
+        cell.btnEdit.addTarget(self, action: "pressBtnEditShipping:", forControlEvents: UIControlEvents.TouchUpInside)
+        return cell
+    }
+    
+    func getTitleCell() -> PlaceOrderTitleTBC{
+        let cell:PlaceOrderTitleTBC = PlaceOrderTitleTBC.instanceFromNib()
+        cell.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
         return cell
     }
     
@@ -113,13 +161,29 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        if(indexPath.row <= 1){
-           return 130;
-        }else if(indexPath.row == 2){
-            return 44
+        if(PlaceOrderVC.isOrderReview){
+            if(indexPath.row == 0){
+                return 70;
+            }
+            if(indexPath.row > 0 && indexPath.row <= 2){
+                return 130;
+            }
+            if(indexPath.row == 3){
+                return 44
+            }
+            if(indexPath.row > 3){
+                return 130
+            }
         }else{
-            return 130
+            if(indexPath.row <= 1){
+                return 130;
+            }else if(indexPath.row == 2){
+                return 44
+            }else{
+                return 130
+            }
         }
+        return 130
     }
     
     @IBAction func pressBtnPurchase(sender: AnyObject) {

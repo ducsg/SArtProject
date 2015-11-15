@@ -144,8 +144,9 @@
 		AFBF90C71BF0AF1000004FA6 /* NotificationTBC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBF90C31BF0AF1000004FA6 /* NotificationTBC.xib */; settings = {ASSET_TAGS = (); }; };
 		AFBF90C81BF0AF1000004FA6 /* PlaceOrderTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF90C41BF0AF1000004FA6 /* PlaceOrderTBC.swift */; settings = {ASSET_TAGS = (); }; };
 		AFBF90C91BF0AF1000004FA6 /* PlaceOrderTBC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBF90C51BF0AF1000004FA6 /* PlaceOrderTBC.xib */; settings = {ASSET_TAGS = (); }; };
-		AFBF90CB1BF0B04E00004FA6 /* MyOrderTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF90CA1BF0B04E00004FA6 /* MyOrderTB.swift */; settings = {ASSET_TAGS = (); }; };
 		AFBF90CD1BF0FDD500004FA6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF90CC1BF0FDD500004FA6 /* Notification.swift */; settings = {ASSET_TAGS = (); }; };
+		AFE1C1EC1BF8948D00FDC799 /* PlaceOrderTransactionTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE1C1EA1BF8948D00FDC799 /* PlaceOrderTransactionTBC.swift */; settings = {ASSET_TAGS = (); }; };
+		AFE1C1ED1BF8948D00FDC799 /* PlaceOrderTransactionTBC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFE1C1EB1BF8948D00FDC799 /* PlaceOrderTransactionTBC.xib */; settings = {ASSET_TAGS = (); }; };
 		AFE2A8521BE61A48000E9AB2 /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2A84F1BE61A48000E9AB2 /* MGSwipeButton.m */; settings = {ASSET_TAGS = (); }; };
 		AFE2A8531BE61A48000E9AB2 /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE2A8511BE61A48000E9AB2 /* MGSwipeTableCell.m */; settings = {ASSET_TAGS = (); }; };
 		AFF201781BF39AF6000DA160 /* PromotionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF201771BF39AF6000DA160 /* PromotionInfoVC.swift */; settings = {ASSET_TAGS = (); }; };
@@ -356,8 +357,9 @@
 		AFBF90C31BF0AF1000004FA6 /* NotificationTBC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationTBC.xib; path = TableViewCell/NotificationTBC.xib; sourceTree = "<group>"; };
 		AFBF90C41BF0AF1000004FA6 /* PlaceOrderTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceOrderTBC.swift; path = TableViewCell/PlaceOrderTBC.swift; sourceTree = "<group>"; };
 		AFBF90C51BF0AF1000004FA6 /* PlaceOrderTBC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceOrderTBC.xib; path = TableViewCell/PlaceOrderTBC.xib; sourceTree = "<group>"; };
-		AFBF90CA1BF0B04E00004FA6 /* MyOrderTB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrderTB.swift; sourceTree = "<group>"; };
 		AFBF90CC1BF0FDD500004FA6 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		AFE1C1EA1BF8948D00FDC799 /* PlaceOrderTransactionTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceOrderTransactionTBC.swift; sourceTree = "<group>"; };
+		AFE1C1EB1BF8948D00FDC799 /* PlaceOrderTransactionTBC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceOrderTransactionTBC.xib; sourceTree = "<group>"; };
 		AFE2A84E1BE61A48000E9AB2 /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSwipeButton.h; path = lib/MGSwipeTableCell/MGSwipeButton.h; sourceTree = "<group>"; };
 		AFE2A84F1BE61A48000E9AB2 /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSwipeButton.m; path = lib/MGSwipeTableCell/MGSwipeButton.m; sourceTree = "<group>"; };
 		AFE2A8501BE61A48000E9AB2 /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSwipeTableCell.h; path = lib/MGSwipeTableCell/MGSwipeTableCell.h; sourceTree = "<group>"; };
@@ -492,7 +494,6 @@
 				67121A011BCEBFA500CAC506 /* ResetPasswordTB.swift */,
 				67121A021BCEBFA500CAC506 /* SignInTB.swift */,
 				674B71AA1BCE35BB00B8FC2A /* RegisterTB.swift */,
-				AFBF90CA1BF0B04E00004FA6 /* MyOrderTB.swift */,
 				AFFC79901BF1B10100F7509A /* MyAccountTB.swift */,
 				AFFC79921BF1BB2E00F7509A /* ChangePasswordTB.swift */,
 				AFF201771BF39AF6000DA160 /* PromotionInfoVC.swift */,
@@ -829,6 +830,8 @@
 				67AD99F71BE0BF8300852FA9 /* ShoppingCartTBC.xib */,
 				AFF201791BF58949000DA160 /* PlaceOrderTitleTBC.swift */,
 				AFF2017A1BF58949000DA160 /* PlaceOrderTitleTBC.xib */,
+				AFE1C1EA1BF8948D00FDC799 /* PlaceOrderTransactionTBC.swift */,
+				AFE1C1EB1BF8948D00FDC799 /* PlaceOrderTransactionTBC.xib */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -1050,6 +1053,7 @@
 				67C1A60F1BD241D2007BECA3 /* PEPhotoCropEditor.bundle in Resources */,
 				677971341BC41BBF00110C8B /* Images.xcassets in Resources */,
 				AFBF90C91BF0AF1000004FA6 /* PlaceOrderTBC.xib in Resources */,
+				AFE1C1ED1BF8948D00FDC799 /* PlaceOrderTransactionTBC.xib in Resources */,
 				67566A521BCB5DE300EDE907 /* Gotham-Thin.ttf in Resources */,
 				67121A0B1BD09ADD00CAC506 /* Gotham-Bold.ttf in Resources */,
 				67566A511BCB5DE300EDE907 /* Archer-Book-Pro.otf in Resources */,
@@ -1199,7 +1203,6 @@
 				675AC96C1BEDEDAF00211959 /* PlaceOrderVC.swift in Sources */,
 				67C1A5FD1BD22F39007BECA3 /* SelectPhotoVC.swift in Sources */,
 				671FB3FE1BCBBFF800E5EAE8 /* ExtensionUIColor.swift in Sources */,
-				AFBF90CB1BF0B04E00004FA6 /* MyOrderTB.swift in Sources */,
 				67121A151BD0DAF700CAC506 /* MemoryStoreData.swift in Sources */,
 				AFF2017B1BF58949000DA160 /* PlaceOrderTitleTBC.swift in Sources */,
 				6779712D1BC41BBF00110C8B /* AppDelegate.swift in Sources */,
@@ -1209,6 +1212,7 @@
 				674B71A61BCDFC6F00B8FC2A /* CustomViewController.swift in Sources */,
 				671219F31BCE80B100CAC506 /* CustomLabelButton.swift in Sources */,
 				670366381BE5B8F000537587 /* SliderView.swift in Sources */,
+				AFE1C1EC1BF8948D00FDC799 /* PlaceOrderTransactionTBC.swift in Sources */,
 				677971851BC429BA00110C8B /* IKCollectionViewController.m in Sources */,
 				677971871BC429BA00110C8B /* IKMediaViewController.m in Sources */,
 				677971971BC438E900110C8B /* InstagramLoginVC.swift in Sources */,

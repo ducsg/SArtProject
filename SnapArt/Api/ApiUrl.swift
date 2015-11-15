@@ -42,7 +42,7 @@ public class ApiUrl{
     
     // Crop Image
     static let crop_image_url:String = base_url + "api/cropers/upload"
-//    static let crop_image_url:String = "http://192.168.1.158:8080/snapart/api/cropers/upload"
+//    static let crop_image_url:String = "http://192.168.1.151:8080/snapart/api/cropers/upload"
     
     //notification
     static let get_notification_url:String = base_url + "api/notifications/get_my_notifications"

@@ -63,6 +63,10 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        PlaceOrderVC.isOrderReview = true
+        PlaceOrderVC.transaction = transactionList[indexPath.row]
+        let nv = Util().getControllerForStoryBoard("PlaceOrderVC") as! PlaceOrderVC
+        self.navigationController?.pushViewController(nv, animated: true)
     }
     private func getTransactionList(){
         let api = Api()
@@ -73,8 +77,12 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
             if(dataResult.success){
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
-                        let dateStr = Util().formatDatetime(dataResult.data[i]["created_at"].stringValue, outputFormat: "dd/MM/yyyy")
-                        let transaction = Transaction(id: dataResult.data[i]["id"].numberValue.integerValue, imgUrl: dataResult.data[i]["image_url"].stringValue, date: dateStr, code: dataResult.data[i]["order_id_full"].stringValue, status: dataResult.data[i]["status"].stringValue)
+                        let dateStr = Util().formatDatetime(dataResult.data[i]["created_at"].stringValue, outputFormat: "MM/dd/yyyy")
+                        var shipped_at = ""
+                        if(dataResult.data[i]["shipped_at"].stringValue != ""){
+                            shipped_at = Util().formatDatetime(dataResult.data[i]["shipped_at"].stringValue, outputFormat: "MM/dd/yyyy")
+                        }
+                        let transaction = Transaction(id: dataResult.data[i]["id"].numberValue.integerValue, imgUrl: dataResult.data[i]["image_url"].stringValue, created_at: dateStr, shipped_at: shipped_at, code: dataResult.data[i]["order_id_full"].stringValue, status: dataResult.data[i]["status"].stringValue)
                         self.transactionList.append(transaction)
                         self.myOrderTb.reloadData()
                     }
