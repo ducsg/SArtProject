@@ -7,6 +7,15 @@
 //
 
 import UIKit
+class FrameSize: NSObject {
+    var frame_size = ""
+    var ratio:Float = 0
+    init(size:String,ratio:Float) {
+        self.frame_size = size
+        self.ratio = ratio
+    }
+    
+}
 protocol CustomPickerViewDelegate {
     func selectedAt(index:Int)
 }
@@ -14,8 +23,12 @@ class CustomPickerView: UIView, UIPickerViewDelegate , UIPickerViewDataSource {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var hiddenBtn: UIButton!
     internal var delagate:CustomPickerViewDelegate!
+    internal var hiddenPicker:Bool!
+
     private var indexSelected:Int = 0
-    private var pickerData:[String]!
+    private var pickerData:[FrameSize]!
+    
+    
 
     
     override init(frame: CGRect = CGRectZero) {
@@ -34,7 +47,7 @@ class CustomPickerView: UIView, UIPickerViewDelegate , UIPickerViewDataSource {
         self.hiddenBtn.setTitleColor(SA_STYPE.TEXT_LABEL_COLOR, forState: UIControlState.Normal)
         
     }
-    func setData(data: [String]) -> Void{
+    func setData(data: [FrameSize]) -> Void{
         pickerData = data
         pickerView.dataSource = self;
         pickerView.delegate = self;
@@ -48,7 +61,8 @@ class CustomPickerView: UIView, UIPickerViewDelegate , UIPickerViewDataSource {
     
     @IBAction func hiddenTap(sender: AnyObject) {
         delagate.selectedAt(indexSelected)
-        self.removeFromSuperview()
+        self.hiddenPicker = true
+        self.hidden = hiddenPicker
     }
     
     
@@ -65,7 +79,8 @@ class CustomPickerView: UIView, UIPickerViewDelegate , UIPickerViewDataSource {
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         self.indexSelected = row
-        return pickerData[row]
+        return pickerData[row].frame_size
+        
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     }

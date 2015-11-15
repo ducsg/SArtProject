@@ -7,29 +7,31 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegate  {
     @IBOutlet weak var titlesView: HeaderView!
     @IBOutlet weak var myOrderTb: UITableView!
     let TITLES = ["Preview","Date","Code","Status"]
     private var TITTLE = "My Orders"
-
+    private var transactionList = [Transaction]()
     override func viewDidLoad() {
         super.viewDidLoad()
         applyBackIcon()
         self.title = self.TITTLE
 //        let nib = UINib(nibName: "MyOrderCell", bundle: nil)
 //        myOrderTb.registerNib(nib, forCellReuseIdentifier: "cell")
-//
         myOrderTb.registerClass(MyOrderCell.self, forCellReuseIdentifier: "MyOrderCell")
         myOrderTb.delegate = self
         myOrderTb.dataSource = self
 
+        getTransactionList()
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,7 +49,7 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
     }
     
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.transactionList.count
     }
      func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
@@ -55,12 +57,33 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:MyOrderCell = tableView.dequeueReusableCellWithIdentifier("MyOrderCell") as! MyOrderCell
-        cell.setTransaction(Transaction(image: UIImage(named: "girl-nice-hair"), date: NSDate(), code: "qe1234", status: "Placed"))
+        cell.setTransaction(self.transactionList[indexPath.row])
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    private func getTransactionList(){
+        let api = Api()
+        let parentView:UIView! = self.navigationController?.view
+        api.initWaiting(parentView)
+        let parameters = ["page":1,"row_per_page":20]
+        api.execute(.GET, url: ApiUrl.get_transaction_url, parameters: parameters, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            if(dataResult.success){
+                if(dataResult.data.count > 0){
+                    for i in 0...dataResult.data.count-1 {
+                        let dateStr = Util().formatDatetime(dataResult.data[i]["created_at"].stringValue, outputFormat: "dd/MM/yyyy")
+                        let transaction = Transaction(id: dataResult.data[i]["id"].numberValue.integerValue, imgUrl: dataResult.data[i]["image_url"].stringValue, date: dateStr, code: dataResult.data[i]["order_id_full"].stringValue, status: dataResult.data[i]["status"].stringValue)
+                        self.transactionList.append(transaction)
+                        self.myOrderTb.reloadData()
+                    }
+                }
+            }else{
+                Util().showAlert(dataResult.message, parrent: self)
+            }
+            
+        })
     }
 
     /*

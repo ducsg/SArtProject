@@ -43,16 +43,13 @@ class MyOrderCell: UITableViewCell {
         self.datelb.frame = CGRect(x: 1*Int(width), y: 0, width:Int(width), height: Int(rect.height))
         self.codelb.frame = CGRect(x: 2*Int(width), y: 0, width:Int(width), height: Int(rect.height))
         self.statuslb.frame = CGRect(x: 3*Int(width), y: 0, width:Int(width), height: Int(rect.height))
-        let dateFmt = NSDateFormatter()
         let fm = CGRect(x: 15, y: 5, width: self.imageContain.bounds.width - 20, height:  self.imageContain.bounds.height  - 10)
         self.imageV.frame = fm
-        self.imageV.image = transaction.image
-        
-        dateFmt.dateFormat = "yyyy-MM-dd"
-        let dateStr:String = dateFmt.stringFromDate(transaction.created_at)
+        self.imageV.image = UIImage(named: "")
+        //image
         
         self.datelb.textAlignment = .Center
-        self.datelb.text = dateStr
+        self.datelb.text = transaction.created_at
         self.codelb.textAlignment = .Center
         self.codelb.text = "\(transaction.order_id_full)"
         self.statuslb.textAlignment = .Center

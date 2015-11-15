@@ -18,12 +18,14 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     @IBOutlet var takePhotoBtn: UIButton!
     @IBOutlet var instagramBtn: UIButton!
     var imagePicker: UIImagePickerController!
-    
+    let TITLE = "Upload to Preview"
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        self.title = TITLE
         upLoadImg.layer.borderWidth = 0.5
         upLoadImg.layer.borderColor = UIColor.grayColor().CGColor
-        // Do any additional setup after loading the view.
         applyBackIcon()
     }
     
@@ -41,8 +43,8 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
         getImageFormLib()
 //        let image = UIImage(named: "girl_image")
 //        self.setImageView(Util().imageResize(image!, sizeChange: CGSize(width: 450,height: 800)))
-
     }
+
     // MARK: - CHOOSE FROM PHOTO FROM FACEBOOK
     @IBAction func choosefbEvent(sender: AnyObject) {
         let vc:FacebookLoginVC = self.storyboard?.instantiateViewControllerWithIdentifier("FacebookLoginVC") as! FacebookLoginVC
@@ -82,12 +84,14 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     }
     // GET IMMAGE FOR LIB AND FACEBOOK
     func setImageUploadWithURL(imgURL: String!) -> Void{
+        self.callLoading(self.navigationController?.view)
         Alamofire.request(.GET, imgURL)
             .responseImage { response in
                 debugPrint(response)
                 print(response.request)
                 print(response.response)
                 debugPrint(response.result)
+                self.removeLoading(self.navigationController?.view)
                 if let image = response.result.value {
                     self.setImageView(image)
                 }

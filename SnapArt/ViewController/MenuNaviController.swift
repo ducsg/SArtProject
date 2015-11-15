@@ -26,7 +26,7 @@ class MenuNaviController: CustomNavigationController {
             indicator.startAnimating()
             self.view.addSubview(launchView)
         }
-        let timer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: "receivedNotification:", userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: "receivedNotification:", userInfo: nil, repeats: false)
         // Do any additional setup after loading the view.
         MenuNaviController.waiting = false
     }

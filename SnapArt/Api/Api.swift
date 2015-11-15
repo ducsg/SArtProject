@@ -73,14 +73,16 @@ public class Api{
         
     }
     
-    func uploadFile(image:UIImage!, resulf:(Bool,String!, String!) -> ()){
+    func uploadFile(image:UIImage!,ratio:Float, resulf:(Bool,String!, String!) -> ()){
         let imageData = UIImagePNGRepresentation(image!)
         SRWebClient.POST(ApiUrl.crop_image_url)//
             .headers(headers)
-            .data(imageData!, fieldName:"avatar", data:["rotate":"1"])
+            .data(imageData!, fieldName:"avatar", data:["rotate":"\(ratio)"])
             .send({(response:AnyObject!, status:Int) -> Void in
                 print(response)
                 let json = Json(string: (response as? String)!)
+                print("\(response as? String)")
+
                 if json["status"].asInt == 200 {
                     resulf(true, json[self.KEY_MESSAGE].asString, json[self.KEY_DATA].asString)
                 }

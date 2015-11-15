@@ -25,7 +25,7 @@
                             </constraints>
                             <state key="normal" title="Add to card"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many feet are you from you wall?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1j-71-fG9">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many feet are you from you wall?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1j-71-fG9" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
                             <rect key="frame" x="42" y="8" width="290" height="21"/>
                             <animations/>
                             <constraints>

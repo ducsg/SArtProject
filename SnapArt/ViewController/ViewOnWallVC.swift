@@ -8,28 +8,43 @@
 
 import UIKit
 import AVFoundation
+import AlamofireImage
 
 class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     let captureSession = AVCaptureSession()
     let stillImageOutput = AVCaptureStillImageOutput()
     var customSliderview:SliderView!
     var imagePreview:UIImage!
-
+    internal var section:AVCaptureSession!
+    
     private var ratio:CGFloat = 1
     
     private let TITLE = "View On Wall"
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = TITLE
+
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sendTap:")
-        
     }
+    
+    deinit {
+        if section != nil && section.inputs.count>0 {
+            self.section.inputs
+            let input: AVCaptureInput = self.section.inputs[0] as! AVCaptureInput
+            self.section.removeInput(input)
+            let output: AVCaptureVideoDataOutput = self.section.outputs[0] as! AVCaptureVideoDataOutput
+            self.section.removeOutput(output)
+            self.section.stopRunning()
+        }
+        print("deinit") // never gets called
+    }
+    
     func addViewPreview() -> Void {
         self.customSliderview = SliderView.instanceFromNib()
         self.customSliderview.frame = self.view.bounds
         self.view.addSubview(customSliderview)
-
     }
+    
     override func viewDidAppear(animated: Bool) {
         if self.customSliderview != nil {
             let rangeSlider = TDRatingView()
@@ -81,15 +96,12 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
         rect.size.height = rect.size.width*1/ratio
         self.customSliderview.imagePreview.frame = rect
         self.customSliderview.imagePreview.center = CGPointMake(customSliderview.bounds.size.width / 2, customSliderview.bounds.size.height / 2 - rect.size.height/4)
-        
     }
-    
     func sendTap(sender: AnyObject) {
         let textToShare = "Share image Snapart"
-        
-        if let imageCrop = UIImage(named: "girl_image")
-        {
-            let objectsToShare = [textToShare, imageCrop]
+        self.imagePreview = self.customSliderview.imagePreview.image
+        if self.imagePreview != nil {
+            let objectsToShare = [textToShare, self.imagePreview]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             self.presentViewController(activityVC, animated: true, completion: nil)
         }

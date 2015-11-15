@@ -20,11 +20,15 @@ class IntoVC: CustomViewController,UIPageViewControllerDataSource {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.grayColor()
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.whiteColor()
         
-        let logoImage:UIImage = UIImage(named: "SA_Logo")!
-        let logoView:UIImageView = UIImageView(frame: CGRectMake(0, 0, logoImage.size.width, logoImage.size.height))
-        logoView.image = logoImage
+//        let logoImage:UIImage = UIImage(named: "SA_Logo")!
+        let logolb = UILabel(frame: CGRectMake(0, 0, 30, 70))
+        logolb.font =  UIFont(name:"Gotham Bold", size: 15)!
+        logolb.textColor = SA_STYPE.TEXT_LABEL_COLOR
+        logolb.text = "SNAPART"
+//        let logoView:UIImageView = UIImageView(frame: CGRectMake(0, 0, logoImage.size.width, logoImage.size.height))
+//        logoView.image = logolb
         print("self.navigationItem.titleView \(self.navigationItem.titleView)", terminator: "")
-        self.navigationItem.titleView = logoView
+        self.navigationItem.titleView = logolb
 
     }
     
