@@ -17,10 +17,10 @@ import UIKit
 class DataManager {
     static let sharedInstance = DataManager()
     var user : Account = Account()
+    var order: OrderSubmit = OrderSubmit()
 }
 
 class OrderSubmit {
-    var accessToken: String = ""
     var accountId: Int = 0
     var frame_size_id: Int = 0
     var image_id: Int = 0

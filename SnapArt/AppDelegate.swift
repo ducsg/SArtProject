@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
     
     var window: UIWindow?
     var locationManager = LocationManager.sharedInstance
+    var showNotify = false
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //                MemoryStoreData().setValue(MemoryStoreData.user_reg_id, value: "19d0a7587e55d8cc386ee17406714ff91cf40e42934250e399b0c2fecb30a486") //hard code reg id
@@ -54,8 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
                 if(MemoryStoreData().getDouble(MemoryStoreData.user_lat) != latitude || MemoryStoreData().getDouble(MemoryStoreData.user_long) != longitude){
                     MemoryStoreData().setValue(MemoryStoreData.user_lat, value: latitude)
                     MemoryStoreData().setValue(MemoryStoreData.user_long, value: longitude)
+                    print("Location: long=> \(longitude), lat=> \(latitude)")
                     Alamofire.request(.GET, "http://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)")
                         .responseJSON { response in
+                            print(response)
                             if let data:JSON = JSON(response.result.value!) {
                                 if(data["status"].stringValue == "OK"){
                                     let countryCode = data["results"][data["results"].count-1]["address_components"][0]["short_name"].stringValue
@@ -69,11 +72,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
             }
         }
         
+        //check notification
+        let notify = launchOptions
+        if(notify != nil){ //have notification
+            print("app have notification")
+            showNotify = true
+        }else{ //do not have notification
+            print("app do not have notification")
+        }
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Override point for customization after application launch.
         //        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+    }
+    
+    func gotoNotification(){
+        let nv = Util().getControllerForStoryBoard("NotificationNC") as! CustomNavigationController
+        self.window!.rootViewController!.presentViewController(nv, animated: true, completion: nil)
     }
     
     func updateLocation(){
@@ -127,6 +143,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
                     MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)
                     MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
                     NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
+                    if(self.showNotify){
+                        self.gotoNotification()
+                    }
                 }else{
                     Util().showAlert(dataResult.message, parrent: self)
                 }
@@ -142,7 +161,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        
+        if application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background{
+            print("app is inactive or background")
+            gotoNotification()
+        }else{
+            print("app is active")
+        }
     }
     func getMajorSystemVersion() -> Int {
         return Int(String(Array(UIDevice.currentDevice().systemVersion.characters)[0]))!

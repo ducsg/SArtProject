@@ -56,16 +56,15 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
     @IBAction func cropTap(sender: AnyObject) {
         let json = self.cropWebView.stringByEvaluatingJavaScriptFromString(CROP_FUNCTION)
         if  let dic = Util().convertStringToDictionary(json!) {
-            
             let vc = Util().getControllerForStoryBoard("PreviewVC") as! PreviewVC
-            
             if let url = dic["url_detail"]  as? String {
                 vc.previewURL = url
             }
-            
             if let id = dic["id"]  as? Int {
                 vc.image_id = id
             }
+            print("id \(dic)")
+            
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             Util().showAlert(MESSAGES.COMMON.NOT_INTERNET, parrent: self)

@@ -34,32 +34,33 @@ class PaymentDetail:Serializable{
         
         //set shipping address
         let billingAddressData = Address()
-        billingAddressData.firstName = json["shopping_cost"]["firstName"].asString!
-        billingAddressData.lastName = json["shopping_cost"]["lastName"].asString!
-        billingAddressData.address1 = json["shopping_cost"]["address1"].asString!
-        billingAddressData.address2 = json["shopping_cost"]["address2"].asString!
-        billingAddressData.city = json["shopping_cost"]["city"].asString!
-        billingAddressData.state = json["shopping_cost"]["state"].asString!
-        billingAddressData.country = json["shopping_cost"]["country"].asString!
-        billingAddressData.postalCose = json["shopping_cost"]["postalCose"].asString!
+        billingAddressData.firstName = json["billing_address"]["firstName"].asString!
+        billingAddressData.lastName = json["billing_address"]["lastName"].asString!
+        billingAddressData.address1 = json["billing_address"]["address1"].asString!
+        billingAddressData.address2 = json["billing_address"]["address2"].asString!
+        billingAddressData.city = json["billing_address"]["city"].asString!
+        billingAddressData.state = json["billing_address"]["state"].asString!
+        billingAddressData.country = json["billing_address"]["country"].asString!
+        billingAddressData.postalCose = json["billing_address"]["postalCose"].asString!
         paymentDetail.billing_address = billingAddressData
         
         //set shipping address
         let shippingAddressData = Address()
-        shippingAddressData.firstName = json["shopping_cost"]["firstName"].asString!
-        shippingAddressData.lastName = json["shopping_cost"]["lastName"].asString!
-        shippingAddressData.address1 = json["shopping_cost"]["address1"].asString!
-        shippingAddressData.address2 = json["shopping_cost"]["address2"].asString!
-        shippingAddressData.city = json["shopping_cost"]["city"].asString!
-        shippingAddressData.state = json["shopping_cost"]["state"].asString!
-        shippingAddressData.country = json["shopping_cost"]["country"].asString!
-        shippingAddressData.postalCose = json["shopping_cost"]["postalCose"].asString!
+        shippingAddressData.firstName = json["shipping_address"]["firstName"].asString!
+        shippingAddressData.lastName = json["shipping_address"]["lastName"].asString!
+        shippingAddressData.address1 = json["shipping_address"]["address1"].asString!
+        shippingAddressData.address2 = json["shipping_address"]["address2"].asString!
+        shippingAddressData.city = json["shipping_address"]["city"].asString!
+        shippingAddressData.state = json["shipping_address"]["state"].asString!
+        shippingAddressData.country = json["shipping_address"]["country"].asString!
+        shippingAddressData.postalCose = json["shipping_address"]["postalCose"].asString!
         paymentDetail.shipping_address = shippingAddressData
         
         //set list order
         for (i, _order) in json["list_order"] {
+            print(_order)
             paymentDetail.list_order.append(
-                Order(id: _order["id"].asInt!, quantity: _order["quantity"].asInt! ,frameUrl: _order["link_picture"].asString!, item: _order["material"].asString!, price: _order["cost"].asFloat!, size: _order["size"].asString!)
+                Order(id: _order["id"].asInt!, quantity: _order["quantity"].asInt! ,frameUrl: _order["frameUrl"].asString!, item: _order["item"].asString!, price: _order["price"].asFloat!, size: _order["size"].asString!)
             )
         }
         

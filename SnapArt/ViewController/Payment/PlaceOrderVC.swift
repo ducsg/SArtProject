@@ -21,6 +21,9 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     
     @IBOutlet weak var lbShipping: CustomLabelGotham!
     
+    @IBOutlet weak var btnPurchase: CustomButton!
+    
+    @IBOutlet weak var layoutFooter: UIView!
     
     
     static var discount:Float = 0
@@ -39,21 +42,27 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
         self.tbOrder.allowsSelection = false
         
         self.navigationItem.title = "Place Order"
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        //        if(Util().getCountryCode() == "US"){
+        
         lbSubTotal.text = "$\(ShoppingCartVC.paymentDetail.subtotal)"
         lbDiscount.text = "$\(ShoppingCartVC.paymentDetail.discount)"
         lbShipping.text = "FREE"
         lbTotalCost.text = "$\(ShoppingCartVC.paymentDetail.payment_amount)"
-        //        }
         
+        if(PlaceOrderVC.isOrderReview){
+            self.navigationItem.title = "Order Review"
+            btnPurchase.hidden = true
+            getPaymentDetail()
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewWillAppear(true)
         self.tbOrder.reloadData()
+        
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
+        PlaceOrderVC.isOrderReview = false
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -127,6 +136,9 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
         cell.lbAddress2.text = "\(ShoppingCartVC.paymentDetail.billing_address.address2)"
         cell.lbCityState.text = "\(ShoppingCartVC.paymentDetail.billing_address.country), \(ShoppingCartVC.paymentDetail.billing_address.city), \(ShoppingCartVC.paymentDetail.billing_address.state), \(ShoppingCartVC.paymentDetail.billing_address.postalCose)"
         cell.btnEdit.addTarget(self, action: "pressBtnEditBilling:", forControlEvents: UIControlEvents.TouchUpInside)
+        if(PlaceOrderVC.isOrderReview){
+            cell.btnEdit.hidden = true
+        }
         return cell
     }
     
@@ -138,6 +150,9 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
         cell.lbAddress2.text = "\(ShoppingCartVC.paymentDetail.shipping_address.address2)"
         cell.lbCityState.text = "\(ShoppingCartVC.paymentDetail.shipping_address.country), \(ShoppingCartVC.paymentDetail.shipping_address.city), \(ShoppingCartVC.paymentDetail.shipping_address.state), \(ShoppingCartVC.paymentDetail.shipping_address.postalCose)"
         cell.btnEdit.addTarget(self, action: "pressBtnEditShipping:", forControlEvents: UIControlEvents.TouchUpInside)
+        if(PlaceOrderVC.isOrderReview){
+            cell.btnEdit.hidden = true
+        }
         return cell
     }
     
@@ -187,6 +202,7 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     }
     
     @IBAction func pressBtnPurchase(sender: AnyObject) {
+        PlaceOrderVC.isOrderReview = false
         let payment_detail:String = ShoppingCartVC.paymentDetail.toJsonString()!
         if(ShoppingCartVC.paymentDetail.payment_method == 0){
             ShoppingCartVC.paymentDetail.creditCard = [String:String]()
@@ -252,6 +268,30 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
         }
     }
     
+    
+    func getPaymentDetail(){
+        let api = Api()
+        let parentView:UIView! = self.navigationController?.view
+        api.initWaiting(parentView)
+        api.execute(.GET, url: ApiUrl.get_transaction_detail_url, parameters: ["id":"\(PlaceOrderVC.transaction.id)"], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            if(dataResult.success){
+                ShoppingCartVC.paymentDetail = PaymentDetail().getObjectFromString(dataResult.data.stringValue)
+                let subTotal = ShoppingCartVC.paymentDetail.subtotal
+                let discount:Float = Float(subTotal*ShoppingCartVC.discount/100).roundToPlaces(2)
+                self.lbSubTotal.text = "$\(subTotal)"
+                ShoppingCartVC.totalCost = (subTotal + ShoppingCartVC.paymentDetail.shopping_cost - discount).roundToPlaces(2)
+                self.lbTotalCost.text = "$\(ShoppingCartVC.totalCost)"
+                //set data for payment
+                ShoppingCartVC.paymentDetail.subtotal = subTotal
+                ShoppingCartVC.paymentDetail.payment_amount = ShoppingCartVC.totalCost
+                ShoppingCartVC.paymentDetail.discount = discount
+                self.lbDiscount.text = "$\(discount)"
+                self.tbOrder.reloadData()
+            }else{
+                Util().showAlert(dataResult.message, parrent: self)
+            }
+        })
+    }
     /*
     // MARK: - Navigation
     

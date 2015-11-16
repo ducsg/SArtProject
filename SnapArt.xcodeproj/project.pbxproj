@@ -140,6 +140,7 @@
 		67EBB3561BDF8E370080E4E8 /* NotificationTB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EBB3551BDF8E370080E4E8 /* NotificationTB.swift */; settings = {ASSET_TAGS = (); }; };
 		67F01EDF1BE4836800CC5253 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F01EDE1BE4836800CC5253 /* AudioToolbox.framework */; };
 		67F01EE11BE493B500CC5253 /* ExtensionUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */; settings = {ASSET_TAGS = (); }; };
+		AF90CA961BFA10AE0037000F /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF90CA951BFA10AE0037000F /* Configs.swift */; settings = {ASSET_TAGS = (); }; };
 		AFBF90C61BF0AF1000004FA6 /* NotificationTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF90C21BF0AF1000004FA6 /* NotificationTBC.swift */; settings = {ASSET_TAGS = (); }; };
 		AFBF90C71BF0AF1000004FA6 /* NotificationTBC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBF90C31BF0AF1000004FA6 /* NotificationTBC.xib */; settings = {ASSET_TAGS = (); }; };
 		AFBF90C81BF0AF1000004FA6 /* PlaceOrderTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF90C41BF0AF1000004FA6 /* PlaceOrderTBC.swift */; settings = {ASSET_TAGS = (); }; };
@@ -353,6 +354,7 @@
 		67F01EE01BE493B500CC5253 /* ExtensionUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionUIImage.swift; path = lib/Extensions/ExtensionUIImage.swift; sourceTree = "<group>"; };
 		7F9B0772BFF7C5DBAE051CE6 /* Pods_SnapArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A67331CD2A027D31872D102 /* Pods-SnapArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapArt.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapArt/Pods-SnapArt.release.xcconfig"; sourceTree = "<group>"; };
+		AF90CA951BFA10AE0037000F /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		AFBF90C21BF0AF1000004FA6 /* NotificationTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTBC.swift; path = TableViewCell/NotificationTBC.swift; sourceTree = "<group>"; };
 		AFBF90C31BF0AF1000004FA6 /* NotificationTBC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationTBC.xib; path = TableViewCell/NotificationTBC.xib; sourceTree = "<group>"; };
 		AFBF90C41BF0AF1000004FA6 /* PlaceOrderTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceOrderTBC.swift; path = TableViewCell/PlaceOrderTBC.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				675AC95C1BECF65D00211959 /* PaymentDetail.swift */,
 				AFBF90CC1BF0FDD500004FA6 /* Notification.swift */,
 				67D5D7AF1BF5E89800EF9969 /* Transaction.swift */,
+				AF90CA951BFA10AE0037000F /* Configs.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1176,6 +1179,7 @@
 				677971801BC429BA00110C8B /* AMSlideMenuRightMenuSegue.m in Sources */,
 				675AC95B1BECE8E800211959 /* BuyIt2TB.swift in Sources */,
 				67CE024E1BDA9660002007D8 /* InstagramUser.m in Sources */,
+				AF90CA961BFA10AE0037000F /* Configs.swift in Sources */,
 				671219FB1BCEB21100CAC506 /* CustomBarButtonItem.swift in Sources */,
 				674B71AD1BCE37E000B8FC2A /* Messages.swift in Sources */,
 				6797C1D31BD394C600F2EB79 /* ActionSheetStringPicker.m in Sources */,

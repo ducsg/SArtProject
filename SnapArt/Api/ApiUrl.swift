@@ -60,6 +60,9 @@ public class ApiUrl{
     
     //get image url
     static let get_image_url:String = base_url + "api/cropers/get_image_cropped"
+    
+    //orders
+    static let create_order_url:String = base_url + "api/orders/create"
 
     
 
