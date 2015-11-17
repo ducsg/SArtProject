@@ -17,12 +17,12 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     @IBOutlet weak var webPreview: UIWebView!
     internal var previewURL = ""
     internal var imagePreview:UIImage!
-    internal var image_id:Int = 0
     
     private var TITTLE = "Preview"
     private var ADD_TO_CARD = "Add to card"
     
     internal static var order = Order()
+    internal static var frame_size = FrameSize()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,10 +88,9 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         let api = Api()
         let parameters = [
             "picture_id":PreviewVC.order.image_id,
-            "frame_size_id": PreviewVC.order.frame_size_id,
-            "frame_size": PreviewVC.order.size
+            "frame_size_id": PreviewVC.frame_size.frame_size_id,
+            "frame_size_config": PreviewVC.frame_size.frame_size_config
         ]
-        PreviewVC.order.image_id = image_id
         api.execute(.POST, url: ApiUrl.create_order_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
                 let nv = Util().getControllerForStoryBoard("ShoppingCheckoutNC") as! CustomNavigationController
@@ -113,7 +112,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     func webViewDidFinishLoad(webView: UIWebView) -> Void {
         self.removeLoading(self.navigationController?.view)
         let api = Api()
-        let parameters = ["id":image_id]
+        let parameters = ["id":PreviewVC.order.image_id]
         api.execute(.GET, url: ApiUrl.get_image_url, parameters: parameters, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
                 if(dataResult.data != nil){
@@ -124,6 +123,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
             }
         })
     }
+    
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) ->Void {
         self.removeLoading(self.navigationController?.view)
     }
@@ -140,6 +140,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
                 }
         }
     }
+    
     func createCaptureVideoPreviewLayer(controller: ViewOnWallVC) {
         self.callLoading(self.navigationController?.view)
         let devices = AVCaptureDevice.devices().filter{ $0.hasMediaType(AVMediaTypeVideo) && $0.position == AVCaptureDevicePosition.Back }
@@ -176,6 +177,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     func checkoutLogin(sender:AnyObject){
         self.addToCartTap(self)
     }
+    
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
         self.navigationController?.popViewControllerAnimated(true)
     }

@@ -29,11 +29,12 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     static var discount:Float = 0
     
     static var totalCost:Float = 0
-    let TITLES = ["Preview","Date","Code","Status"]
-
+    let TITLES = ["Qunty","Preview","Size","Price"]
+    
     var listCart: [Order] = [Order]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.listCart.removeAll()
         getListCart()
         // Do any additional setup after loading the view.
         self.applyBackIcon()
@@ -41,32 +42,32 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         self.tbOrder.allowsSelection = false
         ShoppingCartVC.discount = 0
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetCost:", name:MESSAGES.NOTIFY.RESET_COST, object: nil)
- 
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(true)
         headerView.addTitles(TITLES)
-//        if(Util().getCountryCode() == "US"){
-            lbShipping.text = "FREE"
-//        }
+        //        if(Util().getCountryCode() == "US"){
+        lbShipping.text = "FREE"
+        //        }
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return listCart.count
     }
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell:ShoppingCartTBC = ShoppingCartTBC.instanceFromNib()
         let cart: Order = listCart[indexPath.row]
@@ -80,9 +81,20 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         var btnDelete = MGSwipeButton(title: "", icon: UIImage (named:"ic_delete"), backgroundColor: UIColor.redColor(), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             let indexRow:Int = self.tbOrder.indexPathForCell(sender)!.row
-            self.listCart.removeAtIndex(indexRow)
-            tableView.deleteRowsAtIndexPaths([self.tbOrder.indexPathForCell(sender)!], withRowAnimation: UITableViewRowAnimation.Left)
-            self.resetCost()
+            //call api delete
+            let api = Api()
+            let parentView:UIView! = self.navigationController?.view
+            api.initWaiting(parentView)
+            api.execute(.POST, url: ApiUrl.delete_order_url, parameters: ["id":self.listCart[indexRow].id], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+                if(dataResult.success){
+                    self.listCart.removeAtIndex(indexRow)
+                    tableView.deleteRowsAtIndexPaths([self.tbOrder.indexPathForCell(sender)!], withRowAnimation: UITableViewRowAnimation.Left)
+                    self.resetCost()
+                }else{
+                    Util().showAlert(dataResult.message, parrent: self)
+                }
+                
+            })
             return true
         })
         btnDelete.tag = indexPath.row
@@ -113,11 +125,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         self.tbOrder.reloadData()
         self.resetCost()
     }
-
+    
     func Event(sender:AnyObject!) -> Void  {
         let button = sender as! UIButton
     }
-
+    
     private func getListCart(){
         let api = Api()
         let parentView:UIView! = self.navigationController?.view
@@ -127,8 +139,8 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
                         let cart = Order(id: dataResult.data[i]["id"].numberValue.integerValue, quantity: dataResult.data[i]["quantity"].numberValue.integerValue,frameUrl: dataResult.data[i]["link_picture"].stringValue, item: dataResult.data[i]["material"].stringValue, price: dataResult.data[i]["cost"].numberValue.floatValue, size: dataResult.data[i]["size"].stringValue)
-                    self.listCart.append(cart)
-                    self.tbOrder.reloadData()
+                        self.listCart.append(cart)
+                        self.tbOrder.reloadData()
                     }
                 }
                 self.resetCost()
@@ -157,12 +169,12 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         var subTotal:Float = 0
         if(listCart.count > 0){
             for i in 0...listCart.count-1 {
-            subTotal = subTotal + listCart[i].price * Float(listCart[i].quantity)
+                subTotal = subTotal + listCart[i].price * Float(listCart[i].quantity)
             }
         }
         return subTotal.roundToPlaces(2)
     }
- 
+    
     
     @IBAction func pressBtnShoppingQuestion(sender: AnyObject) {
         Util().showAlert(MESSAGES.SHOPPING.SHOPPING_QUESTION, parrent: self)
@@ -187,12 +199,12 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

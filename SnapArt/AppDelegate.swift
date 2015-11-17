@@ -25,7 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
     var showNotify = false
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        //                MemoryStoreData().setValue(MemoryStoreData.user_reg_id, value: "19d0a7587e55d8cc386ee17406714ff91cf40e42934250e399b0c2fecb30a486") //hard code reg id
+        //hard code for simulator
+        MemoryStoreData().setValue(MemoryStoreData.user_reg_id, value: "19d0a7587e55d8cc386ee17406714ff91cf40e42934250e399b0c2fecb30a486") //hard code reg id
+        MemoryStoreData().setValue(MemoryStoreData.user_country_code, value: "VN")
+        
         //reset token
         MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
         switch(getMajorSystemVersion()) {
@@ -58,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
                     print("Location: long=> \(longitude), lat=> \(latitude)")
                     Alamofire.request(.GET, "http://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)")
                         .responseJSON { response in
-                            print(response)
+                            //                            print(response)
                             if let data:JSON = JSON(response.result.value!) {
                                 if(data["status"].stringValue == "OK"){
                                     let countryCode = data["results"][data["results"].count-1]["address_components"][0]["short_name"].stringValue

@@ -33,6 +33,7 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
         api.uploadFile(imageCrop,ratio:self.ratio, resulf:{(dataResult: (success: Bool, message: String!, data: String!))->() in
             if dataResult.success == true {
                 let url = NSURL (string: dataResult.data)
+                print(url)
                 let requestObj = NSURLRequest(URL: url!)
                 self.cropWebView.loadRequest(requestObj)
             } else {
@@ -61,9 +62,9 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
                 vc.previewURL = url
             }
             if let id = dic["id"]  as? Int {
-                vc.image_id = id
+                PreviewVC.order.image_id = id
             }
-            print("id \(dic)")
+            print("picture_id: \(PreviewVC.order.image_id), url to crop: \(vc.previewURL)")
             
             self.navigationController?.pushViewController(vc, animated: true)
         } else {

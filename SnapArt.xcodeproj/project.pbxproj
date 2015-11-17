@@ -35,6 +35,7 @@
 		672E90C11BE4B36300EF4112 /* CropItView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 672E90C01BE4B36300EF4112 /* CropItView.xib */; settings = {ASSET_TAGS = (); }; };
 		672E90C31BE4B40400EF4112 /* CropItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672E90C21BE4B40400EF4112 /* CropItView.swift */; settings = {ASSET_TAGS = (); }; };
 		672E90C51BE4B57800EF4112 /* CropItVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672E90C41BE4B57800EF4112 /* CropItVC.swift */; settings = {ASSET_TAGS = (); }; };
+		672E98EF1BFB1B300060F666 /* FrameSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672E98EE1BFB1B300060F666 /* FrameSize.swift */; settings = {ASSET_TAGS = (); }; };
 		674B71A11BCDFB5C00B8FC2A /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674B71A01BCDFB5C00B8FC2A /* Account.swift */; };
 		674B71A41BCDFBD300B8FC2A /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674B71A31BCDFBD300B8FC2A /* Api.swift */; };
 		674B71A61BCDFC6F00B8FC2A /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674B71A51BCDFC6F00B8FC2A /* CustomViewController.swift */; };
@@ -198,6 +199,7 @@
 		672E90C01BE4B36300EF4112 /* CropItView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CropItView.xib; sourceTree = "<group>"; };
 		672E90C21BE4B40400EF4112 /* CropItView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CropItView.swift; path = View/CropItView.swift; sourceTree = "<group>"; };
 		672E90C41BE4B57800EF4112 /* CropItVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropItVC.swift; sourceTree = "<group>"; };
+		672E98EE1BFB1B300060F666 /* FrameSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameSize.swift; sourceTree = "<group>"; };
 		674B71A01BCDFB5C00B8FC2A /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		674B71A31BCDFBD300B8FC2A /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		674B71A51BCDFC6F00B8FC2A /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				AFBF90CC1BF0FDD500004FA6 /* Notification.swift */,
 				67D5D7AF1BF5E89800EF9969 /* Transaction.swift */,
 				AF90CA951BFA10AE0037000F /* Configs.swift */,
+				672E98EE1BFB1B300060F666 /* FrameSize.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1212,6 +1215,7 @@
 				6779712D1BC41BBF00110C8B /* AppDelegate.swift in Sources */,
 				677971571BC4282D00110C8B /* RightMenuVC.swift in Sources */,
 				AFFC79931BF1BB2E00F7509A /* ChangePasswordTB.swift in Sources */,
+				672E98EF1BFB1B300060F666 /* FrameSize.swift in Sources */,
 				671E3D5C1BF4474C005BF25C /* LocationManager.swift in Sources */,
 				674B71A61BCDFC6F00B8FC2A /* CustomViewController.swift in Sources */,
 				671219F31BCE80B100CAC506 /* CustomLabelButton.swift in Sources */,

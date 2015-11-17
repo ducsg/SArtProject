@@ -7,17 +7,7 @@
 //
 
 import UIKit
-class FrameSize: NSObject {
-    var frame_size = ""
-    var ratio:Float = 0
-    var frame_size_id:Int = 0
-    init(size:String,ratio:Float,size_id: Int = 0) {
-        self.frame_size = size
-        self.ratio = ratio
-        self.frame_size_id = size_id
-    }
-    
-}
+
 protocol CustomPickerViewDelegate {
     func selectedAt(index:Int)
 }

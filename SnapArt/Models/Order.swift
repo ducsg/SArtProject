@@ -13,10 +13,9 @@ public class Order:Serializable{
     var item: String = ""
     var size: String = ""
     var price: Float = 0
-    internal var frame_size_id:Int = 0
     internal var image_id:Int = 0
     
-    init(id: Int = 0, quantity: Int = 1, frameUrl: String = "", item:String = "Canvas", price: Float = 0, size: String = ""){
+    init(id: Int = 0, quantity: Int = 1, frameUrl: String = "", item:String = "Canvas", price: Float = 0, size: String = "", frame_size_config: String = ""){
         self.id = id
         self.quantity = quantity
         self.frameUrl = frameUrl
