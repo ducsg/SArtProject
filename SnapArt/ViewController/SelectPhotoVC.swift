@@ -90,6 +90,7 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         self.framSizeValue = sizeValues.frame_size
         print("sizeValues.frame_size_id \(sizeValues.frame_size_id)")
         PreviewVC.order.frame_size_id = sizeValues.frame_size_id
+        PreviewVC.order.size = sizeValues.frame_size
         
     }
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
