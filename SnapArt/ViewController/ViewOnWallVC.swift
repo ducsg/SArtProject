@@ -30,31 +30,10 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
         self.title = TITLE
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sendTap:")
         
-        let api = Api()
-        let parameters = ["id":PreviewVC.order.image_id]
-        api.execute(.GET, url: ApiUrl.get_image_url, parameters: parameters, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
-            if(dataResult.success){
-                if(dataResult.data != nil){
-                    self.getImageFromLink(dataResult.data.stringValue)
-                }
-            }else{
-                Util().showAlert(dataResult.message, parrent: self)
-            }
-        })
+
     }
     
-    func getImageFromLink(url:String) -> Void {
-        Alamofire.request(.GET, url)
-            .responseImage { response in
-                debugPrint(response)
-                print(response.request)
-                print(response.response)
-                debugPrint(response.result)
-                if let image = response.result.value {
-                    self.imagePreview = image
-                }
-        }
-    }
+
     
     deinit {
         if section != nil && section.inputs.count>0 {

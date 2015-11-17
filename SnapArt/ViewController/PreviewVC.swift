@@ -40,6 +40,8 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutLogin:", name:MESSAGES.NOTIFY.CHECKOUT_LOGIN, object: nil)
         applyBackIcon()
+        
+
 
     }
     
@@ -47,6 +49,8 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
     
     @IBAction func previewOnWallTap(sender: AnyObject) {
         self.callLoading(self.navigationController?.view)
@@ -107,11 +111,34 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     
     func webViewDidFinishLoad(webView: UIWebView) -> Void {
         self.removeLoading(self.navigationController?.view)
+        let api = Api()
+        let parameters = ["id":image_id]
+        api.execute(.GET, url: ApiUrl.get_image_url, parameters: parameters, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            if(dataResult.success){
+                if(dataResult.data != nil){
+                    self.getImageFromLink(dataResult.data.stringValue)
+                }
+            }else{
+                Util().showAlert(dataResult.message, parrent: self)
+            }
+        })
     }
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) ->Void {
         self.removeLoading(self.navigationController?.view)
     }
     
+    func getImageFromLink(url:String) -> Void {
+        Alamofire.request(.GET, url)
+            .responseImage { response in
+                debugPrint(response)
+                print(response.request)
+                print(response.response)
+                debugPrint(response.result)
+                if let image = response.result.value {
+                    self.imagePreview = image
+                }
+        }
+    }
     func createCaptureVideoPreviewLayer(controller: ViewOnWallVC) {
         self.callLoading(self.navigationController?.view)
         let devices = AVCaptureDevice.devices().filter{ $0.hasMediaType(AVMediaTypeVideo) && $0.position == AVCaptureDevicePosition.Back }
