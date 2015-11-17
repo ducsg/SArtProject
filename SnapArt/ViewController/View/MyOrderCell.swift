@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MyOrderCell: UITableViewCell {
     
@@ -45,7 +46,7 @@ class MyOrderCell: UITableViewCell {
         self.statuslb.frame = CGRect(x: 3*Int(width), y: 0, width:Int(width), height: Int(rect.height))
         let fm = CGRect(x: 15, y: 5, width: self.imageContain.bounds.width - 20, height:  self.imageContain.bounds.height  - 10)
         self.imageV.frame = fm
-        self.imageV.image = UIImage(named: "")
+//        self.imageV.image = UIImage(named: "")
         //image
         
         self.datelb.textAlignment = .Center
@@ -54,6 +55,14 @@ class MyOrderCell: UITableViewCell {
         self.codelb.text = "\(transaction.order_id_full)"
         self.statuslb.textAlignment = .Center
         self.statuslb.text = transaction.status
+        
+        Alamofire.request(.GET, transaction.img_url)
+            .responseImage { response in
+                print("url: \(transaction.img_url), result: \(response)")
+                if let image = response.result.value {
+                    self.imageV.image = image
+                }
+        }
     }
     
     

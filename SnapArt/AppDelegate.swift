@@ -165,6 +165,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print("app receive notification")
         if application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background{
             print("app is inactive or background")
             gotoNotification()

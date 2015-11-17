@@ -60,7 +60,12 @@ class IntoVC: CustomViewController,UIPageViewControllerDataSource, UIAlertViewDe
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if(buttonIndex == 0){
-            
+            let api = Api()
+            api.execute(.POST, url: ApiUrl.delete_all_order_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+                if(dataResult.success){
+                    
+                }
+            })
         }
         if(buttonIndex == 1){
             let nv = Util().getControllerForStoryBoard("ShoppingCheckoutNC") as! CustomNavigationController

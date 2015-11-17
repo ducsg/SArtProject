@@ -82,10 +82,11 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
                         if(dataResult.data[i]["shipped_at"].stringValue != ""){
                             shipped_at = Util().formatDatetime(dataResult.data[i]["shipped_at"].stringValue, outputFormat: "MM/dd/yyyy")
                         }
-                        let transaction = Transaction(id: dataResult.data[i]["id"].numberValue.integerValue, imgUrl: dataResult.data[i]["image_url"].stringValue, created_at: dateStr, shipped_at: shipped_at, code: dataResult.data[i]["order_id_full"].stringValue, status: dataResult.data[i]["status"].stringValue)
+                        let transaction = Transaction(id: dataResult.data[i]["id"].numberValue.integerValue, imgUrl: dataResult.data[i]["img_url"].stringValue, created_at: dateStr, shipped_at: shipped_at, code: dataResult.data[i]["order_id_full"].stringValue, status: dataResult.data[i]["status"].stringValue)
                         self.transactionList.append(transaction)
-                        self.myOrderTb.reloadData()
+                        print(dataResult.data[i]["img_url"].stringValue)
                     }
+                    self.myOrderTb.reloadData()
                 }
             }else{
                 Util().showAlert(dataResult.message, parrent: self)
