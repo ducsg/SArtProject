@@ -19,11 +19,13 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var suggestLb: CustomLabelGotham!
     internal var imageCrop:UIImage!
+    internal var suggestMessage:String!
+
     private var customPickerView:CustomPickerView!
     private var hiddenPicker = true
     private var ratioValue:Float = 1
     private var framSizeValue = ""
-    private var frameSizes = [FrameSize]()
+    internal var frameSizes:[FrameSize]!
     private var TITTLE = "Input Size"
     
     override func viewDidLoad() {
@@ -45,6 +47,9 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         self.imageView.backgroundColor = UIColor.clearColor()
         self.imageView.image = imageCrop
         self.imageView.contentMode = .ScaleAspectFill
+        self.suggestLb.text = suggestMessage
+        self.customPickerView.setData(self.frameSizes)
+
         applyBackIcon()
     }
     
@@ -58,7 +63,7 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         customPickerView.frame = rect
         self.customPickerView.hidden = true
         customPickerView.setNeedsLayout()
-        getFrameSizes()
+//        getFrameSizes()
     }
     @IBAction func sizeTap(sender: AnyObject) {
         self.customPickerView.hidden = false
@@ -100,33 +105,32 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    private func getFrameSizes(){
-        let api = Api()
-        let parentView:UIView! = self.navigationController?.view
-            api.initWaiting(parentView)
-        let width = Int((self.imageView.image?.size.width)!)
-        let height = Int((self.imageView.image?.size.height)!)
-        let parameters = ["width":width,"height":height, "country_code" : MemoryStoreData().getString(MemoryStoreData.user_country_code)]
-        api.execute(.POST, url: ApiUrl.size_frames_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
-            if(dataResult.success){
-                self.frameSizes = [FrameSize]()
-                if(dataResult.data.count > 0){
-                    for i in 0...dataResult.data.count-1 {
-                        self.frameSizes.append(FrameSize(size: dataResult.data[i]["frame_size"].stringValue , ratio: dataResult.data[i]["ratio"].floatValue,size_id:dataResult.data[i]["id"].intValue, frame_size_config: dataResult.data[i]["frame_size_config"].stringValue))
-                    }
-                    self.suggestLb.hidden = false
-                    if self.frameSizes.last != nil {
-                        self.suggestLb.text = "With your photo resolution, we recommended you print art at \(self.frameSizes.last!.frame_size) or lower for best quality "
-                    }
-
-                    self.customPickerView.setData(self.frameSizes)
-                }
-            }else{
-                Util().showAlert(dataResult.message, parrent: self)
-            }
-            
-        })
-    }
+//    private func getFrameSizes(){
+//        let api = Api()
+//        let parentView:UIView! = self.navigationController?.view
+//            api.initWaiting(parentView)
+//        let width = Int((self.imageView.image?.size.width)!)
+//        let height = Int((self.imageView.image?.size.height)!)
+//        let parameters = ["width":width,"height":height, "country_code" : MemoryStoreData().getString(MemoryStoreData.user_country_code)]
+//        api.execute(.POST, url: ApiUrl.size_frames_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+//            if(dataResult.success){
+//                self.frameSizes = [FrameSize]()
+//                if(dataResult.data.count > 0){
+//                    for i in 0...dataResult.data.count-1 {
+//                        self.frameSizes.append(FrameSize(size: dataResult.data[i]["frame_size"].stringValue , ratio: dataResult.data[i]["ratio"].floatValue,size_id:dataResult.data[i]["id"].intValue, frame_size_config: dataResult.data[i]["frame_size_config"].stringValue))
+//                    }
+//                    self.suggestLb.hidden = false
+//                    if self.frameSizes.last != nil {
+//                        self.suggestLb.text = "With your photo resolution, we recommended you print art at \(self.frameSizes.last!.frame_size) or lower for best quality "
+//                    }
+//
+//                }
+//            }else{
+//                Util().showAlert(dataResult.message, parrent: self)
+//            }
+//            
+//        })
+//    }
     /*
     // MARK: - Navigation
     

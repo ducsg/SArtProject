@@ -75,6 +75,10 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     
     // MARK: ADD TO CARD
     @IBAction func addToCartTap(sender: AnyObject) {
+        self.addToCart()
+    }
+    
+    func addToCart(){
         if(MemoryStoreData().getString(APIKEY.ACCESS_TOKEN) == ""){
             SignInVC.loginForCheckout = true
             let nv = Util().getControllerForStoryBoard("LoginNC") as! CustomNavigationController

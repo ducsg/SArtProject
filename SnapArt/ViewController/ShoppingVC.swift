@@ -26,7 +26,6 @@ class ShoppingVC: CustomViewController , UIActionSheetDelegate {
     }
     func actionSheet(actionSheet: UIActionSheet, didDismissWithButtonIndex buttonIndex: Int) {
         switch buttonIndex{
-            
         case 0:
             NSLog("Braintree");
             self.paymentUsingBraintree()
@@ -39,7 +38,6 @@ class ShoppingVC: CustomViewController , UIActionSheetDelegate {
             NSLog("Default");
             break;
             //Some code here..
-            
         }
     }
     
