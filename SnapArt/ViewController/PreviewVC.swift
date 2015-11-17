@@ -88,10 +88,11 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         let api = Api()
         let parameters = [
             "picture_id":PreviewVC.order.image_id,
-            "frame_size_id": PreviewVC.order.frame_size_id
+            "frame_size_id": PreviewVC.order.frame_size_id,
+            "frame_size": PreviewVC.order.size
         ]
         PreviewVC.order.image_id = image_id
-        api.execute(.POST, url: ApiUrl.create_order_url, parameters: parameters, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+        api.execute(.POST, url: ApiUrl.create_order_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
                 let nv = Util().getControllerForStoryBoard("ShoppingCheckoutNC") as! CustomNavigationController
                 self.navigationController?.presentViewController(nv, animated: true, completion: nil)

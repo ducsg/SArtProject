@@ -8,6 +8,5 @@
 
 class Configs{
 
-    internal var max_order_in_transaction = 0
-    
+    internal static var max_order_in_transaction = 3
 }
