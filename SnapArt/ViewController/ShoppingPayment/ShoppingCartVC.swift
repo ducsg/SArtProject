@@ -53,9 +53,14 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         //        if(Util().getCountryCode() == "US"){
         lbShipping.text = "FREE"
         //        }
-        
+        checkNumberOrder()
+    }
+    
+    func checkNumberOrder(){
         if(self.listCart.count >= Configs.max_order_in_transaction){
             btnAddAnotherFrame.enabled = false
+        }else{
+            btnAddAnotherFrame.enabled = true
         }
     }
     
@@ -96,6 +101,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
                     self.listCart.removeAtIndex(indexRow)
                     tableView.deleteRowsAtIndexPaths([self.tbOrder.indexPathForCell(sender)!], withRowAnimation: UITableViewRowAnimation.Left)
                     self.resetCost()
+                    self.checkNumberOrder()
                 }else{
                     Util().showAlert(dataResult.message, parrent: self)
                 }

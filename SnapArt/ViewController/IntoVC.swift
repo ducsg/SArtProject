@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class IntoVC: CustomViewController,UIPageViewControllerDataSource {
+class IntoVC: CustomViewController,UIPageViewControllerDataSource, UIAlertViewDelegate {
     var vcArray:NSArray!
     var pageVC:UIPageViewController!
     @IBOutlet var pageIndicator: UIPageControl!
@@ -30,11 +31,41 @@ class IntoVC: CustomViewController,UIPageViewControllerDataSource {
         print("self.navigationItem.titleView \(self.navigationItem.titleView)", terminator: "")
         self.navigationItem.titleView = logolb
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkOrder:", name:MESSAGES.NOTIFY.CHECK_ORDER, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func checkOrder(sender:AnyObject){
+        let api = Api()
+        let parentView:UIView! = self.navigationController?.view
+        api.initWaiting(parentView)
+        api.execute(.GET, url: ApiUrl.my_orders_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            if(dataResult.success){
+                if(dataResult.data.count > 0){
+                    let alert = Util().alert2Button(MESSAGES.COMMON.ORDER_EXISTED, parrent: self)
+                    alert.addButtonWithTitle("No")
+                    alert.addButtonWithTitle("Yes")
+                    alert.show()
+                }
+            }else{
+                
+            }
+            
+        })
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if(buttonIndex == 0){
+            
+        }
+        if(buttonIndex == 1){
+            let nv = Util().getControllerForStoryBoard("ShoppingCheckoutNC") as! CustomNavigationController
+            self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+        }
     }
     
     @IBAction func mailFrameTap(sender: AnyObject) {

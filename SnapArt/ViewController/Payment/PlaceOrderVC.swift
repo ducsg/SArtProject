@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDelegate ,UIAlertViewDelegate {
+class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate {
     
     @IBOutlet weak var tbOrder: UITableView!
     
