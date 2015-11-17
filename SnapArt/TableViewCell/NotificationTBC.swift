@@ -16,6 +16,7 @@ class NotificationTBC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        lbTitle.sizeToFit()
         // Initialization code
     }
 

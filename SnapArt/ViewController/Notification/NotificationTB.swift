@@ -51,7 +51,7 @@ class NotificationTB: CustomTableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return 70
     }
     
     private func getListNotification(){

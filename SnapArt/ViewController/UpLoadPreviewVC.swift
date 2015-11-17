@@ -11,6 +11,7 @@ import UIKit
 import InstagramKit
 import Alamofire
 import AlamofireImage
+import SwiftyJSON
 
 class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate ,InstagramCollectionViewDelegate {
     
@@ -99,10 +100,41 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     }
     
     func setImageView(image:UIImage!) -> Void {
-        let vc = Util().getControllerForStoryBoard("SelectPhotoVC") as! SelectPhotoVC
-        vc.imageCrop = image
-        self.navigationController?.pushViewController(vc, animated: true)
+        getFrameSizes(image, resulf: {(frameSizes:[FrameSize]) -> () in
+            if frameSizes.last != nil {
+            let suggestMessage = "With your photo resolution, we recommended you print art at \(frameSizes.last!.frame_size) or lower for best quality "
+                let vc = Util().getControllerForStoryBoard("SelectPhotoVC") as! SelectPhotoVC
+                vc.imageCrop = image
+                vc.suggestMessage = suggestMessage
+                vc.frameSizes = frameSizes
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        })
     }
+    
+    private func getFrameSizes(image:UIImage, resulf:([FrameSize]) ->()){
+        let api = Api()
+        let parentView:UIView! = self.navigationController?.view
+        api.initWaiting(parentView)
+        let width = Int((image.size.width))
+        let height = Int((image.size.height))
+        let parameters = ["width":width,"height":height, "country_code" : MemoryStoreData().getString(MemoryStoreData.user_country_code)]
+        api.execute(.POST, url: ApiUrl.size_frames_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            if(dataResult.success){
+                var frameSizes = [FrameSize]()
+                if(dataResult.data.count > 0){
+                    for i in 0...dataResult.data.count-1 {
+                        frameSizes.append(FrameSize(size: dataResult.data[i]["frame_size"].stringValue , ratio: dataResult.data[i]["ratio"].floatValue,size_id:dataResult.data[i]["id"].intValue, frame_size_config: dataResult.data[i]["frame_size_config"].stringValue))
+                    }
+                    resulf(frameSizes)
+                }
+            }else{
+                Util().showAlert(dataResult.message, parrent: self)
+            }
+            
+        })
+    }
+
     
     /*
     // MARK: - Navigation

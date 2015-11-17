@@ -30,10 +30,10 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
         self.title = TITLE
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sendTap:")
         
-
+        
     }
     
-
+    
     
     deinit {
         if section != nil && section.inputs.count>0 {
@@ -80,6 +80,8 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
             self.customSliderview.layer.shadowOffset = CGSize(width: 4, height: 4)
             self.customSliderview.layer.shadowOpacity = 1.0
             self.customSliderview.layer.shadowRadius = 3
+            self.customSliderview.addToCartBtn.addTarget(self, action: "addToCart:", forControlEvents: UIControlEvents.TouchUpInside)
+            
         }
     }
     
@@ -116,6 +118,14 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
             self.presentViewController(activityVC, animated: true, completion: nil)
         }
     }
+    
+    func addToCart(sender: AnyObject) {
+        let count = (self.navigationController?.viewControllers.count)! - 2
+        let vc = self.navigationController?.viewControllers[count] as! PreviewVC
+        self.navigationController?.popViewControllerAnimated(true)
+        vc.addToCart()
+    }
+    
 }
 
 /*
