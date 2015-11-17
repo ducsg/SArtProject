@@ -26,6 +26,8 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var headerView: HeaderView!
     
+    @IBOutlet weak var btnAddAnotherFrame: CustomButton!
+    
     static var discount:Float = 0
     
     static var totalCost:Float = 0
@@ -51,6 +53,10 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         //        if(Util().getCountryCode() == "US"){
         lbShipping.text = "FREE"
         //        }
+        
+        if(self.listCart.count >= Configs.max_order_in_transaction){
+            btnAddAnotherFrame.enabled = false
+        }
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
