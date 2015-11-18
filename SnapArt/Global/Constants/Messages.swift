@@ -17,7 +17,7 @@ struct MESSAGES{
         static let RESET_COST = "ResetCost"
         static let CHECKOUT_LOGIN = "CheckoutLogin"
         static let COMEBACKHOME = "ComeBackHomeVC"
-
+        static let CHECK_ORDER = "CheckNumberOfOrder"
         
     }
     
@@ -29,6 +29,7 @@ struct MESSAGES{
         static let FRAME_SIZE_INVALID = "Please choose frame size."
 
         static let LOADING = "Loading..."
+        static let ORDER_EXISTED = "A previously saved order was found, do you want to continue with it?"
     }
     
      struct REGISTER{

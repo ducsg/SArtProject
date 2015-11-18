@@ -146,6 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
                     MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: dataResult.data[APIKEY.ACCESS_TOKEN].stringValue)
                     MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: dataResult.data[APIKEY.ACCOUNT_ID].intValue)
                     NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.CHECK_ORDER, object: nil)
                     if(self.showNotify){
                         self.gotoNotification()
                     }
@@ -164,6 +165,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print("app receive notification")
         if application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background{
             print("app is inactive or background")
             gotoNotification()

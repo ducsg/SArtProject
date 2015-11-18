@@ -39,6 +39,14 @@ public class Util: NSObject {
         return alert
     }
     
+    func alert2Button(message:String,parrent:AnyObject!) -> UIAlertView {
+        let alert:UIAlertView = UIAlertView()
+        alert.message = message
+        alert.delegate = parrent
+        alert.title = MESSAGES.SA_ALERT_TIL
+        return alert
+    }
+    
     func IsValidPassword(password:String) -> Bool{
         if(password.characters.count < 6){
             return false
