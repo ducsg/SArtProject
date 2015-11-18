@@ -23,6 +23,8 @@ class ShoppingCartTBC: MGSwipeTableCell {
     
     @IBOutlet weak var btnSubtract: UIButton!
     
+    var isLoaded = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

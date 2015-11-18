@@ -125,9 +125,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     func pressBtnPlus(sender: UIButton){
         let btnPlus = sender as! UIButton
         let index = Int(btnPlus.tag)
-        listCart[index].quantity = listCart[index].quantity + 1
-        self.tbOrder.reloadData()
-        self.resetCost()
+        if(listCart[index].quantity < listCart[index].max_quantity){
+            listCart[index].quantity = listCart[index].quantity + 1
+            self.tbOrder.reloadData()
+            self.resetCost()
+        }
     }
     
     func pressBtnSubtract(sender: UIButton){
@@ -150,8 +152,9 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
             if(dataResult.success){
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
-                        let cart = Order(id: dataResult.data[i]["id"].numberValue.integerValue, quantity: dataResult.data[i]["quantity"].numberValue.integerValue,frameUrl: dataResult.data[i]["link_picture"].stringValue, item: dataResult.data[i]["material"].stringValue, price: dataResult.data[i]["cost"].numberValue.floatValue, size: dataResult.data[i]["size"].stringValue)
+                        let cart = Order(id: dataResult.data[i]["id"].numberValue.integerValue, quantity: dataResult.data[i]["quantity"].numberValue.integerValue,frameUrl: dataResult.data[i]["link_picture"].stringValue, item: dataResult.data[i]["material"].stringValue, price: dataResult.data[i]["cost"].numberValue.floatValue, size: dataResult.data[i]["size"].stringValue, max_quantity: dataResult.data[i]["max_quantity"].intValue)
                         self.listCart.append(cart)
+                        print(cart.max_quantity)
                         self.tbOrder.reloadData()
                     }
                 }

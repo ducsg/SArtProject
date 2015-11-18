@@ -103,6 +103,7 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
                 return getShippingCell()
             }
             if(indexPath.row == 2){
+
                 return getTitleCell()
             }
         }
@@ -159,6 +160,12 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     func getTitleCell() -> PlaceOrderTitleTBC{
         let cell:PlaceOrderTitleTBC = PlaceOrderTitleTBC.instanceFromNib()
         cell.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
+        var rect = cell.contentView.bounds
+        rect.origin.x+=10
+        let header = HeaderView(frame: rect)
+        let TITLES = ["Qunty","Preview","Size","Price"]
+        header.addTitles(TITLES)
+        cell.contentView.addSubview(header)
         return cell
     }
     
@@ -184,7 +191,7 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
                 return 130;
             }
             if(indexPath.row == 3){
-                return 44
+                return 30
             }
             if(indexPath.row > 3){
                 return 130
