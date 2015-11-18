@@ -32,6 +32,8 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         self.callLoading(self.navigationController?.view)
         self.webPreview.delegate = self
         
+        sleep(2)
+        
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.webPreview.loadRequest(NSURLRequest(URL: NSURL(string: self.previewURL)!))
