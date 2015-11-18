@@ -23,7 +23,7 @@ class PromoCodeVC: ViewController {
 
         let tapDismiss = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tapDismiss)
-        lbError.textColor = SA_STYPE.BORDER_TEXTFIELD_COLOR
+//        lbError.textColor = SA_STYPE.BORDER_TEXTFIELD_COLOR
     }
 
     func dismissKeyboard(){
@@ -48,7 +48,7 @@ class PromoCodeVC: ViewController {
         let param = ["code" : tfCode.text!, "country_code" : MemoryStoreData().getString(MemoryStoreData.user_country_code)]
         let api = Api()
                 let parentView:UIView! = self.navigationController?.view
-                api.initWaiting(parentView)
+//                api.initWaiting(parentView)
         api.execute(.GET, url: ApiUrl.get_discount_promo_code, parameters: param, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             print(param)
             if(dataResult.success){

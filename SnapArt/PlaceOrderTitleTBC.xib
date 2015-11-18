@@ -23,7 +23,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qunty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpH-QU-nC1" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qunty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpH-QU-nC1" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
                         <rect key="frame" x="13" y="4" width="54" height="21"/>
                         <animations/>
                         <constraints>
@@ -33,15 +33,15 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuY-iE-fHn" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuY-iE-fHn" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
                         <rect key="frame" x="79" y="4" width="60" height="21"/>
                         <animations/>
                         <fontDescription key="fontDescription" name="GothamThin" family="Gotham Thin" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6B-6d-2Mj" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
-                        <rect key="frame" x="165" y="4" width="46" height="21"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6B-6d-2Mj" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                        <rect key="frame" x="187" y="4" width="46" height="21"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="46" id="W0W-ML-jNT"/>
@@ -50,8 +50,8 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7Q-26-KsA" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
-                        <rect key="frame" x="241" y="4" width="46" height="21"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7Q-26-KsA" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                        <rect key="frame" x="261" y="4" width="46" height="21"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="46" id="Vap-Zu-j9e"/>
@@ -70,11 +70,11 @@
                     <constraint firstItem="fpH-QU-nC1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="abS-Xj-Neo"/>
                     <constraint firstItem="fpH-QU-nC1" firstAttribute="baseline" secondItem="NuY-iE-fHn" secondAttribute="baseline" id="ari-kd-AFX"/>
                     <constraint firstItem="fpH-QU-nC1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="btd-pY-Ocq"/>
-                    <constraint firstItem="v7Q-26-KsA" firstAttribute="leading" secondItem="L6B-6d-2Mj" secondAttribute="trailing" constant="30" id="dxK-Oq-uQG"/>
-                    <constraint firstItem="L6B-6d-2Mj" firstAttribute="leading" secondItem="NuY-iE-fHn" secondAttribute="trailing" constant="26" id="ehN-pJ-gY0"/>
+                    <constraint firstItem="v7Q-26-KsA" firstAttribute="leading" secondItem="L6B-6d-2Mj" secondAttribute="trailing" constant="28" id="dxK-Oq-uQG"/>
+                    <constraint firstItem="L6B-6d-2Mj" firstAttribute="leading" secondItem="NuY-iE-fHn" secondAttribute="trailing" constant="48" id="ehN-pJ-gY0"/>
                     <constraint firstItem="v7Q-26-KsA" firstAttribute="baseline" secondItem="L6B-6d-2Mj" secondAttribute="baseline" id="eyt-fj-RuE"/>
                     <constraint firstItem="NuY-iE-fHn" firstAttribute="baseline" secondItem="L6B-6d-2Mj" secondAttribute="baseline" id="fn3-U7-J0g"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="v7Q-26-KsA" secondAttribute="trailing" constant="25" id="hzX-Lv-Ssq"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="v7Q-26-KsA" secondAttribute="trailing" constant="5" id="hzX-Lv-Ssq"/>
                     <constraint firstItem="NuY-iE-fHn" firstAttribute="leading" secondItem="fpH-QU-nC1" secondAttribute="trailing" constant="12" id="pyx-TE-20v"/>
                 </constraints>
             </tableViewCellContentView>

@@ -32,6 +32,8 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         self.callLoading(self.navigationController?.view)
         self.webPreview.delegate = self
         
+        sleep(2)
+        
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.webPreview.loadRequest(NSURLRequest(URL: NSURL(string: self.previewURL)!))
@@ -91,12 +93,15 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     func createOrder(){
         let api = Api()
         let parameters = [
-            "picture_id":PreviewVC.order.image_id,
+            "id": MemoryStoreData().getInt(MemoryStoreData.current_order_id),
+            "picture_id": PreviewVC.order.image_id,
             "frame_size_id": PreviewVC.frame_size.frame_size_id,
             "frame_size_config": PreviewVC.frame_size.frame_size_config
         ]
+        print("parameters createOrder: \(parameters)")
         api.execute(.POST, url: ApiUrl.create_order_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
+                MemoryStoreData().setValue(MemoryStoreData.current_order_id, value: dataResult.data.intValue)
                 let nv = Util().getControllerForStoryBoard("ShoppingCheckoutNC") as! CustomNavigationController
                 self.navigationController?.presentViewController(nv, animated: true, completion: nil)
             }else{

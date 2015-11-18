@@ -50,6 +50,8 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     @IBAction func choosefbEvent(sender: AnyObject) {
         let vc:FacebookLoginVC = self.storyboard?.instantiateViewControllerWithIdentifier("FacebookLoginVC") as! FacebookLoginVC
         self.navigationController?.pushViewController(vc, animated: true)
+        PreviewVC.order.image_id = 0
+        MemoryStoreData().setValue(MemoryStoreData.current_order_id, value: 0)
     }
     
     // MARK: - CHOOSE FROM PHOTO FROM INSTAGRAM
@@ -59,6 +61,8 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
             collectionview.delegate = self
         }
         self.presentViewController(vc, animated: true, completion: nil)
+        PreviewVC.order.image_id = 0
+        MemoryStoreData().setValue(MemoryStoreData.current_order_id, value: 0)
     }
     
     func setImageFromInstagram(media media: InstagramMedia)  {
@@ -76,6 +80,8 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
             imagePicker.delegate = self
             self.presentViewController(imagePicker, animated: true, completion: nil)
         }
+        PreviewVC.order.image_id = 0
+        MemoryStoreData().setValue(MemoryStoreData.current_order_id, value: 0)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {

@@ -77,10 +77,10 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
             if(dataResult.success){
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
-                        let dateStr = Util().formatDatetime(dataResult.data[i]["created_at"].stringValue, outputFormat: "MM/dd/yyyy")
+                        let dateStr = Util().formatDatetime(dataResult.data[i]["created_at"].stringValue, outputFormat: "MM/dd/yy")
                         var shipped_at = ""
                         if(dataResult.data[i]["shipped_at"].stringValue != ""){
-                            shipped_at = Util().formatDatetime(dataResult.data[i]["shipped_at"].stringValue, outputFormat: "MM/dd/yyyy")
+                            shipped_at = Util().formatDatetime(dataResult.data[i]["shipped_at"].stringValue, outputFormat: "MM/dd/yy")
                         }
                         let transaction = Transaction(id: dataResult.data[i]["id"].numberValue.integerValue, imgUrl: dataResult.data[i]["img_url"].stringValue, created_at: dateStr, shipped_at: shipped_at, code: dataResult.data[i]["order_id_full"].stringValue, status: dataResult.data[i]["status"].stringValue)
                         self.transactionList.append(transaction)

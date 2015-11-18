@@ -19,7 +19,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     //        "Like SnapArt on Instargram","Rate on the App Store",
     //        "About Us","FAQs"," Email Us ","Term of Service"]
     
-    private let MENU_DID_LOGIN = ["Make Art","Notifcations","My Account","My Order", "Promotion", "About Us","FAQs"," Email Us"]
+    private let MENU_DID_LOGIN = ["Make Art","Notifcations","My Account","My Order", "Promotions", "About Us","FAQs","Email Us"]
     private let MENU_WILL_LOGIN = ["Make Art","About Us","FAQs","Email Us"]
     private let LOGIN_TITLE  = "Log In"
     private let LOGOUT_TITLE  = "Log Out"
@@ -53,7 +53,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.loginFlag == true  ? 8 : 8
+        return self.loginFlag == true  ? 9 : 8
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 44
@@ -90,10 +90,10 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         let  cell = MenuCell.instanceFromNib()
         switch indexPath.row {
             
-        case 0,1,2,3,4,5,5,6 :
+        case 0,1,2,3,4,5,5,6,7 :
             cell.setTextTitle(MENU_DID_LOGIN[indexPath.row])
             
-        case 7:
+        case 8:
             cell.addButton(LOGOUT_TITLE)
             cell.addButton(LOGOUT_TITLE).addTarget(self, action:"logoutTap:", forControlEvents: UIControlEvents.TouchUpInside)
         default:

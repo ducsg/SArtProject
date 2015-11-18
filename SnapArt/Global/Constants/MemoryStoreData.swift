@@ -18,6 +18,7 @@ public class MemoryStoreData{
     public static let user_lat:String = "user_lat"
     public static let user_long:String = "user_long"
     public static let user_country_code:String = "user_country_code"
+    public static let current_order_id:String = "current_order_id"
     
     init(){
     }

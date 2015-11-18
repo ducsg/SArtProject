@@ -117,7 +117,7 @@ public class Util: NSObject {
     }
     
     //format datetime
-    func formatDatetime(strDate:String = "", inputFormat:String = "yyyy-MM-dd HH:mm:ss", outputFormat:String = "")-> String{
+    func formatDatetime(strDate:String = "", inputFormat:String = "yyyy-MM-dd HH:mm:ss Z", outputFormat:String = "")-> String{
         let strTime: String? = strDate //"29/10/2015 20:00:00 +0000"
         let formatter = NSDateFormatter()
         formatter.dateFormat = inputFormat //"dd/mm/yyyy HH:mm:ss Z"
