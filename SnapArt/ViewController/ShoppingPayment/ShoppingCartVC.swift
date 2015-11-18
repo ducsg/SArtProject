@@ -87,7 +87,6 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         cell.btnSubtract.tag = indexPath.row
         cell.btnPlus.addTarget(self, action: "pressBtnPlus:", forControlEvents: UIControlEvents.TouchUpInside)
         cell.btnSubtract.addTarget(self, action: "pressBtnSubtract:", forControlEvents: UIControlEvents.TouchUpInside)
-        
         //configure right buttons
         var btnDelete = MGSwipeButton(title: "", icon: UIImage (named:"ic_delete"), backgroundColor: UIColor.redColor(), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
@@ -127,7 +126,8 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         let index = Int(btnPlus.tag)
         if(listCart[index].quantity < listCart[index].max_quantity){
             listCart[index].quantity = listCart[index].quantity + 1
-            self.tbOrder.reloadData()
+            let cell = self.tbOrder.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as! ShoppingCartTBC
+            cell.tfQuanlity.text = String(listCart[index].quantity)
             self.resetCost()
         }
     }
@@ -136,7 +136,8 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         let btnSubtract = sender as! UIButton
         let index = Int(btnSubtract.tag)
         listCart[index].quantity = (listCart[index].quantity - 1) < 1 ? 1 : listCart[index].quantity - 1
-        self.tbOrder.reloadData()
+        let cell = self.tbOrder.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as! ShoppingCartTBC
+        cell.tfQuanlity.text = String(listCart[index].quantity)
         self.resetCost()
     }
     
