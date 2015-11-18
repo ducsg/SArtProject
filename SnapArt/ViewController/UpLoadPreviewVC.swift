@@ -62,7 +62,8 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     }
     
     func setImageFromInstagram(media media: InstagramMedia)  {
-        self.setImageUploadWithURL(media.standardResolutionImageURL.URLString)
+        let newURL = media.standardResolutionImageURL.URLString.stringByReplacingOccurrencesOfString("s640x640", withString: "s1080x1080", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        self.setImageUploadWithURL(newURL)
     }
     
     // MARK: - CHOOSE FROM PHOTO FROM LIB
@@ -85,6 +86,7 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     }
     // GET IMMAGE FOR LIB AND FACEBOOK
     func setImageUploadWithURL(imgURL: String!) -> Void{
+        print(imgURL)
         self.callLoading(self.navigationController?.view)
         Alamofire.request(.GET, imgURL)
             .responseImage { response in
@@ -116,8 +118,8 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
         let api = Api()
         let parentView:UIView! = self.navigationController?.view
         api.initWaiting(parentView)
-        let width = Int((image.size.width))
-        let height = Int((image.size.height))
+        let width =  CGImageGetWidth(image.CGImage)
+        let height = CGImageGetHeight(image.CGImage)
         let parameters = ["width":width,"height":height, "country_code" : MemoryStoreData().getString(MemoryStoreData.user_country_code)]
         api.execute(.POST, url: ApiUrl.size_frames_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){

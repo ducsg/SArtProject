@@ -130,7 +130,12 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
                 if let vc = nv[index] as? UpLoadPreviewVC{
                     if images != nil && images.count > 0 {
                         if let OLFacebookImg:OLFacebookImage! = images[0] as? OLFacebookImage {
-                            vc.setImageUploadWithURL(OLFacebookImg!.fullURL.URLString)
+                            print(OLFacebookImg?.sourceImages)
+                            if let array = OLFacebookImg?.sourceImages as? [OLFacebookImageURL] {
+                                if array.count > 0 {
+                                    vc.setImageUploadWithURL(array[0].url.URLString)
+                                }
+                            }
                         }
                     }
                     self.navigationController?.popViewControllerAnimated(true)
