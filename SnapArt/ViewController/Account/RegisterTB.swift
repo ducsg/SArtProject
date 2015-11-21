@@ -21,13 +21,14 @@ public class RegisterTB: CustomTableViewController {
     private var rePwd:String = ""
     
     override public func viewDidLoad() {
-        
+        super.viewDidLoad()
+        tfRePwd.hidden = true
     }
     
     @IBAction func pressRegisterButton(sender: AnyObject) {
         email = tfEmail.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         pwd = tfPwd.text!.trim().md5()
-        rePwd = tfRePwd.text!.trim().md5()
+        rePwd = pwd//tfRePwd.text!.trim().md5()
         if(validation()){
             let api:Api = Api()
             let parentView:UIView! = self.navigationController?.view
@@ -85,6 +86,7 @@ public class RegisterTB: CustomTableViewController {
             return false
         }
         
+        return true
         
         if tfRePwd.text!.isEmpty {
             Util().showAlert(MESSAGES.REGISTER.RE_PASS_EMPTY, parrent: self)
@@ -96,6 +98,6 @@ public class RegisterTB: CustomTableViewController {
             return false
         }
         
-        return true
+        
     }
 }

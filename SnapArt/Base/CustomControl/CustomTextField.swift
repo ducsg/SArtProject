@@ -45,7 +45,7 @@ class CustomTextField: UITextField {
     }
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRectInset(bounds, 30.0, 0)
+        return CGRectInset(bounds, 10.0, 0)
     }
     
     override func editingRectForBounds(bounds: CGRect) -> CGRect {

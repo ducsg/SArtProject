@@ -18,14 +18,13 @@ struct MESSAGES{
         static let CHECKOUT_LOGIN = "CheckoutLogin"
         static let COMEBACKHOME = "ComeBackHomeVC"
         static let CHECK_ORDER = "CheckNumberOfOrder"
-        
     }
     
     struct COMMON{
         static let NOT_INTERNET = "Unable to connect to the internet please try again later."
         static let API_EXCEPTION = "Error. Please try again."
         static let EMAIL_EMPTY = "Email can't be blank."
-        static let EMAIL_INVALID = "Invalid email. Example: someone@company.com."
+        static let EMAIL_INVALID = "Email is invalid."
         static let FRAME_SIZE_INVALID = "Please choose frame size."
 
         static let LOADING = "Loading..."

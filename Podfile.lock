@@ -74,6 +74,11 @@ PODS:
     - FBSDKCoreKit/arc
   - FBSDKLoginKit (4.6.0):
     - FBSDKCoreKit
+  - InstagramKit (3.6.9):
+    - AFNetworking (~> 2.0)
+    - InstagramKit/Exclude-UICKeyChainStore (= 3.6.9)
+  - InstagramKit/Exclude-UICKeyChainStore (3.6.9):
+    - AFNetworking (~> 2.0)
   - InstagramKit/UICKeyChainStore (3.6.9):
     - AFNetworking (~> 2.0)
     - UICKeyChainStore (~> 2.0)
@@ -89,6 +94,7 @@ DEPENDENCIES:
   - Braintree (~> 3.9.6)
   - FacebookImagePicker (~> 2.0.6)
   - FBSDKLoginKit (~> 4.6.0)
+  - InstagramKit (~> 3.0)
   - InstagramKit/UICKeyChainStore
   - SDWebImage (~> 3.7.2)
   - SwiftyJSON (~> 2.3.1)

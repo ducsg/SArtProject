@@ -51,6 +51,11 @@ public class ForgotPasswordTB: CustomTableViewController{
             Util().showAlert(MESSAGES.COMMON.EMAIL_EMPTY, parrent: self)
             return false
         }
+        
+        if !UtilOjbC.IsValidEmail(tfEmail.text)  {
+            Util().showAlert(MESSAGES.COMMON.EMAIL_INVALID, parrent: self)
+            return false
+        }
         return true
     }
 }

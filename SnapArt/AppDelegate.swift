@@ -13,7 +13,7 @@ import FBSDKLoginKit
 import SwiftyJSON
 import FBSDKShareKit
 //import InstagramKit
-import LMGeocoder
+//import LMGeocoder
 import Alamofire
 
 

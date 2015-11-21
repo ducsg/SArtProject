@@ -21,6 +21,7 @@ class ChangePasswordTB: CustomTableViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        tfRePwd.hidden = true
     }
     
     @IBAction func cancelTap(sender: AnyObject) {
@@ -30,7 +31,7 @@ class ChangePasswordTB: CustomTableViewController {
     @IBAction func saveTap(sender: AnyObject) {
         old = tfOldPwd.text!.trim().md5()
         pwd = tfPwd.text!.trim().md5()
-        rePwd = tfRePwd.text!.trim().md5()
+        rePwd = pwd//tfRePwd.text!.trim().md5()
         if(validation()){
             let parameters = [
                 APIKEY.OLD_PWD:old,
@@ -70,6 +71,7 @@ class ChangePasswordTB: CustomTableViewController {
             return false
         }
         
+        return true
         
         if tfRePwd.text!.isEmpty {
             Util().showAlert(MESSAGES.REGISTER.RE_PASS_EMPTY, parrent: self)
@@ -81,6 +83,6 @@ class ChangePasswordTB: CustomTableViewController {
             return false
         }
         
-        return true
+        
     }
 }
