@@ -54,6 +54,12 @@ class NotificationTB: CustomTableViewController {
         return 70
     }
     
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if(indexPath.row == listNotification.count){
+            print(indexPath.row)
+        }
+    }
+    
     private func getListNotification(){
         let api = Api()
         let parentView:UIView! = self.navigationController?.view

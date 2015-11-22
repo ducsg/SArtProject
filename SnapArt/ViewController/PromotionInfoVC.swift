@@ -19,6 +19,8 @@ class PromotionInfoVC: CustomViewController {
     
     @IBOutlet weak var lbEnd: UILabel!
     
+    @IBOutlet weak var lbEmpty: CustomLabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         applyBackIcon()
@@ -27,6 +29,14 @@ class PromotionInfoVC: CustomViewController {
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func showPromoCodeInfor(show: Bool){
+        self.lbEmpty.hidden = show
+        self.lbPromoCode.hidden = !show
+        self.lbDiscount.hidden = !show
+        self.lbStart.hidden = !show
+        self.lbEnd.hidden = !show
     }
     
     func getPromoInfor(){
@@ -40,8 +50,10 @@ class PromotionInfoVC: CustomViewController {
                 self.lbDiscount.text = dataResult.data["sale_off"].numberValue.stringValue + "% OFF"
                 self.lbStart.text = "Start: " + dataResult.data["start_time"].stringValue
                 self.lbEnd.text = "End: " + dataResult.data["end_time"].stringValue
+                self.showPromoCodeInfor(true)
             }else{
-                Util().showAlert(dataResult.message, parrent: self)
+                self.lbEmpty.text = dataResult.message
+                self.showPromoCodeInfor(false)
             }
         })
     }
