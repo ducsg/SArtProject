@@ -66,6 +66,8 @@ public class ApiUrl{
     //orders
     static let create_order_url:String = base_url + "api/orders/create"
 
+    static let check_image_cropped:String = base_url + "api/cropers/check_image_cropped"
+
     
 
 }

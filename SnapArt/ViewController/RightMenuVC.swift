@@ -33,7 +33,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         // For registering classes
         tableView.registerClass(MenuCell.self, forCellReuseIdentifier: "MenuCell")
         self.tableView.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
-        self.tableView.separatorColor = UIColor.clearColor()
+        self.tableView.separatorColor = UIColor.lightGrayColor()
         self.automaticallyAdjustsScrollViewInsets = false
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginReceivedNotification:", name:MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
         
@@ -56,7 +56,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         return self.loginFlag == true  ? 9 : 8
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 44
+        return self.loginFlag == true ? heightCellMenuAfterLogin(indexPath) : heightCellMenuBeforeLogin(indexPath)
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
@@ -102,6 +102,29 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
             
         }
         return cell
+    }
+    func heightCellMenuAfterLogin(indexPath: NSIndexPath) -> CGFloat  {
+        switch indexPath.row {
+        case 0,1,2,3,4,5,5,6,7 :
+            return 44
+        case 8:
+            return 64
+        default:
+            return 44
+
+        }
+    }
+    func heightCellMenuBeforeLogin(indexPath: NSIndexPath) -> CGFloat  {
+        switch indexPath.row {
+        case 0,1,2,3:
+            return 44
+        case 4:
+            return 64
+        case 5:
+            return 64
+        default:
+            return 44
+        }
     }
     
     func menuBeforeLogin(indexPath: NSIndexPath) -> MenuCell  {

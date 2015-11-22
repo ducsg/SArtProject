@@ -17,6 +17,9 @@ class MenuCell: UITableViewCell {
         titleLb.hidden = true
         self.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
         self.contentView.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
+//        let sepView = UIView(frame: CGRectMake(titleLb.frame.origin.x,self.frame.size.height - 1,self.frame.size.width,1))
+//        sepView.backgroundColor = UIColor.grayColor()
+//        self.addSubview(sepView)
 
     }
     
@@ -44,7 +47,7 @@ class MenuCell: UITableViewCell {
         rect.size.width = rect.size.width - 140
         rect.size.height = rect.size.height - 10
         rect.origin.y = 20
-        rect.origin.x = 20
+        rect.origin.x = titleLb.frame.origin.x
         let button   = UIButton(type: UIButtonType.System)
         button.frame = rect
         button.backgroundColor = SA_STYPE.BACKGROUND_BUTTON_COLOR
