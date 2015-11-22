@@ -44,5 +44,7 @@ struct MESSAGES{
     
     struct SHOPPING {
         static let SHOPPING_QUESTION = "For an extra $0.99, your art is wrapped in high - quality gift wrap before being securely packaged for delivery."
+        static let SHOPPING_CART_IS_EMPTY = "Your cart is empty."
+        static let MAX_FRAME_LIST = "Maximum 3 records are allowed."
     }
 }

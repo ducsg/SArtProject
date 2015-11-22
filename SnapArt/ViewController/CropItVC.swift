@@ -20,6 +20,7 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
     private var TITTLE = "Crop It"
     private var ROTATE_FUNCTION = "rotateImage()"
     private var CROP_FUNCTION = "cropImage()"
+    static var current_url = NSURL()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,11 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
             }
         })
         
+    }
+    
+    func loadCropImage(){
+        let requestObj = NSURLRequest(URL: CropItVC.current_url)
+        self.cropWebView.loadRequest(requestObj)
     }
     
     
