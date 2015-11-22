@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -17,17 +17,15 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdt-QU-XsG" customClass="CustomButton" customModule="SnapArt" customModuleProvider="target">
                             <rect key="frame" x="103" y="90" width="170" height="30"/>
-                            <animations/>
                             <color key="backgroundColor" red="1" green="0.57576280040000005" blue="0.27406986929999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="ecu-d4-z96"/>
                                 <constraint firstAttribute="width" constant="170" id="z59-Ue-UCj"/>
                             </constraints>
-                            <state key="normal" title="Add to card"/>
+                            <state key="normal" title="Add to cart"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many feet are you from you wall?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1j-71-fG9" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
                             <rect key="frame" x="42" y="8" width="290" height="21"/>
-                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="Uj2-DL-ekx"/>
                             </constraints>
@@ -37,13 +35,11 @@
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aG1-lV-q7Z">
                             <rect key="frame" x="0.0" y="16" width="375" height="72"/>
-                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="72" id="xqH-Di-uyl"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <animations/>
                     <color key="backgroundColor" red="1" green="0.9409270931" blue="0.55802694669999997" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="375" id="5Yd-g0-i2h"/>
@@ -65,13 +61,11 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G4G-FU-ScE">
                             <rect key="frame" x="67" y="199" width="240" height="128"/>
-                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="G4G-FU-ScE" secondAttribute="height" multiplier="15:8" id="ONr-ZO-Gh8"/>
                             </constraints>
                         </imageView>
                     </subviews>
-                    <animations/>
                     <constraints>
                         <constraint firstItem="G4G-FU-ScE" firstAttribute="centerY" secondItem="t6P-Vz-XaQ" secondAttribute="centerY" id="Sdq-Ij-5du"/>
                         <constraint firstItem="G4G-FU-ScE" firstAttribute="leading" secondItem="t6P-Vz-XaQ" secondAttribute="leading" constant="67" id="rzZ-oZ-TKd"/>
@@ -79,7 +73,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <animations/>
             <constraints>
                 <constraint firstItem="t6P-Vz-XaQ" firstAttribute="leading" secondItem="4wd-cP-AJK" secondAttribute="leading" id="PEx-ur-flW"/>
                 <constraint firstAttribute="trailing" secondItem="ohP-4Y-N5Y" secondAttribute="trailing" id="RPe-JM-PtV"/>

@@ -76,8 +76,9 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
                 PreviewVC.order.image_id = id
             }
             print("picture_id: \(PreviewVC.order.image_id), url to crop: \(vc.previewURL)")
+            self.callLoading(self.navigationController?.view)
+            self.checkCroped(vc)
             
-            self.navigationController?.pushViewController(vc, animated: true)
         } else {
             Util().showAlert(MESSAGES.COMMON.NOT_INTERNET, parrent: self)
         }
@@ -92,6 +93,18 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
     }
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    func checkCroped(vc:PreviewVC) -> Void {
+        let api:Api = Api()
+        api.execute(.POST, url: ApiUrl.check_image_cropped, parameters: ["id":PreviewVC.order.image_id], resulf: { (flag:Bool, message:String, json:JSON!) -> () in
+            if json.boolValue == true{
+                self.removeLoading(self.navigationController?.view)
+                self.navigationController?.pushViewController(vc, animated: true)
+                return
+            } else {
+                self.checkCroped(vc)
+            }
+        })
     }
     /*
     // MARK: - Navigation

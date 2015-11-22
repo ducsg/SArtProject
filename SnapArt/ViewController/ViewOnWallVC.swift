@@ -16,6 +16,7 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     let captureSession = AVCaptureSession()
     let stillImageOutput = AVCaptureStillImageOutput()
     var customSliderview:SliderView!
+    var rangeSlider: TDRatingView!
     var imagePreview:UIImage!
     internal var section:AVCaptureSession!
     
@@ -58,17 +59,22 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     override func viewDidAppear(animated: Bool) {
         if self.customSliderview != nil {
             self.customSliderview.addImagePreview(self.imagePreview)
-            let rangeSlider = TDRatingView()
-            rangeSlider.maximumRating = 6
-            rangeSlider.minimumRating = 2
-            rangeSlider.widthOfEachNo = (UInt(self.customSliderview.sliderView.frame.width) / UInt(5))
-            rangeSlider.heightOfEachNo = 30
-            rangeSlider.sliderHeight = 25
-            rangeSlider.difference = 1
-            rangeSlider.delegate = self
-            rangeSlider.drawRatingControlWithX(0, y:0)
-            rangeSlider.center = self.customSliderview.sliderView.center
-            self.customSliderview.sliderView.addSubview(rangeSlider)
+            
+            if rangeSlider == nil {
+                rangeSlider = TDRatingView()
+                rangeSlider.maximumRating = 6
+                rangeSlider.minimumRating = 2
+                rangeSlider.widthOfEachNo = (UInt(self.customSliderview.sliderView.frame.width) / UInt(5))
+                rangeSlider.heightOfEachNo = 30
+                rangeSlider.sliderHeight = 25
+                rangeSlider.difference = 1
+                rangeSlider.delegate = self
+                rangeSlider.drawRatingControlWithX(0, y:0)
+                rangeSlider.center = self.customSliderview.sliderView.center
+                self.customSliderview.sliderView.addSubview(rangeSlider)
+            }
+            
+            
             self.customSliderview.imagePreview.contentMode = .ScaleAspectFit
             var rect = self.customSliderview.imagePreview.bounds
             self.ratio = rect.size.width/rect.size.height
