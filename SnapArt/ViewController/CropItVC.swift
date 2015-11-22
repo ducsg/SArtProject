@@ -20,6 +20,7 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
     private var TITTLE = "Crop It"
     private var ROTATE_FUNCTION = "rotateImage()"
     private var CROP_FUNCTION = "cropImage()"
+    static var current_url = NSURL()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +31,28 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
         self.cropWebView.delegate = self
         self.applyBackIcon()
         self.callLoading(self.navigationController?.view)
-        api.uploadFile(imageCrop,ratio:self.ratio, resulf:{(dataResult: (success: Bool, message: String!, data: String!))->() in
-            if dataResult.success == true {
-                let url = NSURL (string: dataResult.data)
-                print(url)
-                let requestObj = NSURLRequest(URL: url!)
-                self.cropWebView.loadRequest(requestObj)
-            } else {
-                Util().showAlert(dataResult.message, parrent: self)
-                self.removeLoading(self.navigationController?.view)
-            }
-        })
+        if(PreviewVC.order.image_id == 0){
+            api.uploadFile(imageCrop,ratio:self.ratio, resulf:{(dataResult: (success: Bool, message: String!, data: String!))->() in
+                if dataResult.success == true {
+                    let url = NSURL (string: dataResult.data)
+                    print(url)
+                    CropItVC.current_url = url!
+                    self.loadCropImage()
+                    PreviewVC.order.image_id = 15693
+                } else {
+                    Util().showAlert(dataResult.message, parrent: self)
+                    self.removeLoading(self.navigationController?.view)
+                }
+            })
+        }else{
+            self.loadCropImage()
+        }
         
+    }
+    
+    func loadCropImage(){
+        let requestObj = NSURLRequest(URL: CropItVC.current_url)
+        self.cropWebView.loadRequest(requestObj)
     }
     
     

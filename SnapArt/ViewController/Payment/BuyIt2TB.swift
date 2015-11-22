@@ -22,7 +22,9 @@ class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
     @IBOutlet weak var lbTitle: CustomLabelGothamBold!
     
     @IBOutlet weak var lbDes: CustomLabel!
+    @IBOutlet weak var lbError: CustomLabel!
     
+    var errorText = "Please fill out all required fields."
     var listFieldRequire = [CustomTextField]()
     var useBillingAddress:Bool = false
     var shippingAddressData = Address()
@@ -37,7 +39,7 @@ class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        listFieldRequire = [tfFirstName, tfLastName, tfAddress1, tfCity, tfState, tfPostalCode, tfCountry]
+        listFieldRequire = [tfFirstName, tfLastName, tfAddress1, tfCountry]
         // Do any additional setup after loading the view.
         tfCountry.delegate = self
     }
@@ -87,9 +89,14 @@ class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
     @IBAction func pressBtnContinue(sender: AnyObject) {
         if(BuyIt2TB.buy2 == 0){
             if(Util().checkRequireField(listFieldRequire)){
+                lbError.text = ""
                 self.getShippingData()
                 let nv = Util().getControllerForStoryBoard("PaymentVC") as! PaymentVC
                 self.navigationController?.pushViewController(nv, animated: true)
+                return
+            }else{
+                lbError.text = errorText
+                lbError.textColor = UIColor.redColor()
                 return
             }
         }

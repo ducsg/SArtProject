@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDelegate {
     //all data for payment
-    public static var paymentDetail = PaymentDetail()
+    internal static var paymentDetail = PaymentDetail()
     //label title
     
     @IBOutlet weak var tbOrder: UITableView!
@@ -27,6 +27,8 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var headerView: HeaderView!
     
     @IBOutlet weak var btnAddAnotherFrame: CustomButton!
+    
+    @IBOutlet weak var lbEmptyCart: CustomLabelGotham!
     
     static var discount:Float = 0
     
@@ -45,6 +47,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         ShoppingCartVC.discount = 0
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetCost:", name:MESSAGES.NOTIFY.RESET_COST, object: nil)
         
+        lbEmptyCart.text = MESSAGES.SHOPPING.SHOPPING_CART_IS_EMPTY
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -53,19 +56,26 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         //        if(Util().getCountryCode() == "US"){
         lbShipping.text = "FREE"
         //        }
-        checkNumberOrder()
     }
     
-    func checkNumberOrder(){
-        if(self.listCart.count >= Configs.max_order_in_transaction){
-            btnAddAnotherFrame.enabled = false
+    func isMaxNumberOrder() -> Bool{
+        return self.listCart.count >= Configs.max_order_in_transaction
+    }
+    
+    func checkEmptyCart(){
+        if(listCart.count == 0){
+            lbEmptyCart.hidden = false
         }else{
-            btnAddAnotherFrame.enabled = true
+            lbEmptyCart.hidden = true
         }
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        if(listCart.count == 0){
+            NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.COMEBACKHOME, object: nil)
+        }else{
+            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,6 +90,13 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
+        if(listCart.count == 1 && listCart[0].id == -1){
+            let cell = tableView.dequeueReusableCellWithIdentifier("ShoppingCartTBC", forIndexPath: indexPath)
+            let lbEmptyCart = CustomLabelGotham()
+            lbEmptyCart.text = MESSAGES.SHOPPING.SHOPPING_CART_IS_EMPTY
+            cell.contentView.addSubview(lbEmptyCart)
+            return cell
+        }
         let cell:ShoppingCartTBC = ShoppingCartTBC.instanceFromNib()
         let cart: Order = listCart[indexPath.row]
         cell.initCell(cart)
@@ -88,7 +105,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         cell.btnPlus.addTarget(self, action: "pressBtnPlus:", forControlEvents: UIControlEvents.TouchUpInside)
         cell.btnSubtract.addTarget(self, action: "pressBtnSubtract:", forControlEvents: UIControlEvents.TouchUpInside)
         //configure right buttons
-        var btnDelete = MGSwipeButton(title: "", icon: UIImage (named:"ic_delete"), backgroundColor: UIColor.redColor(), callback: {
+        let btnDelete = MGSwipeButton(title: "", icon: UIImage (named:"ic_delete"), backgroundColor: UIColor.redColor(), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             let indexRow:Int = self.tbOrder.indexPathForCell(sender)!.row
             //call api delete
@@ -100,11 +117,10 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
                     self.listCart.removeAtIndex(indexRow)
                     tableView.deleteRowsAtIndexPaths([self.tbOrder.indexPathForCell(sender)!], withRowAnimation: UITableViewRowAnimation.Left)
                     self.resetCost()
-                    self.checkNumberOrder()
+                    self.checkEmptyCart()
                 }else{
                     Util().showAlert(dataResult.message, parrent: self)
                 }
-                
             })
             return true
         })
@@ -141,10 +157,6 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         self.resetCost()
     }
     
-    func Event(sender:AnyObject!) -> Void  {
-        let button = sender as! UIButton
-    }
-    
     private func getListCart(){
         let api = Api()
         let parentView:UIView! = self.navigationController?.view
@@ -157,6 +169,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
                         self.listCart.append(cart)
                         print(cart.max_quantity)
                         self.tbOrder.reloadData()
+                        self.checkEmptyCart()
                     }
                 }
                 self.resetCost()
@@ -197,8 +210,12 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func pressBtnAddAnotherFrame(sender: AnyObject) {
-        let nv = Util().getControllerForStoryBoard("UploadViewVC") as! CustomNavigationController
-        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+        if(isMaxNumberOrder()){
+            Util().showAlert(MESSAGES.SHOPPING.MAX_FRAME_LIST, parrent: self)
+        }else{
+            let nv = Util().getControllerForStoryBoard("UploadViewVC") as! CustomNavigationController
+            self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+        }
     }
     
     @IBAction func pressBtnCheckOut(sender: AnyObject) {
@@ -206,6 +223,8 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
             saveDataForPayment()
             let nv = Util().getControllerForStoryBoard("BuyItTB") as! BuyItTB
             self.navigationController?.pushViewController(nv, animated: true)
+        }else{
+            Util().showAlert(MESSAGES.SHOPPING.SHOPPING_CART_IS_EMPTY, parrent: self)
         }
     }
     
