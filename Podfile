@@ -9,14 +9,15 @@ target 'SnapArt' do
     end
     pod  'FBSDKLoginKit', '~> 4.6.0'
     pod 'InstagramKit', '~> 3.0'
-#    pod 'AFNetworking', '~> 2.6.3'
     pod 'SDWebImage', '~> 3.7.2'
     pod 'InstagramKit/UICKeyChainStore'
     pod  'Braintree', '~> 3.9.6'
     use_frameworks!
-    pod  'Alamofire', '~> 3.1.2'
+    pod  'Alamofire' #, '~> 3.1.2'
     pod 'AlamofireImage', '~> 2.0'
     pod 'SwiftyJSON', '~> 2.3.1'
+#    pod 'AsyncImageView-blocks', '~> 1.5'
+
     #pod 'Facebook-iOS-SDK'
 #    pod 'LMGeocoder'
 end

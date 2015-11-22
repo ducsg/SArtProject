@@ -33,7 +33,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
         // For registering classes
         tableView.registerClass(MenuCell.self, forCellReuseIdentifier: "MenuCell")
         self.tableView.backgroundColor = SA_STYPE.BACKGROUND_SCREEN_COLOR
-        self.tableView.separatorColor = UIColor.lightGrayColor()
+        self.tableView.separatorColor = UIColor.clearColor()
         self.automaticallyAdjustsScrollViewInsets = false
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginReceivedNotification:", name:MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
         
