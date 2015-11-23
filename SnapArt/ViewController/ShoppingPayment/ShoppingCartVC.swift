@@ -140,11 +140,20 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     func pressBtnPlus(sender: UIButton){
         let btnPlus = sender as! UIButton
         let index = Int(btnPlus.tag)
+        let cell = self.tbOrder.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as! ShoppingCartTBC
         if(listCart[index].quantity < listCart[index].max_quantity){
             listCart[index].quantity = listCart[index].quantity + 1
-            let cell = self.tbOrder.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as! ShoppingCartTBC
             cell.tfQuanlity.text = String(listCart[index].quantity)
             self.resetCost()
+        }
+        self.checkEnableCounter(cell, order: listCart[index])
+    }
+    
+    func checkEnableCounter(cell:ShoppingCartTBC, order:Order){
+        if(order.quantity < order.max_quantity){
+            cell.btnPlus.enabled = true
+        }else{
+           cell.btnPlus.enabled = false 
         }
     }
     
@@ -155,6 +164,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         let cell = self.tbOrder.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as! ShoppingCartTBC
         cell.tfQuanlity.text = String(listCart[index].quantity)
         self.resetCost()
+        self.checkEnableCounter(cell, order: listCart[index])
     }
     
     private func getListCart(){

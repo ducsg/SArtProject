@@ -13,7 +13,7 @@ target 'SnapArt' do
     pod 'InstagramKit/UICKeyChainStore'
     pod  'Braintree', '~> 3.9.6'
     use_frameworks!
-    pod  'Alamofire' #, '~> 3.1.2'
+    pod  'Alamofire' , '~> 3.1.3'
     pod 'AlamofireImage', '~> 2.0'
     pod 'SwiftyJSON', '~> 2.3.1'
 #    pod 'AsyncImageView-blocks', '~> 1.5'
