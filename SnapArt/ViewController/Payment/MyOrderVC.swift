@@ -15,6 +15,10 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
     let TITLES = ["Preview","Date","Code","Status"]
     private var TITTLE = "My Orders"
     private var transactionList = [Transaction]()
+    
+    var current_page = 1
+    var total_page = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         applyBackIcon()
@@ -68,27 +72,45 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
         let nv = Util().getControllerForStoryBoard("PlaceOrderVC") as! PlaceOrderVC
         self.navigationController?.pushViewController(nv, animated: true)
     }
+    
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if(indexPath.row == (transactionList.count-1 > 0 ? transactionList.count-1 : 0) ){
+            if(self.current_page <= self.total_page){
+                getTransactionList()
+            }
+        }
+    }
+    
     private func getTransactionList(){
         let api = Api()
         let parentView:UIView! = self.navigationController?.view
         api.initWaiting(parentView)
-        let parameters = ["page":1,"row_per_page":20]
-        api.execute(.GET, url: ApiUrl.get_transaction_url, parameters: parameters, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+        let parameters = [
+            Api.PAGE:current_page,
+            Api.ROW_PER_PAGE:10
+        ]
+        api.execute(.GET, url: ApiUrl.get_transaction_url, parameters: parameters, isGetFullData: true, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
-                        let dateStr = Util().formatDatetime(dataResult.data[i]["created_at"].stringValue, outputFormat: "MM/dd/yy")
+                        let data = dataResult.data[Api.KEY_DATA]
+                        let dateStr = Util().formatDatetime(data[i]["created_at"].stringValue, outputFormat: "MM/dd/yy")
                         var shipped_at = ""
-                        if(dataResult.data[i]["shipped_at"].stringValue != ""){
-                            shipped_at = Util().formatDatetime(dataResult.data[i]["shipped_at"].stringValue, outputFormat: "MM/dd/yy")
+                        if(data[i]["shipped_at"].stringValue != ""){
+                            shipped_at = Util().formatDatetime(data[i]["shipped_at"].stringValue, outputFormat: "MM/dd/yy")
                         }
-                        let transaction = Transaction(id: dataResult.data[i]["id"].numberValue.integerValue, imgUrl: dataResult.data[i]["img_url"].stringValue, created_at: dateStr, shipped_at: shipped_at, code: dataResult.data[i]["order_id_full"].stringValue, status: dataResult.data[i]["status"].stringValue)
+                        let transaction = Transaction(id: data[i]["id"].numberValue.integerValue, imgUrl: data[i]["img_url"].stringValue, created_at: dateStr, shipped_at: shipped_at, code: data[i]["order_id_full"].stringValue, status: data[i]["status"].stringValue)
                         self.transactionList.append(transaction)
-                        print(dataResult.data[i]["img_url"].stringValue)
+                        print(data[i]["img_url"].stringValue)
                     }
+                    self.current_page++
+                    self.total_page = dataResult.data[Api.PAGING][Api.TOTAL_PAGE].intValue
+                    print("orders:: current_page: \(self.current_page), total_page: \(self.total_page)")
                     self.myOrderTb.reloadData()
                 }
             }else{
+                self.current_page--
                 Util().showAlert(dataResult.message, parrent: self)
             }
             

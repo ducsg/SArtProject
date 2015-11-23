@@ -14,6 +14,9 @@ class NotificationTB: CustomTableViewController {
     @IBOutlet var tbNotification: UITableView!
     
     var listNotification = [Notification]()
+    var current_page = 1
+    var total_page = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         applyBackIcon()
@@ -55,8 +58,10 @@ class NotificationTB: CustomTableViewController {
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if(indexPath.row == listNotification.count){
-            print(indexPath.row)
+        if(indexPath.row == (listNotification.count-1 > 0 ? listNotification.count-1 : 0) ){
+            if(self.current_page <= self.total_page){
+                getListNotification()
+            }
         }
     }
     
@@ -65,19 +70,24 @@ class NotificationTB: CustomTableViewController {
         let parentView:UIView! = self.navigationController?.view
         api.initWaiting(parentView)
         let parameters = [
-            "page":1,
-            "row_per_page":20
+            Api.PAGE:current_page,
+            Api.ROW_PER_PAGE:10
         ]
-        api.execute(.GET, url: ApiUrl.get_notification_url, parameters: parameters, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+        api.execute(.GET, url: ApiUrl.get_notification_url, parameters: parameters, isGetFullData: true, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
                 if(dataResult.data.count > 0){
-                    for i in 0...dataResult.data.count-1 {
-                        let notification = Notification(id: dataResult.data[i]["id"].numberValue.integerValue, read_at: dataResult.data[i]["read_at"].stringValue, created_at: Util().formatDatetime(dataResult.data[i]["created_at"].stringValue, outputFormat: "MM/dd/yy HH:mm a"), transaction_id: dataResult.data[i]["transaction_id"].numberValue.integerValue, type_of_notification: dataResult.data[i]["type_of_notification"].numberValue.integerValue, action: dataResult.data[i]["action"].numberValue.integerValue, title: dataResult.data[i]["title"].stringValue)
+                    for i in 0...dataResult.data[Api.KEY_DATA].count-1 {
+                        let data = dataResult.data[Api.KEY_DATA]
+                        let notification = Notification(id: data[i]["id"].numberValue.integerValue, read_at: data[i]["read_at"].stringValue, created_at: Util().formatDatetime(data[i]["created_at"].stringValue, outputFormat: "MM/dd/yy HH:mm a"), transaction_id: data[i]["transaction_id"].numberValue.integerValue, type_of_notification: data[i]["type_of_notification"].numberValue.integerValue, action: data[i]["action"].numberValue.integerValue, title: data[i]["title"].stringValue)
                         self.listNotification.append(notification)
-                        self.tbNotification.reloadData()
                     }
+                    self.current_page++
+                    self.total_page = dataResult.data[Api.PAGING][Api.TOTAL_PAGE].intValue
+                    print("notification:: current_page: \(self.current_page), total_page: \(self.total_page)")
+                    self.tbNotification.reloadData()
                 }
             }else{
+                self.current_page--
                 Util().showAlert(dataResult.message, parrent: self)
             }
             
