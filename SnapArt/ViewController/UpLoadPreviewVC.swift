@@ -20,7 +20,8 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     @IBOutlet var instagramBtn: UIButton!
     var imagePicker: UIImagePickerController!
     let TITLE = "Upload to Preview"
-
+    let IMAGE_ERROR = "Please choose image less than 8Mb"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -42,10 +43,10 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     // MARK: - TAKE PHOTO
     @IBAction func takePhotoEvent(sender: AnyObject) {
         getImageFormLib()
-//        let image = UIImage(named: "girl_image")
-//        self.setImageView(Util().imageResize(image!, sizeChange: CGSize(width: 450,height: 800)))
+        //        let image = UIImage(named: "girl_image")
+        //        self.setImageView(Util().imageResize(image!, sizeChange: CGSize(width: 450,height: 800)))
     }
-
+    
     // MARK: - CHOOSE FROM PHOTO FROM FACEBOOK
     @IBAction func choosefbEvent(sender: AnyObject) {
         let vc:FacebookLoginVC = self.storyboard?.instantiateViewControllerWithIdentifier("FacebookLoginVC") as! FacebookLoginVC
@@ -108,9 +109,18 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     }
     
     func setImageView(image:UIImage!) -> Void {
+        let data = UIImagePNGRepresentation(image)
+        var imageSize = Float(data!.length)
+        imageSize = imageSize/(1024*1024)
+        print(imageSize)
+        if imageSize > 10 {
+            Util().showAlert(IMAGE_ERROR, parrent: self)
+            return
+        }
+        
         getFrameSizes(image, resulf: {(frameSizes:[FrameSize]) -> () in
             if frameSizes.last != nil {
-            let suggestMessage = "With your photo resolution, we recommended you print art at \(frameSizes.last!.frame_size) or lower for best quality "
+                let suggestMessage = "With your photo resolution, we recommended you print art at \(frameSizes.last!.frame_size) or lower for best quality "
                 let vc = Util().getControllerForStoryBoard("SelectPhotoVC") as! SelectPhotoVC
                 vc.imageCrop = image
                 vc.suggestMessage = suggestMessage
@@ -142,7 +152,7 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
             
         })
     }
-
+    
     
     /*
     // MARK: - Navigation
