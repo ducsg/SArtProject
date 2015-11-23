@@ -19,9 +19,10 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     var rangeSlider: TDRatingView!
     var imagePreview:UIImage!
     internal var section:AVCaptureSession!
-    
+    internal var message:String = ""
+    internal var unitArray:[Int]!
+
     private var ratio:CGFloat = 1
-    
     private let TITLE = "View On Wall"
     
     internal var URL_IMAGE = "http://demo.innoria.com/snapart/api/cropers/get_image_cropped?id="
@@ -30,11 +31,7 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
         super.viewDidLoad()
         self.title = TITLE
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sendTap:")
-        
-        
     }
-    
-    
     
     deinit {
         if section != nil && section.inputs.count>0 {
@@ -87,7 +84,6 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
             self.customSliderview.layer.shadowOpacity = 1.0
             self.customSliderview.layer.shadowRadius = 3
             self.customSliderview.addToCartBtn.addTarget(self, action: "addToCart:", forControlEvents: UIControlEvents.TouchUpInside)
-            
         }
     }
     
@@ -132,6 +128,7 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
         vc.addToCart()
     }
     
+
 }
 
 /*

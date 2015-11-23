@@ -18,9 +18,13 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var suggestLb: CustomLabelGotham!
+    
+    @IBOutlet weak var widthImage: NSLayoutConstraint!
+    @IBOutlet weak var heighImage: NSLayoutConstraint!
+
     internal var imageCrop:UIImage!
     internal var suggestMessage:String!
-
+    
     private var customPickerView:CustomPickerView!
     private var hiddenPicker = true
     private var ratioValue:Float = 1
@@ -43,13 +47,13 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         self.sizeBtn.layer.borderWidth = 0.5
         self.sizeBtn.layer.borderColor = UIColor.grayColor().CGColor
         self.sizeBtn.setBackgroundImage(UIImage(named: "ic_select_frame"), forState: UIControlState.Normal)
-        self.sizeBtn.setBackgroundImage(UIImage(named: "ic_select_frame"), forState: UIControlState.Highlighted)        
+        self.sizeBtn.setBackgroundImage(UIImage(named: "ic_select_frame"), forState: UIControlState.Highlighted)
         self.imageView.backgroundColor = UIColor.clearColor()
         self.imageView.image = imageCrop
-        self.imageView.contentMode = .ScaleAspectFill
+        self.imageView.hidden = true
+//        self.imageView.contentMode = .ScaleAspectFill
         self.suggestLb.text = suggestMessage
         self.customPickerView.setData(self.frameSizes)
-
         applyBackIcon()
     }
     
@@ -63,6 +67,31 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         customPickerView.frame = rect
         self.customPickerView.hidden = true
         customPickerView.setNeedsLayout()
+        
+        self.imageView.hidden = false
+        let max:CGFloat = 278
+        var width = imageCrop.size.width
+        var height = imageCrop.size.height
+        
+        if width > height {
+            height = height * max/width
+            width = max
+        }
+        
+        if width == height {
+            width = max;
+            height = max;
+        }
+        
+        if width < height {
+            width = width * max/height
+            height = max
+        }
+        self.widthImage.constant =  width
+        self.heighImage.constant = height
+        self.containView.setNeedsDisplay()
+        self.containView.setNeedsLayout()
+
     }
     @IBAction func sizeTap(sender: AnyObject) {
         self.customPickerView.hidden = false
@@ -103,7 +132,8 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
         self.navigationController?.popViewControllerAnimated(true)
     }
-
+    
+    
     /*
     // MARK: - Navigation
     

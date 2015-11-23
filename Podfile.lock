@@ -89,7 +89,7 @@ PODS:
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (~> 3.1.3)
   - AlamofireImage (~> 2.0)
   - Braintree (~> 3.9.6)
   - FacebookImagePicker (~> 2.0.6)

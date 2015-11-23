@@ -20,7 +20,9 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     
     private var TITTLE = "Preview"
     private var ADD_TO_CARD = "Add to card"
-    
+    private var message:String = ""
+    private var unitArray:[Int]!
+
     internal static var order = Order()
     internal static var frame_size = FrameSize()
     
@@ -32,8 +34,6 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         self.callLoading(self.navigationController?.view)
         self.webPreview.delegate = self
         
-        sleep(4)
-        
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.webPreview.loadRequest(NSURLRequest(URL: NSURL(string: self.previewURL)!))
@@ -43,6 +43,12 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "checkoutLogin:", name:MESSAGES.NOTIFY.CHECKOUT_LOGIN, object: nil)
         applyBackIcon()
         
+        self.getCurrentUnit({(dataResult:(message:String,values:[AnyObject]!))->() in
+            self.message = dataResult.message
+            if let arr = dataResult.values as? [Int] {
+                self.unitArray = arr
+            }
+        })
 
 
     }
@@ -190,7 +196,21 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
         self.navigationController?.popViewControllerAnimated(true)
     }
+    private func getCurrentUnit(resulf:(String, [AnyObject]!)-> () ){
+        let api = Api()
+        let parameters = ["country_code" : MemoryStoreData().getString(MemoryStoreData.user_country_code)]
+        api.execute(.GET, url: ApiUrl.get_scale_unit, parameters: parameters, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            if(dataResult.success){
+                dataResult.data
+                resulf(dataResult.data[Api.KEY_MESSAGE].stringValue, dataResult.data[Api.KEY_VALUE].arrayObject)
+            }else{
+                Util().showAlert(dataResult.message, parrent: self)
+            }
+            
+        })
+    }
     
+
     /*
     // MARK: - Navigation
     

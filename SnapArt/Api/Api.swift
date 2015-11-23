@@ -19,6 +19,7 @@ public class Api{
     static let KEY_STATUS = "status"
     static let KEY_MESSAGE = "message"
     static let KEY_DATA = "results"
+    static let KEY_VALUE = "value"
     static let PAGING = "pagination"
     static let PAGE = "page"
     static let ROW_PER_PAGE = "row_per_page"
