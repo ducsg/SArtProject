@@ -49,7 +49,7 @@ class PromotionInfoVC: CustomViewController {
                 self.lbPromoCode.text = dataResult.data["code"].stringValue
                 self.lbDiscount.text = dataResult.data["sale_off"].numberValue.stringValue + "% OFF"
                 self.lbStart.text = "Start: " + Util().formatDatetime(dataResult.data["start_time"].stringValue, outputFormat: "MM/dd/yy")
-                self.lbEnd.text = "End: " + dataResult.data["end_time"].stringValue
+                self.lbEnd.text = "End: " + Util().formatDatetime(dataResult.data["end_time"].stringValue, outputFormat: "MM/dd/yy")
                 self.showPromoCodeInfor(true)
             }else{
                 self.lbEmpty.text = dataResult.message

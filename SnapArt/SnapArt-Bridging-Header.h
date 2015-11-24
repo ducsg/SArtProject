@@ -24,3 +24,4 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 //#import <Braintree/Braintree.h>
 //#import "Braintree.h"
+#import <NewRelicAgent/NewRelic.h>

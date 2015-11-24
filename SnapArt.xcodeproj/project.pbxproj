@@ -987,6 +987,7 @@
 				677971251BC41BBF00110C8B /* Resources */,
 				469302CA2E43826669A1F75B /* Copy Pods Resources */,
 				BA9905A0B477FB8E67BD0DE7 /* Embed Pods Frameworks */,
+				AFBA8C171C03000B0035F493 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1120,6 +1121,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SnapArt/Pods-SnapArt-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		AFBA8C171C03000B0035F493 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SCRIPT=`/usr/bin/find \"${SRCROOT}\" -name newrelic_postbuild.sh | head -n 1`\n\n/bin/sh \"${SCRIPT}\" \"AA279665e30896b5c12148cbcdb3a3b50da83aaee4\"";
 		};
 		BA9905A0B477FB8E67BD0DE7 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

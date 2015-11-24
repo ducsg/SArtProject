@@ -20,6 +20,7 @@ target 'SnapArt' do
 
     #pod 'Facebook-iOS-SDK'
 #    pod 'LMGeocoder'
+    pod 'NewRelicAgent', '~> 5.3.4'
 end
 target 'SnapArtTests' do
     

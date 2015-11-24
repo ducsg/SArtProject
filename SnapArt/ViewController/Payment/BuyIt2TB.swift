@@ -33,7 +33,7 @@ class BuyIt2TB: CustomTableViewController, UITextFieldDelegate {
     
     public static var buy2 = 0
     public var billingTitle = "BILLING ADDRESS"
-    public var billingDes = "The address associated with your payent me thod."
+    public var billingDes = "The address associated with your payment method."
     public var shippingTitle = "SHIPPING ADDRESS"
     public var shippingDes = "The address you'd like us to sent your finished framed piece."
     

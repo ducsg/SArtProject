@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //hard code for simulator
-//        MemoryStoreData().setValue(MemoryStoreData.user_reg_id, value: "19d0a7587e55d8cc386ee17406714ff91cf40e42934250e399b0c2fecb30a486") //hard code reg id
-//        MemoryStoreData().setValue(MemoryStoreData.user_country_code, value: "VN")
+        MemoryStoreData().setValue(MemoryStoreData.user_reg_id, value: "19d0a7587e55d8cc386ee17406714ff91cf40e42934250e399b0c2fecb30a486") //hard code reg id
+        MemoryStoreData().setValue(MemoryStoreData.user_country_code, value: "VN")
         
         //reset token
         MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
         case 7:
             UIApplication.sharedApplication().registerForRemoteNotificationTypes(
                 [UIRemoteNotificationType.Badge, UIRemoteNotificationType.Sound, UIRemoteNotificationType.Alert])
-        case 8...10:
+        case 8...20:
             if #available(iOS 8.0, *) {
                 let pushSettings: UIUserNotificationSettings = UIUserNotificationSettings(
                     forTypes:
@@ -83,6 +83,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
         }else{ //do not have notification
             print("app do not have notification")
         }
+        
+        //start trace app
+        NewRelicAgent.startWithApplicationToken("AA279665e30896b5c12148cbcdb3a3b50da83aaee4")
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Override point for customization after application launch.

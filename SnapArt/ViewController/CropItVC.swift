@@ -20,7 +20,7 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
     private var TITTLE = "Crop It"
     private var ROTATE_FUNCTION = "rotateImage()"
     private var CROP_FUNCTION = "cropImage()"
-    static var current_url = NSURL()
+    static var current_url = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +34,7 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
         if(PreviewVC.order.image_id == 0){
             api.uploadFile(imageCrop,ratio:self.ratio, resulf:{(dataResult: (success: Bool, message: String!, data: String!))->() in
                 if dataResult.success == true {
-                    let url = NSURL (string: dataResult.data)
-                    print(url)
-                    CropItVC.current_url = url!
+                    CropItVC.current_url = dataResult.data
                     self.loadCropImage()
                     PreviewVC.order.image_id = 15693
                 } else {
@@ -45,13 +43,17 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
                 }
             })
         }else{
+            let tempUrl = CropItVC.current_url.componentsSeparatedByString("?")
+            CropItVC.current_url = tempUrl[0] + "?ratio=\(self.ratio)"
             self.loadCropImage()
         }
         
     }
     
     func loadCropImage(){
-        let requestObj = NSURLRequest(URL: CropItVC.current_url)
+        print("url crop image: \(CropItVC.current_url)")
+        let url = NSURL (string: CropItVC.current_url)
+        let requestObj = NSURLRequest(URL: url!)
         self.cropWebView.loadRequest(requestObj)
     }
     

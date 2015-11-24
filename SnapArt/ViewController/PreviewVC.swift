@@ -15,6 +15,7 @@ import SwiftyJSON
 class PreviewVC: CustomViewController , UIWebViewDelegate {
     @IBOutlet weak var selectBtnView: UIView!
     @IBOutlet weak var webPreview: UIWebView!
+    
     internal var previewURL = ""
     internal var imagePreview:UIImage!
     
@@ -23,6 +24,8 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     
     internal static var order = Order()
     internal static var frame_size = FrameSize()
+    
+    private var isAdded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,23 +94,27 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     }
     
     func createOrder(){
-        let api = Api()
-        let parameters = [
-            "id": MemoryStoreData().getInt(MemoryStoreData.current_order_id),
-            "picture_id": PreviewVC.order.image_id,
-            "frame_size_id": PreviewVC.frame_size.frame_size_id,
-            "frame_size_config": PreviewVC.frame_size.frame_size_config
-        ]
-        print("parameters createOrder: \(parameters)")
-        api.execute(.POST, url: ApiUrl.create_order_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
-            if(dataResult.success){
-                MemoryStoreData().setValue(MemoryStoreData.current_order_id, value: dataResult.data.intValue)
-                let nv = Util().getControllerForStoryBoard("ShoppingCheckoutNC") as! CustomNavigationController
-                self.navigationController?.presentViewController(nv, animated: true, completion: nil)
-            }else{
-                Util().showAlert(dataResult.message, parrent: self)
-            }
-        })
+        if(!isAdded){
+            isAdded = true
+            let api = Api()
+            let parameters = [
+                "id": MemoryStoreData().getInt(MemoryStoreData.current_order_id),
+                "picture_id": PreviewVC.order.image_id,
+                "frame_size_id": PreviewVC.frame_size.frame_size_id,
+                "frame_size_config": PreviewVC.frame_size.frame_size_config
+            ]
+            print("parameters createOrder: \(parameters)")
+            api.execute(.POST, url: ApiUrl.create_order_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+                self.isAdded = false
+                if(dataResult.success){
+                    MemoryStoreData().setValue(MemoryStoreData.current_order_id, value: dataResult.data.intValue)
+                    let nv = Util().getControllerForStoryBoard("ShoppingCheckoutNC") as! CustomNavigationController
+                    self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+                }else{
+                    Util().showAlert(dataResult.message, parrent: self)
+                }
+            })
+        }
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {

@@ -114,6 +114,9 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
             api.initWaiting(parentView)
             api.execute(.POST, url: ApiUrl.delete_order_url, parameters: ["id":self.listCart[indexRow].id], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
+                    if(self.listCart[indexRow].id == MemoryStoreData().getInt(MemoryStoreData.current_order_id)){
+                        MemoryStoreData().setValue(MemoryStoreData.current_order_id, value: 0)
+                    }
                     self.listCart.removeAtIndex(indexRow)
                     tableView.deleteRowsAtIndexPaths([self.tbOrder.indexPathForCell(sender)!], withRowAnimation: UITableViewRowAnimation.Left)
                     self.resetCost()
