@@ -97,7 +97,7 @@ DEPENDENCIES:
   - FBSDKLoginKit (~> 4.6.0)
   - InstagramKit (~> 3.0)
   - InstagramKit/UICKeyChainStore
-  - NewRelicAgent
+  - NewRelicAgent (~> 5.3.4)
   - SDWebImage (~> 3.7.2)
   - SwiftyJSON (~> 2.3.1)
 

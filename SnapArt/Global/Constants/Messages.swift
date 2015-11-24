@@ -33,12 +33,13 @@ struct MESSAGES{
     
      struct REGISTER{
         static let PASS_INVALID = "Password is too short (minimum is 6 characters)."
+        static let NEW_PASS_INVALID = "New Password is too short (minimum is 6 characters)."
         static let OLD_PASS_EMPTY = "Old Password can't be blank."
         static let RE_PASS_EMPTY = "Re - Enter Password can't be blank."
         static let PASS_EMPTY = "Password can’t be blank."
-        static let VERIFICATION_EMPTY = "Verification code should not be blank."
+        static let VERIFICATION_EMPTY = "Code can’t be blank."
         static let COMPARE_PASSWORD = "Re - Enter Password and Password don’t match."
-        static let NEW_PASSWORD_EMPTY = "Confirm New Password can't be blank."
+        static let NEW_PASSWORD_EMPTY = "New Password can't be blank."
         static let COMPARE_FORGOT_PASSWORD = "Confirm New Password and Password don’t match"
     }
     
@@ -46,5 +47,9 @@ struct MESSAGES{
         static let SHOPPING_QUESTION = "For an extra $0.99, your art is wrapped in high - quality gift wrap before being securely packaged for delivery."
         static let SHOPPING_CART_IS_EMPTY = "Your cart is empty."
         static let MAX_FRAME_LIST = "Maximum 3 records are allowed."
+    }
+    
+    struct MAKE_ART{
+        static let IMAGE_ERROR = "The photo you uploaded is too big, please select other."
     }
 }

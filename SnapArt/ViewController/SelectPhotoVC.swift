@@ -69,7 +69,7 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         customPickerView.setNeedsLayout()
         
         self.imageView.hidden = false
-        let max:CGFloat = 278
+        let max:CGFloat = 280
         var width = imageCrop.size.width
         var height = imageCrop.size.height
         
@@ -87,6 +87,7 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
             width = width * max/height
             height = max
         }
+        print("width image: \(width); height: \(height)")
         self.widthImage.constant =  width
         self.heighImage.constant = height
         self.containView.setNeedsDisplay()
