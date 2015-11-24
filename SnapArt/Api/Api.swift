@@ -61,6 +61,9 @@ public class Api{
                 if json[Api.KEY_STATUS].numberValue == 500 {
                     resulf(false, json[Api.KEY_MESSAGE].stringValue, data)
                 }
+                if json[Api.KEY_STATUS].numberValue == 401 {
+                    NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.GO_LOGIN, object: nil)
+                }
             }
         }else if(method == .POST){
             self.alamoFireManager!.request(.POST, url, parameters: parameters, headers: headers).responseJSON { response in
@@ -84,9 +87,14 @@ public class Api{
                 if json[Api.KEY_STATUS].numberValue == 500 {
                     resulf(false, json[Api.KEY_MESSAGE].stringValue, data)
                 }
+                if json[Api.KEY_STATUS].numberValue == 401 {
+                    NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.GO_LOGIN, object: nil)
+                }
             }
         }
-        
+    }
+    
+    func gotoLogin(){
         
     }
     
