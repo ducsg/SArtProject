@@ -92,8 +92,8 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
         ]
         api.execute(.GET, url: ApiUrl.get_transaction_url, parameters: parameters, isGetFullData: true, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
-                if(dataResult.data.count > 0){
-                    for i in 0...dataResult.data.count-1 {
+                if(dataResult.data[Api.KEY_DATA].count > 0){
+                    for i in 0...dataResult.data[Api.KEY_DATA].count-1 {
                         let data = dataResult.data[Api.KEY_DATA]
                         let dateStr = Util().formatDatetime(data[i]["created_at"].stringValue, outputFormat: "MM/dd/yy")
                         var shipped_at = ""

@@ -20,7 +20,7 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     @IBOutlet var instagramBtn: UIButton!
     var imagePicker: UIImagePickerController!
     let TITLE = "Upload to Preview"
-    let IMAGE_ERROR = "Please choose image less than 8Mb"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,12 +109,12 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     }
     
     func setImageView(image:UIImage!) -> Void {
-        let data = UIImagePNGRepresentation(image)
+        let data = UIImagePNGRepresentation(image) //UIImagePNGRepresentation
         var imageSize = Float(data!.length)
         imageSize = imageSize/(1024*1024)
-        print(imageSize)
+        print("image size: \(imageSize)Mb")
         if imageSize > 10 {
-            Util().showAlert(IMAGE_ERROR, parrent: self)
+            Util().showAlert(MESSAGES.MAKE_ART.IMAGE_ERROR, parrent: self)
             return
         }
         

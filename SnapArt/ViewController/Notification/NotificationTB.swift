@@ -75,7 +75,7 @@ class NotificationTB: CustomTableViewController {
         ]
         api.execute(.GET, url: ApiUrl.get_notification_url, parameters: parameters, isGetFullData: true, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
-                if(dataResult.data.count > 0){
+                if(dataResult.data[Api.KEY_DATA].count > 0){
                     for i in 0...dataResult.data[Api.KEY_DATA].count-1 {
                         let data = dataResult.data[Api.KEY_DATA]
                         let notification = Notification(id: data[i]["id"].numberValue.integerValue, read_at: data[i]["read_at"].stringValue, created_at: Util().formatDatetime(data[i]["created_at"].stringValue, outputFormat: "MM/dd/yy HH:mm a"), transaction_id: data[i]["transaction_id"].numberValue.integerValue, type_of_notification: data[i]["type_of_notification"].numberValue.integerValue, action: data[i]["action"].numberValue.integerValue, title: data[i]["title"].stringValue)

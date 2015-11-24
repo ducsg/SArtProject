@@ -62,12 +62,12 @@ class ChangePasswordTB: CustomTableViewController {
         }
         
         if tfPwd.text!.isEmpty {
-            Util().showAlert(MESSAGES.REGISTER.PASS_EMPTY, parrent: self)
+            Util().showAlert(MESSAGES.REGISTER.NEW_PASSWORD_EMPTY, parrent: self)
             return false
         }
         
         if !Util().IsValidPassword(tfPwd.text!) {
-            Util().showAlert(MESSAGES.REGISTER.PASS_INVALID, parrent: self)
+            Util().showAlert(MESSAGES.REGISTER.NEW_PASS_INVALID, parrent: self)
             return false
         }
         
