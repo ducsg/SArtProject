@@ -17,6 +17,7 @@ struct MESSAGES{
         static let RESET_COST = "ResetCost"
         static let CHECKOUT_LOGIN = "CheckoutLogin"
         static let COMEBACKHOME = "ComeBackHomeVC"
+        static let GO_LOGIN = "GoToLogin"
         static let CHECK_ORDER = "CheckNumberOfOrder"
     }
     

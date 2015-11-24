@@ -39,7 +39,6 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.listCart.removeAll()
-        getListCart()
         // Do any additional setup after loading the view.
         self.applyBackIcon()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -52,6 +51,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(true)
+        getListCart()
         headerView.addTitles(TITLES)
         //        if(Util().getCountryCode() == "US"){
         lbShipping.text = "FREE"

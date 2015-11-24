@@ -48,7 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
             }
         default: break
         }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "comeBackHomeVC", name:MESSAGES.NOTIFY.COMEBACKHOME, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotoLogin", name:MESSAGES.NOTIFY.GO_LOGIN, object: nil)
         
         //update location
         locationManager.autoUpdate = true
@@ -97,6 +99,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
     func gotoNotification(){
         let nv = Util().getControllerForStoryBoard("NotificationNC") as! CustomNavigationController
         self.window!.rootViewController!.presentViewController(nv, animated: true, completion: nil)
+    }
+    
+    func gotoLogin(){
+        let nv = Util().getControllerForStoryBoard("LoginNC") as! CustomNavigationController
+        let vc = self.getCurrent()
+
+        vc.presentViewController(nv, animated: true, completion: nil)
+    }
+    
+    func getCurrent() -> UIViewController {
+        var vc = self.window!.rootViewController!
+        while (((vc.presentedViewController)) != nil) {
+            vc = vc.presentedViewController!
+        }
+        return vc
     }
     
     func updateLocation(){

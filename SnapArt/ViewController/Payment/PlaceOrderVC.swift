@@ -58,7 +58,7 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.tbOrder.reloadData()
-        
+        MyOrderVC.isReload = false
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
