@@ -70,10 +70,10 @@ class CustomPickerView: UIView, UIPickerViewDelegate , UIPickerViewDataSource {
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        self.indexSelected = row
         return pickerData[row].frame_size
         
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.indexSelected = row
     }
 }

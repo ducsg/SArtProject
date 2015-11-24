@@ -78,6 +78,7 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
             rect.size.width = 300
             rect.size.height = rect.size.width*1/ratio
             
+            self.customSliderview.textlb.text = self.message
             self.customSliderview.imagePreview.frame = rect
             self.customSliderview.imagePreview.center = CGPointMake(customSliderview.bounds.size.width / 2, customSliderview.bounds.size.height / 2 - rect.size.height/4)
             self.customSliderview.layer.shadowOffset = CGSize(width: 4, height: 4)

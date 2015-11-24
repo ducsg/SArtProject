@@ -15,7 +15,8 @@ import SwiftyJSON
 class PreviewVC: CustomViewController , UIWebViewDelegate {
     @IBOutlet weak var selectBtnView: UIView!
     @IBOutlet weak var webPreview: UIWebView!
-    
+    @IBOutlet weak var framePriceLb: CustomLabelGotham!
+
     internal var previewURL = ""
     internal var imagePreview:UIImage!
     
@@ -36,6 +37,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         self.webPreview.backgroundColor = UIColor.whiteColor()
         self.callLoading(self.navigationController?.view)
         self.webPreview.delegate = self
+        self.framePriceLb.text = "\(PreviewVC.frame_size.frame_size) \(PreviewVC.frame_size.price)"
         
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
@@ -68,6 +70,9 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             let vc = Util().getControllerForStoryBoard("ViewOnWallVC") as! ViewOnWallVC
+            vc.message = self.message
+            print(self.message)
+            vc.unitArray = self.unitArray
             self.createCaptureVideoPreviewLayer(vc)
             self.removeLoading(self.navigationController?.view)
             self.navigationController?.pushViewController(vc, animated: true)

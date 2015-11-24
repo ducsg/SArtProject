@@ -17,7 +17,7 @@ public class Api{
         "token" : MemoryStoreData().getString(APIKEY.ACCESS_TOKEN)
     ]
     static let KEY_STATUS = "status"
-    static let KEY_MESSAGE = "message"
+    static let KEY_MESSAGE = "mesage"
     static let KEY_DATA = "results"
     static let KEY_VALUE = "value"
     static let PAGING = "pagination"

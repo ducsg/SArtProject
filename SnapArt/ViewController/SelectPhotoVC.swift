@@ -43,7 +43,7 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         self.customPickerView.hidden = hiddenPicker
         self.customPickerView.hiddenPicker = hiddenPicker
         self.view.addSubview(customPickerView)
-        self.suggestLb.hidden = true
+
         self.sizeBtn.layer.borderWidth = 0.5
         self.sizeBtn.layer.borderColor = UIColor.grayColor().CGColor
         self.sizeBtn.setBackgroundImage(UIImage(named: "ic_select_frame"), forState: UIControlState.Normal)
@@ -112,6 +112,7 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
             Util().showAlert(MESSAGES.COMMON.FRAME_SIZE_INVALID, parrent: self)
             return
         }
+        self.customPickerView.hidden = true
         let vc = Util().getControllerForStoryBoard("CropItVC") as! CropItVC
         vc.imageCrop = imageCrop
         vc.ratio = ratioValue

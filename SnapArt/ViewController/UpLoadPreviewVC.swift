@@ -142,7 +142,7 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
                 var frameSizes = [FrameSize]()
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
-                        frameSizes.append(FrameSize(size: dataResult.data[i]["frame_size"].stringValue , ratio: dataResult.data[i]["ratio"].floatValue,size_id:dataResult.data[i]["id"].intValue, frame_size_config: dataResult.data[i]["frame_size_config"].stringValue))
+                        frameSizes.append(FrameSize(size: dataResult.data[i]["frame_size"].stringValue , ratio: dataResult.data[i]["ratio"].floatValue,size_id:dataResult.data[i]["id"].intValue, frame_size_config: dataResult.data[i]["frame_size_config"].stringValue,price:dataResult.data[i]["price"].stringValue))
                     }
                     resulf(frameSizes)
                 }
