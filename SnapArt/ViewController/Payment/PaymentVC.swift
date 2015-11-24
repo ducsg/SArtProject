@@ -22,6 +22,15 @@ class PaymentVC: CustomViewController, BTDropInViewControllerDelegate, CardIOPay
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        applyBackIcon()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        getTokenPayment()
+    }
+    
+    func getTokenPayment(){
         let parentView:UIView! = self.navigationController?.view
         let api = Api()
         api.initWaiting(parentView)
@@ -35,7 +44,6 @@ class PaymentVC: CustomViewController, BTDropInViewControllerDelegate, CardIOPay
                 alert.delegate = self
             }
         })
-        applyBackIcon()
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{

@@ -56,6 +56,10 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
 
     }
     
+    override func viewDidAppear(animated: Bool) {
+        isAdded = false
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

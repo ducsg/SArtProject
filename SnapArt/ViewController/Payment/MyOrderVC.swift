@@ -18,6 +18,7 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
     
     var current_page = 1
     var total_page = 1
+    static var isReload = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +30,11 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
         myOrderTb.delegate = self
         myOrderTb.dataSource = self
 
-        getTransactionList()
+        
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
+        MyOrderVC.isReload = true
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -46,6 +48,9 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
     }
     override func viewDidAppear(animated: Bool) {
         myOrderTb.reloadData()
+        if(MyOrderVC.isReload){
+            getTransactionList()
+        }
     }
     
      func numberOfSectionsInTableView(tableView: UITableView) -> Int {

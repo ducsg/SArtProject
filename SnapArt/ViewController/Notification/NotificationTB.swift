@@ -20,11 +20,10 @@ class NotificationTB: CustomTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         applyBackIcon()
-        getListNotification()
         self.tableView.allowsSelection = true
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,6 +37,7 @@ class NotificationTB: CustomTableViewController {
         if self.tapGest != nil {
             self.tapGest.enabled = false
         }
+        getListNotification()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
