@@ -33,7 +33,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     static var discount:Float = 0
     
     static var totalCost:Float = 0
-    let TITLES = ["Qunty","Preview","Size","Price"]
+    let TITLES = ["Qnty","Preview","Size","Price"]
     
     var listCart: [Order] = [Order]()
     override func viewDidLoad() {
@@ -176,6 +176,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         api.initWaiting(parentView)
         api.execute(.GET, url: ApiUrl.my_orders_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
+                self.listCart.removeAll()
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
                         let cart = Order(id: dataResult.data[i]["id"].numberValue.integerValue, quantity: dataResult.data[i]["quantity"].numberValue.integerValue,frameUrl: dataResult.data[i]["link_picture"].stringValue, item: dataResult.data[i]["material"].stringValue, price: dataResult.data[i]["cost"].numberValue.floatValue, size: dataResult.data[i]["size"].stringValue, max_quantity: dataResult.data[i]["max_quantity"].intValue)

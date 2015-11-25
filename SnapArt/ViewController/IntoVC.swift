@@ -41,8 +41,8 @@ class IntoVC: CustomViewController,UIPageViewControllerDataSource, UIAlertViewDe
     
     func checkOrder(sender:AnyObject){
         let api = Api()
-        let parentView:UIView! = self.navigationController?.view
-        api.initWaiting(parentView)
+//        let parentView:UIView! = self.navigationController?.view
+//        api.initWaiting(parentView)
         api.execute(.GET, url: ApiUrl.my_orders_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
                 if(dataResult.data.count > 0){

@@ -41,10 +41,11 @@ class MyOrderCell: UITableViewCell {
     func setTransaction(transaction:Transaction) -> Void{
         let rect = self.bounds
         let width = rect.width/4
+        let height = width
         self.datelb.frame = CGRect(x: 1*Int(width), y: 0, width:Int(width), height: Int(rect.height))
         self.codelb.frame = CGRect(x: 2*Int(width), y: 0, width:Int(width), height: Int(rect.height))
         self.statuslb.frame = CGRect(x: 3*Int(width), y: 0, width:Int(width), height: Int(rect.height))
-        self.imageContain.frame = CGRect(x:5, y: 0, width:Int(width ), height: Int(rect.height))
+        self.imageContain.frame = CGRect(x:5, y: 0, width:Int(width ), height: Int(height))
 
         let fm = CGRect(x: 30, y: 10, width: self.imageContain.bounds.width - 60, height:  self.imageContain.bounds.height  - 20)
         

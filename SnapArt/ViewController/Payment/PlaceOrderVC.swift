@@ -163,7 +163,7 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
         var rect = cell.contentView.bounds
         rect.origin.x+=10
         let header = HeaderView(frame: rect)
-        let TITLES = ["Qunty","Preview","Size","Price"]
+        let TITLES = ["Qnty","Preview","Size","Price"]
         header.addTitles(TITLES)
         cell.contentView.addSubview(header)
         return cell

@@ -117,16 +117,17 @@ public class Util: NSObject {
     }
     
     //format datetime
-    func formatDatetime(strDate:String = "", inputFormat:String = "yyyy-MM-dd HH:mm:ss Z", outputFormat:String = "")-> String{
+    func formatDatetime(strDate:String = "", inputFormat:String = "yyyy-MM-dd HH:mm:ss Z", outputFormat:String = "")-> String! {
         let strTime: String? = strDate //"29/10/2015 20:00:00 +0000"
-        let formatter = NSDateFormatter()
+        let formatter:NSDateFormatter! = NSDateFormatter()
         formatter.dateFormat = inputFormat //"dd/mm/yyyy HH:mm:ss Z"
-        let getDate:NSDate = formatter.dateFromString(strTime!)!
+        let getDate:NSDate! = formatter?.dateFromString(strTime!)
         
         
-        let formatterOut = NSDateFormatter()
+        
+        let formatterOut:NSDateFormatter! = NSDateFormatter()
         formatterOut.dateFormat = outputFormat //"MM/dd/yy HH:mm a"
-        return formatterOut.stringFromDate(getDate)
+        return getDate == nil ? "" : formatterOut?.stringFromDate(getDate)
     }
     
     func convertStringToDictionary(text: String) -> [String:AnyObject]? {
