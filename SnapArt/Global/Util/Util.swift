@@ -100,6 +100,14 @@ public class Util: NSObject {
             }else{
                 listFieldRequire[i].setStyleForLabel()
             }
+            if(listFieldRequire.count-1 == i){
+                if(listFieldRequire[i].text == "Select"){
+                    listFieldRequire[i].applyErrorStyle()
+                    valid = false
+                }else{
+                    listFieldRequire[i].setStyleForLabel()
+                }
+            }
         }
         return valid
     }
