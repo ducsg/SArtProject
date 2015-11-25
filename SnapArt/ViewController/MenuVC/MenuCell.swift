@@ -58,7 +58,7 @@ class MenuCell: UITableViewCell {
         button.setTitle(titleText, forState: UIControlState.Normal)
         button.setTitleColor(SA_STYPE.TEXT_BUTTON_COLOR, forState: UIControlState.Normal)
         button.setTitleColor(SA_STYPE.TEXT_BUTTON_COLOR, forState: UIControlState.Highlighted)
-        button.titleLabel?.font = SA_STYPE.FONT_GOTHAM
+        button.titleLabel?.font = SA_STYPE.FONT_GOTHAM_BOLD
         self.addSubview(button)
         return button
     }

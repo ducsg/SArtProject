@@ -29,6 +29,7 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
         myOrderTb.registerClass(MyOrderCell.self, forCellReuseIdentifier: "MyOrderCell")
         myOrderTb.delegate = self
         myOrderTb.dataSource = self
+        self.myOrderTb.reloadData()
 
         
     }
@@ -47,7 +48,6 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
         titlesView.addTitles(TITLES)
     }
     override func viewDidAppear(animated: Bool) {
-        myOrderTb.reloadData()
         if(MyOrderVC.isReload){
             getTransactionList()
         }
@@ -65,7 +65,7 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:MyOrderCell = tableView.dequeueReusableCellWithIdentifier("MyOrderCell") as! MyOrderCell
+        let cell:MyOrderCell =  tableView.dequeueReusableCellWithIdentifier("MyOrderCell") as! MyOrderCell
         cell.setTransaction(self.transactionList[indexPath.row])
         return cell
     }
