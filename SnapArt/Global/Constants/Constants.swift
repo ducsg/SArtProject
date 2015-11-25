@@ -44,6 +44,8 @@ enum SocialNetwork {
 struct SA_STYPE {
     static let FONT_ARCHER:UIFont = UIFont(name:"Archer", size: 15)!
     static let FONT_GOTHAM:UIFont = UIFont(name:"Gotham Thin", size: 15)!
+    static let FONT_GOTHAM_13:UIFont = UIFont(name:"Gotham Thin", size: 13)!
+
     static let FONT_GOTHAM_BOLD:UIFont = UIFont(name:"Gotham Bold", size: 15)!
     static let TEXT_BUTTON_COLOR:UIColor = UIColor.whiteColor()
 
