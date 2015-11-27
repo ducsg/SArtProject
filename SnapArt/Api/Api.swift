@@ -94,10 +94,6 @@ public class Api{
         }
     }
     
-    func gotoLogin(){
-        
-    }
-    
     func uploadFile(image:UIImage!,ratio:Float, resulf:(Bool,String!, String!) -> ()){
         let imageData = UIImageJPEGRepresentation(image, 1.0)
         SRWebClient.POST(ApiUrl.crop_image_url)//
