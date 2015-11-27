@@ -79,7 +79,6 @@ class IntoVC: CustomViewController,UIPageViewControllerDataSource, UIAlertViewDe
             let v2:ImageContentVC = self.storyboard?.instantiateViewControllerWithIdentifier("ImageContentVC") as! ImageContentVC
             let v3:ImageContentVC = self.storyboard?.instantiateViewControllerWithIdentifier("ImageContentVC") as! ImageContentVC
             let v4:ImageContentVC = self.storyboard?.instantiateViewControllerWithIdentifier("ImageContentVC") as! ImageContentVC
-
             v1.setBgImage("Home 1")
             v2.setBgImage("Home 2")
             v3.setBgImage("Home 3")
@@ -116,8 +115,5 @@ class IntoVC: CustomViewController,UIPageViewControllerDataSource, UIAlertViewDe
         let index = self.vcArray.indexOfObject(pendingViewControllers.last!)
         print(self.vcArray.indexOfObject(pendingViewControllers.last!))
         self.pageIndicator.currentPage = index
- 
-    }
-
-    
+     }
 }
