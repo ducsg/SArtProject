@@ -61,18 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationManagerDelegate{
                     MemoryStoreData().setValue(MemoryStoreData.user_lat, value: latitude)
                     MemoryStoreData().setValue(MemoryStoreData.user_long, value: longitude)
                     print("Location: long=> \(longitude), lat=> \(latitude)")
-                    Alamofire.request(.GET, "http://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)")
-                        .responseJSON { response in
-                            //                            print(response)
-                            if let data:JSON = JSON(response.result.value!) {
-                                if(data["status"].stringValue == "OK"){
-                                    let countryCode = data["results"][data["results"].count-1]["address_components"][0]["short_name"].stringValue
-                                    if(countryCode != ""){
-                                        MemoryStoreData().setValue(MemoryStoreData.user_country_code, value: countryCode)
-                                    }
-                                }
-                            }
-                    }
                 }
             }
         }

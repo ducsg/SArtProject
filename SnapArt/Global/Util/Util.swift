@@ -8,6 +8,9 @@
 
 import UIKit
 import Foundation
+import Alamofire
+import SwiftyJSON
+
 public class Util: NSObject {
     
     func removeDuplicates(array: [String]) -> [String] {
@@ -148,5 +151,21 @@ public class Util: NSObject {
             }
         }
         return nil
+    }
+    
+    func getCountryCode(callBack:(Bool) -> ()){
+        Alamofire.request(.GET, "http://maps.googleapis.com/maps/api/geocode/json?latlng=\(MemoryStoreData().getString(MemoryStoreData.user_lat)),\(MemoryStoreData().getString(MemoryStoreData.user_long))")
+            .responseJSON { response in
+                //                            print(response)
+                if let data:JSON = JSON(response.result.value!) {
+                    if(data["status"].stringValue == "OK"){
+                        let countryCode = data["results"][data["results"].count-1]["address_components"][0]["short_name"].stringValue
+                        if(countryCode != ""){
+                            MemoryStoreData().setValue(MemoryStoreData.user_country_code, value: countryCode)
+                            callBack(true)
+                        }
+                    }
+                }
+        }
     }
 }
