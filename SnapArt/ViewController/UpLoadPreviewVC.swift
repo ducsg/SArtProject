@@ -117,17 +117,23 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
             Util().showAlert(MESSAGES.MAKE_ART.IMAGE_ERROR, parrent: self)
             return
         }
-        
-        getFrameSizes(image, resulf: {(frameSizes:[FrameSize]) -> () in
-            if frameSizes.last != nil {
-                let suggestMessage = "With your photo resolution, we recommended you print art at \(frameSizes.last!.frame_size) or lower for best quality "
-                let vc = Util().getControllerForStoryBoard("SelectPhotoVC") as! SelectPhotoVC
-                vc.imageCrop = image
-                vc.suggestMessage = suggestMessage
-                vc.frameSizes = frameSizes
-                self.navigationController?.pushViewController(vc, animated: true)
+        Util().getCountryCode { (success) -> () in
+            if(success){
+                self.getFrameSizes(image, resulf: {(frameSizes:[FrameSize]) -> () in
+                    if frameSizes.last != nil {
+                        let suggestMessage = "With your photo resolution, we recommended you print art at \(frameSizes.last!.frame_size) or lower for best quality "
+                        let vc = Util().getControllerForStoryBoard("SelectPhotoVC") as! SelectPhotoVC
+                        vc.imageCrop = image
+                        vc.suggestMessage = suggestMessage
+                        vc.frameSizes = frameSizes
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                })
+            }else{
+                Util().showAlert(MESSAGES.COMMON.CAN_NOT_GET_LOCATION, parrent: self)
             }
-        })
+        }
+        
     }
     
     private func getFrameSizes(image:UIImage, resulf:([FrameSize]) ->()){

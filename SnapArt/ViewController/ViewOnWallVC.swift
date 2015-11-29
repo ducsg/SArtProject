@@ -12,7 +12,7 @@ import SwiftyJSON
 import Alamofire
 
 
-class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
+class ViewOnWallVC: CustomViewController, TDRatingViewDelegate {
     let captureSession = AVCaptureSession()
     let stillImageOutput = AVCaptureStillImageOutput()
     var customSliderview:SliderView!
@@ -20,7 +20,7 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     var imagePreview:UIImage!
     internal var section:AVCaptureSession!
     internal var message:String = ""
-    internal var unitArray:[Int]!
+    internal var unitArray:[Float]!
 
     private var ratio:CGFloat = 1
     private let TITLE = "View On Wall"
@@ -30,12 +30,12 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = TITLE
+        self.applyBackIcon()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "sendTap:")
     }
     
     deinit {
         if section != nil && section.inputs.count>0 {
-            self.section.inputs
             let input: AVCaptureInput = self.section.inputs[0] as! AVCaptureInput
             self.section.removeInput(input)
             let output: AVCaptureVideoDataOutput = self.section.outputs[0] as! AVCaptureVideoDataOutput
@@ -45,7 +45,7 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
         print("deinit") // never gets called
     }
     
-    func addViewPreview(image: UIImage) -> Void {
+    func addViewPreview(image: UIImage!) -> Void {
         self.imagePreview = image
         self.customSliderview = SliderView.instanceFromNib()
         self.customSliderview.imagePreview.image = image
@@ -54,13 +54,17 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+
         if self.customSliderview != nil {
+            self.customSliderview.textlb.text = self.message
             self.customSliderview.addImagePreview(self.imagePreview)
+            self.unitArray.sortInPlace { return $0 < $1}
             
             if rangeSlider == nil {
                 rangeSlider = TDRatingView()
                 rangeSlider.maximumRating = 6
                 rangeSlider.minimumRating = 2
+                rangeSlider.sliderValArray = unitArray
                 rangeSlider.widthOfEachNo = (UInt(self.customSliderview.sliderView.frame.width) / UInt(5))
                 rangeSlider.heightOfEachNo = 30
                 rangeSlider.sliderHeight = 25
@@ -69,6 +73,7 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
                 rangeSlider.drawRatingControlWithX(0, y:0)
                 rangeSlider.center = self.customSliderview.sliderView.center
                 self.customSliderview.sliderView.addSubview(rangeSlider)
+
             }
             
             
@@ -78,12 +83,11 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
             rect.size.width = 300
             rect.size.height = rect.size.width*1/ratio
             
-            self.customSliderview.textlb.text = self.message
             self.customSliderview.imagePreview.frame = rect
             self.customSliderview.imagePreview.center = CGPointMake(customSliderview.bounds.size.width / 2, customSliderview.bounds.size.height / 2 - rect.size.height/4)
-            self.customSliderview.layer.shadowOffset = CGSize(width: 4, height: 4)
-            self.customSliderview.layer.shadowOpacity = 1.0
-            self.customSliderview.layer.shadowRadius = 3
+            self.customSliderview.imagePreview.layer.shadowOffset = CGSize(width: 4, height: 4)
+            self.customSliderview.imagePreview.layer.shadowOpacity = 1.0
+            self.customSliderview.imagePreview.layer.shadowRadius = 3
             self.customSliderview.addToCartBtn.addTarget(self, action: "addToCart:", forControlEvents: UIControlEvents.TouchUpInside)
         }
     }
@@ -91,19 +95,18 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    func selectedRating(scale: String!) {
-        let range:Int = Int(scale)!
+    func selectedRating(scale: Int32) {
         var rect = self.customSliderview.imagePreview.bounds
-        switch range {
-        case 2: rect.size.width = 250
+        switch scale {
+        case 0: rect.size.width = 250
             break
-        case 3: rect.size.width = 200
+        case 1: rect.size.width = 200
             break
-        case 4: rect.size.width = 150
+        case 2: rect.size.width = 150
             break
-        case 5: rect.size.width = 100
+        case 3: rect.size.width = 100
             break
-        case 6: rect.size.width = 50
+        case 4: rect.size.width = 50
             break
         default: break
         }
@@ -129,7 +132,9 @@ class ViewOnWallVC: UIViewController, TDRatingViewDelegate {
         vc.addToCart()
     }
     
-
+    func pressBackIcon(sender: UIBarButtonItem!) -> Void{
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 }
 
 /*

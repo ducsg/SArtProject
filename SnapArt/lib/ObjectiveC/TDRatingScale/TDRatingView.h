@@ -11,7 +11,7 @@
 @protocol TDRatingViewDelegate <NSObject>
 
 @required
-- (void) selectedRating:(NSString *)scale;
+- (void) selectedRating:(int)scale;
 @end
 
 @interface TDRatingView : UIView<UIGestureRecognizerDelegate>
@@ -41,6 +41,7 @@
     id<TDRatingViewDelegate>delegate;
     
 }
+@property(nonatomic,assign)BOOL floatMode;
 @property(nonatomic,assign)NSUInteger maximumRating;
 @property(nonatomic,assign)NSUInteger minimumRating;
 @property(nonatomic,assign)NSUInteger spaceBetweenEachNo;
@@ -54,6 +55,7 @@
 @property(nonatomic,strong)UIColor *disableStateTextColor;
 @property(nonatomic,strong)UIColor *selectedStateTextColor;
 @property(nonatomic,strong)UIColor *sliderBorderColor;
+@property(nonatomic,strong)NSArray *sliderValArray;
 
 -(void)drawRatingControlWithX:(float)x Y:(float)y;
 -(void)drawRatingView;
