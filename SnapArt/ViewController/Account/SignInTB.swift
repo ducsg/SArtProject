@@ -18,12 +18,22 @@ public class SignInVC: CustomTableViewController {
     @IBOutlet weak var btnSignIn: CustomButton!
     
     @IBOutlet weak var btnForgotPwd: CustomButton!
+    
+    @IBOutlet weak var btnNeedAccount: CustomButton!
+    
     private var email:String = ""
     private var pwd:String = ""
     public static var loginForCheckout = false
     
+    
     override public func viewDidLoad() {
         self.btnForgotPwd.addUnderLine()
+        if(SignInVC.loginForCheckout){
+            btnNeedAccount.hidden = false
+        }else{
+            btnNeedAccount.hidden = true
+        }
+        
         // test
 //        tfEmail.text = "khanhduong@innoria.com"
 //        tfPwd.text = "123456"
@@ -84,4 +94,11 @@ public class SignInVC: CustomTableViewController {
 
         return true
     }
+
+    @IBAction func pressBtnNeedAccount(sender: AnyObject) {
+        PreviewVC.goToScreen = "RegisterNC"
+        self.cancelTap("")
+        NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.CHECKOUT_LOGIN, object: nil)
+    }
+    
 }

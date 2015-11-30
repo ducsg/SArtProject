@@ -134,8 +134,6 @@ public class Util: NSObject {
         formatter.dateFormat = inputFormat //"dd/mm/yyyy HH:mm:ss Z"
         let getDate:NSDate! = formatter?.dateFromString(strTime!)
         
-        
-        
         let formatterOut:NSDateFormatter! = NSDateFormatter()
         formatterOut.dateFormat = outputFormat //"MM/dd/yy HH:mm a"
         return getDate == nil ? "" : formatterOut?.stringFromDate(getDate)

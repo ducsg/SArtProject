@@ -19,6 +19,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
 
     internal var previewURL = ""
     internal var imagePreview:UIImage!
+    internal static var goToScreen = "RegisterNC"
     
     private var TITTLE = "Preview"
     private var ADD_TO_CARD = "Add to card"
@@ -99,7 +100,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     func addToCart(){
         if(MemoryStoreData().getString(APIKEY.ACCESS_TOKEN) == ""){
             SignInVC.loginForCheckout = true
-            let nv = Util().getControllerForStoryBoard("LoginNC") as! CustomNavigationController
+            let nv = Util().getControllerForStoryBoard(PreviewVC.goToScreen) as! CustomNavigationController
             self.navigationController?.presentViewController(nv, animated: true, completion: nil)
         }else{
             createOrder()

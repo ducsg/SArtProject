@@ -16,6 +16,9 @@ public class RegisterTB: CustomTableViewController {
     @IBOutlet weak var tfRePwd: CustomTextField!
     @IBOutlet weak var btnRegister: CustomButton!
     
+    @IBOutlet weak var btnHaveAccount: CustomButton!
+    
+    
     private var email:String = ""
     private var pwd:String = ""
     private var rePwd:String = ""
@@ -23,6 +26,11 @@ public class RegisterTB: CustomTableViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         tfRePwd.hidden = true
+        if(SignInVC.loginForCheckout){
+            btnHaveAccount.hidden = false
+        }else{
+            btnHaveAccount.hidden = true
+        }
     }
     
     @IBAction func pressRegisterButton(sender: AnyObject) {
@@ -56,6 +64,10 @@ public class RegisterTB: CustomTableViewController {
     func loginSuccess() -> Void{
         MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: true)
         NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.LOGIN_SUCCESS, object: nil)
+        if(SignInVC.loginForCheckout){
+            NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.CHECKOUT_LOGIN, object: nil)
+            SignInVC.loginForCheckout = false
+        }
     }
     
     @IBAction func cancelTap(sender: AnyObject) {
@@ -97,7 +109,12 @@ public class RegisterTB: CustomTableViewController {
             Util().showAlert(MESSAGES.REGISTER.COMPARE_PASSWORD, parrent: self)
             return false
         }
-        
-        
     }
+    
+    @IBAction func pressBtnHaveAccount(sender: AnyObject) {
+        PreviewVC.goToScreen = "LoginNC"
+        self.cancelTap("")
+        NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.CHECKOUT_LOGIN, object: nil)
+    }
+    
 }
