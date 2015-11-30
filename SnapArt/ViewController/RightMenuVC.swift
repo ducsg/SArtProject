@@ -244,6 +244,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
                 self.tableView.reloadData()
                 MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: false)
                 MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
+                MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: 0)
             }else{
                 Util().showAlert(dataResult.message, parrent: self)
             }
@@ -282,8 +283,18 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     }
     //send email func
     func sendEmailUs() -> Void {
-        let url = NSURL(string: "mailto:hello@getsnapart.com&body=User id:\(MemoryStoreData().getInt(APIKEY.ACCOUNT_ID))")
-        UIApplication.sharedApplication().openURL(url!)
+        let toEmail = "mailto:hello@getsnapart.com"
+        let subject = ""
+        let body = MemoryStoreData().getInt(APIKEY.ACCOUNT_ID) == 0 ? "" : "User id: \(MemoryStoreData().getInt(APIKEY.ACCOUNT_ID))"
+        
+        if let
+            urlString = ("mailto:\(toEmail)?subject=\(subject)&body=\(body)").stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding),
+            url = NSURL(string:urlString)
+        {
+            UIApplication.sharedApplication().openURL(url)
+        }
+//        let url = NSURL(string: "mailto:hello@getsnapart.com?body=It is raining in sunny California")
+//        UIApplication.sharedApplication().openURL(url!)
     }
     
     func presentAboutlUs() -> Void {
