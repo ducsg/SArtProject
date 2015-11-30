@@ -220,6 +220,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     
     //MARK: REGISTER
     func registerTap(sender:AnyObject) -> Void  {
+        SignInVC.loginForCheckout = false
         let nv = Util().getControllerForStoryBoard("RegisterNC") as! CustomNavigationController
         self.mainVC!.closeLeftMenu()
         self.navigationController?.presentViewController(nv, animated: true, completion: nil)
@@ -227,6 +228,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     //MARK: LOGIN TAP
     
     func loginTap(sender:AnyObject) -> Void  {
+        SignInVC.loginForCheckout = false
         let nv = Util().getControllerForStoryBoard("LoginNC") as! CustomNavigationController
         self.mainVC!.closeLeftMenu()
         self.navigationController?.presentViewController(nv, animated: true, completion: nil)
@@ -280,7 +282,7 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     }
     //send email func
     func sendEmailUs() -> Void {
-        let url = NSURL(string: "mailto:hello@getsnapart.com")
+        let url = NSURL(string: "mailto:hello@getsnapart.com&body=User id:\(MemoryStoreData().getInt(APIKEY.ACCOUNT_ID))")
         UIApplication.sharedApplication().openURL(url!)
     }
     
