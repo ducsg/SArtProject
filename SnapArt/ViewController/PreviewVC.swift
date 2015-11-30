@@ -24,7 +24,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     private var TITTLE = "Preview"
     private var ADD_TO_CARD = "Add to card"
     private var message:String = ""
-    private var unitArray:[Int]!
+    private var unitArray:[Float]!
 
     internal static var order = Order()
     internal static var frame_size = FrameSize()
@@ -51,7 +51,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         
         self.getCurrentUnit({(dataResult:(message:String,values:[AnyObject]!))->() in
             self.message = dataResult.message
-            if let arr = dataResult.values as? [Int] {
+            if let arr = dataResult.values as? [Float] {
                 self.unitArray = arr
             }
         })
@@ -180,17 +180,17 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         self.removeLoading(self.navigationController?.view)
         let captureSession = AVCaptureSession()
         let stillImageOutput = AVCaptureStillImageOutput()
-        
+//        controller.addViewPreview(self.imagePreview)
+
         if let captureDevice = devices.first as? AVCaptureDevice  {
             captureSession.addInput(try! AVCaptureDeviceInput(device: captureDevice))
-            //            captureSession.sessionPreset = AVCaptureSessionPresetPhoto
             captureSession.sessionPreset = AVCaptureSessionPresetMedium
             captureSession.startRunning()
             stillImageOutput.outputSettings = [AVVideoCodecKey:AVVideoCodecJPEG]
             if captureSession.canAddOutput(stillImageOutput) {
                 captureSession.addOutput(stillImageOutput)
             }
-            
+
             if let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession) {
                 previewLayer.bounds = CGRectMake(0.0, 0.0, view.bounds.size.width, view.bounds.size.height)
                 previewLayer.position = CGPointMake(view.bounds.midX, view.bounds.midY)

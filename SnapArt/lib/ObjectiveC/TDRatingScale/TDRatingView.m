@@ -14,7 +14,7 @@
 @implementation TDRatingView
 @synthesize  maximumRating ,minimumRating,spaceBetweenEachNo, difference;
 @synthesize widthOfEachNo, heightOfEachNo, sliderHeight,delegate;
-@synthesize scaleBgColor,arrowColor,disableStateTextColor,selectedStateTextColor,sliderBorderColor;
+@synthesize scaleBgColor,arrowColor,disableStateTextColor,selectedStateTextColor,sliderBorderColor,sliderValArray;
 
 
 - (id)init {
@@ -106,10 +106,11 @@
 {
     float itemX = self.spaceBetweenEachNo;
     float itemY = 5;
-    int differ = self.minimumRating;
+    NSUInteger differ = self.minimumRating;
     //creating items
     itemsAry = [NSMutableArray new];
     itemsXPositionAry = [NSMutableArray new];
+    int indexArray = 0;
     for (int i =self.minimumRating; i<self.maximumRating+1; i = i+self.difference) {
         
         UIView *rectView = [[UIView alloc] initWithFrame:CGRectMake(itemX, itemY , self.widthOfEachNo, self.heightOfEachNo)];
@@ -130,7 +131,7 @@
         lblMyLabel.tag=i;
         lblMyLabel.backgroundColor = [UIColor clearColor];
         lblMyLabel.textAlignment = UITextAlignmentCenter;
-        lblMyLabel.text = [NSString stringWithFormat:@"%d",differ];
+        lblMyLabel.text = [NSString stringWithFormat:@"%@",sliderValArray[indexArray]]; //differ
         differ = differ + self.difference;
         lblMyLabel.textColor = [UIColor blackColor];
         lblMyLabel.layer.masksToBounds = NO;
@@ -138,6 +139,7 @@
         [containerView addSubview:rectView];
         [containerView addSubview:lblMyLabel];
 
+        indexArray++;
         itemX = lblMyLabel.frame.origin.x + self.widthOfEachNo + self.spaceBetweenEachNo;
         [itemsAry addObject:lblMyLabel];
         [itemsXPositionAry addObject:[NSString stringWithFormat:@"%f",lblMyLabel.frame.origin.x]];
@@ -186,7 +188,7 @@
     NSUInteger index = [itemsXPositionAry indexOfObject:[NSString stringWithFormat:@"%f",selectedViewX]];
     UILabel *myLabel = [itemsAry objectAtIndex:index];
     [self performSelector:@selector(changeTextColor:) withObject:myLabel afterDelay:0.5];
-    [delegate selectedRating:myLabel.text];
+    [delegate selectedRating:index];
     
 }
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
@@ -293,7 +295,7 @@
     NSUInteger index = [itemsXPositionAry indexOfObject:[NSString stringWithFormat:@"%f",selectedViewX]];
     UILabel *myLabel = [itemsAry objectAtIndex:index];
     myLabel.textColor = self.selectedStateTextColor;
-    [delegate selectedRating:myLabel.text];
+    [delegate selectedRating:index];
     
     
     

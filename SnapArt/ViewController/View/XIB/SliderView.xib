@@ -24,36 +24,35 @@
                             </constraints>
                             <state key="normal" title="Add to cart"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many feet are you from you wall?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1j-71-fG9" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
-                            <rect key="frame" x="42" y="8" width="290" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="Uj2-DL-ekx"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aG1-lV-q7Z">
                             <rect key="frame" x="0.0" y="16" width="375" height="72"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="72" id="xqH-Di-uyl"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many feet are you from you wall?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1j-71-fG9" customClass="CustomLabelGotham" customModule="SnapArt" customModuleProvider="target">
+                            <rect key="frame" x="42" y="0.0" width="290" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="8ol-ex-kkO"/>
+                                <constraint firstAttribute="width" constant="290" id="nI7-Z3-qMc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.9409270931" blue="0.55802694669999997" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="375" id="5Yd-g0-i2h"/>
-                        <constraint firstItem="aG1-lV-q7Z" firstAttribute="top" secondItem="h1j-71-fG9" secondAttribute="bottom" constant="-13" id="B6K-1r-gPb"/>
-                        <constraint firstAttribute="trailing" secondItem="h1j-71-fG9" secondAttribute="trailing" constant="43" id="Cqb-Jm-PVx"/>
                         <constraint firstItem="aG1-lV-q7Z" firstAttribute="leading" secondItem="ohP-4Y-N5Y" secondAttribute="leading" id="LEz-ZN-ADF"/>
-                        <constraint firstItem="h1j-71-fG9" firstAttribute="centerX" secondItem="ohP-4Y-N5Y" secondAttribute="centerX" id="O0O-wH-0nr"/>
                         <constraint firstItem="sdt-QU-XsG" firstAttribute="centerX" secondItem="ohP-4Y-N5Y" secondAttribute="centerX" id="RxU-Ou-PI8"/>
-                        <constraint firstItem="h1j-71-fG9" firstAttribute="leading" secondItem="ohP-4Y-N5Y" secondAttribute="leading" constant="42" id="VIe-YH-T6y"/>
                         <constraint firstAttribute="trailing" secondItem="aG1-lV-q7Z" secondAttribute="trailing" id="We2-7i-vuu"/>
                         <constraint firstItem="aG1-lV-q7Z" firstAttribute="centerX" secondItem="ohP-4Y-N5Y" secondAttribute="centerX" id="b13-ta-Ct8"/>
+                        <constraint firstItem="h1j-71-fG9" firstAttribute="top" secondItem="ohP-4Y-N5Y" secondAttribute="top" id="iCd-sT-2cO"/>
                         <constraint firstAttribute="height" constant="140" id="k96-hp-wqJ"/>
                         <constraint firstItem="aG1-lV-q7Z" firstAttribute="top" secondItem="ohP-4Y-N5Y" secondAttribute="top" constant="16" id="obg-2C-8io"/>
                         <constraint firstItem="sdt-QU-XsG" firstAttribute="top" secondItem="aG1-lV-q7Z" secondAttribute="bottom" constant="2" id="scd-8B-cGZ"/>
+                        <constraint firstItem="h1j-71-fG9" firstAttribute="centerX" secondItem="ohP-4Y-N5Y" secondAttribute="centerX" id="sct-V4-tfc"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t6P-Vz-XaQ">
