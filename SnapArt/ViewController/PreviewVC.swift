@@ -54,8 +54,6 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
                 self.unitArray = arr
             }
         })
-
-
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -178,8 +176,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         self.removeLoading(self.navigationController?.view)
         let captureSession = AVCaptureSession()
         let stillImageOutput = AVCaptureStillImageOutput()
-//        controller.addViewPreview(self.imagePreview)
-
+        
         if let captureDevice = devices.first as? AVCaptureDevice  {
             captureSession.addInput(try! AVCaptureDeviceInput(device: captureDevice))
             captureSession.sessionPreset = AVCaptureSessionPresetMedium

@@ -24,13 +24,11 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
         super.viewDidLoad()
         applyBackIcon()
         self.title = self.TITTLE
-//        let nib = UINib(nibName: "MyOrderCell", bundle: nil)
-//        myOrderTb.registerNib(nib, forCellReuseIdentifier: "cell")
         myOrderTb.registerClass(MyOrderCell.self, forCellReuseIdentifier: "MyOrderCell")
         myOrderTb.delegate = self
         myOrderTb.dataSource = self
         self.myOrderTb.reloadData()
-
+        MyOrderVC.isReload = true
         
     }
     
@@ -48,6 +46,7 @@ class MyOrderVC: CustomViewController , UITableViewDataSource,UITableViewDelegat
         titlesView.addTitles(TITLES)
     }
     override func viewDidAppear(animated: Bool) {
+        print("is load my order: \(MyOrderVC.isReload)")
         if(MyOrderVC.isReload){
             getTransactionList()
         }

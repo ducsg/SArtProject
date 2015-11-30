@@ -41,14 +41,20 @@ class PromoCodeVC: ViewController {
     }
     
     @IBAction func pressBtnApply(sender: AnyObject) {
-        applyPromoCode()
+        Util().getCountryCode { (success) -> () in
+            if(success){
+                self.applyPromoCode()
+            }else{
+                Util().showAlert(MESSAGES.COMMON.CAN_NOT_GET_LOCATION, parrent: self)
+            }
+        }
     }
     
     func applyPromoCode(){
         let param = ["code" : tfCode.text!, "country_code" : MemoryStoreData().getString(MemoryStoreData.user_country_code)]
         let api = Api()
-                let parentView:UIView! = self.navigationController?.view
-//                api.initWaiting(parentView)
+        let parentView:UIView! = self.navigationController?.view
+        //api.initWaiting(parentView)
         api.execute(.GET, url: ApiUrl.get_discount_promo_code, parameters: param, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             print(param)
             if(dataResult.success){

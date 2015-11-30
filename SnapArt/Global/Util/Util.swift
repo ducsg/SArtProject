@@ -158,6 +158,7 @@ public class Util: NSObject {
             .responseJSON { response in
                 //                            print(response)
                 if let data:JSON = JSON(response.result.value!) {
+                    print(data)
                     if(data["status"].stringValue == "OK"){
                         let countryCode = data["results"][data["results"].count-1]["address_components"][0]["short_name"].stringValue
                         if(countryCode != ""){

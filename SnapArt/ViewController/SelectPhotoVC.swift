@@ -118,6 +118,7 @@ class SelectPhotoVC: CustomViewController ,UIImagePickerControllerDelegate, UINa
         vc.ratio = ratioValue
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     // MARK: - FRAME SIZE
     func setValueSizeBtn(sizeValues:FrameSize) -> Void {
         self.sizeBtn.setTitle(sizeValues.frame_size, forState: .Normal)

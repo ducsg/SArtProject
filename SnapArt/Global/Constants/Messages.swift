@@ -30,6 +30,7 @@ struct MESSAGES{
 
         static let LOADING = "Loading..."
         static let ORDER_EXISTED = "A previously saved order was found, do you want to continue with it?"
+        static let CAN_NOT_GET_LOCATION = "Can't check your location, please check again."
     }
     
      struct REGISTER{

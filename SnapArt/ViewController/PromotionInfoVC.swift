@@ -24,7 +24,17 @@ class PromotionInfoVC: CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         applyBackIcon()
-        getPromoInfor()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        Util().getCountryCode { (success) -> () in
+            if(success){
+               self.getPromoInfor()
+            }else{
+               Util().showAlert(MESSAGES.COMMON.CAN_NOT_GET_LOCATION, parrent: self)
+            }
+        }
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
