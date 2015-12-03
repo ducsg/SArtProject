@@ -154,7 +154,10 @@ public class Util: NSObject {
     func getCountryCode(callBack:(Bool) -> ()){
         Alamofire.request(.GET, "http://maps.googleapis.com/maps/api/geocode/json?latlng=\(MemoryStoreData().getString(MemoryStoreData.user_lat)),\(MemoryStoreData().getString(MemoryStoreData.user_long))")
             .responseJSON { response in
-                //                            print(response)
+                if response.result.value == nil {
+                    callBack(false)
+                    return
+                }
                 if let data:JSON = JSON(response.result.value!) {
                     print(data)
                     if(data["status"].stringValue == "OK"){

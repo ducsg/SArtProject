@@ -109,11 +109,9 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     }
     
     func setImageView(image:UIImage!) -> Void {
-        let data = UIImagePNGRepresentation(image) //UIImagePNGRepresentation
-        var imageSize = Float(data!.length)
+        var imageSize = CGImageGetBytesPerRow(image.CGImage) * CGImageGetHeight(image.CGImage);
         imageSize = imageSize/(1024*1024)
-        print("image size: \(imageSize)Mb")
-        if imageSize > 10 {
+        if imageSize > 30 {
             Util().showAlert(MESSAGES.MAKE_ART.IMAGE_ERROR, parrent: self)
             return
         }
