@@ -9,7 +9,7 @@
 import Foundation
 
 struct MESSAGES{
-    static let SA_ALERT_TIL = "Snap Art"
+    static let SA_ALERT_TIL = "SnapArt"
     
     struct NOTIFY {
         static let LOGIN_SUCCESS = "LoginSuccess"
