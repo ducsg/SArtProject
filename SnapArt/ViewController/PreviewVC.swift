@@ -16,7 +16,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     @IBOutlet weak var selectBtnView: UIView!
     @IBOutlet weak var webPreview: UIWebView!
     @IBOutlet weak var framePriceLb: CustomLabelGotham!
-
+    
     internal var previewURL = ""
     internal var imagePreview:UIImage!
     internal static var goToScreen = "RegisterNC"
@@ -25,7 +25,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     private var ADD_TO_CARD = "Add to card"
     private var message:String = ""
     private var unitArray:[Float]!
-
+    
     internal static var order = Order()
     internal static var frame_size = FrameSize()
     
@@ -66,7 +66,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     
     @IBAction func previewOnWallTap(sender: AnyObject) {
         self.callLoading(self.navigationController?.view)
@@ -110,24 +110,32 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
     func createOrder(){
         if(!isAdded){
             isAdded = true
-            let api = Api()
-            let parameters = [
-                "id": MemoryStoreData().getInt(MemoryStoreData.current_order_id),
-                "picture_id": PreviewVC.order.image_id,
-                "frame_size_id": PreviewVC.frame_size.frame_size_id,
-                "frame_size_config": PreviewVC.frame_size.frame_size_config
-            ]
-            print("parameters createOrder: \(parameters)")
-            api.execute(.POST, url: ApiUrl.create_order_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
-                self.isAdded = false
-                if(dataResult.success){
-                    MemoryStoreData().setValue(MemoryStoreData.current_order_id, value: dataResult.data.intValue)
-                    let nv = Util().getControllerForStoryBoard("ShoppingCheckoutNC") as! CustomNavigationController
-                    self.navigationController?.presentViewController(nv, animated: true, completion: nil)
-                }else{
-                    Util().showAlert(dataResult.message, parrent: self)
-                }
-            })
+            if(ShoppingCartVC.listCart.count >= Configs.max_order_in_transaction && MemoryStoreData().getInt(MemoryStoreData.current_order_id) == 0){
+                ShoppingCartVC.errorMaxRecord = true
+                let nv = Util().getControllerForStoryBoard("ShoppingCheckoutNC") as! CustomNavigationController
+                self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+            }else{
+                ShoppingCartVC.errorMaxRecord = false
+                let api = Api()
+                let parameters = [
+                    "id": MemoryStoreData().getInt(MemoryStoreData.current_order_id),
+                    "picture_id": PreviewVC.order.image_id,
+                    "frame_size_id": PreviewVC.frame_size.frame_size_id,
+                    "frame_size_config": PreviewVC.frame_size.frame_size_config
+                ]
+                print("parameters createOrder: \(parameters)")
+                api.execute(.POST, url: ApiUrl.create_order_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+                    self.isAdded = false
+                    if(dataResult.success){
+                        MemoryStoreData().setValue(MemoryStoreData.current_order_id, value: dataResult.data.intValue)
+                        let nv = Util().getControllerForStoryBoard("ShoppingCheckoutNC") as! CustomNavigationController
+                        self.navigationController?.presentViewController(nv, animated: true, completion: nil)
+                    }else{
+                        Util().showAlert(dataResult.message, parrent: self)
+                    }
+                })
+            }
+            
         }
     }
     
@@ -186,7 +194,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
             if captureSession.canAddOutput(stillImageOutput) {
                 captureSession.addOutput(stillImageOutput)
             }
-
+            
             if let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession) {
                 previewLayer.bounds = CGRectMake(0.0, 0.0, view.bounds.size.width, view.bounds.size.height)
                 previewLayer.position = CGPointMake(view.bounds.midX, view.bounds.midY)
@@ -224,7 +232,7 @@ class PreviewVC: CustomViewController , UIWebViewDelegate {
         })
     }
     
-
+    
     /*
     // MARK: - Navigation
     

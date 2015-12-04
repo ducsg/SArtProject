@@ -68,7 +68,7 @@ public class Api{
         }else if(method == .POST){
             self.alamoFireManager!.request(.POST, url, parameters: parameters, headers: headers).responseJSON { response in
                 self.closeWaiting()
-
+                
                 print("api data POST: \(response)")
                 if(response.result.value == nil){
                     resulf(false, MESSAGES.COMMON.NOT_INTERNET, JSON(""))
@@ -95,26 +95,28 @@ public class Api{
     }
     
     func uploadFile(image:UIImage!,ratio:Float, resulf:(Bool,String!, String!) -> ()){
-        let imageData = UIImageJPEGRepresentation(image, 1.0)
-        SRWebClient.POST(ApiUrl.crop_image_url)//
-            .headers(headers)
-            .data(imageData!, fieldName:"avatar", data:["ratio":"\(ratio)"])
-            .send({(response:AnyObject!, status:Int) -> Void in
-                print(response)
-                let json = Json(string: (response as? String)!)
-                print("\(response as? String)")
-
-                if json["status"].asInt == 200 {
-                    resulf(true, json[Api.KEY_MESSAGE].asString, json[Api.KEY_DATA].asString)
-                }
-                if json[Api.KEY_STATUS].asInt == 500 {
-                    resulf(false, json[Api.KEY_MESSAGE].asString, json[Api.KEY_DATA].asString)
-                }
-
-                },failure:{(error:NSError!) -> Void in
-                    print(error)
-                    resulf(false, MESSAGES.COMMON.NOT_INTERNET, nil)
-            })
+        let imageData:NSData! = UIImageJPEGRepresentation(image, 1.0)
+        if imageData  != nil {
+            SRWebClient.POST(ApiUrl.crop_image_url)//
+                .headers(headers)
+                .data(imageData, fieldName:"avatar", data:["ratio":"\(ratio)"])
+                .send({(response:AnyObject!, status:Int) -> Void in
+                    print(response)
+                    let json = Json(string: (response as? String)!)
+                    print("\(response as? String)")
+                    
+                    if json["status"].asInt == 200 {
+                        resulf(true, json[Api.KEY_MESSAGE].asString, json[Api.KEY_DATA].asString)
+                    }
+                    if json[Api.KEY_STATUS].asInt == 500 {
+                        resulf(false, json[Api.KEY_MESSAGE].asString, json[Api.KEY_DATA].asString)
+                    }
+                    
+                    },failure:{(error:NSError!) -> Void in
+                        print(error)
+                        resulf(false, MESSAGES.COMMON.NOT_INTERNET, nil)
+                })
+        }
     }
     
     public func getParam(parameters: [String:String]) -> String {

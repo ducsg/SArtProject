@@ -33,12 +33,15 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     static var discount:Float = 0
     
     static var totalCost:Float = 0
+    
+    static var errorMaxRecord:Bool = false
+    
     let TITLES = ["Qnty","Preview","Size","Price"]
     
-    var listCart: [Order] = [Order]()
+    static var listCart: [Order] = [Order]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.listCart.removeAll()
+        ShoppingCartVC.listCart.removeAll()
         // Do any additional setup after loading the view.
         self.applyBackIcon()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -59,11 +62,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     }
     
     func isMaxNumberOrder() -> Bool{
-        return self.listCart.count >= Configs.max_order_in_transaction
+        return ShoppingCartVC.listCart.count >= Configs.max_order_in_transaction
     }
     
     func checkEmptyCart(){
-        if(listCart.count == 0){
+        if(ShoppingCartVC.listCart.count == 0){
             lbEmptyCart.hidden = false
         }else{
             lbEmptyCart.hidden = true
@@ -71,7 +74,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     }
     
     func pressBackIcon(sender: UIBarButtonItem!) -> Void{
-        if(listCart.count == 0){
+        if(ShoppingCartVC.listCart.count == 0){
             NSNotificationCenter.defaultCenter().postNotificationName(MESSAGES.NOTIFY.COMEBACKHOME, object: nil)
         }else{
             self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
@@ -85,12 +88,12 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return listCart.count
+        return ShoppingCartVC.listCart.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        if(listCart.count == 1 && listCart[0].id == -1){
+        if(ShoppingCartVC.listCart.count == 1 && ShoppingCartVC.listCart[0].id == -1){
             let cell = tableView.dequeueReusableCellWithIdentifier("ShoppingCartTBC", forIndexPath: indexPath)
             let lbEmptyCart = CustomLabelGotham()
             lbEmptyCart.text = MESSAGES.SHOPPING.SHOPPING_CART_IS_EMPTY
@@ -98,7 +101,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
             return cell
         }
         let cell:ShoppingCartTBC = ShoppingCartTBC.instanceFromNib()
-        let cart: Order = listCart[indexPath.row]
+        let cart: Order = ShoppingCartVC.listCart[indexPath.row]
         cell.initCell(cart)
         cell.btnPlus.tag = indexPath.row
         cell.btnSubtract.tag = indexPath.row
@@ -112,12 +115,12 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
             let api = Api()
             let parentView:UIView! = self.navigationController?.view
             api.initWaiting(parentView)
-            api.execute(.POST, url: ApiUrl.delete_order_url, parameters: ["id":self.listCart[indexRow].id], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
+            api.execute(.POST, url: ApiUrl.delete_order_url, parameters: ["id":ShoppingCartVC.listCart[indexRow].id], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
-                    if(self.listCart[indexRow].id == MemoryStoreData().getInt(MemoryStoreData.current_order_id)){
+                    if(ShoppingCartVC.listCart[indexRow].id == MemoryStoreData().getInt(MemoryStoreData.current_order_id)){
                         MemoryStoreData().setValue(MemoryStoreData.current_order_id, value: 0)
                     }
-                    self.listCart.removeAtIndex(indexRow)
+                    ShoppingCartVC.listCart.removeAtIndex(indexRow)
                     tableView.deleteRowsAtIndexPaths([self.tbOrder.indexPathForCell(sender)!], withRowAnimation: UITableViewRowAnimation.Left)
                     self.resetCost()
                     self.checkEmptyCart()
@@ -144,12 +147,12 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         let btnPlus = sender as! UIButton
         let index = Int(btnPlus.tag)
         let cell = self.tbOrder.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as! ShoppingCartTBC
-        if(listCart[index].quantity < listCart[index].max_quantity){
-            listCart[index].quantity = listCart[index].quantity + 1
-            cell.tfQuanlity.text = String(listCart[index].quantity)
+        if(ShoppingCartVC.listCart[index].quantity < ShoppingCartVC.listCart[index].max_quantity){
+            ShoppingCartVC.listCart[index].quantity = ShoppingCartVC.listCart[index].quantity + 1
+            cell.tfQuanlity.text = String(ShoppingCartVC.listCart[index].quantity)
             self.resetCost()
         }
-        self.checkEnableCounter(cell, order: listCart[index])
+        self.checkEnableCounter(cell, order: ShoppingCartVC.listCart[index])
     }
     
     func checkEnableCounter(cell:ShoppingCartTBC, order:Order){
@@ -163,11 +166,11 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     func pressBtnSubtract(sender: UIButton){
         let btnSubtract = sender as! UIButton
         let index = Int(btnSubtract.tag)
-        listCart[index].quantity = (listCart[index].quantity - 1) < 1 ? 1 : listCart[index].quantity - 1
+        ShoppingCartVC.listCart[index].quantity = (ShoppingCartVC.listCart[index].quantity - 1) < 1 ? 1 : ShoppingCartVC.listCart[index].quantity - 1
         let cell = self.tbOrder.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as! ShoppingCartTBC
-        cell.tfQuanlity.text = String(listCart[index].quantity)
+        cell.tfQuanlity.text = String(ShoppingCartVC.listCart[index].quantity)
         self.resetCost()
-        self.checkEnableCounter(cell, order: listCart[index])
+        self.checkEnableCounter(cell, order: ShoppingCartVC.listCart[index])
     }
     
     private func getListCart(){
@@ -176,11 +179,14 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         api.initWaiting(parentView)
         api.execute(.GET, url: ApiUrl.my_orders_url, resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
             if(dataResult.success){
-                self.listCart.removeAll()
+                if(ShoppingCartVC.errorMaxRecord){
+                    Util().showAlert(MESSAGES.SHOPPING.MAX_FRAME_LIST, parrent: self)
+                }
+                ShoppingCartVC.listCart.removeAll()
                 if(dataResult.data.count > 0){
                     for i in 0...dataResult.data.count-1 {
                         let cart = Order(id: dataResult.data[i]["id"].numberValue.integerValue, quantity: dataResult.data[i]["quantity"].numberValue.integerValue,frameUrl: dataResult.data[i]["link_picture"].stringValue, item: dataResult.data[i]["material"].stringValue, price: dataResult.data[i]["cost"].numberValue.floatValue, size: dataResult.data[i]["size"].stringValue, max_quantity: dataResult.data[i]["max_quantity"].intValue)
-                        self.listCart.append(cart)
+                        ShoppingCartVC.listCart.append(cart)
                         print(cart.max_quantity)
                         self.tbOrder.reloadData()
                         self.checkEmptyCart()
@@ -210,9 +216,9 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     
     func getSubTotal() -> Float{
         var subTotal:Float = 0
-        if(listCart.count > 0){
-            for i in 0...listCart.count-1 {
-                subTotal = subTotal + listCart[i].price * Float(listCart[i].quantity)
+        if(ShoppingCartVC.listCart.count > 0){
+            for i in 0...ShoppingCartVC.listCart.count-1 {
+                subTotal = subTotal + ShoppingCartVC.listCart[i].price * Float(ShoppingCartVC.listCart[i].quantity)
             }
         }
         return subTotal.roundToPlaces(2)
@@ -227,13 +233,14 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         if(isMaxNumberOrder()){
             Util().showAlert(MESSAGES.SHOPPING.MAX_FRAME_LIST, parrent: self)
         }else{
+//            PreviewVC.order.image_id = 0
             let nv = Util().getControllerForStoryBoard("UploadViewVC") as! CustomNavigationController
             self.navigationController?.presentViewController(nv, animated: true, completion: nil)
         }
     }
     
     @IBAction func pressBtnCheckOut(sender: AnyObject) {
-        if(self.listCart.count > 0){
+        if(ShoppingCartVC.listCart.count > 0){
             saveDataForPayment()
             let nv = Util().getControllerForStoryBoard("BuyItTB") as! BuyItTB
             self.navigationController?.pushViewController(nv, animated: true)
@@ -243,7 +250,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
     }
     
     func saveDataForPayment(){
-        ShoppingCartVC.paymentDetail.list_order = listCart
+        ShoppingCartVC.paymentDetail.list_order = ShoppingCartVC.listCart
     }
     
     /*
