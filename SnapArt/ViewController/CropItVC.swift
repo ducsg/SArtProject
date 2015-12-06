@@ -51,7 +51,6 @@ class CropItVC: CustomViewController ,UIWebViewDelegate {
     }
     
     func loadCropImage(){
-        print("url crop image: \(CropItVC.current_url)")
         let url = NSURL (string: CropItVC.current_url)
         let requestObj = NSURLRequest(URL: url!)
         self.cropWebView.loadRequest(requestObj)

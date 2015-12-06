@@ -11,7 +11,7 @@ import UIKit
 class AboutUsTB: CustomTableViewController{
 
     @IBOutlet weak var btnCancel: CustomBarButtonItem!
-    private var aboutList = ["Our Story","How It Works","Like Us","Follow us","Follow Pinterest","Rate Us"]
+    private var aboutList = ["Our Story","How It Works","Like Us on Facebook","Follow Us on Instagram","Follow Us on Pinterest","Rate Us"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsSelection = true

@@ -37,6 +37,7 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
     
@@ -65,10 +66,9 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
         PreviewVC.order.image_id = 0
         MemoryStoreData().setValue(MemoryStoreData.current_order_id, value: 0)
     }
-    
-    func setImageFromInstagram(media media: InstagramMedia)  {
+    func setImageFromInstagram(media media: InstagramMedia, vc: UIViewController!) {
         let newURL = media.standardResolutionImageURL.URLString.stringByReplacingOccurrencesOfString("s640x640", withString: "s1080x1080", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        self.setImageUploadWithURL(newURL)
+        self.setImageUploadWithURL(newURL,vc: vc)
     }
     
     // MARK: - CHOOSE FROM PHOTO FROM LIB
@@ -88,27 +88,26 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let img:UIImage! = info[UIImagePickerControllerOriginalImage] as? UIImage
         let assetURL:NSURL! = info[UIImagePickerControllerReferenceURL] as? NSURL
-        picker.dismissViewControllerAnimated(true, completion: nil)
-        self.setImageView(img)
+        self.setImageView(img,pickerVC: picker)
     }
     // GET IMMAGE FOR LIB AND FACEBOOK
-    func setImageUploadWithURL(imgURL: String!) -> Void{
+    func setImageUploadWithURL(imgURL: String!,vc:UIViewController!) -> Void{
         print(imgURL)
-        self.callLoading(self.navigationController?.view)
+        self.callLoading(vc.view)
         Alamofire.request(.GET, imgURL)
             .responseImage { response in
                 debugPrint(response)
                 print(response.request)
                 print(response.response)
                 debugPrint(response.result)
-                self.removeLoading(self.navigationController?.view)
+                self.removeLoading(vc.view)
                 if let image = response.result.value {
-                    self.setImageView(image)
+                    self.setImageView(image,pickerVC: vc)
                 }
         }
     }
     
-    func setImageView(image:UIImage!) -> Void {
+    func setImageView(image:UIImage!,pickerVC:UIViewController!) -> Void {
         var imageSize = CGImageGetBytesPerRow(image.CGImage) * CGImageGetHeight(image.CGImage);
         imageSize = imageSize/(1024*1024)
         if imageSize > 30 {
@@ -117,26 +116,28 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
         }
         Util().getCountryCode { (success) -> () in
             if(success){
-                self.getFrameSizes(image, resulf: {(frameSizes:[FrameSize]) -> () in
+                self.getFrameSizes(image, vc: pickerVC,resulf: {(frameSizes:[FrameSize]) -> () in
                     if frameSizes.last != nil {
                         let suggestMessage = "With your photo resolution, we recommended you print art at \(frameSizes.last!.frame_size) or lower for best quality "
                         let vc = Util().getControllerForStoryBoard("SelectPhotoVC") as! SelectPhotoVC
                         vc.imageCrop = image
                         vc.suggestMessage = suggestMessage
                         vc.frameSizes = frameSizes
+                        pickerVC.dismissViewControllerAnimated(true, completion: nil)
                         self.navigationController?.pushViewController(vc, animated: true)
+                        
                     }
                 })
             }else{
-                Util().showAlert(MESSAGES.COMMON.CAN_NOT_GET_LOCATION, parrent: self)
+                Util().showAlert(MESSAGES.COMMON.CAN_NOT_GET_LOCATION, parrent: pickerVC)
             }
         }
         
     }
     
-    private func getFrameSizes(image:UIImage, resulf:([FrameSize]) ->()){
+    private func getFrameSizes(image:UIImage, vc:UIViewController!,resulf:([FrameSize]) ->()){
         let api = Api()
-        let parentView:UIView! = self.navigationController?.view
+        let parentView:UIView! = vc.view
         api.initWaiting(parentView)
         let width =  CGImageGetWidth(image.CGImage)
         let height = CGImageGetHeight(image.CGImage)
@@ -151,12 +152,12 @@ class UpLoadPreviewVC: CustomViewController, UINavigationControllerDelegate, UII
                     resulf(frameSizes)
                 }
             }else{
-                Util().showAlert(dataResult.message, parrent: self)
+                Util().showAlert(dataResult.message, parrent: vc)
             }
             
         })
     }
-    
+
     
     /*
     // MARK: - Navigation

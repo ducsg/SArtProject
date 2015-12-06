@@ -21,12 +21,9 @@ class ViewOnWallVC: CustomViewController, TDRatingViewDelegate {
     internal var section:AVCaptureSession!
     internal var message:String = ""
     internal var unitArray:[Float]!
-
     private var ratio:CGFloat = 1
-    private let TITLE = "View On Wall"
-    
+    private let TITLE = "Preview on Wall"
     internal var URL_IMAGE = "http://demo.innoria.com/snapart/api/cropers/get_image_cropped?id="
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = TITLE
@@ -59,12 +56,16 @@ class ViewOnWallVC: CustomViewController, TDRatingViewDelegate {
             self.customSliderview.textlb.text = self.message
             self.customSliderview.addImagePreview(self.imagePreview)
             self.unitArray.sortInPlace { return $0 < $1}
-            
             if rangeSlider == nil {
                 rangeSlider = TDRatingView()
                 rangeSlider.maximumRating = 6
                 rangeSlider.minimumRating = 2
-                rangeSlider.sliderValArray = unitArray
+                let meterStr = "meter"
+                if meterStr.rangeOfString(message) != nil{
+                    rangeSlider.sliderValArray = ["0.5","1","1.5","2","2.5"]
+                }else {
+                    rangeSlider.sliderValArray = ["2","3","4","5","6"]
+                }
                 rangeSlider.widthOfEachNo = (UInt(self.customSliderview.sliderView.frame.width) / UInt(5))
                 rangeSlider.heightOfEachNo = 30
                 rangeSlider.sliderHeight = 25
@@ -73,10 +74,8 @@ class ViewOnWallVC: CustomViewController, TDRatingViewDelegate {
                 rangeSlider.drawRatingControlWithX(0, y:0)
                 rangeSlider.center = self.customSliderview.sliderView.center
                 self.customSliderview.sliderView.addSubview(rangeSlider)
-
             }
-            
-            
+
             self.customSliderview.imagePreview.contentMode = .ScaleAspectFit
             var rect = self.customSliderview.imagePreview.bounds
             self.ratio = rect.size.width/rect.size.height

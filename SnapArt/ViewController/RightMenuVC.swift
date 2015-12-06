@@ -18,7 +18,6 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     //        "How SnapArt Works","Like SnapArt on FB",
     //        "Like SnapArt on Instargram","Rate on the App Store",
     //        "About Us","FAQs"," Email Us ","Term of Service"]
-    
     private let MENU_DID_LOGIN = ["Make Art","Notifcations","My Account","My Order", "Promotions", "About Us","FAQs","Email Us"]
     private let MENU_WILL_LOGIN = ["Make Art","About Us","FAQs","Email Us"]
     private let LOGIN_TITLE  = "Log In"
@@ -239,15 +238,21 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     func logoutTap(sender:AnyObject) -> Void  {
         self.mainVC!.closeLeftMenu()
         Api().execute(.POST, url: ApiUrl.signout_url, parameters: NSDictionary() as! [String : String], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) in
-            if(dataResult.success){
-                self.loginFlag = false
-                self.tableView.reloadData()
-                MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: false)
-                MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
-                MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: 0)
-            }else{
-                Util().showAlert(dataResult.message, parrent: self)
-            }
+            self.loginFlag = false
+            self.tableView.reloadData()
+            MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: false)
+            MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
+            MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: 0)
+            
+//            if(dataResult.success){
+//                self.loginFlag = false
+//                self.tableView.reloadData()
+//                MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: false)
+//                MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
+//                MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: 0)
+//            }else{
+//                Util().showAlert(dataResult.message, parrent: self)
+//            }
         })
     }
     
