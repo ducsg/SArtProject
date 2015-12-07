@@ -18,7 +18,6 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
     //        "How SnapArt Works","Like SnapArt on FB",
     //        "Like SnapArt on Instargram","Rate on the App Store",
     //        "About Us","FAQs"," Email Us ","Term of Service"]
-    
     private let MENU_DID_LOGIN = ["Make Art","Notifcations","My Account","My Order", "Promotions", "About Us","FAQs","Email Us"]
     private let MENU_WILL_LOGIN = ["Make Art","About Us","FAQs","Email Us"]
     private let LOGIN_TITLE  = "Log In"

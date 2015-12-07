@@ -10,7 +10,7 @@ import UIKit
 import InstagramKit
 
 protocol InstagramCollectionViewDelegate {
-    func setImageFromInstagram(media media:InstagramMedia) -> Void
+    func setImageFromInstagram(media media:InstagramMedia,vc:UIViewController!) -> Void
 }
 
 class InstagramCollectionView: IKCollectionViewController {
@@ -18,13 +18,20 @@ class InstagramCollectionView: IKCollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if !self.instagramEngine!.isSessionValid() {
+            let vc:BaseNC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginInstagramNC") as! BaseNC
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
         // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+
     }
     
     @IBAction func loginTap(sender: AnyObject) {
@@ -48,8 +55,7 @@ class InstagramCollectionView: IKCollectionViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let media:InstagramMedia  = self.mediaArray[indexPath.row] as! InstagramMedia
         if delegate != nil {
-            delegate.setImageFromInstagram(media: media)
-            self.navigationController!.dismissViewControllerAnimated(true, completion: nil)
+            delegate.setImageFromInstagram(media: media,vc:self.navigationController )
         }
     }
     

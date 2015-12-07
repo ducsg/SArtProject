@@ -20,12 +20,13 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
     @IBOutlet weak var albumbtn: CustomButton!
     @IBOutlet weak var statuslb: CustomLabel!
     @IBOutlet weak var avatarImage: UIImageView!
-    private var TITLE = "Login Facebook"
+    private var TITLE = "Log In to Facebook"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.title = TITLE
+        applyBackIcon()
         self.albumbtn.hidden = true
         let loginfbBtn = FBSDKLoginButton()
         loginfbBtn.frame = CGRectMake(0, 0, loginBtn.frame.size.width, loginBtn.frame.size.height)
@@ -39,7 +40,9 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         loginfbBtn.readPermissions = ["user_photos"]
         albumbtn.clipsToBounds = true
         albumbtn.layer.cornerRadius = 3.0
-        //        returnUserData()
+        albumbtn.backgroundColor = UIColor(red: 0.231, green: 0.349, blue: 0.596, alpha: 1)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,6 +52,10 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
     override func viewDidAppear(animated: Bool) {
         returnUserData()
     }
+    func pressBackIcon(sender: UIBarButtonItem!) -> Void{
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     // accessToken is your Facebook id
     func returnUserProfileImage(accessToken: NSString)
     {
@@ -57,7 +64,6 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         if let data = NSData(contentsOfURL: facebookProfileUrl!) {
             avatarImage.image = UIImage(data: data)
         }
-        
     }
     func returnUserData()
     {
@@ -121,28 +127,28 @@ class FacebookLoginVC:CustomViewController, FBSDKLoginButtonDelegate , OLFaceboo
         self.avatarImage.image = UIImage(named: "no_avatar")
     }
     func facebookImagePicker(imagePicker: OLFacebookImagePickerController!, didFailWithError error: NSError!) {
-
+        
     }
-    
-    func facebookImagePicker(imagePicker: OLFacebookImagePickerController!, didFinishPickingImages images: [AnyObject]!) {
+    func facebookImagePicker(imagePicker: OLFacebookImagePickerController!, didSelectImage image: OLFacebookImage!) {
         if let nv = self.navigationController?.viewControllers {
             if let index:Int! = nv.count - 2 {
                 if let vc = nv[index] as? UpLoadPreviewVC{
-                    if images != nil && images.count > 0 {
-                        if let OLFacebookImg:OLFacebookImage! = images[0] as? OLFacebookImage {
-                            print(OLFacebookImg?.sourceImages)
-                            if let array = OLFacebookImg?.sourceImages as? [OLFacebookImageURL] {
-                                if array.count > 0 {
-                                    vc.setImageUploadWithURL(array[0].url.URLString)
-                                }
+                    if let OLFacebookImg:OLFacebookImage! = image {
+                        print(OLFacebookImg?.sourceImages)
+                        if let array = OLFacebookImg?.sourceImages as? [OLFacebookImageURL] {
+                            if array.count > 0 {
+                                vc.setImageUploadWithURL(array[0].url.URLString,vc: imagePicker)
                             }
                         }
                     }
-                    self.navigationController?.popViewControllerAnimated(true)
-                    imagePicker.dismissViewControllerAnimated(true, completion: nil)
                 }
             }
         }
+    }
+    
+    func facebookImagePicker(imagePicker: OLFacebookImagePickerController!, didFinishPickingImages images: [AnyObject]!) {
+        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func facebookImagePickerDidCancelPickingImages(imagePicker: OLFacebookImagePickerController!) {

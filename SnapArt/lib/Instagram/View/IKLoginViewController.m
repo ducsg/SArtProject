@@ -31,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.title = @"Log In to Instagram";
 }
 
 
@@ -43,6 +43,7 @@
 
 - (void)settingLoginWebView:(UIWebView*)webView
 {
+    
     webView.scrollView.bounces = NO;
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
     
@@ -54,6 +55,7 @@
 
 - (void)checkAuthenticationSuccess:(NSURLRequest *)request
 {
+    NSLog(@"%@",request);
     NSError *error;
     if ([[InstagramEngine sharedEngine] receivedValidAccessTokenFromURL:request.URL error:&error])
     {
@@ -65,6 +67,7 @@
 {
     [self.navigationItem setLeftBarButtonItem:nil];
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
