@@ -57,7 +57,7 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         getListCart()
         headerView.addTitles(TITLES)
         //        if(Util().getCountryCode() == "US"){
-        lbShipping.text = "FREE"
+        lbShipping.text = "Free"
         //        }
     }
     
@@ -210,7 +210,8 @@ class ShoppingCartVC: CustomViewController, UITableViewDataSource, UITableViewDe
         ShoppingCartVC.paymentDetail.subtotal = subTotal
         ShoppingCartVC.paymentDetail.payment_amount = ShoppingCartVC.totalCost
         ShoppingCartVC.paymentDetail.discount = discount
-        lbDiscount.text = "$\(discount)"
+        let discountFormat = NSString(format: "%.02f", discount)
+        lbDiscount.text = "$\(discountFormat)"
     }
     
     
