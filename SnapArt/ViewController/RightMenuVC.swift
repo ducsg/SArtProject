@@ -243,13 +243,8 @@ class RightMenuVC: AMSlideMenuLeftTableViewController, MFMailComposeViewControll
             MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: false)
             MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
             MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: 0)
-            
 //            if(dataResult.success){
-//                self.loginFlag = false
-//                self.tableView.reloadData()
-//                MemoryStoreData().setValue(MemoryStoreData.user_stayed_login, value: false)
-//                MemoryStoreData().setValue(APIKEY.ACCESS_TOKEN, value: "")
-//                MemoryStoreData().setValue(APIKEY.ACCOUNT_ID, value: 0)
+//                
 //            }else{
 //                Util().showAlert(dataResult.message, parrent: self)
 //            }

@@ -223,6 +223,7 @@ class PlaceOrderVC: CustomViewController, UITableViewDataSource, UITableViewDele
             api.initWaiting(parentView)
             api.execute(.POST, url: ApiUrl.payment_url, parameters: parameters as! [String : AnyObject], resulf: {(dataResult: (success: Bool, message: String, data: JSON!)) -> Void in
                 if(dataResult.success){
+                    ShoppingCartVC.listCart.removeAll()
                     var alert = Util().showAlert(dataResult.message, parrent: self)
                     alert.tag = 0
                     alert.delegate = self
